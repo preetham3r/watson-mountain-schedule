@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adi · Watson Mountain 2026–2027</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0E1F2B; --ink2:#4A6072; --ice:#E9F1F5; --card:#FFFFFF;
+    --line:#CBDCE5; --line2:#E3EDF2;
+    --pe:#4E6274; --eng:#14507D; --math:#B24A0C; --sci:#1C6E56;
+    --spectrum:#8C2F39; --strings:#5E3A7E; --hist:#7A5A16; --art:#0B6B8A;
+    --util:#0F6E63; --open:#93A9B7;
+    --display:'Archivo','Helvetica Neue',Arial,sans-serif;
+    --mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{background:var(--ice);color:var(--ink);font-family:var(--display);line-height:1.4;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:940px;margin:0 auto;padding:28px 16px 64px}
+
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink2);margin:0 0 10px}
+  h1{font-size:clamp(30px,8vw,52px);font-weight:900;letter-spacing:-.03em;line-height:.98;margin:0 0 14px}
+  h1 span{display:block;font-weight:500;color:var(--ink2);font-size:.42em;letter-spacing:-.01em;margin-top:10px}
+  .lede{max-width:54ch;font-size:15px;color:var(--ink2);margin:0 0 22px}
+
+  .control{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:0 0 14px}
+  .control:last-of-type{margin-bottom:26px}
+  .control p{margin:0 0 10px;font-size:13px;color:var(--ink2)}
+  .seg{display:flex;gap:6px;background:var(--ice);padding:4px;border-radius:10px}
+  .seg button{flex:1;appearance:none;border:0;background:transparent;cursor:pointer;font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.03em;color:var(--ink2);padding:9px 6px;border-radius:7px;transition:background .15s,color .15s}
+  .seg button[aria-pressed="true"]{background:var(--ink);color:#fff}
+  .seg button:focus-visible{outline:2px solid var(--eng);outline-offset:2px}
+
+  .pairs{display:grid;gap:26px}
+  @media(min-width:760px){.pairs{grid-template-columns:1fr 1fr;gap:26px 22px}}
+
+  .fold{display:flex;align-items:center;gap:10px;padding:11px 2px}
+  .fold-line{flex:1;height:1px;background:var(--line);position:relative}
+  .fold-line::before,.fold-line::after{content:"";position:absolute;top:-3px;width:1px;height:7px;background:var(--line)}
+  .fold-line::before{left:0}.fold-line::after{right:0}
+  .fold-label{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--open);white-space:nowrap}
+
+  .day{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .day-head{display:flex;align-items:baseline;justify-content:space-between;padding:14px 16px 12px;border-bottom:1px solid var(--line2)}
+  .day-name{font-size:22px;font-weight:900;letter-spacing:-.02em}
+  .day-note{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--open)}
+
+  .row{display:grid;grid-template-columns:88px 1fr;gap:12px;align-items:start;padding:9px 16px;border-bottom:1px solid var(--line2)}
+  .row:last-child{border-bottom:0}
+  .t{font-family:var(--mono);font-size:11.5px;color:var(--ink2);padding-top:2px;white-space:nowrap}
+  .c{min-width:0}
+  .blk{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--open);display:block;margin-bottom:1px}
+  .name{font-size:15px;font-weight:700;letter-spacing:-.01em}
+  .meta{font-family:var(--mono);font-size:10.5px;color:var(--ink2);margin-top:2px}
+  .pe .name{color:var(--pe)} .eng .name{color:var(--eng)} .math .name{color:var(--math)}
+  .sci .name{color:var(--sci)} .spectrum .name{color:var(--spectrum)} .strings .name{color:var(--strings)}
+  .hist .name{color:var(--hist)} .art .name{color:var(--art)}
+
+  .row.util{background:#F6FAFC}
+  .row.util .name{font-size:13px;font-weight:600;color:var(--util);letter-spacing:.02em}
+  .row.util .t{color:var(--util)}
+  .row.edge{background:#FBFDFE}
+  .row.edge .name{font-size:12px;font-weight:500;color:var(--open)}
+  .hint{font-family:var(--mono);font-size:10px;color:var(--open);margin-top:3px}
+
+  .foot{margin-top:34px;display:grid;gap:20px}
+  @media(min-width:760px){.foot{grid-template-columns:1fr 1fr;gap:22px}}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+  .panel h2{font-size:12px;font-family:var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink2);margin:0 0 12px;font-weight:600}
+  .key{display:flex;align-items:baseline;gap:9px;margin-bottom:9px;font-size:14px}
+  .dot{width:9px;height:9px;border-radius:50%;flex:none;position:relative;top:1px}
+  .key code{font-family:var(--mono);font-size:11px;color:var(--open);margin-left:auto;padding-left:8px;white-space:nowrap}
+  .panel ul{margin:0;padding-left:17px;font-size:13.5px;color:var(--ink2)}
+  .panel li{margin-bottom:9px}
+  .panel li:last-child{margin-bottom:0}
+  .panel b{color:var(--ink)}
+  .panel > p{font-size:13.5px;color:var(--ink2);margin:0 0 12px}
+
+  .date{display:grid;grid-template-columns:66px 1fr;gap:10px;font-size:13.5px;padding:7px 0;border-bottom:1px solid var(--line2)}
+  .date:last-child{border-bottom:0}
+  .date .d{font-family:var(--mono);font-size:11.5px;color:var(--ink2);padding-top:2px}
+  .date .e{color:var(--ink)}
+  .date .e small{display:block;color:var(--ink2);font-size:11.5px;font-family:var(--mono);margin-top:2px;line-height:1.35}
+
+  .sup{margin-bottom:13px}
+  .sup:last-child{margin-bottom:0}
+  .sup h3{margin:0 0 3px;font-size:13.5px;font-weight:700}
+  .sup p{margin:0;font-size:13px;color:var(--ink2)}
+
+  /* rotation roller */
+  .weeks{display:grid;gap:8px;margin-bottom:12px}
+  .week{display:grid;grid-template-columns:58px repeat(5,1fr);gap:5px;align-items:center}
+  .week .wlab{font-family:var(--mono);font-size:10.5px;color:var(--ink2)}
+  .cell{text-align:center;font-family:var(--mono);font-size:12px;font-weight:600;padding:7px 0;border-radius:6px;background:var(--ice);color:var(--ink2)}
+  .cell.bset{background:#EFE7F4;color:var(--strings)}
+  .cell.aset{background:#E4EDF3;color:var(--eng)}
+  .dows{display:grid;grid-template-columns:58px repeat(5,1fr);gap:5px;margin-bottom:6px}
+  .dows span{text-align:center;font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--open)}
+  .caveat{font-size:12.5px;color:var(--ink2);margin:0}
+
+  .ct{display:grid;grid-template-columns:1fr auto;gap:6px 12px;font-size:13.5px;padding:6px 0;border-bottom:1px solid var(--line2)}
+  .ct:last-child{border-bottom:0}
+  .ct .r{font-family:var(--mono);font-size:11px;color:var(--ink2);text-align:right;white-space:nowrap}
+
+  @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+  @media print{body{background:#fff}.control{display:none}.day,.panel{break-inside:avoid}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="eyebrow">Watson Mountain Middle · 2026–2027 · Grade 6</p>
+  <h1>Adi's year on one page
+    <span>Eight blocks, four days, two mirrored halves.</span>
+  </h1>
+  <p class="lede">A and C days run the same classes in opposite order. B and D days do the same with the other set. English 6H and Advisory sit in both sets, so they are the only two she has every day.</p>
+
+  <div class="control">
+    <p>Semester. Art 6 in blocks 1 and 2 of the B set becomes Computer Applications after January.</p>
+    <div class="seg" role="group" aria-label="Semester">
+      <button id="s1" aria-pressed="true">Sem 1 · Aug 17 to Jan 22</button>
+      <button id="s2" aria-pressed="false">Sem 2 · Jan 26 to Jun 11</button>
+    </div>
+  </div>
+
+  <div class="control">
+    <p>Lunch shift is the last unconfirmed piece. Sixth grade gets one of two.</p>
+    <div class="seg" role="group" aria-label="Lunch shift">
+      <button id="l1" aria-pressed="true">Lunch 1 · 10:40</button>
+      <button id="l2" aria-pressed="false">Lunch 2 · 11:12</button>
+    </div>
+  </div>
+
+  <div class="pairs" id="pairs"></div>
+
+  <div class="foot">
+
+    <div class="panel">
+      <h2>The full block map</h2>
+      <div class="key"><span class="dot" style="background:var(--pe)"></span> Health &amp; PE 6 · Allen · Gym 1 <code>1/2 A</code></div>
+      <div class="key"><span class="dot" style="background:var(--art)"></span> Art 6 · Thiele · 102 <code>1/2 B, sem 1</code></div>
+      <div class="key"><span class="dot" style="background:var(--art)"></span> Computer Apps · Zerega · 342 <code>1/2 B, sem 2</code></div>
+      <div class="key"><span class="dot" style="background:var(--eng)"></span> English 6H · Peyton · 369 <code>3/4 A, 5/6 B</code></div>
+      <div class="key"><span class="dot" style="background:var(--spectrum)"></span> Spectrum 6 · Cumberledge · 271 <code>3 B</code></div>
+      <div class="key"><span class="dot" style="background:var(--strings)"></span> Strings 6 · Holowecki · 330 <code>4 B</code></div>
+      <div class="key"><span class="dot" style="background:var(--math)"></span> Math 7 · Reel · 259 <code>5/6 A</code></div>
+      <div class="key"><span class="dot" style="background:var(--sci)"></span> Science 6H · DiPietro · 382 <code>7/8 A</code></div>
+      <div class="key"><span class="dot" style="background:var(--hist)"></span> US History to 1865 · Dickerson · 367 <code>7/8 B</code></div>
+      <div class="key"><span class="dot" style="background:var(--util)"></span> Advisory · DiPietro · 382 <code>Period 9, PEAK</code></div>
+    </div>
+
+    <div class="panel">
+      <h2>How the rotation rolls</h2>
+      <p>The letter is not tied to a weekday. It advances one step every school day, so a four day cycle inside a five day week keeps sliding. Monday is A one week and B the next.</p>
+      <div class="dows"><span></span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span></div>
+      <div class="weeks">
+        <div class="week"><span class="wlab">Aug 17</span><span class="cell aset">A</span><span class="cell bset">B</span><span class="cell aset">C</span><span class="cell bset">D</span><span class="cell aset">A</span></div>
+        <div class="week"><span class="wlab">Aug 24</span><span class="cell bset">B</span><span class="cell aset">C</span><span class="cell bset">D</span><span class="cell aset">A</span><span class="cell bset">B</span></div>
+        <div class="week"><span class="wlab">Aug 31</span><span class="cell aset">C</span><span class="cell bset">D</span><span class="cell aset">A</span><span class="cell bset">B</span><span class="cell aset">C</span></div>
+      </div>
+      <p class="caveat">Shaded purple means a B set day, so the instrument goes in. This projection assumes Aug 17 is an A day and no interruption before Labor Day. Confirm against the school's published A-D Calendar, and the school sends a reminder the night before.</p>
+    </div>
+
+    <div class="panel">
+      <h2>Dates that matter</h2>
+      <div class="date"><span class="d">Aug 17</span><span class="e">First day</span></div>
+      <div class="date"><span class="d">Aug 20</span><span class="e">Orchestra financial assistance rental form closes<small>Only if requesting a school instrument</small></span></div>
+      <div class="date"><span class="d">Aug 26</span><span class="e">Instrument comes to school<small>Grade 6 start date</small></span></div>
+      <div class="date"><span class="d">Oct 28</span><span class="e">Q1 ends</span></div>
+      <div class="date"><span class="d">Jan 22</span><span class="e">Q2 and semester 1 end</span></div>
+      <div class="date"><span class="d">Jan 26</span><span class="e">Semester 2 begins<small>Art 6 becomes Computer Applications, room 102 to 342</small></span></div>
+      <div class="date"><span class="d">Apr 9</span><span class="e">Q3 ends</span></div>
+      <div class="date"><span class="d">Jun 11</span><span class="e">Q4 and the year end</span></div>
+    </div>
+
+    <div class="panel">
+      <h2>Supplies, merged</h2>
+      <div class="sup"><h3>Buy once, used everywhere</h3><p>Headphones. Pencils. Highlighters. Glue sticks. Dry erase markers. Chromebook is school issued.</p></div>
+      <div class="sup"><h3>Class specific</h3><p>Spiral notebook ×2, one for Math and one for English. One inch binder for Science. Folder with inside pockets for English. Unlined sketchbook for US History.</p></div>
+      <div class="sup"><h3>Orchestra</h3><p>Rosin. Binder. Shoulder rest. Tuner. Cleaning cloth. Tag for the case. Music stand for home practice. Do not buy an instrument online, the directors recommend Day Violins.</p></div>
+      <div class="sup"><h3>Not yet known</h3><p>No syllabus has come through for Art 6 with Ms. Thiele. Expect a supply ask in the first week.</p></div>
+    </div>
+
+    <div class="panel">
+      <h2>Who to contact</h2>
+      <div class="ct"><span>School office</span><span class="r">571-367-4250</span></div>
+      <div class="ct"><span>Lenny Compton, Principal</span><span class="r">—</span></div>
+      <div class="ct"><span>Kjersti Oliver, AP Grade 6</span><span class="r">—</span></div>
+      <div class="ct"><span>Alexandra Reel, Math 7</span><span class="r">Alexandra.Reel</span></div>
+      <div class="ct"><span>Madison Peyton, English 6H</span><span class="r">Madison.Peyton</span></div>
+      <div class="ct"><span>Tracy DiPietro, Science and Advisory</span><span class="r">tracy.dipietro</span></div>
+      <div class="ct"><span>Jeb Dickerson, US History</span><span class="r">jeb.dickerson</span></div>
+      <div class="ct"><span>Erin Cumberledge, Spectrum 6</span><span class="r">Erin.Cumberledge</span></div>
+      <div class="ct"><span>Kelly Holowecki, Strings 6</span><span class="r">Kelly.Holowecki</span></div>
+      <div class="ct"><span>Kimberly Zerega, Computer Apps</span><span class="r">kimberly.zerega</span></div>
+      <div class="ct"><span>Bethany Thiele, Art 6</span><span class="r">Bethany.Thiele</span></div>
+      <div class="ct"><span>Courtney Allen, PE 6</span><span class="r">Courtney.Allen</span></div>
+      <div class="ct"><span>Meghan Ngo, School Nurse</span><span class="r">Meghan.Ngo</span></div>
+      <p style="margin:12px 0 0;font-size:12.5px">All addresses are first.last@lcps.org. School is at 41480 Steeplechase Loop Dr, Leesburg VA 20175.</p>
+    </div>
+
+    <div class="panel">
+      <h2>Worth knowing</h2>
+      <ul>
+        <li><b>The instrument travels on B and D days only.</b> Violin and viola students share lockers, so it has to come home the same day it goes in.</li>
+        <li><b>Math is the strictest grader.</b> No extra credit, no retake policy stated, and late work dies once the related summative is taken. Science and English both offer retakes on major summatives at 70 percent or below.</li>
+        <li><b>All cores weight the same:</b> 60 percent major summatives, 30 percent minor, 10 percent formative.</li>
+        <li><b>Rehearsals and concerts are graded major summatives.</b> Planned absences need two weeks notice.</li>
+        <li><b>ParentVUE's term table lists English as rotation A, B in blocks 3 and 4.</b> That would collide with Spectrum and Strings. The section code 3/4A &amp; 5/6B is the accurate one, and this grid follows it.</li>
+        <li><b>Grade 6 lockers are on floors 2 and 3.</b> Mr. Dickerson sends a weekly family update by email.</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<script>
+var C = {
+  pe:{n:'Health & PE 6', m:'Allen · Gym 1', k:'pe'},
+  art:{n:'Art 6', m:'Thiele · 102', k:'art'},
+  ica:{n:'Intro to Computer Apps', m:'Zerega · 342', k:'art'},
+  eng:{n:'English 6H', m:'Peyton · 369', k:'eng'},
+  math:{n:'Math 7', m:'Reel · 259', k:'math'},
+  sci:{n:'Science 6H', m:'DiPietro · 382', k:'sci'},
+  spec:{n:'Spectrum 6', m:'Cumberledge · 271', k:'spectrum'},
+  str:{n:'Strings 6', m:'Holowecki · 330', k:'strings'},
+  hist:{n:'US History to 1865', m:'Dickerson · 367', k:'hist'}
+};
+
+var T = [['8:50 – 9:31','9:33 – 10:15'], null, ['12:53 – 1:31','1:34 – 2:13'], ['2:18 – 2:56','2:58 – 3:38']];
+var DAYS = [
+  {id:'A', set:'A', order:[[1,2],[3,4],[5,6],[7,8]], note:'A set, forward'},
+  {id:'C', set:'A', order:[[8,7],[6,5],[4,3],[2,1]], note:'A set, reversed'},
+  {id:'B', set:'B', order:[[1,2],[3,4],[5,6],[7,8]], note:'B set, forward'},
+  {id:'D', set:'B', order:[[8,7],[6,5],[4,3],[2,1]], note:'B set, reversed'}
+];
+
+var lunch = 1, sem = 1;
+
+function sets(){
+  var elective = (sem === 1) ? C.art : C.ica;
+  return {
+    A:{1:C.pe, 2:C.pe, 3:C.eng, 4:C.eng, 5:C.math, 6:C.math, 7:C.sci, 8:C.sci},
+    B:{1:elective, 2:elective, 3:C.spec, 4:C.str, 5:C.eng, 6:C.eng, 7:C.hist, 8:C.hist}
+  };
+}
+
+function row(time, blk, set, hint){
+  var c = sets()[set][blk];
+  return '<div class="row ' + c.k + '">'
+    + '<div class="t">' + time + '</div>'
+    + '<div class="c"><span class="blk">Block ' + blk + '</span>'
+    + '<div class="name">' + c.n + '</div>'
+    + '<div class="meta">' + c.m + '</div>'
+    + (hint ? '<div class="hint">' + hint + '</div>' : '')
+    + '</div></div>';
+}
+function util(t, l, m){
+  return '<div class="row util"><div class="t">' + t + '</div><div class="c"><div class="name">' + l + '</div>'
+    + (m ? '<div class="meta">' + m + '</div>' : '') + '</div></div>';
+}
+function edge(t, l){
+  return '<div class="row edge"><div class="t">' + t + '</div><div class="c"><div class="name">' + l + '</div></div></div>';
+}
+
+function lunchSlot(pair, set){
+  var a = pair[0], b = pair[1];
+  if(lunch === 1){
+    return util('10:40 – 11:12','Lunch 1') + row('11:15 – 12:00', a, set) + row('12:03 – 12:48', b, set);
+  }
+  return row('10:45 – 11:12', a, set) + util('11:12 – 11:44','Lunch 2')
+    + row('11:47 – 12:48', b, set, 'Block ' + a + ' finishes inside this window. Handoff not published.');
+}
+
+function dayCard(d){
+  return '<div class="day">'
+    + '<div class="day-head"><div class="day-name">' + d.id + ' day</div><div class="day-note">' + d.note + '</div></div>'
+    + edge('8:30 – 8:45','Arrival, welcome bell at 8:45')
+    + row(T[0][0], d.order[0][0], d.set)
+    + row(T[0][1], d.order[0][1], d.set)
+    + util('10:20 – 10:40','PEAK · Advisory','DiPietro · 382')
+    + lunchSlot(d.order[1], d.set)
+    + row(T[2][0], d.order[2][0], d.set)
+    + row(T[2][1], d.order[2][1], d.set)
+    + row(T[3][0], d.order[3][0], d.set)
+    + row(T[3][1], d.order[3][1], d.set)
+    + edge('3:38','Dismissal')
+    + '</div>';
+}
+
+function render(){
+  var pairs = [[DAYS[0],DAYS[1]],[DAYS[2],DAYS[3]]];
+  document.getElementById('pairs').innerHTML = pairs.map(function(p){
+    var top = p[0], bot = p[1];
+    return '<div class="pair">' + dayCard(top)
+      + '<div class="fold"><span class="fold-label">' + top.id + ' and ' + bot.id
+      + '</span><span class="fold-line"></span><span class="fold-label">same classes, flipped</span></div>'
+      + dayCard(bot) + '</div>';
+  }).join('');
+}
+
+function setLunch(n){
+  lunch = n;
+  document.getElementById('l1').setAttribute('aria-pressed', n === 1);
+  document.getElementById('l2').setAttribute('aria-pressed', n === 2);
+  render();
+}
+function setSem(n){
+  sem = n;
+  document.getElementById('s1').setAttribute('aria-pressed', n === 1);
+  document.getElementById('s2').setAttribute('aria-pressed', n === 2);
+  render();
+}
+document.getElementById('l1').addEventListener('click', function(){ setLunch(1); });
+document.getElementById('l2').addEventListener('click', function(){ setLunch(2); });
+document.getElementById('s1').addEventListener('click', function(){ setSem(1); });
+document.getElementById('s2').addEventListener('click', function(){ setSem(2); });
+render();
+</script>
+</body>
+</html>
