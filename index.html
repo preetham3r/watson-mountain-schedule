@@ -109,6 +109,31 @@
   .ct .r{font-family:var(--mono);font-size:11px;color:var(--ink2);text-align:right;white-space:nowrap}
 
 
+
+  /* ---------- announcements ---------- */
+  .ann{border:1px solid var(--line);border-radius:14px;background:var(--card);margin:0 0 14px;overflow:hidden}
+  .annh{display:flex;align-items:baseline;justify-content:space-between;gap:10px;
+    padding:13px 18px 11px;border-bottom:1px solid var(--line2)}
+  .annh h2{margin:0;font-size:13px;font-family:var(--mono);letter-spacing:.13em;
+    text-transform:uppercase;color:var(--ink2);font-weight:600}
+  .annh .st{font-family:var(--mono);font-size:10px;color:var(--open);white-space:nowrap}
+  .ai{display:grid;grid-template-columns:64px 1fr;gap:12px;padding:11px 18px;border-bottom:1px solid var(--line2)}
+  .ai:last-child{border-bottom:0}
+  .ai .ad{font-family:var(--mono);font-size:11px;color:var(--ink2);padding-top:2px;white-space:nowrap}
+  .ai .ad.soon{color:var(--math);font-weight:600}
+  .ai .at{font-size:14.5px;font-weight:700;letter-spacing:-.01em;margin:0 0 3px}
+  .ai .ax{font-size:13px;color:var(--ink2);margin:0}
+  .ai .as{font-family:var(--mono);font-size:10.5px;color:var(--open);margin:5px 0 0}
+  .ai .as a{color:var(--eng);text-decoration:none;border-bottom:1px solid var(--line)}
+  .ai .as a:hover{border-bottom-color:var(--eng)}
+  .tag{display:inline-block;font-family:var(--mono);font-size:9px;letter-spacing:.09em;
+    text-transform:uppercase;padding:2px 7px;border-radius:20px;margin-right:7px;vertical-align:2px}
+  .tag.deadline{background:#FBEDE4;color:var(--math)}
+  .tag.test{background:#F6E6E8;color:var(--spectrum)}
+  .tag.event{background:#EFE7F4;color:var(--strings)}
+  .tag.notice{background:var(--ice);color:var(--ink2)}
+  .annempty{padding:16px 18px;font-size:13.5px;color:var(--ink2)}
+
   /* ---------- today banner ---------- */
   .today{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:0 0 14px;background:var(--card)}
   .tgrid{display:grid;grid-template-columns:1fr}
@@ -175,7 +200,7 @@
   @media print{
     body{background:#fff;color:#000}
     .wrap{max-width:none;padding:0}
-    .eyebrow,h1,.lede,.control,.pairs,.foot,.today,#yearcal{display:none!important}
+    .eyebrow,h1,.lede,.control,.pairs,.foot,.today,#yearcal,.ann{display:none!important}
     .printsheet{display:block;font-size:8.2pt;line-height:1.25}
 
     .phead{display:flex;align-items:baseline;justify-content:space-between;
@@ -243,6 +268,14 @@
       <button data-fix="C">C</button><button data-fix="D">D</button>
       <button data-fix="reset">Reset</button>
     </div>
+  </div>
+
+  <div class="ann" id="ann">
+    <div class="annh">
+      <h2>Announced and upcoming</h2>
+      <span class="st" id="annst">loading</span>
+    </div>
+    <div id="annbody"><div class="annempty">Loading the latest from school email.</div></div>
   </div>
 
   <div class="control">
@@ -905,6 +938,68 @@ document.querySelectorAll('[data-bell]').forEach(function(b){
       + cells + '</div></div>';
   }).join('');
   window.__renderYear = arguments.callee;
+})();
+
+
+/* ---- announcements feed, rewritten daily by the 5pm email scan ---- */
+var FALLBACK = {updated:null, items:[]};
+
+function annDate(it){
+  if(!it.date) return {txt:"", soon:false};
+  var d = fromIso(it.date), today = new Date(); today.setHours(0,0,0,0);
+  var diff = Math.round((d - today) / 86400000);
+  var txt = d.toLocaleDateString(undefined, {month:"short", day:"numeric"});
+  if(diff === 0) txt = "Today";
+  else if(diff === 1) txt = "Tomorrow";
+  return {txt:txt, soon:(diff >= 0 && diff <= 7)};
+}
+
+function renderAnn(data){
+  var body = document.getElementById("annbody"), st = document.getElementById("annst");
+  var items = (data && data.items) ? data.items.slice() : [];
+  if(data && data.updated){
+    st.textContent = "updated " + fromIso(data.updated).toLocaleDateString(undefined,{month:"short",day:"numeric"});
+  } else { st.textContent = ""; }
+
+  items.sort(function(a,b){
+    if(a.date && b.date) return a.date < b.date ? -1 : 1;
+    if(a.date) return -1;
+    if(b.date) return 1;
+    return 0;
+  });
+  var todayKey = iso(new Date());
+  items = items.filter(function(it){ return !it.date || it.date >= todayKey; });
+
+  if(!items.length){
+    body.innerHTML = '<div class="annempty">Nothing new from school.</div>';
+    return;
+  }
+  body.innerHTML = items.map(function(it){
+    var d = annDate(it);
+    var src = "";
+    if(it.source){
+      src = it.url
+        ? '<p class="as"><a href="' + it.url + '" target="_blank" rel="noopener">' + it.source + '</a></p>'
+        : '<p class="as">' + it.source + '</p>';
+    }
+    return '<div class="ai">'
+      + '<span class="ad' + (d.soon ? ' soon' : '') + '">' + (d.txt || "&mdash;") + '</span>'
+      + '<div><p class="at"><span class="tag ' + (it.type || "notice") + '">' + (it.type || "notice") + '</span>'
+      + it.title + '</p>'
+      + (it.detail ? '<p class="ax">' + it.detail + '</p>' : '')
+      + src + '</div></div>';
+  }).join("");
+}
+
+(function(){
+  fetch("updates.json?ts=" + Date.now())
+    .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+    .then(renderAnn)
+    .catch(function(){
+      document.getElementById("annst").textContent = "";
+      document.getElementById("annbody").innerHTML =
+        '<div class="annempty">Open this from the web address rather than a saved copy to see the latest school updates.</div>';
+    });
 })();
 
 renderToday();
