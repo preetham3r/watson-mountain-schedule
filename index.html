@@ -106,6 +106,36 @@
   .ct:last-child{border-bottom:0}
   .ct .r{font-family:var(--mono);font-size:11px;color:var(--ink2);text-align:right;white-space:nowrap}
 
+
+  /* ---------- today banner ---------- */
+  .today{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:0 0 14px;background:var(--card)}
+  .tgrid{display:grid;grid-template-columns:1fr}
+  @media(min-width:640px){.tgrid{grid-template-columns:1.25fr 1fr}}
+  .tnow{padding:16px 18px}
+  .tnext{padding:16px 18px;background:#F5F9FB;border-top:1px solid var(--line2)}
+  @media(min-width:640px){.tnext{border-top:0;border-left:1px solid var(--line2)}}
+  .tlab{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--open);margin:0 0 5px}
+  .tdate{font-size:13px;color:var(--ink2);margin:0 0 3px}
+  .tletter{font-size:clamp(26px,7vw,38px);font-weight:900;letter-spacing:-.03em;line-height:1;margin:0 0 8px}
+  .tletter.hol{font-size:clamp(19px,5vw,26px);color:var(--spectrum)}
+  .tnext .tletter{font-size:clamp(21px,5.5vw,28px)}
+  .tcarry{font-size:12.5px;color:var(--ink2);margin:0}
+  .tcarry b{color:var(--ink)}
+  .tinst{display:inline-block;font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.05em;
+    padding:4px 9px;border-radius:20px;margin-top:9px}
+  .tinst.yes{background:#EFE7F4;color:var(--strings)}
+  .tinst.no{background:var(--ice);color:var(--open)}
+  .tfix{border-top:1px solid var(--line2);padding:10px 18px;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+  .tfix span{font-size:11.5px;color:var(--ink2)}
+  .tfix button{appearance:none;border:1px solid var(--line);background:var(--card);cursor:pointer;
+    font-family:var(--mono);font-size:11px;font-weight:600;color:var(--ink2);padding:4px 9px;border-radius:6px}
+  .tfix button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .tfix button:focus-visible{outline:2px solid var(--eng);outline-offset:2px}
+
+  .hol{display:grid;grid-template-columns:76px 1fr;gap:9px;font-size:13px;padding:5px 0;border-bottom:1px solid var(--line2)}
+  .hol:last-child{border-bottom:0}
+  .hol .hd{font-family:var(--mono);font-size:11px;color:var(--ink2);padding-top:2px}
+
   @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 
   /* ---------- print sheet ---------- */
@@ -116,7 +146,7 @@
   @media print{
     body{background:#fff;color:#000}
     .wrap{max-width:none;padding:0}
-    .eyebrow,h1,.lede,.control,.pairs,.foot{display:none!important}
+    .eyebrow,h1,.lede,.control,.pairs,.foot,.today{display:none!important}
     .printsheet{display:block;font-size:8.2pt;line-height:1.25}
 
     .phead{display:flex;align-items:baseline;justify-content:space-between;
@@ -158,6 +188,31 @@
     <span>Eight blocks, four days, two mirrored halves.</span>
   </h1>
   <p class="lede">A and C days run the same classes in opposite order. B and D days do the same with the other set. English 6H and Advisory sit in both sets, so they are the only two she has every day.</p>
+
+  <div class="today" id="today">
+    <div class="tgrid">
+      <div class="tnow">
+        <p class="tlab">Today</p>
+        <p class="tdate" id="tdate">—</p>
+        <p class="tletter" id="tletter">—</p>
+        <p class="tcarry" id="tcarry"></p>
+        <span class="tinst no" id="tinst"></span>
+      </div>
+      <div class="tnext">
+        <p class="tlab" id="tnextlab">Next school day</p>
+        <p class="tdate" id="ndate">—</p>
+        <p class="tletter" id="nletter">—</p>
+        <p class="tcarry" id="ncarry"></p>
+        <span class="tinst no" id="ninst"></span>
+      </div>
+    </div>
+    <div class="tfix">
+      <span>Letter looks wrong? Set what today actually is:</span>
+      <button data-fix="A">A</button><button data-fix="B">B</button>
+      <button data-fix="C">C</button><button data-fix="D">D</button>
+      <button data-fix="reset">Reset</button>
+    </div>
+  </div>
 
   <div class="control">
     <p>Semester. Art 6 in blocks 1 and 2 of the B set becomes Computer Applications after January.</p>
@@ -241,6 +296,12 @@
       <div class="ct"><span>Courtney Allen, PE 6</span><span class="r">Courtney.Allen</span></div>
       <div class="ct"><span>Meghan Ngo, School Nurse</span><span class="r">Meghan.Ngo</span></div>
       <p style="margin:12px 0 0;font-size:12.5px">All addresses are first.last@lcps.org. School is at 41480 Steeplechase Loop Dr, Leesburg VA 20175.</p>
+    </div>
+
+    <div class="panel">
+      <h2>No school</h2>
+      <div id="hollist"></div>
+      <p style="margin:11px 0 0;font-size:12.5px">LCPS 2026-2027 student calendar, adopted 25 Feb 2025. 180 school days, first day Aug 17, last day Jun 11.</p>
     </div>
 
     <div class="panel">
@@ -488,6 +549,175 @@ document.getElementById('l2').addEventListener('click', function(){ setLunch(2);
 document.getElementById('s1').addEventListener('click', function(){ setSem(1); });
 document.getElementById('s2').addEventListener('click', function(){ setSem(2); });
 render();
+
+/* ================= LCPS 2026-2027 calendar + letter day engine ================= */
+var YEAR_START = "2026-08-17", YEAR_END = "2027-06-11";
+
+/* every non-school weekday between those dates, with its label */
+var CLOSED = {
+  "2026-09-04":"Student holiday",
+  "2026-09-07":"Labor Day",
+  "2026-09-21":"Holiday",
+  "2026-10-12":"Holiday",
+  "2026-10-29":"Student holiday","2026-10-30":"Student holiday",
+  "2026-11-02":"Student holiday","2026-11-03":"Student holiday",
+  "2026-11-09":"Holiday",
+  "2026-11-25":"Thanksgiving break","2026-11-26":"Thanksgiving break","2026-11-27":"Thanksgiving break",
+  "2026-12-21":"Winter break","2026-12-22":"Winter break","2026-12-23":"Winter break",
+  "2026-12-24":"Winter break","2026-12-25":"Winter break","2026-12-28":"Winter break",
+  "2026-12-29":"Winter break","2026-12-30":"Winter break","2026-12-31":"Winter break",
+  "2027-01-01":"Winter break",
+  "2027-01-18":"Martin Luther King Jr. Day",
+  "2027-01-25":"Student holiday, semester break",
+  "2027-02-05":"Holiday",
+  "2027-02-15":"Presidents Day",
+  "2027-03-08":"Student holiday","2027-03-09":"Holiday",
+  "2027-03-22":"Spring break","2027-03-23":"Spring break","2027-03-24":"Spring break",
+  "2027-03-25":"Spring break","2027-03-26":"Spring break",
+  "2027-04-12":"Student holiday",
+  "2027-05-31":"Memorial Day"
+};
+
+/* grouped for the "No school" panel */
+var CLOSED_GROUPS = [
+  ["Sep 4","Student holiday"],["Sep 7","Labor Day"],["Sep 21","Holiday"],
+  ["Oct 12","Holiday"],["Oct 29-30","Student holidays"],
+  ["Nov 2-3","Student holidays"],["Nov 9","Holiday"],["Nov 25-27","Thanksgiving break"],
+  ["Dec 21 - Jan 1","Winter break"],
+  ["Jan 18","Martin Luther King Jr. Day"],["Jan 25","Semester break"],
+  ["Feb 5","Holiday"],["Feb 15","Presidents Day"],
+  ["Mar 8-9","Student holiday and holiday"],["Mar 22-26","Spring break"],
+  ["Apr 12","Student holiday"],
+  ["May 31","Memorial Day"],
+  ["Jun 11","Last day of school"]
+];
+
+function iso(d){
+  return d.getFullYear() + "-" + String(d.getMonth()+1).padStart(2,"0") + "-" + String(d.getDate()).padStart(2,"0");
+}
+function fromIso(t){ var p = t.split("-"); return new Date(+p[0], +p[1]-1, +p[2]); }
+
+/* ordered list of every school day in the year */
+var SCHOOL_DAYS = (function(){
+  var out = [], d = fromIso(YEAR_START), end = fromIso(YEAR_END);
+  while(d <= end){
+    var wd = d.getDay(), k = iso(d);
+    if(wd !== 0 && wd !== 6 && !CLOSED[k]) out.push(k);
+    d.setDate(d.getDate()+1);
+  }
+  return out;
+})();
+
+var LETTERS = ["A","B","C","D"];
+var OFFSET_KEY = "wmm-letter-offset";
+
+function getOffset(){
+  try { var v = localStorage.getItem(OFFSET_KEY); return v === null ? 0 : (+v % 4 + 4) % 4; }
+  catch(e){ return 0; }
+}
+function setOffset(v){
+  try { if(v === null) localStorage.removeItem(OFFSET_KEY); else localStorage.setItem(OFFSET_KEY, v); }
+  catch(e){}
+}
+
+function letterFor(key){
+  var i = SCHOOL_DAYS.indexOf(key);
+  if(i < 0) return null;
+  return LETTERS[(i + getOffset()) % 4];
+}
+function nextSchoolDay(key){
+  for(var i=0;i<SCHOOL_DAYS.length;i++){ if(SCHOOL_DAYS[i] > key) return SCHOOL_DAYS[i]; }
+  return null;
+}
+
+var FMT = {weekday:"long", month:"long", day:"numeric"};
+function pretty(key){ return fromIso(key).toLocaleDateString(undefined, FMT); }
+
+var CARRY = {
+  A:"<b>Carry:</b> Math spiral, English spiral and folder, Science binder.",
+  C:"<b>Carry:</b> Math spiral, English spiral and folder, Science binder.",
+  B:"<b>Carry:</b> English spiral and folder, US History sketchbook, orchestra binder.",
+  D:"<b>Carry:</b> English spiral and folder, US History sketchbook, orchestra binder."
+};
+var INSTRUMENT_START = "2026-08-26";
+
+function fill(prefix, key, isToday){
+  var dEl = document.getElementById(prefix + "date");
+  var lEl = document.getElementById(prefix + "letter");
+  var cEl = document.getElementById(prefix + "carry");
+  var iEl = document.getElementById(prefix + "inst");
+
+  if(key === null){
+    dEl.textContent = ""; lEl.textContent = "Summer"; lEl.className = "tletter hol";
+    cEl.innerHTML = ""; iEl.textContent = ""; iEl.className = "tinst no"; return;
+  }
+  dEl.textContent = pretty(key);
+  var L = letterFor(key);
+  if(L === null){
+    var why = CLOSED[key] || (fromIso(key).getDay()%6===0 ? "Weekend" : "No school");
+    lEl.textContent = why; lEl.className = "tletter hol";
+    cEl.innerHTML = ""; iEl.textContent = ""; iEl.className = "tinst no";
+    return;
+  }
+  lEl.textContent = L + " day"; lEl.className = "tletter";
+  cEl.innerHTML = CARRY[L];
+  var bset = (L === "B" || L === "D");
+  if(bset && key >= INSTRUMENT_START){ iEl.textContent = "Instrument goes in"; iEl.className = "tinst yes"; }
+  else if(bset){ iEl.textContent = "Instrument starts Aug 26"; iEl.className = "tinst no"; }
+  else { iEl.textContent = "No instrument"; iEl.className = "tinst no"; }
+}
+
+function renderToday(){
+  var todayKey = iso(new Date());
+  if(todayKey < YEAR_START || todayKey > YEAR_END){
+    fill("t", todayKey >= YEAR_START ? null : todayKey, true);
+  } else {
+    fill("t", todayKey, true);
+  }
+  var nk = nextSchoolDay(todayKey);
+  var lab = document.getElementById("tnextlab");
+  if(nk){
+    var nd = fromIso(nk), td = fromIso(todayKey);
+    var diff = Math.round((nd - td) / 86400000);
+    lab.textContent = diff === 1 ? "Tomorrow" : "Next school day";
+    fill("n", nk, false);
+  } else {
+    lab.textContent = "Next school day";
+    fill("n", null, false);
+  }
+  var off = getOffset();
+  var custom = false;
+  try { custom = localStorage.getItem(OFFSET_KEY) !== null; } catch(e){}
+  var btns = document.querySelectorAll(".tfix button");
+  var cur = letterFor(todayKey);
+  for(var i=0;i<btns.length;i++){
+    var f = btns[i].getAttribute("data-fix");
+    btns[i].className = (custom && f === cur) ? "on" : "";
+  }
+}
+
+document.querySelectorAll(".tfix button").forEach(function(b){
+  b.addEventListener("click", function(){
+    var f = b.getAttribute("data-fix");
+    if(f === "reset"){ setOffset(null); renderToday(); return; }
+    var todayKey = iso(new Date());
+    var i = SCHOOL_DAYS.indexOf(todayKey);
+    if(i < 0) return;
+    setOffset(((LETTERS.indexOf(f) - i) % 4 + 4) % 4);
+    renderToday();
+  });
+});
+
+(function(){
+  var host = document.getElementById("hollist");
+  if(!host) return;
+  host.innerHTML = CLOSED_GROUPS.map(function(g){
+    return '<div class="hol"><span class="hd">' + g[0] + '</span><span>' + g[1] + '</span></div>';
+  }).join("");
+})();
+
+renderToday();
+
 </script>
 </body>
 </html>
