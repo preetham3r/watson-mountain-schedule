@@ -56,5 +56,6 @@
       "summary": "Three late bus notifications from LCPS Transportation this morning. Mountain Messenger Vol 3 Issue 1. Nothing new requiring action."
     }
   ],
-  "closures": []
+  "closures": [],
+  "bellOverride": null
 }
