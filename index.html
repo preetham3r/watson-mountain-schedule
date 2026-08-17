@@ -356,6 +356,7 @@
     </div>
   </div>
 
+  <p id="bellnote" class="closenote" style="display:none"></p>
   <p id="closenote" class="closenote" style="display:none"></p>
   <div class="pairs" id="pairs"></div>
 
@@ -1047,6 +1048,23 @@ function renderAnn(data){
     var c = closures[ci], ck = c.date || c;
     if(ck && !EXTRA_CLOSED[ck]){ EXTRA_CLOSED[ck] = c.reason || "School closed"; changed = true; }
   }
+  /* a delay or early release announced this morning switches the page for today only */
+  var bo = data && data.bellOverride;
+  if(bo && bo.date === iso(new Date()) && BELLS[bo.schedule] && bell !== bo.schedule){
+    bell = bo.schedule;
+    var bb = document.querySelectorAll("[data-bell]");
+    for(var bi = 0; bi < bb.length; bi++){
+      bb[bi].setAttribute("aria-pressed", bb[bi].getAttribute("data-bell") === bell);
+    }
+    var bn = document.getElementById("bellnote");
+    if(bn){
+      bn.style.display = "";
+      bn.textContent = "Today is on the " + BELLS[bell].label.toLowerCase()
+        + (bo.reason ? " (" + bo.reason + ")" : "") + ". Times below have been adjusted.";
+    }
+    changed = true;
+  }
+
   if(changed){
     buildSchoolDays();
     renderToday();
