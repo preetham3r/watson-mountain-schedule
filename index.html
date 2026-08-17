@@ -148,6 +148,13 @@
   .tag.notice{background:var(--ice);color:var(--ink2)}
   .annempty{padding:16px 18px;font-size:13.5px;color:var(--ink2)}
 
+
+  .slog{border-top:1px solid var(--line2);padding:11px 18px;background:#FAFCFD}
+  .slog h3{margin:0 0 7px;font-family:var(--mono);font-size:9.5px;letter-spacing:.13em;
+    text-transform:uppercase;color:var(--open);font-weight:600}
+  .sl{display:grid;grid-template-columns:74px 1fr;gap:10px;font-size:12.5px;color:var(--ink2);padding:3px 0}
+  .sl .st2{font-family:var(--mono);font-size:10.5px;color:var(--open);white-space:nowrap;padding-top:1px}
+
   /* ---------- today banner ---------- */
   .today{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:0 0 14px;background:var(--card)}
   .tgrid{display:grid;grid-template-columns:1fr}
@@ -281,6 +288,10 @@
       <span class="st" id="annst">loading</span>
     </div>
     <div id="annbody"><div class="annempty">Loading the latest from school email.</div></div>
+    <div class="slog" id="slog" style="display:none">
+      <h3>Inbox scans</h3>
+      <div id="slogbody"></div>
+    </div>
   </div>
 
   <div class="control">
@@ -321,7 +332,7 @@
       <div class="key"><span class="dot" style="background:var(--art)"></span> Computer Apps · Zerega · 342 <code>1/2 B, sem 2</code></div>
       <div class="key"><span class="dot" style="background:var(--eng)"></span> English 6H · Peyton · 369 <code>3/4 A, 5/6 B</code></div>
       <div class="key"><span class="dot" style="background:var(--spectrum)"></span> Spectrum 6 · Cumberledge · 271 <code>3 B</code></div>
-      <div class="key"><span class="dot" style="background:var(--strings)"></span> Strings 6 · Holowecki · 330 <code>4 B</code></div>
+      <div class="key"><span class="dot" style="background:var(--strings)"></span> Strings 6, violin · Holowecki · 330 <code>4 B</code></div>
       <div class="key"><span class="dot" style="background:var(--math)"></span> Math 7 · Reel · 259 <code>5/6 A</code></div>
       <div class="key"><span class="dot" style="background:var(--sci)"></span> Science 6H · DiPietro · 382 <code>7/8 A</code></div>
       <div class="key"><span class="dot" style="background:var(--hist)"></span> US History to 1865 · Dickerson · 367 <code>7/8 B</code></div>
@@ -356,7 +367,8 @@
       <h2>Supplies, merged</h2>
       <div class="sup"><h3>Buy once, used everywhere</h3><p>Headphones. Pencils. Highlighters. Glue sticks. Dry erase markers. Chromebook is school issued.</p></div>
       <div class="sup"><h3>Class specific</h3><p>Spiral notebook ×2, one for Math and one for English. One inch binder for Science. Folder with inside pockets for English. Unlined sketchbook for US History.</p></div>
-      <div class="sup"><h3>Orchestra</h3><p>Rosin. Binder. Shoulder rest. Tuner. Cleaning cloth. Tag for the case. Music stand for home practice. Do not buy an instrument online, the directors recommend Day Violins.</p></div>
+      <div class="sup"><h3>Violin</h3><p>Rosin. Binder. <b>Shoulder rest</b>. Tuner. Cleaning cloth. Tag for the case. Music stand for home practice. Rock stops and bass stools are cello and bass only, skip those.</p>
+      <p style="margin-top:5px">Rent from a shop and get her <b>sized in person</b>. The directors name Day Violins and say plainly not to buy online. A full size is not a given at eleven.</p></div>
       <div class="sup"><h3>Not yet known</h3><p>No syllabus has come through for Art 6 with Ms. Thiele. Expect a supply ask in the first week.</p></div>
     </div>
 
@@ -408,7 +420,7 @@
     <div class="panel">
       <h2>Worth knowing</h2>
       <ul>
-        <li><b>The instrument travels on B and D days only.</b> Violin and viola students share lockers, so it has to come home the same day it goes in.</li>
+        <li><b>The instrument travels on B and D days only.</b> Violin students share lockers, so the violin comes home the same day it goes in. Every B and D day, both directions.</li>
         <li><b>Blocks meet every other day.</b> One missed day can mean four days before that class comes round again, which is why catch up compounds fast.</li>
         <li><b>English 6H and Advisory are the only two she has daily.</b> Everything else is every other day.</li>
         <li><b>Grade 6 lockers are on floors 2 and 3.</b> Chromebook exchange is in the auditorium on floor 3, supply pickup in the library on floor 2.</li>
@@ -779,8 +791,8 @@ function pretty(key){ return fromIso(key).toLocaleDateString(undefined, FMT); }
 var CARRY = {
   A:"<b>Carry:</b> Math spiral, English spiral and folder, Science binder.",
   C:"<b>Carry:</b> Math spiral, English spiral and folder, Science binder.",
-  B:"<b>Carry:</b> English spiral and folder, US History sketchbook, orchestra binder.",
-  D:"<b>Carry:</b> English spiral and folder, US History sketchbook, orchestra binder."
+  B:"<b>Carry:</b> English spiral and folder, US History sketchbook, orchestra binder, violin.",
+  D:"<b>Carry:</b> English spiral and folder, US History sketchbook, orchestra binder, violin."
 };
 var INSTRUMENT_START = "2026-08-26";
 
@@ -979,6 +991,17 @@ function renderAnn(data){
   });
   var todayKey = iso(new Date());
   items = items.filter(function(it){ return !it.date || it.date >= todayKey; });
+
+  var slog = document.getElementById("slog"), sb = document.getElementById("slogbody");
+  var scans = (data && data.scans) ? data.scans.slice(0, 6) : [];
+  if(scans.length){
+    slog.style.display = "";
+    sb.innerHTML = scans.map(function(x){
+      var when = x.at ? new Date(x.at).toLocaleString(undefined,
+        {month:"short", day:"numeric", hour:"numeric", minute:"2-digit"}) : "";
+      return '<div class="sl"><span class="st2">' + when + '</span><span>' + (x.summary || "No new school email.") + '</span></div>';
+    }).join("");
+  } else { slog.style.display = "none"; }
 
   if(!items.length){
     body.innerHTML = '<div class="annempty">Nothing new from school.</div>';
