@@ -107,7 +107,47 @@
   .ct .r{font-family:var(--mono);font-size:11px;color:var(--ink2);text-align:right;white-space:nowrap}
 
   @media(prefers-reduced-motion:reduce){*{transition:none!important}}
-  @media print{body{background:#fff}.control{display:none}.day,.panel{break-inside:avoid}}
+
+  /* ---------- print sheet ---------- */
+  .printsheet{display:none}
+
+  @page{size:letter portrait;margin:0.38in}
+
+  @media print{
+    body{background:#fff;color:#000}
+    .wrap{max-width:none;padding:0}
+    .eyebrow,h1,.lede,.control,.pairs,.foot{display:none!important}
+    .printsheet{display:block;font-size:8.2pt;line-height:1.25}
+
+    .phead{display:flex;align-items:baseline;justify-content:space-between;
+      border-bottom:1.5pt solid #000;padding-bottom:4pt;margin-bottom:7pt}
+    .phead h2{margin:0;font-size:15pt;font-weight:900;letter-spacing:-.02em}
+    .phead .sub{font-family:var(--mono);font-size:7.5pt;color:#333;text-align:right;line-height:1.4}
+
+    table.pgrid{width:100%;border-collapse:collapse;table-layout:fixed;margin-bottom:8pt}
+    table.pgrid th,table.pgrid td{border:0.5pt solid #999;padding:2.6pt 3.5pt;vertical-align:top}
+    table.pgrid th{background:#e8e8e8;font-size:8.5pt;font-weight:900;text-align:left;letter-spacing:.02em}
+    table.pgrid th.tcol,table.pgrid td.tcol{width:13%;font-family:var(--mono);font-size:7.2pt;color:#333;background:#f6f6f6}
+    table.pgrid td .cn{font-weight:700;display:block}
+    table.pgrid td .cr{font-family:var(--mono);font-size:6.8pt;color:#444}
+    table.pgrid td .cb{float:right;font-family:var(--mono);font-size:6.4pt;color:#888}
+    table.pgrid td .alt{display:block;font-size:6.8pt;color:#555;margin-top:1pt}
+    tr.band td,tr.band td.tcol{background:#ededed;font-style:italic}
+    tr.band td .cn{font-weight:700;font-style:normal}
+
+    .pcols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:9pt;margin-bottom:7pt}
+    .pcol h3{margin:0 0 3pt;font-size:8pt;font-weight:900;text-transform:uppercase;
+      letter-spacing:.09em;border-bottom:0.5pt solid #000;padding-bottom:2pt}
+    .pcol div.li{display:grid;grid-template-columns:1fr auto;gap:5pt;padding:1.5pt 0;font-size:7.6pt}
+    .pcol div.li span.rr{font-family:var(--mono);font-size:7pt;color:#444;white-space:nowrap}
+    .pcol p{margin:0 0 4pt;font-size:7.6pt}
+    .pcol p b{font-weight:900}
+
+    .pnotes{border-top:1pt solid #000;padding-top:5pt;font-size:7.4pt;line-height:1.4}
+    .pnotes b{font-weight:900}
+    .pnotes span{display:block;margin-bottom:2pt}
+    .printsheet *{break-inside:avoid}
+  }
 </style>
 </head>
 <body>
@@ -213,6 +253,134 @@
         <li><b>ParentVUE's term table lists English as rotation A, B in blocks 3 and 4.</b> That would collide with Spectrum and Strings. The section code 3/4A &amp; 5/6B is the accurate one, and this grid follows it.</li>
         <li><b>Grade 6 lockers are on floors 2 and 3.</b> Mr. Dickerson sends a weekly family update by email.</li>
       </ul>
+    </div>
+
+  </div>
+
+  <!-- ================= PRINT SHEET ================= -->
+  <div class="printsheet">
+
+    <div class="phead">
+      <h2>Adithi · Grade 6 · Watson Mountain Middle</h2>
+      <div class="sub">2026–2027 · Office 571-367-4250<br>Bell 8:45 · Dismissal 3:38</div>
+    </div>
+
+    <table class="pgrid">
+      <thead>
+        <tr>
+          <th class="tcol">Time</th>
+          <th>A day</th><th>B day</th><th>C day</th><th>D day</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="tcol">8:50–9:31</td>
+          <td><span class="cb">1</span><span class="cn">Health &amp; PE 6</span><span class="cr">Allen · Gym 1</span></td>
+          <td><span class="cb">1</span><span class="cn">Art 6</span><span class="cr">Thiele · 102</span><span class="alt">Sem 2: Computer Apps · 342</span></td>
+          <td><span class="cb">8</span><span class="cn">Science 6H</span><span class="cr">DiPietro · 382</span></td>
+          <td><span class="cb">8</span><span class="cn">US History</span><span class="cr">Dickerson · 367</span></td>
+        </tr>
+        <tr>
+          <td class="tcol">9:33–10:15</td>
+          <td><span class="cb">2</span><span class="cn">Health &amp; PE 6</span><span class="cr">Allen · Gym 1</span></td>
+          <td><span class="cb">2</span><span class="cn">Art 6</span><span class="cr">Thiele · 102</span><span class="alt">Sem 2: Computer Apps · 342</span></td>
+          <td><span class="cb">7</span><span class="cn">Science 6H</span><span class="cr">DiPietro · 382</span></td>
+          <td><span class="cb">7</span><span class="cn">US History</span><span class="cr">Dickerson · 367</span></td>
+        </tr>
+        <tr class="band">
+          <td class="tcol">10:20–10:40</td>
+          <td colspan="4"><span class="cn">PEAK · Advisory · DiPietro · Room 382 · every day</span></td>
+        </tr>
+        <tr class="band">
+          <td class="tcol">10:40–11:12</td>
+          <td colspan="4"><span class="cn">LUNCH 1</span> &nbsp;— or Lunch 2 at 11:12–11:44. Shift not yet confirmed; times below assume Lunch 1.</td>
+        </tr>
+        <tr>
+          <td class="tcol">11:15–12:00</td>
+          <td><span class="cb">3</span><span class="cn">English 6H</span><span class="cr">Peyton · 369</span></td>
+          <td><span class="cb">3</span><span class="cn">Spectrum 6</span><span class="cr">Cumberledge · 271</span></td>
+          <td><span class="cb">6</span><span class="cn">Math 7</span><span class="cr">Reel · 259</span></td>
+          <td><span class="cb">6</span><span class="cn">English 6H</span><span class="cr">Peyton · 369</span></td>
+        </tr>
+        <tr>
+          <td class="tcol">12:03–12:48</td>
+          <td><span class="cb">4</span><span class="cn">English 6H</span><span class="cr">Peyton · 369</span></td>
+          <td><span class="cb">4</span><span class="cn">Strings 6</span><span class="cr">Holowecki · 330</span></td>
+          <td><span class="cb">5</span><span class="cn">Math 7</span><span class="cr">Reel · 259</span></td>
+          <td><span class="cb">5</span><span class="cn">English 6H</span><span class="cr">Peyton · 369</span></td>
+        </tr>
+        <tr>
+          <td class="tcol">12:53–1:31</td>
+          <td><span class="cb">5</span><span class="cn">Math 7</span><span class="cr">Reel · 259</span></td>
+          <td><span class="cb">5</span><span class="cn">English 6H</span><span class="cr">Peyton · 369</span></td>
+          <td><span class="cb">4</span><span class="cn">English 6H</span><span class="cr">Peyton · 369</span></td>
+          <td><span class="cb">4</span><span class="cn">Strings 6</span><span class="cr">Holowecki · 330</span></td>
+        </tr>
+        <tr>
+          <td class="tcol">1:34–2:13</td>
+          <td><span class="cb">6</span><span class="cn">Math 7</span><span class="cr">Reel · 259</span></td>
+          <td><span class="cb">6</span><span class="cn">English 6H</span><span class="cr">Peyton · 369</span></td>
+          <td><span class="cb">3</span><span class="cn">English 6H</span><span class="cr">Peyton · 369</span></td>
+          <td><span class="cb">3</span><span class="cn">Spectrum 6</span><span class="cr">Cumberledge · 271</span></td>
+        </tr>
+        <tr>
+          <td class="tcol">2:18–2:56</td>
+          <td><span class="cb">7</span><span class="cn">Science 6H</span><span class="cr">DiPietro · 382</span></td>
+          <td><span class="cb">7</span><span class="cn">US History</span><span class="cr">Dickerson · 367</span></td>
+          <td><span class="cb">2</span><span class="cn">Health &amp; PE 6</span><span class="cr">Allen · Gym 1</span></td>
+          <td><span class="cb">2</span><span class="cn">Art 6</span><span class="cr">Thiele · 102</span></td>
+        </tr>
+        <tr>
+          <td class="tcol">2:58–3:38</td>
+          <td><span class="cb">8</span><span class="cn">Science 6H</span><span class="cr">DiPietro · 382</span></td>
+          <td><span class="cb">8</span><span class="cn">US History</span><span class="cr">Dickerson · 367</span></td>
+          <td><span class="cb">1</span><span class="cn">Health &amp; PE 6</span><span class="cr">Allen · Gym 1</span></td>
+          <td><span class="cb">1</span><span class="cn">Art 6</span><span class="cr">Thiele · 102</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="pcols">
+      <div class="pcol">
+        <h3>Dates</h3>
+        <div class="li"><span>First day</span><span class="rr">Aug 17</span></div>
+        <div class="li"><span>Orchestra aid form closes</span><span class="rr">Aug 20</span></div>
+        <div class="li"><span>Instrument starts, grade 6</span><span class="rr">Aug 26</span></div>
+        <div class="li"><span>Q1 ends</span><span class="rr">Oct 28</span></div>
+        <div class="li"><span>Q2 and semester 1 end</span><span class="rr">Jan 22</span></div>
+        <div class="li"><span>Semester 2 begins</span><span class="rr">Jan 26</span></div>
+        <div class="li"><span>Q3 ends</span><span class="rr">Apr 9</span></div>
+        <div class="li"><span>Q4 and year end</span><span class="rr">Jun 11</span></div>
+      </div>
+      <div class="pcol">
+        <h3>Supplies</h3>
+        <p><b>Daily:</b> headphones, pencils, highlighters, glue sticks, dry erase markers, Chromebook.</p>
+        <p><b>By class:</b> spiral notebook ×2 (Math, English), one inch binder (Science), folder with inside pockets (English), unlined sketchbook (US History).</p>
+        <p><b>Orchestra:</b> rosin, binder, shoulder rest, tuner, cleaning cloth, case tag, home music stand. Do not buy an instrument online.</p>
+        <p><b>Pending:</b> no Art 6 supply list yet.</p>
+      </div>
+      <div class="pcol">
+        <h3>Contacts</h3>
+        <div class="li"><span>School office</span><span class="rr">571-367-4250</span></div>
+        <div class="li"><span>Reel, Math 7</span><span class="rr">Alexandra.Reel</span></div>
+        <div class="li"><span>Peyton, English 6H</span><span class="rr">Madison.Peyton</span></div>
+        <div class="li"><span>DiPietro, Science</span><span class="rr">tracy.dipietro</span></div>
+        <div class="li"><span>Dickerson, US History</span><span class="rr">jeb.dickerson</span></div>
+        <div class="li"><span>Cumberledge, Spectrum</span><span class="rr">Erin.Cumberledge</span></div>
+        <div class="li"><span>Holowecki, Strings</span><span class="rr">Kelly.Holowecki</span></div>
+        <div class="li"><span>Thiele, Art 6</span><span class="rr">Bethany.Thiele</span></div>
+        <div class="li"><span>Allen, PE 6</span><span class="rr">Courtney.Allen</span></div>
+        <div class="li"><span>Zerega, Computer Apps</span><span class="rr">kimberly.zerega</span></div>
+        <div class="li"><span>Ngo, School Nurse</span><span class="rr">Meghan.Ngo</span></div>
+        <p style="margin-top:3pt">All addresses first.last@lcps.org</p>
+      </div>
+    </div>
+
+    <div class="pnotes">
+      <span><b>The letter is not tied to a weekday.</b> It advances one step every school day, so Monday is A one week and B the next. Check the school's A-D Calendar. Projected first weeks: Aug 17 week is A B C D A, Aug 24 week is B C D A B, Aug 31 week is C D A B C.</span>
+      <span><b>Instrument goes in on B and D days only.</b> Lockers are shared, so it comes home the same day.</span>
+      <span><b>Grading.</b> Cores weight 60 percent major summatives, 30 minor, 10 formative. Science and English allow retakes on majors at 70 percent or below. Math states no extra credit and no retake, and late work is not accepted after the related summative.</span>
+      <span><b>Small numbers in each cell are block numbers.</b> Two to three minutes of passing time sits between the paired blocks in each slot.</span>
     </div>
 
   </div>
