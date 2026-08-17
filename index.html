@@ -110,6 +110,20 @@
 
 
 
+
+  .rule{display:grid;grid-template-columns:88px 1fr;gap:10px;font-size:13px;color:var(--ink2);
+    padding:7px 0;border-bottom:1px solid var(--line2)}
+  .rule:last-of-type{border-bottom:0}
+  .rule .rn{font-weight:700;font-size:12.5px;letter-spacing:-.01em}
+  .rule b{color:var(--ink)}
+  .step{display:grid;grid-template-columns:22px 1fr;gap:10px;font-size:13px;color:var(--ink2);
+    padding:6px 0;border-bottom:1px solid var(--line2)}
+  .step:last-of-type{border-bottom:0}
+  .step .sn{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--open);
+    background:var(--ice);border-radius:50%;width:20px;height:20px;display:flex;
+    align-items:center;justify-content:center}
+  .step b{color:var(--ink)}
+
   /* ---------- announcements ---------- */
   .ann{border:1px solid var(--line);border-radius:14px;background:var(--card);margin:0 0 14px;overflow:hidden}
   .annh{display:flex;align-items:baseline;justify-content:space-between;gap:10px;
@@ -153,6 +167,12 @@
   .tsr .tt{font-family:var(--mono);font-size:10.5px;color:var(--ink2);white-space:nowrap}
   .tsr .tc{font-size:13px;font-weight:700;letter-spacing:-.01em;min-width:0}
   .tsr .tc small{font-family:var(--mono);font-size:10px;font-weight:400;color:var(--ink2);margin-left:5px}
+  .tsr .bn{font-family:var(--mono);font-size:9px;color:var(--open);letter-spacing:.06em;margin-left:5px}
+  .tsr.now{background:#FFF6E8;margin:0 -8px;padding-left:8px;padding-right:8px;border-radius:5px}
+  .tsr.now .tt{color:var(--math);font-weight:600}
+  .tsr.now::after{content:"now";font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--math);align-self:center}
+  .tsr.now{grid-template-columns:52px 1fr auto}
   .tsr.br .tc{font-size:11.5px;font-weight:600;color:var(--util);font-style:normal}
   .tsr.br .tt{color:var(--util)}
   .tsr .tc.pe{color:var(--pe)} .tsr .tc.eng{color:var(--eng)} .tsr .tc.math{color:var(--math)}
@@ -176,21 +196,6 @@
   @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 
 
-  #yearcal{display:grid;gap:16px}
-  @media(min-width:560px){#yearcal{grid-template-columns:1fr 1fr}}
-  @media(min-width:860px){#yearcal{grid-template-columns:1fr 1fr 1fr}}
-  .mo h4{margin:0 0 6px;font-size:12.5px;font-weight:900;letter-spacing:-.01em}
-  .mg{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
-  .mg .dow{font-family:var(--mono);font-size:8px;letter-spacing:.06em;text-transform:uppercase;
-    color:var(--open);text-align:center;padding-bottom:2px}
-  .cd{aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
-    border-radius:4px;font-family:var(--mono);font-size:8.5px;line-height:1.05;background:var(--ice);color:var(--open)}
-  .cd .n{font-size:8px}
-  .cd .lt{font-weight:600;font-size:9.5px}
-  .cd.aset{background:#E4EDF3;color:var(--eng)}
-  .cd.bset{background:#EFE7F4;color:var(--strings)}
-  .cd.off{background:#F5F7F9;color:#C2CFD8}
-  .cd.blank{background:transparent}
 
   /* ---------- print sheet ---------- */
   .printsheet{display:none}
@@ -200,7 +205,7 @@
   @media print{
     body{background:#fff;color:#000}
     .wrap{max-width:none;padding:0}
-    .eyebrow,h1,.lede,.control,.pairs,.foot,.today,#yearcal,.ann{display:none!important}
+    .eyebrow,h1,.lede,.control,.pairs,.foot,.today,.ann{display:none!important}
     .printsheet{display:block;font-size:8.2pt;line-height:1.25}
 
     .phead{display:flex;align-items:baseline;justify-content:space-between;
@@ -373,11 +378,25 @@
       <p style="margin:12px 0 0;font-size:12.5px">All addresses are first.last@lcps.org. School is at 41480 Steeplechase Loop Dr, Leesburg VA 20175.</p>
     </div>
 
-    <div class="panel" style="grid-column:1/-1">
-      <h2>The year at a glance</h2>
-      <p style="margin:0 0 12px">Every school day with its letter. Purple means a B set day, so the instrument goes in. Grey means no school.</p>
-      <div id="yearcal"></div>
-      <p style="margin:12px 0 0;font-size:12.5px">LCPS 2026-2027 student calendar, adopted 25 Feb 2025. 180 school days.</p>
+    <div class="panel">
+      <h2>Late work and retakes, by class</h2>
+      <p style="margin:0 0 11px">The rules are not the same in every class. This is the part that costs marks.</p>
+      <div class="rule"><span class="rn" style="color:var(--math)">Math 7</span><span>Strictest. No extra credit at all. Late work is <b>not accepted once the related summative has been taken</b>. No retake policy stated.</span></div>
+      <div class="rule"><span class="rn" style="color:var(--sci)">Science 6H</span><span>Retake offered on any major summative scored <b>below 70</b>. Mrs. DiPietro emails you and Adi when one is available.</span></div>
+      <div class="rule"><span class="rn" style="color:var(--eng)">English 6H</span><span>Retakes on <b>major summatives only</b>, at 70 or below. Minors have no retake. Formatives cannot be handed in after the summative is taken.</span></div>
+      <div class="rule"><span class="rn" style="color:var(--hist)">US History</span><span>Follows the LCPS Assessment and Grading Handbook. A <b>Missed Learning Resource</b> sits in every weekly Schoology folder.</span></div>
+      <div class="rule"><span class="rn" style="color:var(--strings)">Strings 6</span><span>Rehearsals and concerts are graded major summatives. Planned absences need <b>two weeks notice</b>.</span></div>
+      <p style="margin:11px 0 0;font-size:12.5px;color:var(--ink2)">All cores weight the same: 60 percent major summatives, 30 minor, 10 formative. Missed work shows as <b>Z</b> in ParentVUE until the teacher grades it.</p>
+    </div>
+
+    <div class="panel">
+      <h2>If she is absent</h2>
+      <div class="step"><span class="sn">1</span><span>Call the office on <b>571-367-4250</b> before or at the start of the day.</span></div>
+      <div class="step"><span class="sn">2</span><span>Send a written or electronic reason <b>within three school days of her return</b>. Miss that and it is recorded as unexcused, per LCPS Policy 8140.</span></div>
+      <div class="step"><span class="sn">3</span><span>Open Schoology the same evening. Every teacher posts what was covered, and Mr. Dickerson files a Missed Learning Resource weekly.</span></div>
+      <div class="step"><span class="sn">4</span><span>She gets <b>the equivalent of one block period per absent day</b> to hand work in. Because blocks meet every other day, one missed day can mean four days of catch up.</span></div>
+      <div class="step"><span class="sn">5</span><span>Tell Mrs. Holowecki separately if a rehearsal or concert is affected. Two weeks notice for anything planned.</span></div>
+      <p style="margin:11px 0 0;font-size:12.5px;color:var(--ink2)">Thresholds worth knowing: five unexcused absences triggers intervention, so does eighteen total whether excused or not, and missing more than ten percent of the year counts as chronic absence.</p>
     </div>
 
     <div class="panel">
@@ -390,12 +409,13 @@
       <h2>Worth knowing</h2>
       <ul>
         <li><b>The instrument travels on B and D days only.</b> Violin and viola students share lockers, so it has to come home the same day it goes in.</li>
-        <li><b>Math is the strictest grader.</b> No extra credit, no retake policy stated, and late work dies once the related summative is taken. Science and English both offer retakes on major summatives at 70 percent or below.</li>
-        <li><b>All cores weight the same:</b> 60 percent major summatives, 30 percent minor, 10 percent formative.</li>
-        <li><b>Rehearsals and concerts are graded major summatives.</b> Planned absences need two weeks notice.</li>
-        <li><b>ParentVUE's term table lists English as rotation A, B in blocks 3 and 4.</b> That would collide with Spectrum and Strings. The section code 3/4A &amp; 5/6B is the accurate one, and this grid follows it.</li>
-        <li><b>Grade 6 lockers are on floors 2 and 3.</b> Mr. Dickerson sends a weekly family update by email.</li>
+        <li><b>Blocks meet every other day.</b> One missed day can mean four days before that class comes round again, which is why catch up compounds fast.</li>
+        <li><b>English 6H and Advisory are the only two she has daily.</b> Everything else is every other day.</li>
+        <li><b>Grade 6 lockers are on floors 2 and 3.</b> Chromebook exchange is in the auditorium on floor 3, supply pickup in the library on floor 2.</li>
+        <li><b>Mr. Dickerson sends a weekly family update by email.</b> If one stops arriving, he asks to be told.</li>
+        <li><b>The school's own sheet for the 2:38 early dismissal contains copy errors</b> in its lunch and passing times, so that variant is deliberately left off this page. Ring the office if it is ever called.</li>
       </ul>
+    </ul>
     </div>
 
   </div>
@@ -520,10 +540,11 @@
     </div>
 
     <div class="pnotes">
-      <span><b>The letter is not tied to a weekday.</b> It advances one step every school day, so Monday is A one week and B the next. Anchor confirmed: Aug 17 was an A day. Aug 17 week is A B C D A, Aug 24 week is B C D A B, Aug 31 week is C D A B C.</span>
-      <span><b>Instrument goes in on B and D days only.</b> Lockers are shared, so it comes home the same day.</span>
-      <span><b>Grading.</b> Cores weight 60 percent major summatives, 30 minor, 10 formative. Science and English allow retakes on majors at 70 percent or below. Math states no extra credit and no retake, and late work is not accepted after the related summative.</span>
-      <span><b>The block before lunch resumes at 11:47 and hands over to the next block inside that window.</b> The exact handover minute is not published. Small numbers in each cell are block numbers. Two to three minutes of passing time sits between the paired blocks in each slot.</span>
+      <span><b>The letter is not tied to a weekday.</b> It advances one step every school day and skips closures. Anchor confirmed: Aug 17 was an A day. Aug 17 week is A B C D A, Aug 24 is B C D A B, Aug 31 is C D A B C.</span>
+      <span><b>Instrument goes in on B and D days only.</b> Lockers are shared, so it comes home the same day. Two weeks notice to Mrs. Holowecki for any planned rehearsal or concert absence.</span>
+      <span><b>Grading.</b> All cores weight 60 percent major summatives, 30 minor, 10 formative. Science allows a retake below 70 on majors. English allows retakes on majors only at 70 or below, none on minors. Math is strictest: no extra credit, no stated retake, and late work is refused once the related summative is taken.</span>
+      <span><b>Absent?</b> Call 571-367-4250 that morning, then send a written reason within three school days of her return or it is recorded as unexcused. She gets one block period per absent day to hand work in, and missed work shows as Z until graded. Check Schoology the same evening.</span>
+      <span><b>Timing.</b> The block before lunch resumes at 11:47 and hands over to the next block inside that window; the exact minute is not published. Small numbers in each cell are block numbers. Two to three minutes of passing time sits between paired blocks. On a delay or early release every time on this sheet changes, see the web version.</span>
     </div>
 
   </div>
@@ -784,7 +805,7 @@ function fill(prefix, key, isToday){
     renderSchedule(schId, null); return;
   }
   lEl.textContent = L + " day"; lEl.className = "tletter";
-  renderSchedule(schId, L);
+  renderSchedule(schId, L, prefix === "t");
   cEl.innerHTML = CARRY[L];
   var bset = (L === "B" || L === "D");
   if(bset && key >= INSTRUMENT_START){ iEl.textContent = "Instrument goes in"; iEl.className = "tinst yes"; }
@@ -804,9 +825,9 @@ function daySchedule(L){
   function crs(x){ return S[set][x]; }
   function slot(pair, times){
     var x = crs(pair[0]), y = crs(pair[1]);
-    if(times.length === 1){ rows.push({t:times[0].split(' – ')[0], c:x, pairAlso:(x.n !== y.n ? y : null)}); return; }
-    if(x.n === y.n){ rows.push({t:times[0].split(' – ')[0], c:x}); }
-    else { rows.push({t:times[0].split(' – ')[0], c:x}); rows.push({t:times[1].split(' – ')[0], c:y}); }
+    if(times.length === 1){ rows.push({t:times[0].split(' – ')[0], c:x, b:pair[0]+' and '+pair[1], pairAlso:(x.n !== y.n ? y : null)}); return; }
+    if(x.n === y.n){ rows.push({t:times[0].split(' – ')[0], c:x, b:pair[0]+' and '+pair[1]}); }
+    else { rows.push({t:times[0].split(' – ')[0], c:x, b:pair[0]}); rows.push({t:times[1].split(' – ')[0], c:y, b:pair[1]}); }
   }
 
   if(b.testing){
@@ -820,12 +841,12 @@ function daySchedule(L){
   var LN = (lunch === 1) ? b.L1 : b.L2, p = order[1], x = crs(p[0]), y = crs(p[1]);
   if(lunch === 1){
     rows.push({t:LN.l.split(' – ')[0], br:'Lunch'});
-    rows.push({t:LN.a.split(' – ')[0], c:x});
-    rows.push({t:LN.b.split(' – ')[0], c:y, cont:(x.n === y.n)});
+    rows.push({t:LN.a.split(' – ')[0], c:x, b:p[0]});
+    rows.push({t:LN.b.split(' – ')[0], c:y, b:p[1], cont:(x.n === y.n)});
   } else {
-    rows.push({t:LN.a.split(' – ')[0], c:x});
+    rows.push({t:LN.a.split(' – ')[0], c:x, b:p[0]});
     rows.push({t:LN.l.split(' – ')[0], br:'Lunch'});
-    rows.push({t:LN.b.split(' – ')[0], c:y, cont:(x.n === y.n)});
+    rows.push({t:LN.b.split(' – ')[0], c:y, b:p[1], cont:(x.n === y.n)});
   }
 
   slot(order[2], b.s3);
@@ -835,16 +856,34 @@ function daySchedule(L){
   return rows;
 }
 
-function renderSchedule(id, L){
+function mins(t){
+  var p = t.split(":"), h = +p[0], m = +p[1];
+  if(h < 8) h += 12;              /* 12:53, 1:34 etc are afternoon */
+  return h * 60 + m;
+}
+
+function renderSchedule(id, L, live){
   var host = document.getElementById(id);
   if(!host) return;
   if(!L){ host.innerHTML = ""; return; }
-  host.innerHTML = daySchedule(L).map(function(r){
-    if(r.br) return '<div class="tsr br"><span class="tt">' + r.t + '</span><span class="tc">' + r.br + '</span></div>';
+  var rows = daySchedule(L), nowM = null;
+  if(live){ var d = new Date(); nowM = d.getHours() * 60 + d.getMinutes(); }
+  var curIdx = -1;
+  if(nowM !== null){
+    for(var i = 0; i < rows.length; i++){
+      if(mins(rows[i].t) <= nowM) curIdx = i;
+    }
+    if(curIdx === rows.length - 1) curIdx = -1;   /* dismissal row, day is over */
+    if(nowM < mins(rows[0].t)) curIdx = -1;
+  }
+  host.innerHTML = rows.map(function(r, idx){
+    var nowCls = (idx === curIdx) ? ' now' : '';
+    if(r.br) return '<div class="tsr br' + nowCls + '"><span class="tt">' + r.t + '</span><span class="tc">' + r.br + '</span></div>';
     var room = r.c.m.split("·").pop().trim();
     var extra = r.pairAlso ? ' then ' + r.pairAlso.n : '';
-    return '<div class="tsr"><span class="tt">' + r.t + '</span><span class="tc ' + r.c.k + '">'
-      + r.c.n + extra + (r.cont ? " continues" : "") + '<small>' + room + '</small></span></div>';
+    return '<div class="tsr' + nowCls + '"><span class="tt">' + r.t + '</span><span class="tc ' + r.c.k + '">'
+      + r.c.n + extra + (r.cont ? " continues" : "") + '<small>' + room + '</small>'
+      + (r.b ? '<span class="bn">blk ' + r.b + '</span>' : '') + '</span></div>';
   }).join("");
 }
 
@@ -910,35 +949,6 @@ document.querySelectorAll('[data-bell]').forEach(function(b){
   });
 });
 
-/* ---- year calendar ---- */
-(function(){
-  var host = document.getElementById('yearcal');
-  if(!host) return;
-  var MN = ['January','February','March','April','May','June','July','August',
-            'September','October','November','December'];
-  var months = [[2026,7],[2026,8],[2026,9],[2026,10],[2026,11],
-                [2027,0],[2027,1],[2027,2],[2027,3],[2027,4],[2027,5]];
-  host.innerHTML = months.map(function(m){
-    var y = m[0], mo = m[1];
-    var first = new Date(y, mo, 1), days = new Date(y, mo+1, 0).getDate();
-    var cells = '';
-    for(var i=0;i<first.getDay();i++) cells += '<div class="cd blank"></div>';
-    for(var d=1; d<=days; d++){
-      var dt = new Date(y, mo, d), k = iso(dt), wd = dt.getDay();
-      if(wd===0 || wd===6){ cells += '<div class="cd blank"></div>'; continue; }
-      if(k < YEAR_START || k > YEAR_END){ cells += '<div class="cd off"><span class="n">'+d+'</span></div>'; continue; }
-      var L = letterFor(k);
-      if(!L){ cells += '<div class="cd off"><span class="n">'+d+'</span></div>'; continue; }
-      var cls = (L==='B'||L==='D') ? 'bset' : 'aset';
-      cells += '<div class="cd '+cls+'"><span class="n">'+d+'</span><span class="lt">'+L+'</span></div>';
-    }
-    return '<div class="mo"><h4>'+MN[mo]+' '+y+'</h4><div class="mg">'
-      + '<span class="dow">S</span><span class="dow">M</span><span class="dow">T</span><span class="dow">W</span>'
-      + '<span class="dow">T</span><span class="dow">F</span><span class="dow">S</span>'
-      + cells + '</div></div>';
-  }).join('');
-  window.__renderYear = arguments.callee;
-})();
 
 
 /* ---- announcements feed, rewritten daily by the 5pm email scan ---- */
