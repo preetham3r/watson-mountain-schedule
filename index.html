@@ -37,8 +37,9 @@
   .seg button[aria-pressed="true"]{background:var(--ink);color:#fff}
   .seg button:focus-visible{outline:2px solid var(--eng);outline-offset:2px}
 
-  .pairs{display:grid;gap:26px}
-  @media(min-width:760px){.pairs{grid-template-columns:1fr 1fr;gap:26px 22px}}
+  .pairs{display:block}
+  .mirror{font-family:var(--mono);font-size:10.5px;color:var(--open);
+    text-align:center;padding:11px 4px 0;letter-spacing:.03em}
 
   .fold{display:flex;align-items:center;gap:10px;padding:11px 2px}
   .fold-line{flex:1;height:1px;background:var(--line);position:relative}
@@ -318,6 +319,16 @@
     <div class="seg" role="group" aria-label="Lunch shift">
       <button id="l1" aria-pressed="false">Lunch 1 · 10:40</button>
       <button id="l2" aria-pressed="true">Lunch 2 · 11:12 ✓</button>
+    </div>
+  </div>
+
+  <div class="control">
+    <p>Day. Opens on today's letter. C is A run backwards, D is B run backwards.</p>
+    <div class="seg" role="group" aria-label="Rotation day">
+      <button data-day="A" aria-pressed="true">A day</button>
+      <button data-day="B" aria-pressed="false">B day</button>
+      <button data-day="C" aria-pressed="false">C day</button>
+      <button data-day="D" aria-pressed="false">D day</button>
     </div>
   </div>
 
@@ -675,16 +686,27 @@ function dayCard(d){
   return h;
 }
 
+var dayTab = 'A';
+
 function render(){
-  var pairs = [[DAYS[0],DAYS[1]],[DAYS[2],DAYS[3]]];
-  document.getElementById('pairs').innerHTML = pairs.map(function(p){
-    var top = p[0], bot = p[1];
-    return '<div class="pair">' + dayCard(top)
-      + '<div class="fold"><span class="fold-label">' + top.id + ' and ' + bot.id
-      + '</span><span class="fold-line"></span><span class="fold-label">same classes, flipped</span></div>'
-      + dayCard(bot) + '</div>';
-  }).join('');
+  var d = null;
+  for(var i=0;i<DAYS.length;i++){ if(DAYS[i].id === dayTab) d = DAYS[i]; }
+  if(!d) d = DAYS[0];
+  var twin = (dayTab === 'A') ? 'C' : (dayTab === 'C') ? 'A' : (dayTab === 'B') ? 'D' : 'B';
+  document.getElementById('pairs').innerHTML = dayCard(d)
+    + '<p class="mirror">' + dayTab + ' day and ' + twin + ' day run the same classes in opposite order</p>';
+  var btns = document.querySelectorAll('[data-day]');
+  for(var j=0;j<btns.length;j++){
+    btns[j].setAttribute('aria-pressed', btns[j].getAttribute('data-day') === dayTab);
+  }
 }
+
+document.querySelectorAll('[data-day]').forEach(function(b){
+  b.addEventListener('click', function(){
+    dayTab = b.getAttribute('data-day');
+    render();
+  });
+});
 
 function setLunch(n){
   lunch = n;
@@ -899,8 +921,18 @@ function renderSchedule(id, L, live){
   }).join("");
 }
 
+var dayTabTouched = false;
+document.addEventListener('click', function(e){
+  if(e.target && e.target.getAttribute && e.target.getAttribute('data-day')) dayTabTouched = true;
+});
+
 function renderToday(){
   var todayKey = iso(new Date());
+  if(!dayTabTouched){
+    var seed = letterFor(todayKey);
+    if(!seed){ var nk0 = nextSchoolDay(todayKey); if(nk0) seed = letterFor(nk0); }
+    if(seed && seed !== dayTab){ dayTab = seed; render(); }
+  }
   if(todayKey < YEAR_START || todayKey > YEAR_END){
     fill("t", todayKey >= YEAR_START ? null : todayKey, true);
   } else {
