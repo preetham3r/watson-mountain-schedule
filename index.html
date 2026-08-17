@@ -174,6 +174,14 @@
     .sl:last-child{border-bottom:0}
   }
 
+
+  .segsm{padding:3px;gap:4px}
+  .segsm button{flex:none;font-size:10.5px;padding:6px 11px}
+  .cwmeta{font-family:var(--mono);font-size:10.5px;color:var(--open);margin:5px 0 0;line-height:1.5}
+  .cwmeta b{color:var(--math);font-weight:600}
+  .cwcls{font-weight:700;font-size:12px;letter-spacing:-.01em}
+  .ai .ad.past{color:var(--open)}
+
   /* ---------- today banner ---------- */
   .today{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:0 0 14px;background:var(--card)}
   .tgrid{display:grid;grid-template-columns:1fr}
@@ -231,7 +239,7 @@
   @media print{
     body{background:#fff;color:#000}
     .wrap{max-width:none;padding:0}
-    .eyebrow,h1,.lede,.control,.pairs,.foot,.today,.ann{display:none!important}
+    .eyebrow,h1,.lede,.control,.pairs,.foot,.today,.ann,#cw{display:none!important}
     .printsheet{display:block;font-size:8.2pt;line-height:1.25}
 
     .phead{display:flex;align-items:baseline;justify-content:space-between;
@@ -299,6 +307,19 @@
       <button data-fix="C">C</button><button data-fix="D">D</button>
       <button data-fix="reset">Reset</button>
     </div>
+  </div>
+
+  <div class="ann" id="cw">
+    <div class="annh">
+      <h2>Coursework</h2>
+      <span class="annact">
+        <span class="seg segsm" role="group" aria-label="Coursework view">
+          <button data-cw="test" aria-pressed="true">Tests</button>
+          <button data-cw="assignment" aria-pressed="false">Assignments</button>
+        </span>
+      </span>
+    </div>
+    <div id="cwbody"><div class="annempty">Loading.</div></div>
   </div>
 
   <div class="ann" id="ann">
@@ -1025,6 +1046,118 @@ document.querySelectorAll('[data-bell]').forEach(function(b){
 
 
 
+/* ================= coursework: tests and assignments ================= */
+var cwTab = "test";
+var CWDATA = null;
+
+var CLASSKEY = {
+  "Math 7":"math", "English 6H":"eng", "Science 6H":"sci", "US History":"hist",
+  "US History to 1865":"hist", "Spectrum 6":"spectrum", "Strings 6":"strings",
+  "Art 6":"art", "Health & PE 6":"pe", "Intro to Computer Apps":"art",
+  "Computer Applications":"art"
+};
+
+/* which blocks each class sits in, per rotation set */
+var CLASSBLOCKS = {
+  "Math 7":{set:"A"}, "Science 6H":{set:"A"}, "Health & PE 6":{set:"A"},
+  "English 6H":{set:"both"}, "Spectrum 6":{set:"B"}, "Strings 6":{set:"B"},
+  "US History":{set:"B"}, "US History to 1865":{set:"B"}, "Art 6":{set:"B"},
+  "Computer Applications":{set:"B"}
+};
+
+function meetsOn(cls, letter){
+  var cb = CLASSBLOCKS[cls];
+  if(!cb) return true;
+  if(cb.set === "both") return true;
+  var isA = (letter === "A" || letter === "C");
+  return cb.set === "A" ? isA : !isA;
+}
+
+/* the last school day that class meets strictly before the due date */
+function lastMeetingBefore(cls, dueKey){
+  for(var i = SCHOOL_DAYS.length - 1; i >= 0; i--){
+    var k = SCHOOL_DAYS[i];
+    if(k >= dueKey) continue;
+    var L = letterFor(k);
+    if(L && meetsOn(cls, L)) return {key:k, letter:L};
+  }
+  return null;
+}
+
+function daysAway(key){
+  var d = fromIso(key), t = new Date(); t.setHours(0,0,0,0);
+  return Math.round((d - t) / 86400000);
+}
+
+function renderCW(){
+  var body = document.getElementById("cwbody");
+  var all = (CWDATA && CWDATA.coursework) ? CWDATA.coursework.slice() : [];
+  var todayKey = iso(new Date());
+  var items = all.filter(function(x){
+    return (x.type || "assignment") === cwTab && (!x.date || x.date >= todayKey);
+  });
+  items.sort(function(a, b){
+    if(a.date && b.date) return a.date < b.date ? -1 : 1;
+    return a.date ? -1 : 1;
+  });
+
+  var btns = document.querySelectorAll("[data-cw]");
+  for(var i = 0; i < btns.length; i++){
+    btns[i].setAttribute("aria-pressed", btns[i].getAttribute("data-cw") === cwTab);
+  }
+
+  if(!items.length){
+    body.innerHTML = '<div class="annempty">No '
+      + (cwTab === "test" ? "tests or quizzes" : "assignments")
+      + ' on the board. They appear here as teachers announce them.</div>';
+    return;
+  }
+
+  body.innerHTML = items.map(function(it){
+    var k = CLASSKEY[it.cls] || "notice";
+    var dtxt = "", soon = false, meta = "";
+    if(it.date){
+      var n = daysAway(it.date);
+      var L = letterFor(it.date);
+      dtxt = (n === 0) ? "Today" : (n === 1) ? "Tomorrow"
+           : fromIso(it.date).toLocaleDateString(undefined, {month:"short", day:"numeric"});
+      soon = (n >= 0 && n <= 7);
+      var bits = [];
+      if(n > 1) bits.push("in " + n + " days");
+      if(L) bits.push(L + " day");
+      if(it.cls){
+        var lm = lastMeetingBefore(it.cls, it.date);
+        if(lm){
+          var ln = daysAway(lm.key);
+          var lw = (ln === 0) ? "today" : (ln === 1) ? "tomorrow"
+                 : fromIso(lm.key).toLocaleDateString(undefined, {weekday:"long"});
+          bits.push("<b>last " + it.cls + " class before it is " + lw + "</b>");
+        }
+      }
+      meta = bits.join(" &middot; ");
+    }
+    return '<div class="ai">'
+      + '<span class="ad' + (soon ? " soon" : "") + '">' + (dtxt || "&mdash;") + '</span>'
+      + '<div><p class="at"><span class="tag ' + (it.type === "test" ? "test" : "deadline") + '">'
+      + (it.type === "test" ? "test" : "due") + '</span>'
+      + (it.cls ? '<span class="cwcls ' + k + '" style="color:var(--' + k + ')">' + it.cls + '</span> &middot; ' : '')
+      + it.title + '</p>'
+      + (it.detail ? '<p class="ax">' + it.detail + '</p>' : '')
+      + (meta ? '<p class="cwmeta">' + meta + '</p>' : '')
+      + (it.url ? '<p class="as"><a href="' + it.url + '" target="_blank" rel="noopener">'
+                + (it.source || "source") + '</a></p>'
+                : (it.source ? '<p class="as">' + it.source + '</p>' : ''))
+      + '</div></div>';
+  }).join("");
+}
+
+document.querySelectorAll("[data-cw]").forEach(function(b){
+  b.addEventListener("click", function(){
+    cwTab = b.getAttribute("data-cw");
+    renderCW();
+  });
+});
+
 /* ---- announcements feed, rewritten daily by the 5pm email scan ---- */
 var FALLBACK = {updated:null, items:[]};
 
@@ -1077,7 +1210,11 @@ function renderAnn(data){
         + " been folded in, so the letters after it have shifted.";
     }
   }
+  CWDATA = data;
+  renderCW();
+
   var items = (data && data.items) ? data.items.slice() : [];
+  items = items.filter(function(x){ return x.type !== "test" && x.type !== "assignment"; });
   if(data && data.updated){
     st.textContent = "updated " + fromIso(data.updated).toLocaleDateString(undefined,{month:"short",day:"numeric"});
   } else { st.textContent = ""; }
