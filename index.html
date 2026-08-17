@@ -31,6 +31,8 @@
   .control:last-of-type{margin-bottom:26px}
   .control p{margin:0 0 10px;font-size:13px;color:var(--ink2)}
   .seg{display:flex;gap:6px;background:var(--ice);padding:4px;border-radius:10px}
+  .seg5{flex-wrap:wrap}
+  .seg5 button{flex:1 1 30%;min-width:88px}
   .seg button{flex:1;appearance:none;border:0;background:transparent;cursor:pointer;font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.03em;color:var(--ink2);padding:9px 6px;border-radius:7px;transition:background .15s,color .15s}
   .seg button[aria-pressed="true"]{background:var(--ink);color:#fff}
   .seg button:focus-visible{outline:2px solid var(--eng);outline-offset:2px}
@@ -148,6 +150,23 @@
 
   @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 
+
+  #yearcal{display:grid;gap:16px}
+  @media(min-width:560px){#yearcal{grid-template-columns:1fr 1fr}}
+  @media(min-width:860px){#yearcal{grid-template-columns:1fr 1fr 1fr}}
+  .mo h4{margin:0 0 6px;font-size:12.5px;font-weight:900;letter-spacing:-.01em}
+  .mg{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
+  .mg .dow{font-family:var(--mono);font-size:8px;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--open);text-align:center;padding-bottom:2px}
+  .cd{aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    border-radius:4px;font-family:var(--mono);font-size:8.5px;line-height:1.05;background:var(--ice);color:var(--open)}
+  .cd .n{font-size:8px}
+  .cd .lt{font-weight:600;font-size:9.5px}
+  .cd.aset{background:#E4EDF3;color:var(--eng)}
+  .cd.bset{background:#EFE7F4;color:var(--strings)}
+  .cd.off{background:#F5F7F9;color:#C2CFD8}
+  .cd.blank{background:transparent}
+
   /* ---------- print sheet ---------- */
   .printsheet{display:none}
 
@@ -156,7 +175,7 @@
   @media print{
     body{background:#fff;color:#000}
     .wrap{max-width:none;padding:0}
-    .eyebrow,h1,.lede,.control,.pairs,.foot,.today{display:none!important}
+    .eyebrow,h1,.lede,.control,.pairs,.foot,.today,#yearcal{display:none!important}
     .printsheet{display:block;font-size:8.2pt;line-height:1.25}
 
     .phead{display:flex;align-items:baseline;justify-content:space-between;
@@ -223,6 +242,17 @@
       <button data-fix="A">A</button><button data-fix="B">B</button>
       <button data-fix="C">C</button><button data-fix="D">D</button>
       <button data-fix="reset">Reset</button>
+    </div>
+  </div>
+
+  <div class="control">
+    <p>Bell schedule. Switch this on a delay or early release morning and every time on the page moves.</p>
+    <div class="seg seg5" role="group" aria-label="Bell schedule">
+      <button data-bell="regular" aria-pressed="true">Regular</button>
+      <button data-bell="d1" aria-pressed="false">1 hr delay</button>
+      <button data-bell="d2" aria-pressed="false">2 hr delay</button>
+      <button data-bell="test" aria-pressed="false">Testing</button>
+      <button data-bell="early" aria-pressed="false">Early release</button>
     </div>
   </div>
 
@@ -308,6 +338,13 @@
       <div class="ct"><span>Courtney Allen, PE 6</span><span class="r">Courtney.Allen</span></div>
       <div class="ct"><span>Meghan Ngo, School Nurse</span><span class="r">Meghan.Ngo</span></div>
       <p style="margin:12px 0 0;font-size:12.5px">All addresses are first.last@lcps.org. School is at 41480 Steeplechase Loop Dr, Leesburg VA 20175.</p>
+    </div>
+
+    <div class="panel" style="grid-column:1/-1">
+      <h2>The year at a glance</h2>
+      <p style="margin:0 0 12px">Every school day with its letter. Purple means a B set day, so the instrument goes in. Grey means no school.</p>
+      <div id="yearcal"></div>
+      <p style="margin:12px 0 0;font-size:12.5px">LCPS 2026-2027 student calendar, adopted 25 Feb 2025. 180 school days.</p>
     </div>
 
     <div class="panel">
@@ -472,7 +509,35 @@ var C = {
   hist:{n:'US History to 1865', m:'Dickerson · 367', k:'hist'}
 };
 
-var T = [['8:50 – 9:31','9:33 – 10:15'], null, ['12:53 – 1:31','1:34 – 2:13'], ['2:18 – 2:56','2:58 – 3:38']];
+var BELLS = {
+  regular:{ label:'Regular day', arrive:'8:30 – 8:45, welcome bell 8:45', out:'3:38',
+    s1:['8:50 – 9:31','9:33 – 10:15'], peak:'10:20 – 10:40',
+    L2:{a:'10:45 – 11:12', l:'11:12 – 11:44', b:'11:47 – 12:48'},
+    L1:{l:'10:40 – 11:12', a:'11:15 – 12:00', b:'12:03 – 12:48'},
+    s3:['12:53 – 1:31','1:34 – 2:13'], s4:['2:18 – 2:56','2:58 – 3:38'] },
+  d1:{ label:'1 hour delay', arrive:'9:30 – 9:45, welcome bell 9:45', out:'3:38', nopeak:true,
+    s1:['9:50 – 10:25','10:28 – 11:03'],
+    L2:{a:'11:08 – 11:35', l:'11:35 – 12:07', b:'12:10 – 1:11'},
+    L1:{l:'11:03 – 11:35', a:'11:38 – 12:15', b:'12:18 – 1:11'},
+    s3:['1:16 – 1:45','1:48 – 2:26'], s4:['2:31 – 3:04','3:06 – 3:38'] },
+  d2:{ label:'2 hour delay', arrive:'10:30 – 10:45, welcome bell 10:45', out:'3:38', nopeak:true,
+    s1:['10:50 – 11:14','11:17 – 11:40'],
+    L2:{a:'11:45 – 12:12', l:'12:12 – 12:44', b:'12:47 – 1:48'},
+    L1:{l:'11:40 – 12:12', a:'12:15 – 1:00', b:'1:03 – 1:48'},
+    s3:['1:53 – 2:17','2:20 – 2:43'], s4:['2:48 – 3:12','3:15 – 3:38'] },
+  test:{ label:'Testing day', arrive:'8:30 – 8:45, welcome bell 8:45', out:'3:38', testing:true,
+    s1:['2:49 – 3:13','3:15 – 3:38'],
+    L2:{a:'10:50 – 11:17', l:'11:17 – 11:49', b:'11:52 – 12:58'},
+    L1:{l:'10:45 – 11:17', a:'11:20 – 12:05', b:'12:08 – 12:58'},
+    s3:['1:03 – 1:26','1:29 – 1:51'], s4:['1:56 – 2:18','2:21 – 2:44'] },
+  early:{ label:'Early release, out 1:38', arrive:'8:30 – 8:45, welcome bell 8:45', out:'1:38',
+    s1:['8:50 – 9:40'], peak:'9:45 – 10:00',
+    L2:{a:'10:05 – 11:12', l:'11:12 – 11:44', b:'11:47 – 12:08'},
+    L1:{l:'10:00 – 10:32', a:'10:35 – 11:20', b:'11:23 – 12:08'},
+    s3:['12:13 – 12:32','12:34 – 12:53'], s4:['12:58 – 1:17','1:19 – 1:38'] }
+};
+var bell = 'regular';
+function B(){ return BELLS[bell]; }
 var DAYS = [
   {id:'A', set:'A', order:[[1,2],[3,4],[5,6],[7,8]], note:'A set, forward'},
   {id:'C', set:'A', order:[[8,7],[6,5],[4,3],[2,1]], note:'A set, reversed'},
@@ -509,28 +574,39 @@ function edge(t, l){
 }
 
 function lunchSlot(pair, set){
-  var a = pair[0], b = pair[1];
+  var a = pair[0], b = pair[1], L = (lunch === 1) ? B().L1 : B().L2;
   if(lunch === 1){
-    return util('10:40 – 11:12','Lunch 1') + row('11:15 – 12:00', a, set) + row('12:03 – 12:48', b, set);
+    return util(L.l, 'Lunch 1') + row(L.a, a, set) + row(L.b, b, set);
   }
-  return row('10:45 – 11:12', a, set) + util('11:12 – 11:44','Lunch 2')
-    + row('11:47 – 12:48', b, set, 'Block ' + a + ' finishes inside this window. Handoff not published.');
+  return row(L.a, a, set) + util(L.l, 'Lunch 2')
+    + row(L.b, b, set, 'Block ' + a + ' finishes inside this window. Handoff not published.');
+}
+
+function slotRows(pair, set, times){
+  if(times.length === 1){
+    return row(times[0], pair[0], set, 'Runs straight into block ' + pair[1] + '. Split time not published.');
+  }
+  return row(times[0], pair[0], set) + row(times[1], pair[1], set);
 }
 
 function dayCard(d){
-  return '<div class="day">'
+  var b = B();
+  var h = '<div class="day">'
     + '<div class="day-head"><div class="day-name">' + d.id + ' day</div><div class="day-note">' + d.note + '</div></div>'
-    + edge('8:30 – 8:45','Arrival, welcome bell at 8:45')
-    + row(T[0][0], d.order[0][0], d.set)
-    + row(T[0][1], d.order[0][1], d.set)
-    + util('10:20 – 10:40','PEAK · Advisory','DiPietro · 382')
-    + lunchSlot(d.order[1], d.set)
-    + row(T[2][0], d.order[2][0], d.set)
-    + row(T[2][1], d.order[2][1], d.set)
-    + row(T[3][0], d.order[3][0], d.set)
-    + row(T[3][1], d.order[3][1], d.set)
-    + edge('3:38','Dismissal')
-    + '</div>';
+    + edge(b.arrive.split(',')[0], 'Arrival' + (b.arrive.indexOf(',') > -1 ? ',' + b.arrive.split(',')[1] : ''));
+  if(b.testing){
+    h += util('8:50 – 8:55', 'Homeroom', 'Attendance, pledge, testing location review')
+       + util('8:55 – 10:45', 'Testing');
+  } else {
+    h += slotRows(d.order[0], d.set, b.s1);
+    if(b.peak) h += util(b.peak, 'PEAK · Advisory', 'DiPietro · 382');
+  }
+  h += lunchSlot(d.order[1], d.set)
+    + slotRows(d.order[2], d.set, b.s3)
+    + slotRows(d.order[3], d.set, b.s4);
+  if(b.testing) h += slotRows(d.order[0], d.set, b.s1);
+  h += edge(b.out, 'Dismissal') + '</div>';
+  return h;
 }
 
 function render(){
@@ -691,25 +767,38 @@ var SLOT_ORDER = {
 var SLOT_SET = {A:"A", C:"A", B:"B", D:"B"};
 
 function daySchedule(L){
-  var order = SLOT_ORDER[L], set = SLOT_SET[L], S = sets(), rows = [];
-  function crs(b){ return S[set][b]; }
-
-  function slot(pair, t1, t2){
-    var a = crs(pair[0]), b = crs(pair[1]);
-    if(a.n === b.n){ rows.push({t:t1, c:a, span:true}); }
-    else { rows.push({t:t1, c:a}); rows.push({t:t2, c:b}); }
+  var order = SLOT_ORDER[L], set = SLOT_SET[L], S = sets(), rows = [], b = B();
+  function crs(x){ return S[set][x]; }
+  function slot(pair, times){
+    var x = crs(pair[0]), y = crs(pair[1]);
+    if(times.length === 1){ rows.push({t:times[0].split(' – ')[0], c:x, pairAlso:(x.n !== y.n ? y : null)}); return; }
+    if(x.n === y.n){ rows.push({t:times[0].split(' – ')[0], c:x}); }
+    else { rows.push({t:times[0].split(' – ')[0], c:x}); rows.push({t:times[1].split(' – ')[0], c:y}); }
   }
 
-  slot(order[0], "8:50", "9:33");
-  rows.push({t:"10:20", br:"PEAK · Advisory · 382"});
+  if(b.testing){
+    rows.push({t:'8:50', br:'Homeroom'});
+    rows.push({t:'8:55', br:'Testing'});
+  } else {
+    slot(order[0], b.s1);
+    if(b.peak) rows.push({t:b.peak.split(' – ')[0], br:'PEAK · Advisory · 382'});
+  }
 
-  var p = order[1], a = crs(p[0]), b = crs(p[1]);
-  rows.push({t:"10:45", c:a});
-  rows.push({t:"11:12", br:"Lunch"});
-  rows.push({t:"11:47", c:b, cont:(a.n === b.n)});
+  var LN = (lunch === 1) ? b.L1 : b.L2, p = order[1], x = crs(p[0]), y = crs(p[1]);
+  if(lunch === 1){
+    rows.push({t:LN.l.split(' – ')[0], br:'Lunch'});
+    rows.push({t:LN.a.split(' – ')[0], c:x});
+    rows.push({t:LN.b.split(' – ')[0], c:y, cont:(x.n === y.n)});
+  } else {
+    rows.push({t:LN.a.split(' – ')[0], c:x});
+    rows.push({t:LN.l.split(' – ')[0], br:'Lunch'});
+    rows.push({t:LN.b.split(' – ')[0], c:y, cont:(x.n === y.n)});
+  }
 
-  slot(order[2], "12:53", "1:34");
-  slot(order[3], "2:18", "2:58");
+  slot(order[2], b.s3);
+  slot(order[3], b.s4);
+  if(b.testing) slot(order[0], b.s1);
+  rows.push({t:b.out, br:'Dismissal'});
   return rows;
 }
 
@@ -720,8 +809,9 @@ function renderSchedule(id, L){
   host.innerHTML = daySchedule(L).map(function(r){
     if(r.br) return '<div class="tsr br"><span class="tt">' + r.t + '</span><span class="tc">' + r.br + '</span></div>';
     var room = r.c.m.split("·").pop().trim();
+    var extra = r.pairAlso ? ' then ' + r.pairAlso.n : '';
     return '<div class="tsr"><span class="tt">' + r.t + '</span><span class="tc ' + r.c.k + '">'
-      + r.c.n + (r.cont ? " continues" : "") + '<small>' + room + '</small></span></div>';
+      + r.c.n + extra + (r.cont ? " continues" : "") + '<small>' + room + '</small></span></div>';
   }).join("");
 }
 
@@ -772,6 +862,49 @@ document.querySelectorAll(".tfix button").forEach(function(b){
   host.innerHTML = CLOSED_GROUPS.map(function(g){
     return '<div class="hol"><span class="hd">' + g[0] + '</span><span>' + g[1] + '</span></div>';
   }).join("");
+})();
+
+
+/* ---- bell schedule selector ---- */
+document.querySelectorAll('[data-bell]').forEach(function(b){
+  b.addEventListener('click', function(){
+    bell = b.getAttribute('data-bell');
+    document.querySelectorAll('[data-bell]').forEach(function(x){
+      x.setAttribute('aria-pressed', x === b);
+    });
+    render();
+    renderToday();
+  });
+});
+
+/* ---- year calendar ---- */
+(function(){
+  var host = document.getElementById('yearcal');
+  if(!host) return;
+  var MN = ['January','February','March','April','May','June','July','August',
+            'September','October','November','December'];
+  var months = [[2026,7],[2026,8],[2026,9],[2026,10],[2026,11],
+                [2027,0],[2027,1],[2027,2],[2027,3],[2027,4],[2027,5]];
+  host.innerHTML = months.map(function(m){
+    var y = m[0], mo = m[1];
+    var first = new Date(y, mo, 1), days = new Date(y, mo+1, 0).getDate();
+    var cells = '';
+    for(var i=0;i<first.getDay();i++) cells += '<div class="cd blank"></div>';
+    for(var d=1; d<=days; d++){
+      var dt = new Date(y, mo, d), k = iso(dt), wd = dt.getDay();
+      if(wd===0 || wd===6){ cells += '<div class="cd blank"></div>'; continue; }
+      if(k < YEAR_START || k > YEAR_END){ cells += '<div class="cd off"><span class="n">'+d+'</span></div>'; continue; }
+      var L = letterFor(k);
+      if(!L){ cells += '<div class="cd off"><span class="n">'+d+'</span></div>'; continue; }
+      var cls = (L==='B'||L==='D') ? 'bset' : 'aset';
+      cells += '<div class="cd '+cls+'"><span class="n">'+d+'</span><span class="lt">'+L+'</span></div>';
+    }
+    return '<div class="mo"><h4>'+MN[mo]+' '+y+'</h4><div class="mg">'
+      + '<span class="dow">S</span><span class="dow">M</span><span class="dow">T</span><span class="dow">W</span>'
+      + '<span class="dow">T</span><span class="dow">F</span><span class="dow">S</span>'
+      + cells + '</div></div>';
+  }).join('');
+  window.__renderYear = arguments.callee;
 })();
 
 renderToday();
