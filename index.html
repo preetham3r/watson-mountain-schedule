@@ -121,6 +121,16 @@
   .tnext .tletter{font-size:clamp(21px,5.5vw,28px)}
   .tcarry{font-size:12.5px;color:var(--ink2);margin:0}
   .tcarry b{color:var(--ink)}
+  .tsch{margin:10px 0 0;border-top:1px solid var(--line2);padding-top:8px}
+  .tsr{display:grid;grid-template-columns:52px 1fr;gap:9px;padding:3px 0;align-items:baseline}
+  .tsr .tt{font-family:var(--mono);font-size:10.5px;color:var(--ink2);white-space:nowrap}
+  .tsr .tc{font-size:13px;font-weight:700;letter-spacing:-.01em;min-width:0}
+  .tsr .tc small{font-family:var(--mono);font-size:10px;font-weight:400;color:var(--ink2);margin-left:5px}
+  .tsr.br .tc{font-size:11.5px;font-weight:600;color:var(--util);font-style:normal}
+  .tsr.br .tt{color:var(--util)}
+  .tsr .tc.pe{color:var(--pe)} .tsr .tc.eng{color:var(--eng)} .tsr .tc.math{color:var(--math)}
+  .tsr .tc.sci{color:var(--sci)} .tsr .tc.spectrum{color:var(--spectrum)}
+  .tsr .tc.strings{color:var(--strings)} .tsr .tc.hist{color:var(--hist)} .tsr .tc.art{color:var(--art)}
   .tinst{display:inline-block;font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.05em;
     padding:4px 9px;border-radius:20px;margin-top:9px}
   .tinst.yes{background:#EFE7F4;color:var(--strings)}
@@ -195,15 +205,17 @@
         <p class="tlab">Today</p>
         <p class="tdate" id="tdate">—</p>
         <p class="tletter" id="tletter">—</p>
-        <p class="tcarry" id="tcarry"></p>
         <span class="tinst no" id="tinst"></span>
+        <div class="tsch" id="tsch"></div>
+        <p class="tcarry" id="tcarry" style="margin-top:9px"></p>
       </div>
       <div class="tnext">
         <p class="tlab" id="tnextlab">Next school day</p>
         <p class="tdate" id="ndate">—</p>
         <p class="tletter" id="nletter">—</p>
-        <p class="tcarry" id="ncarry"></p>
         <span class="tinst no" id="ninst"></span>
+        <div class="tsch" id="nsch"></div>
+        <p class="tcarry" id="ncarry" style="margin-top:9px"></p>
       </div>
     </div>
     <div class="tfix">
@@ -543,6 +555,7 @@ function setSem(n){
   document.getElementById('s1').setAttribute('aria-pressed', n === 1);
   document.getElementById('s2').setAttribute('aria-pressed', n === 2);
   render();
+  if(typeof renderToday === "function") renderToday();
 }
 document.getElementById('l1').addEventListener('click', function(){ setLunch(1); });
 document.getElementById('l2').addEventListener('click', function(){ setLunch(2); });
@@ -647,9 +660,11 @@ function fill(prefix, key, isToday){
   var cEl = document.getElementById(prefix + "carry");
   var iEl = document.getElementById(prefix + "inst");
 
+  var schId = prefix === "t" ? "tsch" : "nsch";
   if(key === null){
     dEl.textContent = ""; lEl.textContent = "Summer"; lEl.className = "tletter hol";
-    cEl.innerHTML = ""; iEl.textContent = ""; iEl.className = "tinst no"; return;
+    cEl.innerHTML = ""; iEl.textContent = ""; iEl.className = "tinst no";
+    renderSchedule(schId, null); return;
   }
   dEl.textContent = pretty(key);
   var L = letterFor(key);
@@ -657,14 +672,57 @@ function fill(prefix, key, isToday){
     var why = CLOSED[key] || (fromIso(key).getDay()%6===0 ? "Weekend" : "No school");
     lEl.textContent = why; lEl.className = "tletter hol";
     cEl.innerHTML = ""; iEl.textContent = ""; iEl.className = "tinst no";
-    return;
+    renderSchedule(schId, null); return;
   }
   lEl.textContent = L + " day"; lEl.className = "tletter";
+  renderSchedule(schId, L);
   cEl.innerHTML = CARRY[L];
   var bset = (L === "B" || L === "D");
   if(bset && key >= INSTRUMENT_START){ iEl.textContent = "Instrument goes in"; iEl.className = "tinst yes"; }
   else if(bset){ iEl.textContent = "Instrument starts Aug 26"; iEl.className = "tinst no"; }
   else { iEl.textContent = "No instrument"; iEl.className = "tinst no"; }
+}
+
+/* ---- expand a letter into the full ordered day ---- */
+var SLOT_ORDER = {
+  A:[[1,2],[3,4],[5,6],[7,8]], B:[[1,2],[3,4],[5,6],[7,8]],
+  C:[[8,7],[6,5],[4,3],[2,1]], D:[[8,7],[6,5],[4,3],[2,1]]
+};
+var SLOT_SET = {A:"A", C:"A", B:"B", D:"B"};
+
+function daySchedule(L){
+  var order = SLOT_ORDER[L], set = SLOT_SET[L], S = sets(), rows = [];
+  function crs(b){ return S[set][b]; }
+
+  function slot(pair, t1, t2){
+    var a = crs(pair[0]), b = crs(pair[1]);
+    if(a.n === b.n){ rows.push({t:t1, c:a, span:true}); }
+    else { rows.push({t:t1, c:a}); rows.push({t:t2, c:b}); }
+  }
+
+  slot(order[0], "8:50", "9:33");
+  rows.push({t:"10:20", br:"PEAK · Advisory · 382"});
+
+  var p = order[1], a = crs(p[0]), b = crs(p[1]);
+  rows.push({t:"10:45", c:a});
+  rows.push({t:"11:12", br:"Lunch"});
+  rows.push({t:"11:47", c:b, cont:(a.n === b.n)});
+
+  slot(order[2], "12:53", "1:34");
+  slot(order[3], "2:18", "2:58");
+  return rows;
+}
+
+function renderSchedule(id, L){
+  var host = document.getElementById(id);
+  if(!host) return;
+  if(!L){ host.innerHTML = ""; return; }
+  host.innerHTML = daySchedule(L).map(function(r){
+    if(r.br) return '<div class="tsr br"><span class="tt">' + r.t + '</span><span class="tc">' + r.br + '</span></div>';
+    var room = r.c.m.split("·").pop().trim();
+    return '<div class="tsr"><span class="tt">' + r.t + '</span><span class="tc ' + r.c.k + '">'
+      + r.c.n + (r.cont ? " continues" : "") + '<small>' + room + '</small></span></div>';
+  }).join("");
 }
 
 function renderToday(){
