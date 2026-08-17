@@ -38,6 +38,8 @@
   .seg button:focus-visible{outline:2px solid var(--eng);outline-offset:2px}
 
   .pairs{display:block}
+  .closenote{font-family:var(--mono);font-size:10.5px;color:var(--math);background:#FFF6E8;
+    border-radius:9px;padding:9px 13px;margin:0 0 14px;line-height:1.45}
   .mirror{font-family:var(--mono);font-size:10.5px;color:var(--open);
     text-align:center;padding:11px 4px 0;letter-spacing:.03em}
 
@@ -318,7 +320,7 @@
   </div>
 
   <div class="control">
-    <p>Bell schedule. Switch this on a delay or early release morning and every time on the page moves.</p>
+    <p>Bell schedule. Switch this on a delay or early release morning and every time on the page moves. It resets to Regular each time the page loads.</p>
     <div class="seg seg5" role="group" aria-label="Bell schedule">
       <button data-bell="regular" aria-pressed="true">Regular</button>
       <button data-bell="d1" aria-pressed="false">1 hr delay</button>
@@ -354,6 +356,7 @@
     </div>
   </div>
 
+  <p id="closenote" class="closenote" style="display:none"></p>
   <div class="pairs" id="pairs"></div>
 
   <div class="foot">
@@ -635,7 +638,7 @@ var BELLS = {
     L1:{l:'10:00 – 10:32', a:'10:35 – 11:20', b:'11:23 – 12:08'},
     s3:['12:13 – 12:32','12:34 – 12:53'], s4:['12:58 – 1:17','1:19 – 1:38'] }
 };
-var bell = 'regular';
+var bell = 'regular';   /* never persisted: a delay applies to one day only */
 function B(){ return BELLS[bell]; }
 var DAYS = [
   {id:'A', set:'A', order:[[1,2],[3,4],[5,6],[7,8]], note:'A set, forward'},
@@ -791,21 +794,25 @@ var CLOSED_GROUPS = [
   ["Jun 11","Last day of school"]
 ];
 
+var EXTRA_CLOSED = {};   /* unplanned closures, merged from updates.json */
+
 function iso(d){
   return d.getFullYear() + "-" + String(d.getMonth()+1).padStart(2,"0") + "-" + String(d.getDate()).padStart(2,"0");
 }
 function fromIso(t){ var p = t.split("-"); return new Date(+p[0], +p[1]-1, +p[2]); }
 
 /* ordered list of every school day in the year */
-var SCHOOL_DAYS = (function(){
+var SCHOOL_DAYS = [];
+function buildSchoolDays(){
   var out = [], d = fromIso(YEAR_START), end = fromIso(YEAR_END);
   while(d <= end){
     var wd = d.getDay(), k = iso(d);
-    if(wd !== 0 && wd !== 6 && !CLOSED[k]) out.push(k);
+    if(wd !== 0 && wd !== 6 && !CLOSED[k] && !EXTRA_CLOSED[k]) out.push(k);
     d.setDate(d.getDate()+1);
   }
-  return out;
-})();
+  SCHOOL_DAYS = out;
+}
+buildSchoolDays();
 
 var LETTERS = ["A","B","C","D"];
 var OFFSET_KEY = "wmm-letter-offset";
@@ -855,7 +862,7 @@ function fill(prefix, key, isToday){
   dEl.textContent = pretty(key);
   var L = letterFor(key);
   if(L === null){
-    var why = CLOSED[key] || (fromIso(key).getDay()%6===0 ? "Weekend" : "No school");
+    var why = EXTRA_CLOSED[key] || CLOSED[key] || (fromIso(key).getDay()%6===0 ? "Weekend" : "No school");
     lEl.textContent = why; lEl.className = "tletter hol";
     cEl.innerHTML = ""; iEl.textContent = ""; iEl.className = "tinst no";
     renderSchedule(schId, null); return;
@@ -1032,6 +1039,26 @@ function annDate(it){
 
 function renderAnn(data){
   var body = document.getElementById("annbody"), st = document.getElementById("annst");
+
+  /* unplanned closures shift every letter after them, so fold them in before anything renders */
+  var closures = (data && data.closures) ? data.closures : [];
+  var changed = false;
+  for(var ci = 0; ci < closures.length; ci++){
+    var c = closures[ci], ck = c.date || c;
+    if(ck && !EXTRA_CLOSED[ck]){ EXTRA_CLOSED[ck] = c.reason || "School closed"; changed = true; }
+  }
+  if(changed){
+    buildSchoolDays();
+    renderToday();
+    render();
+    var cb = document.getElementById("closenote");
+    if(cb){
+      var n = Object.keys(EXTRA_CLOSED).length;
+      cb.style.display = "";
+      cb.textContent = n + (n === 1 ? " unplanned closure has" : " unplanned closures have")
+        + " been folded in, so the letters after it have shifted.";
+    }
+  }
   var items = (data && data.items) ? data.items.slice() : [];
   if(data && data.updated){
     st.textContent = "updated " + fromIso(data.updated).toLocaleDateString(undefined,{month:"short",day:"numeric"});
