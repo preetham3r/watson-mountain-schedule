@@ -1,6 +1,6 @@
 {
   "updated": "2026-08-17",
-  "note": "Rewritten by the daily 5pm email scan.",
+  "note": "Rewritten by the 5pm and 7pm email scans.",
   "items": [
     {
       "date": "2026-08-20",
@@ -13,8 +13,8 @@
     {
       "date": "2026-08-26",
       "type": "event",
-      "title": "Instrument comes to school for the first time",
-      "detail": "Grade 6 start date. Strings is block 4B, so it goes in on B and D days only and comes home the same day. Finger tapes can be added if the instrument is brought in early.",
+      "title": "Violin comes to school for the first time",
+      "detail": "Grade 6 start date. Strings is block 4B, so the violin goes in on B and D days only and comes home the same day. Bring it in earlier if it still needs finger tapes.",
       "source": "Kelly Holowecki, orchestra",
       "url": "https://mail.google.com/mail/u/0/#inbox/1a0068b81269e899"
     },
@@ -37,6 +37,19 @@
       "detail": "The school newsletter published Aug 16. Image based, so open it directly.",
       "source": "Watson Mountain Middle",
       "url": "https://mail.google.com/mail/u/0/#inbox/1a00b849a6a0cdf1"
+    },
+    {
+      "type": "notice",
+      "title": "Violin chosen, rental and fitting still to do",
+      "detail": "Rent from a shop and have her sized in person. The directors name Day Violins and say not to buy online. Needs rosin, a shoulder rest, a tuner, a cleaning cloth, a case tag and a home music stand.",
+      "source": "Kelly Holowecki, orchestra",
+      "url": "https://mail.google.com/mail/u/0/#inbox/1a0068b81269e899"
+    }
+  ],
+  "scans": [
+    {
+      "at": "2026-08-17T17:00:00-04:00",
+      "summary": "Three late bus notifications from LCPS Transportation this morning. Mountain Messenger Vol 3 Issue 1. Nothing new requiring action."
     }
   ]
 }
