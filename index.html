@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Adi · Watson Mountain 2026–2027</title>
+<title>Adithi · Watson Mountain Middle</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -22,10 +22,12 @@
   body{background:var(--ice);color:var(--ink);font-family:var(--display);line-height:1.4;-webkit-font-smoothing:antialiased}
   .wrap{max-width:940px;margin:0 auto;padding:28px 16px 64px}
 
-  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink2);margin:0 0 10px}
-  h1{font-size:clamp(30px,8vw,52px);font-weight:900;letter-spacing:-.03em;line-height:.98;margin:0 0 14px}
-  h1 span{display:block;font-weight:500;color:var(--ink2);font-size:.42em;letter-spacing:-.01em;margin-top:10px}
-  .lede{max-width:54ch;font-size:15px;color:var(--ink2);margin:0 0 22px}
+  .mast{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;
+    padding-bottom:12px;margin:0 0 18px;border-bottom:1px solid var(--line)}
+  .mast h1{font-size:24px;font-weight:900;letter-spacing:-.025em;margin:0;line-height:1}
+  .mast .sub{margin:0;font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;
+    text-transform:uppercase;color:var(--open);line-height:1.4}
+  @media(max-width:420px){.mast{gap:4px}.mast .sub{flex-basis:100%}}
 
   .control{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:0 0 14px}
   .control:last-of-type{margin-bottom:26px}
@@ -239,7 +241,7 @@
   @media print{
     body{background:#fff;color:#000}
     .wrap{max-width:none;padding:0}
-    .eyebrow,h1,.lede,.control,.pairs,.foot,.today,.ann,#cw{display:none!important}
+    .mast,.control,.pairs,.foot,.today,.ann,#cw{display:none!important}
     .printsheet{display:block;font-size:8.2pt;line-height:1.25}
 
     .phead{display:flex;align-items:baseline;justify-content:space-between;
@@ -276,11 +278,10 @@
 <body>
 <div class="wrap">
 
-  <p class="eyebrow">Watson Mountain Middle · 2026–2027 · Grade 6</p>
-  <h1>Adi's year on one page
-    <span>Eight blocks, four days, two mirrored halves.</span>
-  </h1>
-  <p class="lede">A and C days run the same classes in opposite order. B and D days do the same with the other set. English 6H and Advisory sit in both sets, so they are the only two she has every day.</p>
+  <header class="mast">
+    <h1>Adithi</h1>
+    <p class="sub">Grade 6 &middot; Watson Mountain Middle &middot; 2026&ndash;2027</p>
+  </header>
 
   <div class="today" id="today">
     <div class="tgrid">
@@ -368,7 +369,7 @@
   </div>
 
   <div class="control">
-    <p>Day. Opens on today's letter. C is A run backwards, D is B run backwards.</p>
+    <p>Day. Opens on today's letter. A and C run the same set of classes in opposite order, B and D run the other set. English and Advisory are in both, so they meet daily.</p>
     <div class="seg" role="group" aria-label="Rotation day">
       <button data-day="A" aria-pressed="true">A day</button>
       <button data-day="B" aria-pressed="false">B day</button>
