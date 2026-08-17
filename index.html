@@ -168,10 +168,10 @@
   </div>
 
   <div class="control">
-    <p>Lunch shift is the last unconfirmed piece. Sixth grade gets one of two.</p>
+    <p>Her lunch is the second shift, 11:12 to 11:44. The first shift is shown only for comparison.</p>
     <div class="seg" role="group" aria-label="Lunch shift">
-      <button id="l1" aria-pressed="true">Lunch 1 · 10:40</button>
-      <button id="l2" aria-pressed="false">Lunch 2 · 11:12</button>
+      <button id="l1" aria-pressed="false">Lunch 1 · 10:40</button>
+      <button id="l2" aria-pressed="true">Lunch 2 · 11:12 ✓</button>
     </div>
   </div>
 
@@ -291,19 +291,19 @@
           <td class="tcol">10:20–10:40</td>
           <td colspan="4"><span class="cn">PEAK · Advisory · DiPietro · Room 382 · every day</span></td>
         </tr>
-        <tr class="band">
-          <td class="tcol">10:40–11:12</td>
-          <td colspan="4"><span class="cn">LUNCH 1</span> &nbsp;— or Lunch 2 at 11:12–11:44. Shift not yet confirmed; times below assume Lunch 1.</td>
-        </tr>
         <tr>
-          <td class="tcol">11:15–12:00</td>
+          <td class="tcol">10:45–11:12</td>
           <td><span class="cb">3</span><span class="cn">English 6H</span><span class="cr">Peyton · 369</span></td>
           <td><span class="cb">3</span><span class="cn">Spectrum 6</span><span class="cr">Cumberledge · 271</span></td>
           <td><span class="cb">6</span><span class="cn">Math 7</span><span class="cr">Reel · 259</span></td>
           <td><span class="cb">6</span><span class="cn">English 6H</span><span class="cr">Peyton · 369</span></td>
         </tr>
+        <tr class="band">
+          <td class="tcol">11:12–11:44</td>
+          <td colspan="4"><span class="cn">LUNCH</span> &nbsp;— second shift</td>
+        </tr>
         <tr>
-          <td class="tcol">12:03–12:48</td>
+          <td class="tcol">11:47–12:48</td>
           <td><span class="cb">4</span><span class="cn">English 6H</span><span class="cr">Peyton · 369</span></td>
           <td><span class="cb">4</span><span class="cn">Strings 6</span><span class="cr">Holowecki · 330</span></td>
           <td><span class="cb">5</span><span class="cn">Math 7</span><span class="cr">Reel · 259</span></td>
@@ -380,7 +380,7 @@
       <span><b>The letter is not tied to a weekday.</b> It advances one step every school day, so Monday is A one week and B the next. Check the school's A-D Calendar. Projected first weeks: Aug 17 week is A B C D A, Aug 24 week is B C D A B, Aug 31 week is C D A B C.</span>
       <span><b>Instrument goes in on B and D days only.</b> Lockers are shared, so it comes home the same day.</span>
       <span><b>Grading.</b> Cores weight 60 percent major summatives, 30 minor, 10 formative. Science and English allow retakes on majors at 70 percent or below. Math states no extra credit and no retake, and late work is not accepted after the related summative.</span>
-      <span><b>Small numbers in each cell are block numbers.</b> Two to three minutes of passing time sits between the paired blocks in each slot.</span>
+      <span><b>The block before lunch resumes at 11:47 and hands over to the next block inside that window.</b> The exact handover minute is not published. Small numbers in each cell are block numbers. Two to three minutes of passing time sits between the paired blocks in each slot.</span>
     </div>
 
   </div>
@@ -407,7 +407,7 @@ var DAYS = [
   {id:'D', set:'B', order:[[8,7],[6,5],[4,3],[2,1]], note:'B set, reversed'}
 ];
 
-var lunch = 1, sem = 1;
+var lunch = 2, sem = 1;
 
 function sets(){
   var elective = (sem === 1) ? C.art : C.ica;
