@@ -1,7 +1,13 @@
 {
-  "updated": "2026-08-17",
-  "note": "Rewritten by the 5pm and 7pm email scans.",
+  "updated": "2026-08-18",
+  "note": "Updated by the Aug 18 email scan.",
   "items": [
+    {
+      "type": "notice",
+      "title": "Lunch shift confirmed for B days",
+      "detail": "B day is first shift, 10:40 to 11:12, then block 3 at 11:15 and block 4 at 12:03. D day runs the same B set so it follows. A and C days are still shown as second shift and remain unconfirmed. The planner now picks the shift from the day set, with a manual override.",
+      "source": "Reported from school, Aug 18"
+    },
     {
       "date": "2026-08-20",
       "type": "deadline",
@@ -48,6 +54,10 @@
   ],
   "scans": [
     {
+      "at": "2026-08-18T16:35:00-04:00",
+      "summary": "English 6H syllabus email added four dated items including the Aug 31 vocabulary packet. No other teacher sent graded work. B day lunch confirmed as first shift and folded into the planner."
+    },
+    {
       "at": "2026-08-17T19:00:00-04:00",
       "summary": "No new school email since the 5pm scan."
     },
@@ -58,5 +68,42 @@
   ],
   "closures": [],
   "bellOverride": null,
-  "coursework": []
+  "coursework": [
+    {
+      "type": "assignment",
+      "cls": "English 6H",
+      "date": "2026-08-19",
+      "title": "English homework: community builder activity",
+      "detail": "Assigned Tuesday, due at the start of class Wednesday. Same visual shown in class Monday and Tuesday. Short and meant to be fun.",
+      "source": "Madison Peyton, English 6H",
+      "url": "https://mail.google.com/mail/u/0/#inbox/1a01692b411bf215"
+    },
+    {
+      "type": "assignment",
+      "cls": "English 6H",
+      "date": "2026-08-20",
+      "title": "English class materials due",
+      "detail": "Spiral notebook due Wednesday Aug 19. Folder, pencils, highlighters and headphones or earbuds due Thursday Aug 20. Full list is on the Schoology syllabus.",
+      "source": "Madison Peyton, English 6H",
+      "url": "https://mail.google.com/mail/u/0/#inbox/1a01692b411bf215"
+    },
+    {
+      "type": "assignment",
+      "cls": "English 6H",
+      "date": "2026-08-21",
+      "title": "Library checkout, independent reading book",
+      "detail": "Class goes to the Watson Mountain library Friday for checkout. A book is expected in class every day for independent reading time. She can bring one from home before then.",
+      "source": "Madison Peyton, English 6H",
+      "url": "https://mail.google.com/mail/u/0/#inbox/1a01692b411bf215"
+    },
+    {
+      "type": "assignment",
+      "cls": "English 6H",
+      "date": "2026-08-31",
+      "title": "Vocabulary Unit 1 Sketch Notes packet",
+      "detail": "Graded formative, 5 points for accuracy. Due at the start of class Aug 31. Class time given this week and next to work on it.",
+      "source": "Madison Peyton, English 6H",
+      "url": "https://mail.google.com/mail/u/0/#inbox/1a01692b411bf215"
+    }
+  ]
 }

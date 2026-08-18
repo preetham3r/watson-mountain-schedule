@@ -330,8 +330,9 @@
     <span class="bg">
       <b>Lunch</b>
       <span class="pills" role="group" aria-label="Lunch shift">
+        <button id="la" aria-pressed="true">Auto</button>
         <button id="l1" aria-pressed="false">1</button>
-        <button id="l2" aria-pressed="true">2</button>
+        <button id="l2" aria-pressed="false">2</button>
       </span>
     </span>
   </div>
@@ -575,7 +576,7 @@
         </tr>
         <tr class="band">
           <td class="tcol">11:12–11:44</td>
-          <td colspan="4"><span class="cn">LUNCH</span> &nbsp;— second shift</td>
+          <td colspan="4"><span class="cn">LUNCH</span> &nbsp;— A and C days, second shift. B and D days eat first shift at 10:40 – 11:12, then run block 3 at 11:15 – 12:00 and block 4 at 12:03 – 12:48.</td>
         </tr>
         <tr>
           <td class="tcol">11:47–12:48</td>
@@ -656,6 +657,7 @@
       <span><b>Instrument goes in on B and D days only.</b> Lockers are shared, so it comes home the same day. Two weeks notice to Mrs. Holowecki for any planned rehearsal or concert absence.</span>
       <span><b>Grading.</b> All cores weight 60 percent major summatives, 30 minor, 10 formative. Science allows a retake below 70 on majors. English allows retakes on majors only at 70 or below, none on minors. Math is strictest: no extra credit, no stated retake, and late work is refused once the related summative is taken.</span>
       <span><b>Absent?</b> Call 571-367-4250 that morning, then send a written reason within three school days of her return or it is recorded as unexcused. She gets one block period per absent day to hand work in, and missed work shows as Z until graded. Check Schoology the same evening.</span>
+      <span><b>Lunch.</b> B and D days are first shift, 10:40 to 11:12, confirmed Aug 18. A and C days are shown as second shift and are still unconfirmed.</span>
       <span><b>Timing.</b> The block before lunch resumes at 11:47 and hands over to the next block inside that window; the exact minute is not published. Small numbers in each cell are block numbers. Two to three minutes of passing time sits between paired blocks. On a delay or early release every time on this sheet changes, see the web version.</span>
     </div>
 
@@ -711,7 +713,13 @@ var DAYS = [
   {id:'D', set:'B', order:[[8,7],[6,5],[4,3],[2,1]], note:'B set, reversed'}
 ];
 
+/* Lunch shift runs off the day set. B day confirmed first shift on Aug 18.
+   A day is still assumed second shift until seen. Auto follows this map, the
+   1 and 2 buttons force a shift on every day. */
+var LUNCH_BY_SET = {A:2, B:1};
+var lunchOverride = null;
 var lunch = 2, sem = 1;
+function lunchFor(set){ return lunchOverride || LUNCH_BY_SET[set] || 2; }
 
 function sets(){
   var elective = (sem === 1) ? C.art : C.ica;
@@ -757,6 +765,7 @@ function slotRows(pair, set, times){
 
 function dayCard(d){
   var b = B();
+  lunch = lunchFor(d.set);
   var h = '<div class="day">'
     + '<div class="day-head"><div class="day-name">' + d.id + ' day</div><div class="day-note">' + d.note + '</div></div>'
     + edge(b.arrive.split(',')[0], 'Arrival' + (b.arrive.indexOf(',') > -1 ? ',' + b.arrive.split(',')[1] : ''));
@@ -798,7 +807,8 @@ document.querySelectorAll('[data-day]').forEach(function(b){
 });
 
 function setLunch(n){
-  lunch = n;
+  lunchOverride = n;
+  document.getElementById('la').setAttribute('aria-pressed', n === null);
   document.getElementById('l1').setAttribute('aria-pressed', n === 1);
   document.getElementById('l2').setAttribute('aria-pressed', n === 2);
   render();
@@ -811,6 +821,7 @@ function setSem(n){
   render();
   if(typeof renderToday === "function") renderToday();
 }
+document.getElementById('la').addEventListener('click', function(){ setLunch(null); });
 document.getElementById('l1').addEventListener('click', function(){ setLunch(1); });
 document.getElementById('l2').addEventListener('click', function(){ setLunch(2); });
 document.getElementById('s1').addEventListener('click', function(){ setSem(1); });
@@ -950,6 +961,7 @@ var SLOT_SET = {A:"A", C:"A", B:"B", D:"B"};
 
 function daySchedule(L){
   var order = SLOT_ORDER[L], set = SLOT_SET[L], S = sets(), rows = [], b = B();
+  lunch = lunchFor(set);
   function crs(x){ return S[set][x]; }
   function slot(pair, times){
     var x = crs(pair[0]), y = crs(pair[1]);
