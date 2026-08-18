@@ -1169,7 +1169,9 @@ function cwUpcoming(type){
   var all = (CWDATA && CWDATA.coursework) ? CWDATA.coursework : [];
   var todayKey = iso(new Date());
   return all.filter(function(x){
-    return (x.type || "assignment") === type && (!x.date || x.date >= todayKey);
+    if((x.type || "assignment") !== type) return false;
+    if(x.expires && x.expires < todayKey) return false;
+    return (!x.date || x.date >= todayKey);
   });
 }
 
@@ -1349,7 +1351,10 @@ function renderAnn(data){
     return 0;
   });
   var todayKey = iso(new Date());
-  items = items.filter(function(it){ return !it.date || it.date >= todayKey; });
+  items = items.filter(function(it){
+    if(it.expires && it.expires < todayKey) return false;   /* notices carry their own shelf life */
+    return !it.date || it.date >= todayKey;
+  });
 
   var slog = document.getElementById("slog"), sb = document.getElementById("slogbody");
   var scans = (data && data.scans) ? data.scans.slice(0, 6) : [];

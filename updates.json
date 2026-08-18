@@ -1,6 +1,6 @@
 {
   "updated": "2026-08-18",
-  "note": "Updated by the Aug 18 email scan.",
+  "note": "Dated entries drop off after their date. Undated notices drop off on their expires date.",
   "items": [
     {
       "date": "2026-08-21",
@@ -17,12 +17,6 @@
       "detail": "Spiral notebook was due Aug 19. Folder, pencils, highlighters and headphones or earbuds due Aug 20. Not graded, but she needs them to work in class. Extra pencils, highlighters and tissues are welcome for the classroom.",
       "source": "Madison Peyton, English 6H",
       "url": "https://mail.google.com/mail/u/0/#inbox/1a01692b411bf215"
-    },
-    {
-      "type": "notice",
-      "title": "Lunch shift confirmed for B days",
-      "detail": "B day is first shift, 10:40 to 11:12, then block 3 at 11:15 and block 4 at 12:03. D day runs the same B set so it follows. A and C days are still shown as second shift and remain unconfirmed. The planner now picks the shift from the day set, with a manual override.",
-      "source": "Reported from school, Aug 18"
     },
     {
       "date": "2026-08-20",
@@ -42,33 +36,25 @@
     },
     {
       "type": "notice",
-      "title": "Bus is assigned and running",
-      "detail": "Three late bus notifications came through between 8:32 and 8:51 this morning, so the route is active. Stopfinder still has not sent the invite you requested on Aug 10.",
-      "source": "LCPS Transportation",
-      "url": "https://mail.google.com/mail/u/0/#inbox/1a00fb5780320fe0"
-    },
-    {
-      "type": "notice",
       "title": "No Art 6 supply list yet",
-      "detail": "Five of six teachers have sent syllabi. Nothing from Ms. Thiele. Expect a supply ask in the first week.",
-      "source": "Watching for it"
-    },
-    {
-      "type": "notice",
-      "title": "Mountain Messenger, Volume 3 Issue 1",
-      "detail": "The school newsletter published Aug 16. Image based, so open it directly.",
-      "source": "Watson Mountain Middle",
-      "url": "https://mail.google.com/mail/u/0/#inbox/1a00b849a6a0cdf1"
+      "detail": "Five of six teachers have sent syllabi. Nothing from Ms. Thiele. Expect a supply ask in the first weeks.",
+      "source": "Watching for it",
+      "expires": "2026-09-15"
     },
     {
       "type": "notice",
       "title": "Violin chosen, rental and fitting still to do",
       "detail": "Rent from a shop and have her sized in person. The directors name Day Violins and say not to buy online. Needs rosin, a shoulder rest, a tuner, a cleaning cloth, a case tag and a home music stand.",
       "source": "Kelly Holowecki, orchestra",
-      "url": "https://mail.google.com/mail/u/0/#inbox/1a0068b81269e899"
+      "url": "https://mail.google.com/mail/u/0/#inbox/1a0068b81269e899",
+      "expires": "2026-08-26"
     }
   ],
   "scans": [
+    {
+      "at": "2026-08-18T18:40:00-04:00",
+      "summary": "Cleared three stale notices: the Aug 17 bus snapshot, the Vol 3 Issue 1 newsletter, and the lunch note now built into the page. Remaining notices carry an expiry."
+    },
     {
       "at": "2026-08-18T18:10:00-04:00",
       "summary": "Refiled the two logistics items. Supplies and library checkout moved from Assignments to Announced and upcoming. Assignments now holds only graded work."
