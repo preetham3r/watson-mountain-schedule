@@ -188,6 +188,7 @@
   .tag.event{background:#EFE7F4;color:var(--strings)}
   .tag.notice{background:var(--ice);color:var(--ink2)}
   .annempty{padding:16px 18px;font-size:13.5px;color:var(--ink2)}
+  .cwn{font-family:var(--mono);font-size:9px;opacity:.75;margin-left:2px}
 
   /* ---------- live inbox pull ---------- */
   .live{border-top:1px solid var(--line2);background:#FAFCFD}
@@ -398,8 +399,8 @@
       <h2>Coursework</h2>
       <span class="annact">
         <span class="seg segsm" role="group" aria-label="Coursework view">
-          <button data-cw="test" aria-pressed="true">Tests</button>
-          <button data-cw="assignment" aria-pressed="false">Assignments</button>
+          <button data-cw="test" aria-pressed="true">Tests <span class="cwn" id="cwn-test"></span></button>
+          <button data-cw="assignment" aria-pressed="false">Assignments <span class="cwn" id="cwn-assignment"></span></button>
         </span>
         <button class="ib" id="cwrefresh" title="Reload coursework" aria-label="Reload coursework">
           <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M20 11a8 8 0 1 0-2.3 5.7M20 5v6h-6"/></svg>
@@ -1164,12 +1165,29 @@ function daysAway(key){
   return Math.round((d - t) / 86400000);
 }
 
+function cwUpcoming(type){
+  var all = (CWDATA && CWDATA.coursework) ? CWDATA.coursework : [];
+  var todayKey = iso(new Date());
+  return all.filter(function(x){
+    return (x.type || "assignment") === type && (!x.date || x.date >= todayKey);
+  });
+}
+
+/* land on the tab that actually has something, so a full board never reads as empty */
+function cwPickTab(){
+  if(cwUpcoming(cwTab).length) return;
+  var other = (cwTab === "test") ? "assignment" : "test";
+  if(cwUpcoming(other).length) cwTab = other;
+}
+
 function renderCW(){
   var body = document.getElementById("cwbody");
-  var all = (CWDATA && CWDATA.coursework) ? CWDATA.coursework.slice() : [];
   var todayKey = iso(new Date());
-  var items = all.filter(function(x){
-    return (x.type || "assignment") === cwTab && (!x.date || x.date >= todayKey);
+  var items = cwUpcoming(cwTab).slice();
+
+  ["test","assignment"].forEach(function(t){
+    var el = document.getElementById("cwn-" + t);
+    if(el){ var n = cwUpcoming(t).length; el.textContent = n ? n : ""; }
   });
   items.sort(function(a, b){
     if(a.date && b.date) return a.date < b.date ? -1 : 1;
@@ -1182,9 +1200,15 @@ function renderCW(){
   }
 
   if(!items.length){
+    var other = (cwTab === "test") ? "assignment" : "test";
+    var on = cwUpcoming(other).length;
     body.innerHTML = '<div class="annempty">No '
       + (cwTab === "test" ? "tests or quizzes" : "assignments")
-      + ' on the board. These come from school email, so they appear once a teacher announces them. '
+      + ' on the board. '
+      + (on ? 'There ' + (on === 1 ? 'is 1 ' : 'are ' + on + ' ')
+             + (other === "test" ? 'test' : 'assignment') + (on === 1 ? '' : 's')
+             + ' waiting on the other tab. '
+          : 'These come from school email, so they appear once a teacher announces them. ')
       + 'Use Scan now to check the inbox right away.</div>';
     return;
   }
@@ -1309,6 +1333,7 @@ function renderAnn(data){
     }
   }
   CWDATA = data;
+  cwPickTab();
   renderCW();
 
   var items = (data && data.items) ? data.items.slice() : [];
