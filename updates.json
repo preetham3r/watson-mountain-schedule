@@ -1,15 +1,7 @@
 {
-  "updated": "2026-08-18",
+  "updated": "2026-08-20",
   "note": "Dated entries drop off after their date. Undated notices drop off on their expires date.",
   "items": [
-    {
-      "date": "2026-08-21",
-      "type": "event",
-      "title": "English class goes to the library",
-      "detail": "Checkout day. A book is expected in class every day after this for independent reading. She can bring one from home before Friday if she wants to start sooner.",
-      "source": "Madison Peyton, English 6H",
-      "url": "https://mail.google.com/mail/u/0/#inbox/1a01692b411bf215"
-    },
     {
       "date": "2026-08-20",
       "type": "deadline",
@@ -27,12 +19,36 @@
       "url": "https://mail.google.com/mail/u/0/#inbox/1a0068b81269e899"
     },
     {
+      "date": "2026-08-21",
+      "type": "event",
+      "title": "English class goes to the library",
+      "detail": "Checkout day. A book is expected in class every day after this for independent reading. She can bring one from home before Friday if she wants to start sooner.",
+      "source": "Madison Peyton, English 6H",
+      "url": "https://mail.google.com/mail/u/0/#inbox/1a01692b411bf215"
+    },
+    {
       "date": "2026-08-26",
       "type": "event",
       "title": "Violin comes to school for the first time",
       "detail": "Grade 6 start date. Strings is block 4B, so the violin goes in on B and D days only and comes home the same day. Bring it in earlier if it still needs finger tapes.",
       "source": "Kelly Holowecki, orchestra",
       "url": "https://mail.google.com/mail/u/0/#inbox/1a0068b81269e899"
+    },
+    {
+      "date": "2026-08-27",
+      "type": "deadline",
+      "title": "First PE dress out day",
+      "detail": "Aug 27 or 28 depending on her block. She needs athletic shorts or leggings or sweatpants within LCPS dress code, a T shirt, a sweatshirt, closed toe and closed heel sneakers, a water bottle and deodorant, all washed and in her bag or locker beforehand. Participation points depend on it.",
+      "source": "Adi, Health & PE 6",
+      "url": "https://mail.google.com/mail/u/0/#inbox/1a01b5942dd4053b"
+    },
+    {
+      "type": "notice",
+      "title": "Science 6H daily materials",
+      "detail": "Binder, pencil, expo marker and headphones every science day. All papers and notes live in the binder. Class slides, assignments and quiz and project due dates are posted in Schoology, so check there after any absence. Teacher also takes donations of expo markers, paper towels and tissues.",
+      "source": "Tracy DiPietro, Science 6H",
+      "url": "https://mail.google.com/mail/u/0/#inbox/1a01ae26ea9b1c21",
+      "expires": "2026-09-30"
     },
     {
       "type": "notice",
@@ -48,9 +64,21 @@
       "source": "Kelly Holowecki, orchestra",
       "url": "https://mail.google.com/mail/u/0/#inbox/1a0068b81269e899",
       "expires": "2026-08-26"
+    },
+    {
+      "type": "notice",
+      "title": "Orchestra concert dates not on the page yet",
+      "detail": "Rehearsals and concerts are graded major summatives. Dates sit in a linked performance calendar rather than in the email, so they need to be pulled in by hand. Concert attire is the WM Orchestra shirt bought during the year plus dark pants and dark shoes from home. Ensemble placement for 6th grade is still to be announced.",
+      "source": "Kelly Holowecki, orchestra",
+      "url": "https://mail.google.com/mail/u/0/#inbox/1a0068b81269e899",
+      "expires": "2026-09-30"
     }
   ],
   "scans": [
+    {
+      "at": "2026-08-20T09:38:00-04:00",
+      "summary": "Two pass scan of school email. Added the Aug 27 PE dress out deadline, a science daily materials notice and an orchestra concert calendar notice. Cleared the Aug 19 English homework. Science Safety Agreement confirmed submitted Aug 19."
+    },
     {
       "at": "2026-08-18T18:40:00-04:00",
       "summary": "Cleared three stale notices: the Aug 17 bus snapshot, the Vol 3 Issue 1 newsletter, and the lunch note now built into the page. Remaining notices carry an expiry."
@@ -79,15 +107,6 @@
   "closures": [],
   "bellOverride": null,
   "coursework": [
-    {
-      "type": "assignment",
-      "cls": "English 6H",
-      "date": "2026-08-19",
-      "title": "English homework: community builder activity",
-      "detail": "Assigned Tuesday, due at the start of class Wednesday. Same visual shown in class Monday and Tuesday. Short and meant to be fun.",
-      "source": "Madison Peyton, English 6H",
-      "url": "https://mail.google.com/mail/u/0/#inbox/1a01692b411bf215"
-    },
     {
       "type": "assignment",
       "cls": "English 6H",
