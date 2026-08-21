@@ -1,7 +1,15 @@
 {
-  "updated": "2026-08-17",
-  "note": "Rewritten by the 5pm and 7pm email scans.",
+  "updated": "2026-08-21",
+  "note": "Updated by the Aug 21 seven day email scan.",
   "items": [
+    {
+      "date": "2026-08-26",
+      "type": "deadline",
+      "title": "Spectrum two pocket folder due in class",
+      "detail": "Ms. Cumberledge needs it by Wed Aug 26. Stays in her room all year, cannot be a folder used for another class, no binders.",
+      "source": "Erin Cumberledge, Spectrum 6",
+      "url": "https://mail.google.com/mail/u/0/#inbox/1a025155bdce2298"
+    },
     {
       "date": "2026-08-20",
       "type": "deadline",
@@ -60,6 +68,10 @@
   ],
   "scans": [
     {
+      "at": "2026-08-21T16:10:00-04:00",
+      "summary": "Seven day scan of school email. Two English 6H graded items added to coursework, Me Bag HW Aug 19 and Vocabulary Sketch Notes packet Aug 31. Spectrum folder deadline Aug 26 added. No tests or quizzes posted yet in any class."
+    },
+    {
       "at": "2026-08-17T21:30:00-04:00",
       "summary": "Read the Spectrum syllabus linked from Ms. Cumberledge's email. Added a folder to supplies, the two week late window, and the fact that Spectrum posts no grades to ParentVUE."
     },
@@ -74,5 +86,24 @@
   ],
   "closures": [],
   "bellOverride": null,
-  "coursework": []
+  "coursework": [
+    {
+      "type": "assignment",
+      "cls": "English 6H",
+      "date": "2026-08-19",
+      "title": "Me Bag homework",
+      "detail": "Community builder assignment introduced in class Mon and Tue, due Wed Aug 19. Slide with the directions is linked in the teacher email.",
+      "source": "Madison Peyton, English 6H",
+      "url": "https://mail.google.com/mail/u/0/#inbox/1a016ac62fd64930"
+    },
+    {
+      "type": "assignment",
+      "cls": "English 6H",
+      "date": "2026-08-31",
+      "title": "Vocabulary Unit 1 Sketch Notes packet",
+      "detail": "Graded formative, 5 points for accuracy, due at the start of class Aug 31. Class time given this week and next, so it should be mostly done in school.",
+      "source": "Madison Peyton, English 6H",
+      "url": "https://mail.google.com/mail/u/0/#inbox/1a01692b411bf215"
+    }
+  ]
 }
