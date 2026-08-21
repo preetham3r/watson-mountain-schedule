@@ -1,15 +1,7 @@
 {
-  "updated": "2026-08-20",
-  "note": "Dated entries drop off after their date. Undated notices drop off on their expires date.",
+  "updated": "2026-08-17",
+  "note": "Rewritten by the 5pm and 7pm email scans.",
   "items": [
-    {
-      "date": "2026-08-20",
-      "type": "deadline",
-      "title": "English supplies in her bag",
-      "detail": "Spiral notebook was due Aug 19. Folder, pencils, highlighters and headphones or earbuds due Aug 20. Not graded, but she needs them to work in class. Extra pencils, highlighters and tissues are welcome for the classroom.",
-      "source": "Madison Peyton, English 6H",
-      "url": "https://mail.google.com/mail/u/0/#inbox/1a01692b411bf215"
-    },
     {
       "date": "2026-08-20",
       "type": "deadline",
@@ -17,14 +9,6 @@
       "detail": "Only applies if you are requesting a school owned instrument. Otherwise ignore and wait for the general rental window.",
       "source": "Kelly Holowecki, orchestra",
       "url": "https://mail.google.com/mail/u/0/#inbox/1a0068b81269e899"
-    },
-    {
-      "date": "2026-08-21",
-      "type": "event",
-      "title": "English class goes to the library",
-      "detail": "Checkout day. A book is expected in class every day after this for independent reading. She can bring one from home before Friday if she wants to start sooner.",
-      "source": "Madison Peyton, English 6H",
-      "url": "https://mail.google.com/mail/u/0/#inbox/1a01692b411bf215"
     },
     {
       "date": "2026-08-26",
@@ -35,65 +19,49 @@
       "url": "https://mail.google.com/mail/u/0/#inbox/1a0068b81269e899"
     },
     {
-      "date": "2026-08-27",
-      "type": "deadline",
-      "title": "First PE dress out day",
-      "detail": "Aug 27 or 28 depending on her block. She needs athletic shorts or leggings or sweatpants within LCPS dress code, a T shirt, a sweatshirt, closed toe and closed heel sneakers, a water bottle and deodorant, all washed and in her bag or locker beforehand. Participation points depend on it.",
-      "source": "Adi, Health & PE 6",
-      "url": "https://mail.google.com/mail/u/0/#inbox/1a01b5942dd4053b"
-    },
-    {
       "type": "notice",
-      "title": "Science 6H daily materials",
-      "detail": "Binder, pencil, expo marker and headphones every science day. All papers and notes live in the binder. Class slides, assignments and quiz and project due dates are posted in Schoology, so check there after any absence. Teacher also takes donations of expo markers, paper towels and tissues.",
-      "source": "Tracy DiPietro, Science 6H",
-      "url": "https://mail.google.com/mail/u/0/#inbox/1a01ae26ea9b1c21",
-      "expires": "2026-09-30"
+      "title": "Bus is assigned and running",
+      "detail": "Three late bus notifications came through between 8:32 and 8:51 this morning, so the route is active. Stopfinder still has not sent the invite you requested on Aug 10.",
+      "source": "LCPS Transportation",
+      "url": "https://mail.google.com/mail/u/0/#inbox/1a00fb5780320fe0"
     },
     {
       "type": "notice",
       "title": "No Art 6 supply list yet",
-      "detail": "Five of six teachers have sent syllabi. Nothing from Ms. Thiele. Expect a supply ask in the first weeks.",
-      "source": "Watching for it",
-      "expires": "2026-09-15"
+      "detail": "Five of six teachers have sent syllabi. Nothing from Ms. Thiele. Expect a supply ask in the first week.",
+      "source": "Watching for it"
+    },
+    {
+      "type": "notice",
+      "title": "Mountain Messenger, Volume 3 Issue 1",
+      "detail": "The school newsletter published Aug 16. Image based, so open it directly.",
+      "source": "Watson Mountain Middle",
+      "url": "https://mail.google.com/mail/u/0/#inbox/1a00b849a6a0cdf1"
     },
     {
       "type": "notice",
       "title": "Violin chosen, rental and fitting still to do",
       "detail": "Rent from a shop and have her sized in person. The directors name Day Violins and say not to buy online. Needs rosin, a shoulder rest, a tuner, a cleaning cloth, a case tag and a home music stand.",
       "source": "Kelly Holowecki, orchestra",
-      "url": "https://mail.google.com/mail/u/0/#inbox/1a0068b81269e899",
-      "expires": "2026-08-26"
+      "url": "https://mail.google.com/mail/u/0/#inbox/1a0068b81269e899"
     },
     {
       "type": "notice",
-      "title": "Orchestra concert dates not on the page yet",
-      "detail": "Rehearsals and concerts are graded major summatives. Dates sit in a linked performance calendar rather than in the email, so they need to be pulled in by hand. Concert attire is the WM Orchestra shirt bought during the year plus dark pants and dark shoes from home. Ensemble placement for 6th grade is still to be announced.",
-      "source": "Kelly Holowecki, orchestra",
-      "url": "https://mail.google.com/mail/u/0/#inbox/1a0068b81269e899",
-      "expires": "2026-09-30"
+      "title": "Spectrum needs a two pocket folder",
+      "detail": "It stays in Ms. Cumberledge's classroom all year. Plus pencils and the Chromebook with its charger.",
+      "source": "Erin Cumberledge, Spectrum syllabus"
+    },
+    {
+      "type": "notice",
+      "title": "Spectrum grades will never show in ParentVUE",
+      "detail": "That class gives no traditional grades and uses the Schoology gradebook only. Rubrics plus two semester self assessments. A blank ParentVUE line for Spectrum is expected.",
+      "source": "Erin Cumberledge, Spectrum syllabus"
     }
   ],
   "scans": [
     {
-      "at": "2026-08-20T09:38:00-04:00",
-      "summary": "Two pass scan of school email. Added the Aug 27 PE dress out deadline, a science daily materials notice and an orchestra concert calendar notice. Cleared the Aug 19 English homework. Science Safety Agreement confirmed submitted Aug 19."
-    },
-    {
-      "at": "2026-08-18T18:40:00-04:00",
-      "summary": "Cleared three stale notices: the Aug 17 bus snapshot, the Vol 3 Issue 1 newsletter, and the lunch note now built into the page. Remaining notices carry an expiry."
-    },
-    {
-      "at": "2026-08-18T18:10:00-04:00",
-      "summary": "Refiled the two logistics items. Supplies and library checkout moved from Assignments to Announced and upcoming. Assignments now holds only graded work."
-    },
-    {
-      "at": "2026-08-18T16:51:00-04:00",
-      "summary": "Rescanned LCPS, Watson Mountain and Schoology email for the last 7 days. Six school emails, no new graded work. All dated items already on the page."
-    },
-    {
-      "at": "2026-08-18T16:35:00-04:00",
-      "summary": "English 6H syllabus email added four dated items including the Aug 31 vocabulary packet. No other teacher sent graded work. B day lunch confirmed as first shift and folded into the planner."
+      "at": "2026-08-17T21:30:00-04:00",
+      "summary": "Read the Spectrum syllabus linked from Ms. Cumberledge's email. Added a folder to supplies, the two week late window, and the fact that Spectrum posts no grades to ParentVUE."
     },
     {
       "at": "2026-08-17T19:00:00-04:00",
@@ -106,15 +74,5 @@
   ],
   "closures": [],
   "bellOverride": null,
-  "coursework": [
-    {
-      "type": "assignment",
-      "cls": "English 6H",
-      "date": "2026-08-31",
-      "title": "Vocabulary Unit 1 Sketch Notes packet",
-      "detail": "Graded formative, 5 points for accuracy. Due at the start of class Aug 31. Class time given this week and next to work on it.",
-      "source": "Madison Peyton, English 6H",
-      "url": "https://mail.google.com/mail/u/0/#inbox/1a01692b411bf215"
-    }
-  ]
+  "coursework": []
 }
