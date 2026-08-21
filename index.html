@@ -130,6 +130,17 @@
   .step b{color:var(--ink)}
 
 
+
+  .badge{margin-left:auto;display:inline-flex;align-items:center;gap:6px;text-decoration:none;
+    border:1px solid var(--line);border-radius:20px;padding:3px 10px 3px 8px;background:var(--card);
+    font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;color:var(--open);white-space:nowrap}
+  .badge:hover{border-color:var(--eng);color:var(--eng)}
+  .badge:focus-visible{outline:2px solid var(--eng);outline-offset:2px}
+  .bdot{width:6px;height:6px;border-radius:50%;background:var(--open);flex:none}
+  .badge.ok .bdot{background:var(--sci)}
+  .badge.stale .bdot{background:var(--math)}
+  @media(max-width:420px){.badge{margin-left:0;order:3}}
+
   .bar{display:flex;flex-wrap:wrap;gap:7px 16px;align-items:center;margin:0 0 16px}
   .bg{display:flex;align-items:center;gap:7px}
   .bg > b{font-family:var(--mono);font-size:9px;letter-spacing:.13em;text-transform:uppercase;
@@ -307,6 +318,9 @@
   <header class="mast">
     <h1>Adithi</h1>
     <p class="sub">Grade 6 &middot; Watson Mountain Middle &middot; 2026&ndash;2027</p>
+    <a class="badge" id="badge" href="https://github.com/preetham3r/watson-mountain-schedule" target="_blank" rel="noopener">
+      <span class="bdot"></span><span id="badgetxt">checking</span>
+    </a>
   </header>
 
   <div class="bar">
@@ -1237,8 +1251,24 @@ function annDate(it){
   return {txt:txt, soon:(diff >= 0 && diff <= 7)};
 }
 
+function stampBadge(data){
+  var el = document.getElementById("badge"), tx = document.getElementById("badgetxt");
+  if(!el) return;
+  var latest = null;
+  if(data && data.scans && data.scans.length && data.scans[0].at) latest = new Date(data.scans[0].at);
+  else if(data && data.updated) latest = fromIso(data.updated);
+  if(!latest || isNaN(latest)){ el.className = "badge"; tx.textContent = "repo"; return; }
+  var hrs = (Date.now() - latest) / 36e5;
+  el.className = "badge " + (hrs < 30 ? "ok" : "stale");
+  tx.textContent = "scanned " + (hrs < 1 ? "just now"
+    : hrs < 24 ? Math.round(hrs) + "h ago"
+    : Math.round(hrs / 24) + "d ago");
+  el.title = "Last inbox scan " + latest.toLocaleString() + ". Opens the repo.";
+}
+
 function renderAnn(data){
   var body = document.getElementById("annbody"), st = document.getElementById("annst");
+  stampBadge(data);
 
   /* unplanned closures shift every letter after them, so fold them in before anything renders */
   var closures = (data && data.closures) ? data.closures : [];
@@ -1337,6 +1367,8 @@ function loadAnn(btn){
     .then(renderAnn)
     .catch(function(){
       document.getElementById("annst").textContent = "";
+      var be = document.getElementById("badge");
+      if(be){ be.className = "badge"; document.getElementById("badgetxt").textContent = "repo"; }
       document.getElementById("annbody").innerHTML =
         '<div class="annempty">Open this from the web address rather than a saved copy to see the latest school updates.</div>';
     })
@@ -1361,6 +1393,8 @@ function loadAnn(btn){
 
   loadAnn();
 })();
+
+
 
 renderToday();
 
