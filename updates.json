@@ -68,6 +68,10 @@
   ],
   "scans": [
     {
+      "at": "2026-08-22T09:15:00-04:00",
+      "summary": "Seven day scan of school email. Added the Aug 27 PE dress out day to coursework. Both English 6H items were already present and were not duplicated. No tests or quizzes announced in any class, and the Aug 19, 20 and 21 Schoology summaries all show no upcoming events and no overdue submissions."
+    },
+    {
       "at": "2026-08-21T16:10:00-04:00",
       "summary": "Seven day scan of school email. Two English 6H graded items added to coursework, Me Bag HW Aug 19 and Vocabulary Sketch Notes packet Aug 31. Spectrum folder deadline Aug 26 added. No tests or quizzes posted yet in any class."
     },
@@ -104,6 +108,15 @@
       "detail": "Graded formative, 5 points for accuracy, due at the start of class Aug 31. Class time given this week and next, so it should be mostly done in school.",
       "source": "Madison Peyton, English 6H",
       "url": "https://mail.google.com/mail/u/0/#inbox/1a01692b411bf215"
+    },
+    {
+      "type": "assignment",
+      "cls": "Health & PE 6",
+      "date": "2026-08-27",
+      "title": "First dress out day",
+      "detail": "Athletic clothes meeting LCPS dress code, closed toe and closed heel sneakers, water bottle and deodorant. Email says Aug 27 or 28 depending on the day rotation, so have the bag packed by the 26th. Points are lost for not dressing out.",
+      "source": "Adi, Health & PE 6 period 7-8 C",
+      "url": "https://mail.google.com/mail/u/0/#inbox/1a01b5942dd4053b"
     }
   ]
 }
