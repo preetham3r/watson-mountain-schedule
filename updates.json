@@ -1,79 +1,38 @@
 {
-  "updated": "2026-08-21",
-  "note": "Updated by the Aug 21 seven day email scan.",
+  "updated": "2026-08-27",
+  "note": "Rewritten by the 5pm and 7pm email scans.",
   "items": [
     {
-      "date": "2026-08-26",
-      "type": "deadline",
-      "title": "Spectrum two pocket folder due in class",
-      "detail": "Ms. Cumberledge needs it by Wed Aug 26. Stays in her room all year, cannot be a folder used for another class, no binders.",
-      "source": "Erin Cumberledge, Spectrum 6",
-      "url": "https://mail.google.com/mail/u/0/#inbox/1a025155bdce2298"
-    },
-    {
-      "date": "2026-08-20",
-      "type": "deadline",
-      "title": "Orchestra financial assistance rental form closes",
-      "detail": "Only applies if you are requesting a school owned instrument. Otherwise ignore and wait for the general rental window.",
-      "source": "Kelly Holowecki, orchestra",
-      "url": "https://mail.google.com/mail/u/0/#inbox/1a0068b81269e899"
-    },
-    {
-      "date": "2026-08-26",
-      "type": "event",
-      "title": "Violin comes to school for the first time",
-      "detail": "Grade 6 start date. Strings is block 4B, so the violin goes in on B and D days only and comes home the same day. Bring it in earlier if it still needs finger tapes.",
-      "source": "Kelly Holowecki, orchestra",
-      "url": "https://mail.google.com/mail/u/0/#inbox/1a0068b81269e899"
+      "type": "notice",
+      "title": "Sketchbook must be unlined and the right size",
+      "detail": "Mr. Dickerson has nearly run out of spares and several students still have none. It has to be unlined and match the type he linked. He would welcome donated extras.",
+      "source": "Jeb Dickerson, US History",
+      "url": "https://mail.google.com/mail/u/0/#inbox/1a03a7bbfec2f50e"
     },
     {
       "type": "notice",
-      "title": "Bus is assigned and running",
-      "detail": "Three late bus notifications came through between 8:32 and 8:51 this morning, so the route is active. Stopfinder still has not sent the invite you requested on Aug 10.",
-      "source": "LCPS Transportation",
-      "url": "https://mail.google.com/mail/u/0/#inbox/1a00fb5780320fe0"
-    },
-    {
-      "type": "notice",
-      "title": "No Art 6 supply list yet",
-      "detail": "Five of six teachers have sent syllabi. Nothing from Ms. Thiele. Expect a supply ask in the first week.",
-      "source": "Watching for it"
-    },
-    {
-      "type": "notice",
-      "title": "Mountain Messenger, Volume 3 Issue 1",
-      "detail": "The school newsletter published Aug 16. Image based, so open it directly.",
-      "source": "Watson Mountain Middle",
-      "url": "https://mail.google.com/mail/u/0/#inbox/1a00b849a6a0cdf1"
-    },
-    {
-      "type": "notice",
-      "title": "Violin chosen, rental and fitting still to do",
-      "detail": "Rent from a shop and have her sized in person. The directors name Day Violins and say not to buy online. Needs rosin, a shoulder rest, a tuner, a cleaning cloth, a case tag and a home music stand.",
-      "source": "Kelly Holowecki, orchestra",
-      "url": "https://mail.google.com/mail/u/0/#inbox/1a0068b81269e899"
-    },
-    {
-      "type": "notice",
-      "title": "Spectrum needs a two pocket folder",
-      "detail": "It stays in Ms. Cumberledge's classroom all year. Plus pencils and the Chromebook with its charger.",
-      "source": "Erin Cumberledge, Spectrum syllabus"
+      "title": "Schoology daily digest is now arriving",
+      "detail": "The parent summary lands each evening with upcoming work and grades. It is the source for the Coursework card above. PE syllabus is her first graded item, 5 out of 5.",
+      "source": "Schoology",
+      "url": "https://app.schoology.com/parent/home"
     },
     {
       "type": "notice",
       "title": "Spectrum grades will never show in ParentVUE",
       "detail": "That class gives no traditional grades and uses the Schoology gradebook only. Rubrics plus two semester self assessments. A blank ParentVUE line for Spectrum is expected.",
       "source": "Erin Cumberledge, Spectrum syllabus"
+    },
+    {
+      "type": "notice",
+      "title": "Still no Art 6 supply list",
+      "detail": "Art 6 Sem: Intro to Art with Ms. Thiele is live in Schoology but no materials request has come through in the first two weeks.",
+      "source": "Watching for it"
     }
   ],
   "scans": [
     {
-      "at": "2026-08-22T09:15:00-04:00",
-      "summary": "Seven day scan of school email. Added the Aug 27 PE dress out day to coursework. Both English 6H items were already present and were not duplicated. No tests or quizzes announced in any class, and the Aug 19, 20 and 21 Schoology summaries all show no upcoming events and no overdue submissions."
-    },
-    {
-      "at": "2026-08-21T16:10:00-04:00",
-      "summary": "Seven day scan of school email. Two English 6H graded items added to coursework, Me Bag HW Aug 19 and Vocabulary Sketch Notes packet Aug 31. Spectrum folder deadline Aug 26 added. No tests or quizzes posted yet in any class."
+      "at": "2026-08-27T08:05:00-04:00",
+      "summary": "Six assignments pulled from the Schoology digest across Science, PE, English and Spectrum. Sketchbook reminder from Mr. Dickerson. Cleared stale items."
     },
     {
       "at": "2026-08-17T21:30:00-04:00",
@@ -93,30 +52,56 @@
   "coursework": [
     {
       "type": "assignment",
-      "cls": "English 6H",
-      "date": "2026-08-19",
-      "title": "Me Bag homework",
-      "detail": "Community builder assignment introduced in class Mon and Tue, due Wed Aug 19. Slide with the directions is linked in the teacher email.",
-      "source": "Madison Peyton, English 6H",
-      "url": "https://mail.google.com/mail/u/0/#inbox/1a016ac62fd64930"
+      "cls": "Science 6H",
+      "date": "2026-08-28",
+      "title": "Safety Poster",
+      "detail": "Due 11:59 pm.",
+      "source": "Schoology",
+      "url": "https://app.schoology.com/parent/home"
+    },
+    {
+      "type": "assignment",
+      "cls": "Health & PE 6",
+      "date": "2026-08-28",
+      "title": "Week 1 Cooperative Activities",
+      "detail": "Covers 8/27 to 8/28. Due 11:59 pm.",
+      "source": "Schoology",
+      "url": "https://app.schoology.com/parent/home"
     },
     {
       "type": "assignment",
       "cls": "English 6H",
       "date": "2026-08-31",
-      "title": "Vocabulary Unit 1 Sketch Notes packet",
-      "detail": "Graded formative, 5 points for accuracy, due at the start of class Aug 31. Class time given this week and next, so it should be mostly done in school.",
-      "source": "Madison Peyton, English 6H",
-      "url": "https://mail.google.com/mail/u/0/#inbox/1a01692b411bf215"
+      "title": "Vocab Unit 1 Sketch Notes",
+      "source": "Schoology",
+      "url": "https://app.schoology.com/parent/home"
+    },
+    {
+      "type": "assignment",
+      "cls": "Spectrum 6",
+      "date": "2026-09-01",
+      "title": "Academic Responsibility and Integrity Agreement",
+      "detail": "Due 4:00 pm.",
+      "source": "Schoology",
+      "url": "https://app.schoology.com/parent/home"
+    },
+    {
+      "type": "assignment",
+      "cls": "Spectrum 6",
+      "date": "2026-09-01",
+      "title": "Skill Choice Frame",
+      "detail": "Due 4:00 pm.",
+      "source": "Schoology",
+      "url": "https://app.schoology.com/parent/home"
     },
     {
       "type": "assignment",
       "cls": "Health & PE 6",
-      "date": "2026-08-27",
-      "title": "First dress out day",
-      "detail": "Athletic clothes meeting LCPS dress code, closed toe and closed heel sneakers, water bottle and deodorant. Email says Aug 27 or 28 depending on the day rotation, so have the bag packed by the 26th. Points are lost for not dressing out.",
-      "source": "Adi, Health & PE 6 period 7-8 C",
-      "url": "https://mail.google.com/mail/u/0/#inbox/1a01b5942dd4053b"
+      "date": "2026-09-04",
+      "title": "Week 2 Cooperative Activities",
+      "detail": "Covers 8/31 to 9/3.",
+      "source": "Schoology",
+      "url": "https://app.schoology.com/parent/home"
     }
   ]
 }
