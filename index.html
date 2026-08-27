@@ -220,6 +220,17 @@
   .tag.test{background:#F6E6E8;color:var(--spectrum)}
   .tag.event{background:#EFE7F4;color:var(--strings)}
   .tag.notice{background:var(--ice);color:var(--ink2)}
+
+  .ai{position:relative}
+  .ai .x{position:absolute;top:9px;right:12px;appearance:none;border:0;background:transparent;
+    cursor:pointer;color:var(--line);font-size:17px;line-height:1;padding:3px 5px;border-radius:5px}
+  .ai .x:hover{color:var(--spectrum);background:var(--ice)}
+  .ai .x:focus-visible{outline:2px solid var(--eng);outline-offset:1px}
+  .ai .at{padding-right:26px}
+  .dismissed{padding:9px 18px 12px;font-family:var(--mono);font-size:10px;color:var(--open)}
+  .dismissed button{appearance:none;border:0;background:transparent;cursor:pointer;
+    font-family:var(--mono);font-size:10px;color:var(--eng);text-decoration:underline;padding:0 2px}
+
   .annempty{padding:16px 18px;font-size:13.5px;color:var(--ink2)}
 
 
@@ -444,6 +455,7 @@
       </span>
     </div>
     <div id="annbody"><div class="annempty">Loading the latest from school email.</div></div>
+    <div class="dismissed" id="dismissed" style="display:none"></div>
     <div class="slog" id="slog" style="display:none">
       <h3>Inbox scans</h3>
       <div id="slogbody"></div>
@@ -1251,6 +1263,24 @@ document.querySelectorAll("[data-cw]").forEach(function(b){
   if(sl) sl.href = "https://claude.ai/new?q=" + encodeURIComponent(seed);
 })();
 
+/* ---- dismissing announcements, kept on this device only ---- */
+var DKEY = "wmm-dismissed";
+function getDismissed(){
+  try { return JSON.parse(localStorage.getItem(DKEY) || "[]"); } catch(e){ return []; }
+}
+function setDismissed(a){
+  try { localStorage.setItem(DKEY, JSON.stringify(a)); } catch(e){}
+}
+function annId(it){
+  return ((it.date || "") + "|" + (it.title || "")).replace(/\s+/g, " ").slice(0, 160);
+}
+function dismissAnn(id){
+  var a = getDismissed();
+  if(a.indexOf(id) < 0){ a.push(id); setDismissed(a); }
+  if(CWDATA) renderAnn(CWDATA);
+}
+var showDismissed = false;
+
 /* ---- announcements feed, rewritten daily by the 5pm email scan ---- */
 var FALLBACK = {updated:null, items:[]};
 
@@ -1344,6 +1374,25 @@ function renderAnn(data){
   var todayKey = iso(new Date());
   items = items.filter(function(it){ return !it.date || it.date >= todayKey; });
 
+  var dis = getDismissed();
+  var hidden = items.filter(function(it){ return dis.indexOf(annId(it)) >= 0; });
+  if(!showDismissed){
+    items = items.filter(function(it){ return dis.indexOf(annId(it)) < 0; });
+  }
+  var dEl = document.getElementById("dismissed");
+  if(dEl){
+    if(hidden.length){
+      dEl.style.display = "";
+      dEl.innerHTML = hidden.length + " dismissed &middot; <button id=\"togdis\">"
+        + (showDismissed ? "hide again" : "show") + "</button>"
+        + (showDismissed ? ' &middot; <button id="cleardis">restore all</button>' : "");
+      var t = document.getElementById("togdis");
+      if(t) t.onclick = function(){ showDismissed = !showDismissed; renderAnn(CWDATA); };
+      var c = document.getElementById("cleardis");
+      if(c) c.onclick = function(){ setDismissed([]); showDismissed = false; renderAnn(CWDATA); };
+    } else { dEl.style.display = "none"; }
+  }
+
   var slog = document.getElementById("slog"), sb = document.getElementById("slogbody");
   var scans = (data && data.scans) ? data.scans.slice(0, 6) : [];
   if(scans.length){
@@ -1371,13 +1420,26 @@ function renderAnn(data){
         ? '<p class="as"><a href="' + it.url + '" target="_blank" rel="noopener">' + it.source + '</a></p>'
         : '<p class="as">' + it.source + '</p>';
     }
-    return '<div class="ai">'
+    var id = annId(it), isHidden = dis.indexOf(id) >= 0;
+    return '<div class="ai"' + (isHidden ? ' style="opacity:.5"' : '') + '>'
       + '<span class="ad' + (d.soon ? ' soon' : '') + '">' + (d.txt || "&mdash;") + '</span>'
       + '<div><p class="at"><span class="tag ' + (it.type || "notice") + '">' + (it.type || "notice") + '</span>'
       + it.title + '</p>'
       + (it.detail ? '<p class="ax">' + it.detail + '</p>' : '')
-      + src + '</div></div>';
+      + src + '</div>'
+      + (isHidden ? '' : '<button class="x" data-dis="' + encodeURIComponent(id)
+          + '" title="Dismiss" aria-label="Dismiss this announcement">&times;</button>')
+      + '</div>';
   }).join("");
+
+  var xb = body.querySelectorAll("[data-dis]");
+  for(var xi = 0; xi < xb.length; xi++){
+    (function(btn){
+      btn.addEventListener("click", function(){
+        dismissAnn(decodeURIComponent(btn.getAttribute("data-dis")));
+      });
+    })(xb[xi]);
+  }
 }
 
 function loadAnn(btn){
