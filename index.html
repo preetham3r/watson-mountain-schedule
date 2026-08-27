@@ -132,8 +132,12 @@
   .ct{display:grid;grid-template-columns:1fr auto;gap:6px 12px;font-size:13.5px;padding:6px 0;border-bottom:1px solid var(--line2)}
   .ct:last-child{border-bottom:0}
   .ct .r{font-family:var(--mono);font-size:11px;color:var(--ink2);text-align:right;white-space:nowrap}
-  .ct a{color:var(--eng);text-decoration:none;font-weight:600}
+  .ct{align-items:baseline}
+  .ct .cl{min-width:0}
+  .ct a{color:var(--eng);text-decoration:none;font-weight:700;font-size:13.5px}
   .ct a:hover{text-decoration:underline}
+  .ct .cl small{display:block;font-family:var(--mono);font-size:10px;color:var(--open);
+    margin-top:2px;overflow-wrap:anywhere}
 
 
 
@@ -515,19 +519,33 @@
 
     <div class="panel">
       <h2>Who to contact</h2>
-      <div class="ct"><a href="tel:5713674250">School office</a><span class="r">571-367-4250</span></div>
-      <div class="ct"><a href="mailto:Alexandra.Reel@lcps.org">Reel</a><span class="r">Math 7</span></div>
-      <div class="ct"><a href="mailto:Madison.Peyton@lcps.org">Peyton</a><span class="r">English 6H</span></div>
-      <div class="ct"><a href="mailto:tracy.dipietro@lcps.org">DiPietro</a><span class="r">Science 6H, Advisory</span></div>
-      <div class="ct"><a href="mailto:jeb.dickerson@lcps.org">Dickerson</a><span class="r">US History</span></div>
-      <div class="ct"><a href="mailto:erin.cumberledge@lcps.org">Cumberledge</a><span class="r">Spectrum 6</span></div>
-      <div class="ct"><a href="mailto:Kelly.Holowecki@lcps.org">Holowecki</a><span class="r">Strings 6, violin</span></div>
-      <div class="ct"><a href="mailto:Bethany.Thiele@lcps.org">Thiele</a><span class="r">Art 6</span></div>
-      <div class="ct"><a href="mailto:Courtney.Allen@lcps.org">Allen</a><span class="r">Health &amp; PE 6</span></div>
-      <div class="ct"><a href="mailto:kimberly.zerega@lcps.org">Zerega</a><span class="r">Computer Apps, sem 2</span></div>
-      <div class="ct"><a href="mailto:amy.wilfong@lcps.org">Wilfong</a><span class="r">Spectrum 7</span></div>
-      <div class="ct"><a href="mailto:Meghan.Ngo@lcps.org">Ngo</a><span class="r">School nurse</span></div>
-      <p style="margin:12px 0 0;font-size:12.5px">41480 Steeplechase Loop Dr, Leesburg VA 20175.</p>
+      <div class="ct"><span class="cl"><a href="tel:5713674250">School office</a>
+        <small>571-367-4250</small></span><span class="r">Attendance</span></div>
+      <div class="ct"><span class="cl"><a href="mailto:Alexandra.Reel@lcps.org">Alexandra Reel</a>
+        <small>Alexandra.Reel@lcps.org</small></span><span class="r">Math 7</span></div>
+      <div class="ct"><span class="cl"><a href="mailto:Madison.Peyton@lcps.org">Madison Peyton</a>
+        <small>Madison.Peyton@lcps.org</small></span><span class="r">English 6H</span></div>
+      <div class="ct"><span class="cl"><a href="mailto:tracy.dipietro@lcps.org">Tracy DiPietro</a>
+        <small>tracy.dipietro@lcps.org</small></span><span class="r">Science 6H, Advisory</span></div>
+      <div class="ct"><span class="cl"><a href="mailto:jeb.dickerson@lcps.org">Jeb Dickerson</a>
+        <small>jeb.dickerson@lcps.org</small></span><span class="r">US History</span></div>
+      <div class="ct"><span class="cl"><a href="mailto:erin.cumberledge@lcps.org">Erin Cumberledge</a>
+        <small>erin.cumberledge@lcps.org</small></span><span class="r">Spectrum 6</span></div>
+      <div class="ct"><span class="cl"><a href="mailto:Kelly.Holowecki@lcps.org">Kelly Holowecki</a>
+        <small>Kelly.Holowecki@lcps.org</small></span><span class="r">Strings 6, violin</span></div>
+      <div class="ct"><span class="cl"><a href="mailto:Michael.Klinberg@lcps.org">Michael Klinberg</a>
+        <small>Michael.Klinberg@lcps.org</small></span><span class="r">Orchestra co-director</span></div>
+      <div class="ct"><span class="cl"><a href="mailto:Bethany.Thiele@lcps.org">Bethany Thiele</a>
+        <small>Bethany.Thiele@lcps.org</small></span><span class="r">Art 6, sem 1</span></div>
+      <div class="ct"><span class="cl"><a href="mailto:Courtney.Allen@lcps.org">Courtney Allen</a>
+        <small>Courtney.Allen@lcps.org</small></span><span class="r">Health &amp; PE 6</span></div>
+      <div class="ct"><span class="cl"><a href="mailto:kimberly.zerega@lcps.org">Kimberly Zerega</a>
+        <small>kimberly.zerega@lcps.org</small></span><span class="r">Computer Apps, sem 2</span></div>
+      <div class="ct"><span class="cl"><a href="mailto:amy.wilfong@lcps.org">Amy Costello Wilfong</a>
+        <small>amy.wilfong@lcps.org</small></span><span class="r">Spectrum 7</span></div>
+      <div class="ct"><span class="cl"><a href="mailto:Meghan.Ngo@lcps.org">Meghan Ngo</a>
+        <small>Meghan.Ngo@lcps.org</small></span><span class="r">School nurse</span></div>
+      <p style="margin:12px 0 0;font-size:12.5px">Tap a name to email, or the office to dial. 41480 Steeplechase Loop Dr, Leesburg VA 20175.</p>
     </div>
 
     <div class="panel">
