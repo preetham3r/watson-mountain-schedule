@@ -87,6 +87,16 @@
   .panel b{color:var(--ink)}
   .panel > p{font-size:13.5px;color:var(--ink2);margin:0 0 12px}
 
+
+  .showpast{appearance:none;border:1px solid var(--line);background:var(--card);cursor:pointer;
+    font-family:var(--mono);font-size:9.5px;letter-spacing:.07em;color:var(--ink2);
+    padding:5px 10px;border-radius:7px;margin-top:11px}
+  .showpast:hover{border-color:var(--eng);color:var(--eng)}
+  .showpast:focus-visible{outline:2px solid var(--eng);outline-offset:2px}
+  .date.gone .d,.date.gone .e{color:var(--open)}
+  .date.gone .e small{color:#B4C4CE}
+  .date.next .d{color:var(--math);font-weight:600}
+
   .date{display:grid;grid-template-columns:66px 1fr;gap:10px;font-size:13.5px;padding:7px 0;border-bottom:1px solid var(--line2)}
   .date:last-child{border-bottom:0}
   .date .d{font-family:var(--mono);font-size:11.5px;color:var(--ink2);padding-top:2px}
@@ -183,22 +193,7 @@
   .ib.scan{padding:5px 9px}
   .ib.spin svg{animation:sp .7s linear infinite}
   @keyframes sp{to{transform:rotate(360deg)}}
-  .ai{display:grid;grid-template-columns:64px 1fr 24px;gap:12px;padding:11px 18px;border-bottom:1px solid var(--line2)}
-  .axk{appearance:none;border:1px solid transparent;background:transparent;cursor:pointer;
-    color:var(--open);border-radius:6px;width:24px;height:24px;padding:0;line-height:1;
-    font-family:var(--display);font-size:15px;font-weight:700;align-self:start;
-    display:inline-flex;align-items:center;justify-content:center;transition:color .15s,border-color .15s,background .15s}
-  .axk:hover{color:var(--math);border-color:var(--line);background:var(--ice)}
-  .axk:focus-visible{outline:2px solid var(--eng);outline-offset:2px}
-  @media(hover:hover){.ai .axk{opacity:.45}.ai:hover .axk,.ai .axk:focus-visible{opacity:1}}
-  .annback{padding:9px 18px;border-top:1px solid var(--line2);background:#FAFCFD;
-    font-family:var(--mono);font-size:10.5px;color:var(--open);
-    display:flex;align-items:center;gap:9px;flex-wrap:wrap}
-  .annback button{appearance:none;border:1px solid var(--line);background:var(--card);cursor:pointer;
-    color:var(--ink2);border-radius:7px;padding:4px 8px;font-family:var(--mono);font-size:10px;
-    letter-spacing:.05em;line-height:1}
-  .annback button:hover{border-color:var(--eng);color:var(--eng)}
-  .annback button:focus-visible{outline:2px solid var(--eng);outline-offset:2px}
+  .ai{display:grid;grid-template-columns:64px 1fr;gap:12px;padding:11px 18px;border-bottom:1px solid var(--line2)}
   .ai:last-child{border-bottom:0}
   .ai .ad{font-family:var(--mono);font-size:11px;color:var(--ink2);padding-top:2px;white-space:nowrap}
   .ai .ad.soon{color:var(--math);font-weight:600}
@@ -482,14 +477,8 @@
 
     <div class="panel">
       <h2>Dates that matter</h2>
-      <div class="date"><span class="d">Aug 17</span><span class="e">First day</span></div>
-      <div class="date"><span class="d">Aug 20</span><span class="e">Orchestra financial assistance rental form closes<small>Only if requesting a school instrument</small></span></div>
-      <div class="date"><span class="d">Aug 26</span><span class="e">Instrument comes to school<small>Grade 6 start date</small></span></div>
-      <div class="date"><span class="d">Oct 28</span><span class="e">Q1 ends</span></div>
-      <div class="date"><span class="d">Jan 22</span><span class="e">Q2 and semester 1 end</span></div>
-      <div class="date"><span class="d">Jan 26</span><span class="e">Semester 2 begins<small>Art 6 becomes Computer Applications, room 102 to 342</small></span></div>
-      <div class="date"><span class="d">Apr 9</span><span class="e">Q3 ends</span></div>
-      <div class="date"><span class="d">Jun 11</span><span class="e">Q4 and the year end</span></div>
+      <div id="datesbody"></div>
+      <button class="showpast" id="showpast" aria-expanded="false">Show past dates</button>
     </div>
 
     <div class="panel">
@@ -1256,31 +1245,6 @@ document.querySelectorAll("[data-cw]").forEach(function(b){
 /* ---- announcements feed, rewritten daily by the 5pm email scan ---- */
 var FALLBACK = {updated:null, items:[]};
 
-/* dismissed announcements, kept on this device only so a scan never resurrects them */
-var ANN_HIDE_KEY = "wm_ann_hidden_v1";
-function annEsc(s){
-  return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
-}
-function annHidden(){
-  try{ var v = JSON.parse(localStorage.getItem(ANN_HIDE_KEY) || "[]"); return v instanceof Array ? v : []; }
-  catch(e){ return []; }
-}
-function annHideSave(a){
-  try{ localStorage.setItem(ANN_HIDE_KEY, JSON.stringify(a)); }catch(e){}
-}
-function annKey(it){
-  return (it.type || "notice") + "|" + (it.title || "") + "|" + (it.date || it.expires || "");
-}
-function annDismiss(k){
-  var h = annHidden();
-  if(h.indexOf(k) < 0){ h.push(k); annHideSave(h); }
-  renderAnn(CWDATA);
-}
-function annRestore(){
-  annHideSave([]);
-  renderAnn(CWDATA);
-}
-
 function annDate(it){
   if(!it.date) return {txt:"", soon:false};
   var d = fromIso(it.date), today = new Date(); today.setHours(0,0,0,0);
@@ -1364,22 +1328,6 @@ function renderAnn(data){
   var todayKey = iso(new Date());
   items = items.filter(function(it){ return !it.date || it.date >= todayKey; });
 
-  /* drop keys whose announcement has already aged out, so the list cannot grow forever */
-  var hidden = annHidden(), liveKeys = {};
-  for(var li = 0; li < items.length; li++) liveKeys[annKey(items[li])] = 1;
-  var kept = hidden.filter(function(k){ return liveKeys[k]; });
-  if(kept.length !== hidden.length){ annHideSave(kept); hidden = kept; }
-
-  var nHid = 0;
-  items = items.filter(function(it){
-    if(hidden.indexOf(annKey(it)) >= 0){ nHid++; return false; }
-    return true;
-  });
-  var backRow = nHid
-    ? '<div class="annback"><span>' + nHid + ' hidden</span>'
-      + '<button type="button" data-restore="1">Show again</button></div>'
-    : '';
-
   var slog = document.getElementById("slog"), sb = document.getElementById("slogbody");
   var scans = (data && data.scans) ? data.scans.slice(0, 6) : [];
   if(scans.length){
@@ -1395,21 +1343,8 @@ function renderAnn(data){
     }).join("");
   } else { slog.style.display = "none"; }
 
-  body.onclick = function(e){
-    var t = e.target, hit = null;
-    while(t && t !== body){
-      if(t.getAttribute && (t.getAttribute("data-hide") || t.getAttribute("data-restore"))){ hit = t; break; }
-      t = t.parentNode;
-    }
-    if(!hit) return;
-    if(hit.getAttribute("data-restore")) annRestore();
-    else annDismiss(decodeURIComponent(hit.getAttribute("data-hide")));
-  };
-
   if(!items.length){
-    body.innerHTML = '<div class="annempty">'
-      + (nHid ? 'Nothing left showing. Everything current is hidden.' : 'Nothing new from school.')
-      + '</div>' + backRow;
+    body.innerHTML = '<div class="annempty">Nothing new from school.</div>';
     return;
   }
   body.innerHTML = items.map(function(it){
@@ -1425,11 +1360,8 @@ function renderAnn(data){
       + '<div><p class="at"><span class="tag ' + (it.type || "notice") + '">' + (it.type || "notice") + '</span>'
       + it.title + '</p>'
       + (it.detail ? '<p class="ax">' + it.detail + '</p>' : '')
-      + src + '</div>'
-      + '<button type="button" class="axk" data-hide="' + encodeURIComponent(annKey(it)) + '"'
-      + ' title="Hide this" aria-label="Hide ' + annEsc(it.title || "announcement") + '">&times;</button>'
-      + '</div>';
-  }).join("") + backRow;
+      + src + '</div></div>';
+  }).join("");
 }
 
 function loadAnn(btn){
@@ -1467,6 +1399,62 @@ function loadAnn(btn){
 })();
 
 
+
+
+/* ---- key dates: future by default, past on request ---- */
+var KEYDATES = [
+  ["2026-08-17","First day",""],
+  ["2026-08-20","Orchestra financial assistance rental form closes","Only if requesting a school instrument"],
+  ["2026-08-26","Violin comes to school","Grade 6 start date"],
+  ["2026-10-28","Q1 ends",""],
+  ["2027-01-22","Q2 and semester 1 end",""],
+  ["2027-01-26","Semester 2 begins","Art 6 becomes Computer Applications, room 102 to 342"],
+  ["2027-04-09","Q3 ends",""],
+  ["2027-06-11","Q4 and the year end",""]
+];
+var showPast = false;
+
+function renderDates(){
+  var host = document.getElementById("datesbody");
+  if(!host) return;
+  var todayKey = iso(new Date());
+  var future = KEYDATES.filter(function(x){ return x[0] >= todayKey; });
+  var past = KEYDATES.filter(function(x){ return x[0] < todayKey; });
+  var rows = showPast ? KEYDATES : future;
+
+  host.innerHTML = rows.map(function(x, i){
+    var gone = x[0] < todayKey;
+    var isNext = (!gone && x[0] === future[0][0]);
+    var d = fromIso(x[0]);
+    var lab = d.toLocaleDateString(undefined, {month:"short", day:"numeric"});
+    var extra = "";
+    if(isNext){
+      var n = Math.round((d - fromIso(todayKey)) / 86400000);
+      extra = n === 0 ? "Today" : n === 1 ? "Tomorrow" : "in " + n + " days";
+    }
+    return '<div class="date' + (gone ? " gone" : "") + (isNext ? " next" : "") + '">'
+      + '<span class="d">' + lab + '</span><span class="e">' + x[1]
+      + (x[2] ? '<small>' + x[2] + '</small>' : '')
+      + (extra ? '<small>' + extra + '</small>' : '')
+      + '</span></div>';
+  }).join("") || '<p style="margin:0;font-size:13.5px;color:var(--ink2)">Nothing left this year.</p>';
+
+  var b = document.getElementById("showpast");
+  if(b){
+    if(!past.length){ b.style.display = "none"; }
+    else {
+      b.style.display = "";
+      b.textContent = showPast ? "Hide past dates" : "Show past dates (" + past.length + ")";
+      b.setAttribute("aria-expanded", showPast);
+    }
+  }
+}
+
+(function(){
+  var b = document.getElementById("showpast");
+  if(b) b.addEventListener("click", function(){ showPast = !showPast; renderDates(); });
+  renderDates();
+})();
 
 renderToday();
 
