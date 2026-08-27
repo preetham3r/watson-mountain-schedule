@@ -88,6 +88,16 @@
   .panel > p{font-size:13.5px;color:var(--ink2);margin:0 0 12px}
 
 
+  .nd{display:grid;grid-template-columns:96px 34px 1fr;gap:10px;align-items:baseline;
+    padding:5px 0;border-bottom:1px solid var(--line2);font-size:13px}
+  .nd:last-child{border-bottom:0}
+  .nd .ndd{font-family:var(--mono);font-size:11px;color:var(--ink2)}
+  .nd .ndl{font-family:var(--mono);font-size:12px;font-weight:700;text-align:center;
+    border-radius:5px;padding:2px 0}
+  .nd .ndl.a{background:#E4EDF3;color:var(--eng)}
+  .nd .ndl.b{background:#EFE7F4;color:var(--strings)}
+  .nd .ndc{font-family:var(--mono);font-size:10.5px;color:var(--open)}
+  .nd.today .ndd{color:var(--math);font-weight:600}
   .showpast{appearance:none;border:1px solid var(--line);background:var(--card);cursor:pointer;
     font-family:var(--mono);font-size:9.5px;letter-spacing:.07em;color:var(--ink2);
     padding:5px 10px;border-radius:7px;margin-top:11px}
@@ -122,6 +132,8 @@
   .ct{display:grid;grid-template-columns:1fr auto;gap:6px 12px;font-size:13.5px;padding:6px 0;border-bottom:1px solid var(--line2)}
   .ct:last-child{border-bottom:0}
   .ct .r{font-family:var(--mono);font-size:11px;color:var(--ink2);text-align:right;white-space:nowrap}
+  .ct a{color:var(--eng);text-decoration:none;font-weight:600}
+  .ct a:hover{text-decoration:underline}
 
 
 
@@ -243,6 +255,9 @@
   .tletter{font-size:clamp(26px,7vw,38px);font-weight:900;letter-spacing:-.03em;line-height:1;margin:0 0 8px}
   .tletter.hol{font-size:clamp(19px,5vw,26px);color:var(--spectrum)}
   .tnext .tletter{font-size:clamp(21px,5.5vw,28px)}
+  .tdue{margin:10px 0 0;padding:8px 11px;background:#FFF6E8;border-radius:8px;
+    font-size:12.5px;color:var(--math);line-height:1.45}
+  .tdue b{font-weight:700}
   .tcarry{font-size:12.5px;color:var(--ink2);margin:0}
   .tcarry b{color:var(--ink)}
   .tsch{margin:10px 0 0;border-top:1px solid var(--line2);padding-top:8px}
@@ -379,6 +394,7 @@
         <p class="tletter" id="tletter">—</p>
         <span class="tinst no" id="tinst"></span>
         <div class="tsch" id="tsch"></div>
+        <p class="tdue" id="tdue" style="display:none"></p>
         <p class="tcarry" id="tcarry" style="margin-top:9px"></p>
       </div>
       <div class="tnext">
@@ -387,6 +403,7 @@
         <p class="tletter" id="nletter">—</p>
         <span class="tinst no" id="ninst"></span>
         <div class="tsch" id="nsch"></div>
+        <p class="tdue" id="ndue" style="display:none"></p>
         <p class="tcarry" id="ncarry" style="margin-top:9px"></p>
       </div>
     </div>
@@ -464,15 +481,9 @@
     </div>
 
     <div class="panel">
-      <h2>How the rotation rolls</h2>
-      <p>The letter is not tied to a weekday. It advances one step every school day, so a four day cycle inside a five day week keeps sliding. Monday is A one week and B the next.</p>
-      <div class="dows"><span></span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span></div>
-      <div class="weeks">
-        <div class="week"><span class="wlab">Aug 17</span><span class="cell aset">A</span><span class="cell bset">B</span><span class="cell aset">C</span><span class="cell bset">D</span><span class="cell aset">A</span></div>
-        <div class="week"><span class="wlab">Aug 24</span><span class="cell bset">B</span><span class="cell aset">C</span><span class="cell bset">D</span><span class="cell aset">A</span><span class="cell bset">B</span></div>
-        <div class="week"><span class="wlab">Aug 31</span><span class="cell aset">C</span><span class="cell bset">D</span><span class="cell aset">A</span><span class="cell bset">B</span><span class="cell aset">C</span></div>
-      </div>
-      <p class="caveat">Shaded purple means a B set day, so the instrument goes in. Confirmed: Monday Aug 17 was an A day. Every letter on this page follows from that anchor, advancing one step per school day and skipping every closure on the LCPS calendar.</p>
+      <h2>The next ten school days</h2>
+      <div id="nextdays"></div>
+      <p class="caveat" style="margin-top:11px">The letter is not tied to a weekday. It advances one step each school day and skips closures, so Monday is A one week and B the next. Purple means a B set day, so the violin goes in.</p>
     </div>
 
     <div class="panel">
@@ -484,7 +495,7 @@
     <div class="panel">
       <h2>Supplies, merged</h2>
       <div class="sup"><h3>Buy once, used everywhere</h3><p>Headphones. Pencils. Highlighters. Glue sticks. Dry erase markers. Chromebook is school issued.</p></div>
-      <div class="sup"><h3>Class specific</h3><p>Spiral notebook ×2, one for Math and one for English. One inch binder for Science. Folder with inside pockets for English. Unlined sketchbook for US History.</p></div>
+      <div class="sup"><h3>Class specific</h3><p>Spiral notebook ×2, one for Math and one for English. One inch binder for Science. Folder with inside pockets for English. Unlined sketchbook for US History, and it has to match the exact type Mr. Dickerson linked, same size and unlined.</p></div>
       <div class="sup"><h3>Violin</h3><p>Rosin. Binder. <b>Shoulder rest</b>. Tuner. Cleaning cloth. Tag for the case. Music stand for home practice. Rock stops and bass stools are cello and bass only, skip those.</p>
       <p style="margin-top:5px">Rent from a shop and get her <b>sized in person</b>. The directors name Day Violins and say plainly not to buy online. A full size is not a given at eleven.</p></div>
       <div class="sup"><h3>Not yet known</h3><p>No syllabus has come through for Art 6 with Ms. Thiele. Expect a supply ask in the first week.</p></div>
@@ -492,20 +503,19 @@
 
     <div class="panel">
       <h2>Who to contact</h2>
-      <div class="ct"><span>School office</span><span class="r">571-367-4250</span></div>
-      <div class="ct"><span>Lenny Compton, Principal</span><span class="r">—</span></div>
-      <div class="ct"><span>Kjersti Oliver, AP Grade 6</span><span class="r">—</span></div>
-      <div class="ct"><span>Alexandra Reel, Math 7</span><span class="r">Alexandra.Reel</span></div>
-      <div class="ct"><span>Madison Peyton, English 6H</span><span class="r">Madison.Peyton</span></div>
-      <div class="ct"><span>Tracy DiPietro, Science and Advisory</span><span class="r">tracy.dipietro</span></div>
-      <div class="ct"><span>Jeb Dickerson, US History</span><span class="r">jeb.dickerson</span></div>
-      <div class="ct"><span>Erin Cumberledge, Spectrum 6</span><span class="r">Erin.Cumberledge</span></div>
-      <div class="ct"><span>Kelly Holowecki, Strings 6</span><span class="r">Kelly.Holowecki</span></div>
-      <div class="ct"><span>Kimberly Zerega, Computer Apps</span><span class="r">kimberly.zerega</span></div>
-      <div class="ct"><span>Bethany Thiele, Art 6</span><span class="r">Bethany.Thiele</span></div>
-      <div class="ct"><span>Courtney Allen, PE 6</span><span class="r">Courtney.Allen</span></div>
-      <div class="ct"><span>Meghan Ngo, School Nurse</span><span class="r">Meghan.Ngo</span></div>
-      <p style="margin:12px 0 0;font-size:12.5px">All addresses are first.last@lcps.org. School is at 41480 Steeplechase Loop Dr, Leesburg VA 20175.</p>
+      <div class="ct"><a href="tel:5713674250">School office</a><span class="r">571-367-4250</span></div>
+      <div class="ct"><a href="mailto:Alexandra.Reel@lcps.org">Reel</a><span class="r">Math 7</span></div>
+      <div class="ct"><a href="mailto:Madison.Peyton@lcps.org">Peyton</a><span class="r">English 6H</span></div>
+      <div class="ct"><a href="mailto:tracy.dipietro@lcps.org">DiPietro</a><span class="r">Science 6H, Advisory</span></div>
+      <div class="ct"><a href="mailto:jeb.dickerson@lcps.org">Dickerson</a><span class="r">US History</span></div>
+      <div class="ct"><a href="mailto:erin.cumberledge@lcps.org">Cumberledge</a><span class="r">Spectrum 6</span></div>
+      <div class="ct"><a href="mailto:Kelly.Holowecki@lcps.org">Holowecki</a><span class="r">Strings 6, violin</span></div>
+      <div class="ct"><a href="mailto:Bethany.Thiele@lcps.org">Thiele</a><span class="r">Art 6</span></div>
+      <div class="ct"><a href="mailto:Courtney.Allen@lcps.org">Allen</a><span class="r">Health &amp; PE 6</span></div>
+      <div class="ct"><a href="mailto:kimberly.zerega@lcps.org">Zerega</a><span class="r">Computer Apps, sem 2</span></div>
+      <div class="ct"><a href="mailto:amy.wilfong@lcps.org">Wilfong</a><span class="r">Spectrum 7</span></div>
+      <div class="ct"><a href="mailto:Meghan.Ngo@lcps.org">Ngo</a><span class="r">School nurse</span></div>
+      <p style="margin:12px 0 0;font-size:12.5px">41480 Steeplechase Loop Dr, Leesburg VA 20175.</p>
     </div>
 
     <div class="panel">
@@ -531,7 +541,7 @@
     </div>
 
     <div class="panel">
-      <h2>No school</h2>
+      <h2>No school ahead</h2>
       <div id="hollist"></div>
       <p style="margin:11px 0 0;font-size:12.5px">LCPS 2026-2027 student calendar, adopted 25 Feb 2025. 180 school days, first day Aug 17, last day Jun 11.</p>
     </div>
@@ -546,7 +556,6 @@
         <li><b>Spectrum grades never appear in ParentVUE.</b> That class uses the Schoology gradebook only and gives no traditional grades, just rubrics and two semester self assessments. An empty ParentVUE line for Spectrum is normal, not a missing grade.</li>
         <li><b>Spectrum has no homework by design.</b> If she is working on it at home, she either chose a harder project or used class time poorly.</li>
         <li><b>Mr. Dickerson sends a weekly family update by email.</b> If one stops arriving, he asks to be told.</li>
-        <li><b>The school's own sheet for the 2:38 early dismissal contains copy errors</b> in its lunch and passing times, so that variant is deliberately left off this page. Ring the office if it is ever called.</li>
       </ul>
     </ul>
     </div>
@@ -1087,13 +1096,6 @@ document.querySelectorAll(".tfix button").forEach(function(b){
   });
 });
 
-(function(){
-  var host = document.getElementById("hollist");
-  if(!host) return;
-  host.innerHTML = CLOSED_GROUPS.map(function(g){
-    return '<div class="hol"><span class="hd">' + g[0] + '</span><span>' + g[1] + '</span></div>';
-  }).join("");
-})();
 
 
 /* ---- bell schedule selector ---- */
@@ -1112,6 +1114,7 @@ document.querySelectorAll('[data-bell]').forEach(function(b){
 
 /* ================= coursework: tests and assignments ================= */
 var cwTab = "test";
+var cwTouched = false;
 var CWDATA = null;
 
 var CLASSKEY = {
@@ -1167,7 +1170,12 @@ function renderCW(){
 
   var btns = document.querySelectorAll("[data-cw]");
   for(var i = 0; i < btns.length; i++){
-    btns[i].setAttribute("aria-pressed", btns[i].getAttribute("data-cw") === cwTab);
+    var t = btns[i].getAttribute("data-cw");
+    btns[i].setAttribute("aria-pressed", t === cwTab);
+    var n = all.filter(function(x){
+      return (x.type || "assignment") === t && (!x.date || x.date >= todayKey);
+    }).length;
+    btns[i].textContent = (t === "test" ? "Tests" : "Assignments") + (n ? " " + n : "");
   }
 
   if(!items.length){
@@ -1219,6 +1227,7 @@ function renderCW(){
 document.querySelectorAll("[data-cw]").forEach(function(b){
   b.addEventListener("click", function(){
     cwTab = b.getAttribute("data-cw");
+    cwTouched = true;
     renderCW();
   });
 });
@@ -1311,6 +1320,13 @@ function renderAnn(data){
     }
   }
   CWDATA = data;
+  renderDue();
+  if(!cwTouched){
+    var tk = iso(new Date());
+    var cw = (data && data.coursework) ? data.coursework : [];
+    var nt = cw.filter(function(x){ return x.type === "test" && (!x.date || x.date >= tk); }).length;
+    if(!nt) cwTab = "assignment";
+  }
   renderCW();
 
   var items = (data && data.items) ? data.items.slice() : [];
@@ -1455,6 +1471,97 @@ function renderDates(){
   if(b) b.addEventListener("click", function(){ showPast = !showPast; renderDates(); });
   renderDates();
 })();
+
+
+/* ---- next ten school days ---- */
+function renderNextDays(){
+  var host = document.getElementById("nextdays");
+  if(!host) return;
+  var todayKey = iso(new Date());
+  var start = 0;
+  for(var i = 0; i < SCHOOL_DAYS.length; i++){ if(SCHOOL_DAYS[i] >= todayKey){ start = i; break; } }
+  var out = SCHOOL_DAYS.slice(start, start + 10);
+  host.innerHTML = out.map(function(k){
+    var L = letterFor(k), d = fromIso(k);
+    var lab = d.toLocaleDateString(undefined, {weekday:"short", month:"short", day:"numeric"});
+    var bset = (L === "B" || L === "D");
+    var note = (bset && k >= INSTRUMENT_START) ? "violin" : "";
+    return '<div class="nd' + (k === todayKey ? " today" : "") + '">'
+      + '<span class="ndd">' + lab + '</span>'
+      + '<span class="ndl ' + (bset ? "b" : "a") + '">' + L + '</span>'
+      + '<span class="ndc">' + note + '</span></div>';
+  }).join("");
+}
+
+/* ---- closures: only the ones still ahead ---- */
+var CLOSED_DATES = [
+  ["2026-09-04","2026-09-04","Sep 4","Student holiday"],
+  ["2026-09-07","2026-09-07","Sep 7","Labor Day"],
+  ["2026-09-21","2026-09-21","Sep 21","Holiday"],
+  ["2026-10-12","2026-10-12","Oct 12","Holiday"],
+  ["2026-10-29","2026-10-30","Oct 29-30","Student holidays"],
+  ["2026-11-02","2026-11-03","Nov 2-3","Student holidays"],
+  ["2026-11-09","2026-11-09","Nov 9","Holiday"],
+  ["2026-11-25","2026-11-27","Nov 25-27","Thanksgiving break"],
+  ["2026-12-21","2027-01-01","Dec 21 - Jan 1","Winter break"],
+  ["2027-01-18","2027-01-18","Jan 18","Martin Luther King Jr. Day"],
+  ["2027-01-25","2027-01-25","Jan 25","Semester break"],
+  ["2027-02-05","2027-02-05","Feb 5","Holiday"],
+  ["2027-02-15","2027-02-15","Feb 15","Presidents Day"],
+  ["2027-03-08","2027-03-09","Mar 8-9","Student holiday and holiday"],
+  ["2027-03-22","2027-03-26","Mar 22-26","Spring break"],
+  ["2027-04-12","2027-04-12","Apr 12","Student holiday"],
+  ["2027-05-31","2027-05-31","May 31","Memorial Day"],
+  ["2027-06-11","2027-06-11","Jun 11","Last day of school"]
+];
+
+function renderClosures(){
+  var host = document.getElementById("hollist");
+  if(!host) return;
+  var todayKey = iso(new Date());
+  var ahead = CLOSED_DATES.filter(function(x){ return x[1] >= todayKey; });
+  if(!ahead.length){ host.innerHTML = '<p style="margin:0;font-size:13.5px;color:var(--ink2)">None left this year.</p>'; return; }
+  host.innerHTML = ahead.map(function(x, i){
+    var n = Math.round((fromIso(x[0]) - fromIso(todayKey)) / 86400000);
+    var soon = (i === 0);
+    return '<div class="hol"><span class="hd"' + (soon ? ' style="color:var(--math);font-weight:600"' : '') + '>'
+      + x[2] + '</span><span>' + x[3]
+      + (soon && n > 0 ? ' <span style="font-family:var(--mono);font-size:10.5px;color:var(--math)">in ' + n + ' days</span>' : '')
+      + '</span></div>';
+  }).join("");
+}
+
+/* ---- semester follows the date ---- */
+(function(){
+  if(iso(new Date()) >= "2027-01-26" && sem !== 2){
+    sem = 2;
+    document.getElementById("s1").setAttribute("aria-pressed", false);
+    document.getElementById("s2").setAttribute("aria-pressed", true);
+  }
+})();
+
+renderNextDays();
+renderClosures();
+
+
+/* ---- what is due today and tomorrow ---- */
+function renderDue(){
+  var cw = (CWDATA && CWDATA.coursework) ? CWDATA.coursework : [];
+  var todayKey = iso(new Date());
+  var nk = nextSchoolDay(todayKey);
+  [["tdue", todayKey, "today"], ["ndue", nk, "that day"]].forEach(function(pair){
+    var el = document.getElementById(pair[0]);
+    if(!el) return;
+    var key = pair[1];
+    if(!key){ el.style.display = "none"; return; }
+    var hits = cw.filter(function(x){ return x.date === key; });
+    if(!hits.length){ el.style.display = "none"; return; }
+    el.style.display = "";
+    el.innerHTML = "<b>Due " + pair[2] + ":</b> " + hits.map(function(h){
+      return h.title + (h.cls ? " (" + h.cls + ")" : "");
+    }).join(", ");
+  });
+}
 
 renderToday();
 
