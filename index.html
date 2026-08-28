@@ -1320,6 +1320,7 @@ function stampBadge(data){
   else if(data && data.updated) latest = fromIso(data.updated);
   if(!latest || isNaN(latest)){ el.className = "badge"; tx.textContent = "repo"; return; }
   var hrs = (Date.now() - latest) / 36e5;
+  if(hrs < 0) hrs = 0;
   el.className = "badge " + (hrs < 30 ? "ok" : "stale");
   tx.textContent = "scanned " + (hrs < 1 ? "just now"
     : hrs < 24 ? Math.round(hrs) + "h ago"
@@ -1462,7 +1463,7 @@ function renderAnn(data){
 
 function loadAnn(btn){
   if(btn) btn.className = "ib spin";
-  return fetch("updates.json?ts=" + Date.now())
+  return fetch("updates.json?ts=" + Date.now(), {cache: "no-store"})
     .then(function(r){ if(!r.ok) throw 0; return r.json(); })
     .then(renderAnn)
     .catch(function(){
