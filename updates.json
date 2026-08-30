@@ -1,25 +1,25 @@
 {
-  "updated": "2026-08-28",
+  "updated": "2026-08-30",
   "note": "Rewritten by the 5pm and 7pm email scans.",
   "items": [
     {
       "type": "deadline",
-      "title": "Shoulder rest is mandatory and she does not have one",
-      "detail": "Ms. Holowecki sent a second reminder. Many students turned up without one. It affects her grade, since instrument posture is assessed. Buy by size, which is printed on the label inside the f-hole and on the instrument contract. Everest EZ2A for a half size, EZ4A for three quarter or full, or a foam sponge for any size.",
+      "title": "Shoulder rest still needed",
+      "detail": "Mandatory equipment and part of her grade, since instrument posture is assessed. Buy by size, printed on the label inside the f-hole and on the instrument contract. Everest EZ2A for a half size, EZ4A for three quarter or full, or a foam sponge for any size.",
       "source": "Kelly Holowecki, Strings 6",
       "url": "https://mail.google.com/mail/u/0/#inbox/1a044991cba2c50c"
     },
     {
       "type": "notice",
-      "title": "MAP testing ran this week",
-      "detail": "Confirmed by Ms. Holowecki in passing. Results usually reach parents a few weeks later.",
-      "source": "Kelly Holowecki, Strings 6",
-      "url": "https://mail.google.com/mail/u/0/#inbox/1a044991cba2c50c"
+      "title": "Mr. Dickerson's weekly US History update has started",
+      "detail": "Arrives Saturday mornings with a PDF attached covering the week. The first one is dated 24 Aug. Open the attachment, the email body says nothing.",
+      "source": "Jeb Dickerson, US History",
+      "url": "https://mail.google.com/mail/u/0/#inbox/1a04dceea3f783c4"
     },
     {
       "type": "notice",
       "title": "Sketchbook must be unlined and the right size",
-      "detail": "Mr. Dickerson has nearly run out of spares. It has to be unlined and match the type he linked. He would welcome donated extras.",
+      "detail": "It has to be unlined and match the type Mr. Dickerson linked. He has nearly run out of spares.",
       "source": "Jeb Dickerson, US History",
       "url": "https://mail.google.com/mail/u/0/#inbox/1a03a7bbfec2f50e"
     },
@@ -32,11 +32,15 @@
     {
       "type": "notice",
       "title": "Still no Art 6 supply list",
-      "detail": "Art 6 Sem: Intro to Art with Ms. Thiele is live in Schoology but no materials request has come through in two weeks.",
+      "detail": "Art 6 with Ms. Thiele has been running two weeks with no materials request.",
       "source": "Watching for it"
     }
   ],
   "scans": [
+    {
+      "at": "2026-08-30T11:40:00-04:00",
+      "summary": "Safety Poster came back 100/100. New overdue: English Summary Formative from Friday. Math Histograms cleared. Mr. Dickerson's weekly US History PDF has started arriving."
+    },
     {
       "at": "2026-08-28T07:38:00-04:00",
       "summary": "Math 7 Histograms formative flagged OVERDUE. Second shoulder rest reminder from Ms. Holowecki, mandatory and graded. MAP testing ran this week."
@@ -63,36 +67,19 @@
   "coursework": [
     {
       "type": "assignment",
-      "cls": "Math 7",
-      "date": "2026-08-27",
-      "title": "Formative: Histograms 7.PS.2",
-      "detail": "OVERDUE. Schoology flagged this as not submitted on time. Reel does not accept late work once the related summative is taken, so this needs doing now.",
-      "source": "Schoology overdue notice",
-      "url": "https://app.schoology.com/course/8479113491/preview/94759433/parent"
-    },
-    {
-      "type": "assignment",
-      "cls": "Science 6H",
+      "cls": "English 6H",
       "date": "2026-08-28",
-      "title": "Safety Poster",
-      "detail": "Due 11:59 pm tonight.",
-      "source": "Schoology",
-      "url": "https://app.schoology.com/parent/home"
-    },
-    {
-      "type": "assignment",
-      "cls": "Health & PE 6",
-      "date": "2026-08-28",
-      "title": "Week 1 Cooperative Activities",
-      "detail": "Covers 8/27 to 8/28. Due 11:59 pm tonight.",
-      "source": "Schoology",
-      "url": "https://app.schoology.com/parent/home"
+      "title": "Summary Formative (5 points)",
+      "detail": "OVERDUE. Was due Friday 28 Aug at 11:59 pm. Ms. Peyton does not accept formatives after the related summative is taken, so this has a hard stop.",
+      "source": "Schoology overdue list",
+      "url": "https://app.schoology.com/course/8479114936/preview/94759433/parent"
     },
     {
       "type": "assignment",
       "cls": "English 6H",
       "date": "2026-08-31",
       "title": "Vocab Unit 1 Sketch Notes",
+      "detail": "Due tomorrow.",
       "source": "Schoology",
       "url": "https://app.schoology.com/parent/home"
     },
