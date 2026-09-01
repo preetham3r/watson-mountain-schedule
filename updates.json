@@ -1,42 +1,47 @@
 {
-  "updated": "2026-08-30",
+  "updated": "2026-09-01",
   "note": "Rewritten by the 5pm and 7pm email scans.",
   "items": [
     {
+      "type": "notice",
+      "title": "Math homework runs on Mathspace, most nights",
+      "detail": "Mrs. Reel expects homework after most classes, due the following class period, mostly on Mathspace. Every unit also has a Schoology folder with an agenda listing each day, assignments, completed notes and upcoming test dates. That agenda is the first place to look after an absence.",
+      "source": "Alexandra Reel, Math 7",
+      "url": "https://mail.google.com/mail/u/0/#inbox/1a058c13dbe48317"
+    },
+    {
       "type": "deadline",
       "title": "Shoulder rest still needed",
-      "detail": "Mandatory equipment and part of her grade, since instrument posture is assessed. Buy by size, printed on the label inside the f-hole and on the instrument contract. Everest EZ2A for a half size, EZ4A for three quarter or full, or a foam sponge for any size.",
+      "detail": "Mandatory and graded, since instrument posture is assessed. Buy by size, printed inside the f-hole and on the instrument contract. Everest EZ2A for half size, EZ4A for three quarter or full, or a foam sponge for any size.",
       "source": "Kelly Holowecki, Strings 6",
       "url": "https://mail.google.com/mail/u/0/#inbox/1a044991cba2c50c"
     },
     {
       "type": "notice",
-      "title": "Mr. Dickerson's weekly US History update has started",
-      "detail": "Arrives Saturday mornings with a PDF attached covering the week. The first one is dated 24 Aug. Open the attachment, the email body says nothing.",
+      "title": "Check she has the right math notebook",
+      "detail": "Mrs. Reel asked families to verify it. The class uses it daily for notes, examples and practice.",
+      "source": "Alexandra Reel, Math 7",
+      "url": "https://mail.google.com/mail/u/0/#inbox/1a058c13dbe48317"
+    },
+    {
+      "type": "notice",
+      "title": "Mr. Dickerson's weekly US History update arrives Saturdays",
+      "detail": "A PDF is attached covering the week. The email body itself says nothing, so open the attachment.",
       "source": "Jeb Dickerson, US History",
       "url": "https://mail.google.com/mail/u/0/#inbox/1a04dceea3f783c4"
     },
     {
       "type": "notice",
-      "title": "Sketchbook must be unlined and the right size",
-      "detail": "It has to be unlined and match the type Mr. Dickerson linked. He has nearly run out of spares.",
-      "source": "Jeb Dickerson, US History",
-      "url": "https://mail.google.com/mail/u/0/#inbox/1a03a7bbfec2f50e"
-    },
-    {
-      "type": "notice",
       "title": "Spectrum grades will never show in ParentVUE",
-      "detail": "That class gives no traditional grades and uses the Schoology gradebook only. A blank ParentVUE line for Spectrum is expected.",
+      "detail": "That class gives no traditional grades and uses the Schoology gradebook only.",
       "source": "Erin Cumberledge, Spectrum syllabus"
-    },
-    {
-      "type": "notice",
-      "title": "Still no Art 6 supply list",
-      "detail": "Art 6 with Ms. Thiele has been running two weeks with no materials request.",
-      "source": "Watching for it"
     }
   ],
   "scans": [
+    {
+      "at": "2026-09-01T07:40:00-04:00",
+      "summary": "Overdue list is clear. PE 20/20 and 10/10, English formative 5/5. Two English summatives now dated, 3 and 9 Sep. Math homework moves to Mathspace. First Art assignment appears, Q1 portfolio due 23 Oct."
+    },
     {
       "at": "2026-08-30T11:40:00-04:00",
       "summary": "Safety Poster came back 100/100. New overdue: English Summary Formative from Friday. Math Histograms cleared. Mr. Dickerson's weekly US History PDF has started arriving."
@@ -68,20 +73,11 @@
     {
       "type": "assignment",
       "cls": "English 6H",
-      "date": "2026-08-28",
-      "title": "Summary Formative (5 points)",
-      "detail": "OVERDUE. Was due Friday 28 Aug at 11:59 pm. Ms. Peyton does not accept formatives after the related summative is taken, so this has a hard stop.",
-      "source": "Schoology overdue list",
+      "date": "2026-09-01",
+      "title": "Vocab Unit 1 Sketch Notes packet",
+      "detail": "Due at the START of class today, not end of day. Graded formative, 5 points.",
+      "source": "Madison Peyton, Schoology post",
       "url": "https://app.schoology.com/course/8479114936/preview/94759433/parent"
-    },
-    {
-      "type": "assignment",
-      "cls": "English 6H",
-      "date": "2026-08-31",
-      "title": "Vocab Unit 1 Sketch Notes",
-      "detail": "Due tomorrow.",
-      "source": "Schoology",
-      "url": "https://app.schoology.com/parent/home"
     },
     {
       "type": "assignment",
@@ -97,18 +93,45 @@
       "cls": "Spectrum 6",
       "date": "2026-09-01",
       "title": "Skill Choice Frame",
-      "detail": "Due 4:00 pm.",
-      "source": "Schoology",
-      "url": "https://app.schoology.com/parent/home"
+      "detail": "Due 4:00 pm. Today is a Cafe Day in Spectrum, so she gets class time to finish both of these first.",
+      "source": "Erin Cumberledge",
+      "url": "https://mail.google.com/mail/u/0/#inbox/1a0590a913be82db"
     },
     {
       "type": "assignment",
-      "cls": "Health & PE 6",
-      "date": "2026-09-04",
-      "title": "Week 2 Cooperative Activities",
-      "detail": "Covers 8/31 to 9/3.",
+      "cls": "Math 7",
+      "date": "2026-09-02",
+      "title": "Data Cycle Study Guide (8/31 homework)",
+      "detail": "Set on 31 Aug, due next class.",
       "source": "Schoology",
-      "url": "https://app.schoology.com/parent/home"
+      "url": "https://app.schoology.com/course/8479113491/preview/94759433/parent"
+    },
+    {
+      "type": "test",
+      "cls": "English 6H",
+      "date": "2026-09-03",
+      "title": "Summary Minor Summative",
+      "detail": "100 points. Minor summative, so no retake in this class.",
+      "source": "Schoology",
+      "url": "https://app.schoology.com/course/8479114936/preview/94759433/parent"
+    },
+    {
+      "type": "test",
+      "cls": "English 6H",
+      "date": "2026-09-09",
+      "title": "Vocab Unit 1 Test",
+      "detail": "100 points, minor summative. No retake on minors.",
+      "source": "Schoology",
+      "url": "https://app.schoology.com/course/8479114936/preview/94759433/parent"
+    },
+    {
+      "type": "assignment",
+      "cls": "Art 6",
+      "date": "2026-10-23",
+      "title": "Q1 Digital Portfolio",
+      "detail": "Due 11:59 pm. First Art 6 assignment to appear.",
+      "source": "Schoology",
+      "url": "https://app.schoology.com/course/8479116294/preview/94759433/parent"
     }
   ]
 }
