@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-01",
+  "updated": "2026-09-02",
   "note": "Rewritten by the 5pm and 7pm email scans.",
   "items": [
     {
@@ -25,8 +25,15 @@
     },
     {
       "type": "notice",
+      "title": "Art 6 teacher is Ms. B. Thiele",
+      "detail": "Confirmed from the Schoology course listing, Art 6 Sem: Intro to Art, semester 1, blocks 1 and 2 on B days. Supply list still has not arrived.",
+      "source": "Schoology course roster",
+      "url": "https://app.schoology.com/course/8479116294/preview/94759433/parent"
+    },
+    {
+      "type": "notice",
       "title": "Mr. Dickerson's weekly US History update arrives Saturdays",
-      "detail": "A PDF is attached covering the week. The email body itself says nothing, so open the attachment.",
+      "detail": "A PDF is attached covering the week. The email body itself says nothing, so open the attachment. Latest is 8-24-26.pdf.",
       "source": "Jeb Dickerson, US History",
       "url": "https://mail.google.com/mail/u/0/#inbox/1a04dceea3f783c4"
     },
@@ -35,9 +42,20 @@
       "title": "Spectrum grades will never show in ParentVUE",
       "detail": "That class gives no traditional grades and uses the Schoology gradebook only.",
       "source": "Erin Cumberledge, Spectrum syllabus"
+    },
+    {
+      "type": "notice",
+      "title": "Fall intramurals are open",
+      "detail": "Cross country running and 5v5 flag football, plus general intramural sports. Sign up details are in the Mountain Messenger flyer.",
+      "source": "Mountain Messenger, Vol 3 Issue 3",
+      "url": "https://mail.google.com/mail/u/0/#inbox/1a053b8d353181f7"
     }
   ],
   "scans": [
+    {
+      "at": "2026-09-02T20:40:00-04:00",
+      "summary": "Overdue list clear. Three new grades, Science OIP Knowledge Check 5/5, PE Procedures Major Summative 100/100, Math Data Cycle Study Guide 100/100. New Science OIP quiz added for 10 Sep. Art 6 teacher confirmed as Ms. Thiele. Fall intramurals announced."
+    },
     {
       "at": "2026-09-01T07:40:00-04:00",
       "summary": "Overdue list is clear. PE 20/20 and 10/10, English formative 5/5. Two English summatives now dated, 3 and 9 Sep. Math homework moves to Mathspace. First Art assignment appears, Q1 portfolio due 23 Oct."
@@ -71,42 +89,6 @@
   "bellOverride": null,
   "coursework": [
     {
-      "type": "assignment",
-      "cls": "English 6H",
-      "date": "2026-09-01",
-      "title": "Vocab Unit 1 Sketch Notes packet",
-      "detail": "Due at the START of class today, not end of day. Graded formative, 5 points.",
-      "source": "Madison Peyton, Schoology post",
-      "url": "https://app.schoology.com/course/8479114936/preview/94759433/parent"
-    },
-    {
-      "type": "assignment",
-      "cls": "Spectrum 6",
-      "date": "2026-09-01",
-      "title": "Academic Responsibility and Integrity Agreement",
-      "detail": "Due 4:00 pm.",
-      "source": "Schoology",
-      "url": "https://app.schoology.com/parent/home"
-    },
-    {
-      "type": "assignment",
-      "cls": "Spectrum 6",
-      "date": "2026-09-01",
-      "title": "Skill Choice Frame",
-      "detail": "Due 4:00 pm. Today is a Cafe Day in Spectrum, so she gets class time to finish both of these first.",
-      "source": "Erin Cumberledge",
-      "url": "https://mail.google.com/mail/u/0/#inbox/1a0590a913be82db"
-    },
-    {
-      "type": "assignment",
-      "cls": "Math 7",
-      "date": "2026-09-02",
-      "title": "Data Cycle Study Guide (8/31 homework)",
-      "detail": "Set on 31 Aug, due next class.",
-      "source": "Schoology",
-      "url": "https://app.schoology.com/course/8479113491/preview/94759433/parent"
-    },
-    {
       "type": "test",
       "cls": "English 6H",
       "date": "2026-09-03",
@@ -125,13 +107,42 @@
       "url": "https://app.schoology.com/course/8479114936/preview/94759433/parent"
     },
     {
+      "type": "test",
+      "cls": "Science 6H",
+      "date": "2026-09-10",
+      "title": "OIP Quiz, Minor Summative",
+      "detail": "Due 11:59 pm. Covers observation, inference and prediction. She scored 5/5 on the matching knowledge check on 2 Sep.",
+      "source": "Schoology",
+      "url": "https://app.schoology.com/course/8479119391/preview/94759433/parent"
+    },
+    {
       "type": "assignment",
       "cls": "Art 6",
       "date": "2026-10-23",
       "title": "Q1 Digital Portfolio",
-      "detail": "Due 11:59 pm. First Art 6 assignment to appear.",
+      "detail": "Due 11:59 pm. Ms. Thiele, semester 1.",
       "source": "Schoology",
       "url": "https://app.schoology.com/course/8479116294/preview/94759433/parent"
+    }
+  ],
+  "recentGrades": [
+    {
+      "cls": "Science 6H",
+      "title": "Observation, Inference and Prediction Knowledge Check",
+      "score": "5/5",
+      "date": "2026-09-02"
+    },
+    {
+      "cls": "Health & PE 6",
+      "title": "PE Procedures Major Summative",
+      "score": "100/100",
+      "date": "2026-09-02"
+    },
+    {
+      "cls": "Math 7",
+      "title": "Data Cycle Study Guide (8/31 homework)",
+      "score": "100/100",
+      "date": "2026-09-01"
     }
   ]
 }
