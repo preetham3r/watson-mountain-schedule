@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-03",
+  "updated": "2026-09-04",
   "note": "Rewritten by the 5pm and 7pm email scans.",
   "items": [
     {
@@ -17,6 +17,29 @@
       "detail": "4 Sep is a student holiday and 7 Sep is Labor Day. Next school day is Tuesday 8 Sep. Both are already in the calendar, so the letters below are correct.",
       "source": "Jeb Dickerson, US History",
       "url": "https://mail.google.com/mail/u/0/#inbox/1a067eaef90e932e"
+    },
+    {
+      "type": "notice",
+      "title": "New teacher messaging app, Rooms by Apptegy",
+      "detail": "LCPS launched a two way messaging tool this year. It becomes the only channel for quick notes from teachers, coaches and activity leaders. Invitations went out 2 Sep by text or email and will be resent next week, but you can join without one. Download the LCPS app, allow notifications, pick Watson Mountain in the Feed tab, then use the Rooms or Messaging tab at the bottom. Schoology still holds assignments and ParentVUE still holds grades.",
+      "source": "LCPS Letter, 3 Sep",
+      "url": "https://mail.google.com/mail/u/0/#inbox/1a068ff1b8bf7c96"
+    },
+    {
+      "type": "event",
+      "date": "2026-09-07",
+      "title": "Kids Fest, Segra Field, Monday 11am to 3pm",
+      "detail": "Loudoun County Parks and Rec, at the Segra Field parking lots, 42095 Loudoun United Dr, Leesburg. Touch a Truck, bounce houses, petting zoo, inflatable obstacle course, face painting, a magician, food trucks. Free family option for the Labor Day holiday.",
+      "source": "LCPS Letter, 3 Sep",
+      "url": "https://mail.google.com/mail/u/0/#inbox/1a068ff1b8bf7c96"
+    },
+    {
+      "type": "deadline",
+      "date": "2026-09-15",
+      "title": "FY28 budget ThoughtExchange closes 15 Sep",
+      "detail": "Optional. The School Board is collecting parent input on programs and investments for the 2027 to 2028 year, with slower revenue growth expected. Open at lcps.org/thoughtexchange.",
+      "source": "LCPS Letter, 3 Sep",
+      "url": "https://mail.google.com/mail/u/0/#inbox/1a068ff1b8bf7c96"
     },
     {
       "type": "notice",
@@ -82,6 +105,10 @@
     }
   ],
   "scans": [
+    {
+      "at": "2026-09-04T18:10:00-04:00",
+      "summary": "Quiet day. No new grades, no new assignments, no overdue. Coursework unchanged: Science homework 8 Sep, vocab test and Science quiz both 10 Sep. From the LCPS Letter, teachers move to a new messaging app called Rooms inside the LCPS app, so download it. Kids Fest Monday and a budget survey closing 15 Sep."
+    },
     {
       "at": "2026-09-03T18:05:00-04:00",
       "summary": "Vocab Unit 1 test moved from 9 Sep to 10 Sep. New Science OIP Study Guide homework due 8 Sep. US History U1 Geography major came back 100/100, both Spectrum items graded. Club registration opening, Video Game Music Club needs a year of playing so she is not eligible. Long weekend, back Tuesday."
