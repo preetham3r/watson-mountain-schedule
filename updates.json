@@ -1,7 +1,15 @@
 {
-  "updated": "2026-09-04",
+  "updated": "2026-09-06",
   "note": "Rewritten by the 5pm and 7pm email scans.",
   "items": [
+    {
+      "type": "deadline",
+      "date": "2026-09-07",
+      "title": "Fall club registration CLOSES Monday 7 Sep",
+      "detail": "Open to all families since 10am Sunday. Space is limited and some clubs have already sold out. Read the details before registering: several clubs run an AM session, a PM session, or both, so pick the right one. Bus transportation is only offered for PM clubs. Questions go to clubs@watsonmountainpto.org or clubs2@watsonmountainpto.org, but only after registration closes.",
+      "source": "Watson Mountain PTO, 5 Sep",
+      "url": "https://mail.google.com/mail/u/0/#inbox/1a0735ca17a49c86"
+    },
     {
       "type": "deadline",
       "date": "2026-09-10",
@@ -47,13 +55,6 @@
       "detail": "Runs Wednesdays after school, led by Mr. Klinberg. Sixth graders need at least one full year of playing plus permission from Ms. Holowecki, so this is a no for now. Ms. Holowecki is starting a Beginning Strings Club for beginners in the second club season and will send details as the first season closes. Fee carries an extra $15 that pays the professional guest musicians.",
       "source": "Kelly Holowecki, Strings 6",
       "url": "https://mail.google.com/mail/u/0/#inbox/1a06907e7c9ec78d"
-    },
-    {
-      "type": "notice",
-      "title": "Club registration opens soon, slideshow is out",
-      "detail": "Special Mountain Minute carries a slideshow of every club with details. Year long club information is still coming from the PTO.",
-      "source": "Mountain Minute, 3 Sep",
-      "url": "https://mail.google.com/mail/u/0/#inbox/1a06944c942b3152"
     },
     {
       "type": "deadline",
@@ -106,6 +107,10 @@
   ],
   "scans": [
     {
+      "at": "2026-09-06T17:35:00-04:00",
+      "summary": "No coursework change over the weekend, nothing new graded, no overdue. One urgent item: fall club registration opened to all families at 10am today and closes Monday 7 Sep, with some clubs already sold out."
+    },
+    {
       "at": "2026-09-04T18:10:00-04:00",
       "summary": "Quiet day. No new grades, no new assignments, no overdue. Coursework unchanged: Science homework 8 Sep, vocab test and Science quiz both 10 Sep. From the LCPS Letter, teachers move to a new messaging app called Rooms inside the LCPS app, so download it. Kids Fest Monday and a budget survey closing 15 Sep."
     },
@@ -140,10 +145,6 @@
     {
       "at": "2026-08-17T19:00:00-04:00",
       "summary": "No new school email since the 5pm scan."
-    },
-    {
-      "at": "2026-08-17T17:00:00-04:00",
-      "summary": "Three late bus notifications from LCPS Transportation this morning. Mountain Messenger Vol 3 Issue 1. Nothing new requiring action."
     }
   ],
   "closures": [],
