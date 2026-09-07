@@ -56,6 +56,10 @@
   ],
   "scans": [
     {
+      "at": "2026-09-07T21:44:00-04:00",
+      "summary": "Fixed a real fault: study steps dated ahead of today were hidden, so both test cards showed an empty progress bar with nothing to tap. Steps are now grouped under day headings and always tappable, so ticking one moves the bar and the per day chips straight away."
+    },
+    {
       "at": "2026-09-07T21:26:00-04:00",
       "summary": "Added day by day progress. Each study plan now shows a chip per day with steps set against steps done, and the What to do block keeps a rolling seven day log so a finished or missed day leaves a trace after the rows reset."
     },
@@ -90,10 +94,6 @@
     {
       "at": "2026-09-07T18:26:00-04:00",
       "summary": "UX pass on the page. Fixed a regression that had dropped RSM homework from the Today and Next day cards. Missed deadlines now stay visible for five days flagged as overdue instead of silently disappearing. Today card moved above the settings pills, and the small icon buttons enlarged for thumbs."
-    },
-    {
-      "at": "2026-09-07T18:07:00-04:00",
-      "summary": "Built a dedicated RSM Ashburn panel on the page. RSM homework and competitions now live in their own rsm block rather than mixed into school coursework, with a next class countdown, the weekly kit list, portal links and the full competition calendar."
     }
   ],
   "closures": [],
