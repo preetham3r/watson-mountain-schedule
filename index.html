@@ -353,6 +353,13 @@
   .sync{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;
     padding:9px 18px;border-bottom:1px solid var(--line2);background:#F5F9FB}
   .synct{font-family:var(--mono);font-size:10px;letter-spacing:.04em;color:var(--ink2)}
+  .pdayh{font-family:var(--mono);font-size:9px;letter-spacing:.13em;text-transform:uppercase;
+    color:var(--open);margin:9px 0 1px;padding-top:7px;border-top:1px solid var(--line2)}
+  .pdayh.now{color:var(--math)}
+  .pdayh.miss{color:var(--spectrum)}
+  .plan .pstep{border-top:0}
+  .planlater{font-family:var(--mono);font-size:9.5px;color:var(--open);margin:8px 0 0;
+    padding-top:7px;border-top:1px solid var(--line2)}
   .pdays{display:flex;flex-wrap:wrap;gap:5px;margin:8px 0 2px}
   .pday{font-family:var(--mono);font-size:9.5px;letter-spacing:.04em;padding:3px 7px;
     border-radius:6px;background:var(--ice);color:var(--ink2);white-space:nowrap}
@@ -2109,20 +2116,48 @@ function planBlock(test){
   for(var i = 0; i < steps.length; i++){ if(isDone(stepId(test, i))) ndone++; }
   var pct = Math.round((ndone / steps.length) * 100);
 
-  /* show what is due today, plus anything from an earlier day still unticked */
-  var rows = "";
+  /* Show enough that there is always something to tap. Everything up to tomorrow,
+     plus the earliest day still outstanding even if that day is further off.
+     Hiding future steps left her with an empty card and nothing to click. */
+  var tomorrowKey = iso(new Date(Date.now() + 864e5));
+  var firstOpen = "";
+  for(var f = 0; f < steps.length; f++){
+    if(!isDone(stepId(test, f))){
+      var fk = steps[f].on || test.date;
+      if(!firstOpen || fk < firstOpen) firstOpen = fk;
+    }
+  }
+
+  var rows = "", lastDay = "", laterDays = {}, laterCount = 0;
   for(var j = 0; j < steps.length; j++){
     var s = steps[j], id = stepId(test, j), on = isDone(id);
-    var when = s.on || "";
-    var show = on || !when || when <= todayKey;
-    if(!show) continue;
-    var missed = (!on && when && when < todayKey);
+    var when = s.on || test.date;
+    if(!on && when > tomorrowKey && when !== firstOpen){
+      if(!laterDays[when]){ laterDays[when] = 0; }
+      laterDays[when]++; laterCount++;
+      continue;
+    }
+    if(when !== lastDay){
+      lastDay = when;
+      var dl = when === todayKey ? "Today"
+             : when === tomorrowKey ? "Tomorrow"
+             : when < todayKey ? fromIso(when).toLocaleDateString(undefined,{weekday:"long"})
+             : fromIso(when).toLocaleDateString(undefined,{weekday:"long"});
+      rows += '<p class="pdayh' + (when === todayKey ? " now" : when < todayKey ? " miss" : "") + '">' + dl + '</p>';
+    }
+    var missed = (!on && when < todayKey);
     rows += '<button class="pstep' + (on ? " on" : "") + (missed ? " miss" : "")
       + '" data-step="' + encodeURIComponent(id) + '" aria-pressed="' + on + '">'
       + '<span class="pbox">' + (on ? "&#10003;" : "") + '</span>'
-      + '<span>' + esc(s["do"] || "")
-      + (missed ? ' <span class="pwhen">from ' + fromIso(when).toLocaleDateString(undefined,{weekday:"short"}) + '</span>' : "")
-      + '</span></button>';
+      + '<span>' + esc(s["do"] || "") + '</span></button>';
+  }
+  if(laterCount){
+    var names = [];
+    for(var lk in laterDays){
+      if(!Object.prototype.hasOwnProperty.call(laterDays, lk)) continue;
+      names.push(laterDays[lk] + " on " + fromIso(lk).toLocaleDateString(undefined,{weekday:"short"}));
+    }
+    rows += '<p class="planlater">' + names.join(", ") + ' still to come</p>';
   }
 
   return '<div class="plan">'
