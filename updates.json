@@ -12,6 +12,27 @@
     },
     {
       "type": "notice",
+      "title": "RSM Ashburn now included in the scan",
+      "detail": "Pre Algebra_2 with Svetlana Lynch, every Thursday 6:20 to 8:20 pm, first class was 3 Sep. Arrive no more than 5 minutes early and the office walks her in. She needs a notebook, a pencil with eraser, and a folder or binder every week. Snack and water optional, and RSM is nut free. Homework is posted weekly on the student portal and a parent progress email follows with a status and grade. Holiday schedule lives on parents.russianschool.com.",
+      "source": "Svetlana Lynch, RSM Ashburn",
+      "url": "https://mail.google.com/mail/u/0/#inbox/1a02f98e32c4f870"
+    },
+    {
+      "type": "notice",
+      "title": "RSM competition calendar published, AMC 8 now open to her",
+      "detail": "Six competitions this year: NOETIC Fall in November, MOEMS running November to March, AMC 8 in January, IMC in February, Math Kangaroo in March, NOETIC Spring in April. AMC 8 is grades 6 to 8, so this is her first eligible year. Registration details come in separate emails per competition, and the scan will now catch them.",
+      "source": "RSM Ashburn, 4 Sep",
+      "url": "https://mail.google.com/mail/u/0/#inbox/1a06f0ff982f0b3e"
+    },
+    {
+      "type": "notice",
+      "title": "Optional: RSM Herndon middle school physics",
+      "detail": "Mondays 4:20 to 5:50 pm with Dr. Iraida, at the Herndon branch rather than Ashburn. Launched 31 Aug and they said there was still room. Nothing has been committed.",
+      "source": "RSM Herndon, 31 Aug",
+      "url": "https://mail.google.com/mail/u/0/#inbox/1a05854124b5d550"
+    },
+    {
+      "type": "notice",
       "date": "2026-09-07",
       "title": "Long weekend, no school Friday or Monday",
       "detail": "4 Sep is a student holiday and 7 Sep is Labor Day. Next school day is Tuesday 8 Sep. Both are already in the calendar, so the letters below are correct.",
@@ -98,6 +119,10 @@
   ],
   "scans": [
     {
+      "at": "2026-09-07T18:15:00-04:00",
+      "summary": "Widened the scan to cover RSM Ashburn, mathschool.com and russianschool.com, now running daily alongside the school scan. Backfilled three weeks of missed RSM mail: Pre Algebra_2 Thursdays with Mrs. Lynch, Lesson 1 homework on the portal, and the full competition calendar with AMC 8 open to her for the first time."
+    },
+    {
       "at": "2026-09-07T17:40:00-04:00",
       "summary": "Holiday Monday, nothing moved. No new grades, no new assignments, no overdue. Science OIP study guide still due Tuesday 8 Sep and both Thursday items stand. Club registration closed today. New Mountain Messenger is image only, so open the accessible document link inside it."
     },
@@ -132,10 +157,6 @@
     {
       "at": "2026-08-27T08:05:00-04:00",
       "summary": "Six assignments pulled from the Schoology digest across Science, PE, English and Spectrum. Sketchbook reminder from Mr. Dickerson. Cleared stale items."
-    },
-    {
-      "at": "2026-08-17T21:30:00-04:00",
-      "summary": "Read the Spectrum syllabus linked from Ms. Cumberledge's email. Added a folder to supplies, the two week late window, and the fact that Spectrum posts no grades to ParentVUE."
     }
   ],
   "closures": [],
@@ -149,6 +170,15 @@
       "detail": "Due 11:59 pm on the first day back. Feeds the OIP quiz two days later, so it is worth doing over the long weekend.",
       "source": "Schoology",
       "url": "https://app.schoology.com/course/8479119391/preview/94759433/parent"
+    },
+    {
+      "type": "assignment",
+      "cls": "RSM",
+      "date": "2026-09-10",
+      "title": "Lesson 1 Homework, Pre Algebra_2",
+      "detail": "Posted 4 Sep on the student portal. She answers online for instant feedback AND brings the written work to class for Mrs. Lynch to check. No explicit deadline in the email, so this is set to the next class. Portal: student.russianschool.com.",
+      "source": "RSM Ashburn online homework",
+      "url": "https://mail.google.com/mail/u/0/#inbox/1a06c684594630b2"
     },
     {
       "type": "test",
