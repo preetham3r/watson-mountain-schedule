@@ -40,7 +40,7 @@
       "url": "https://mail.google.com/mail/u/0/#inbox/1a044991cba2c50c"
     },
     {
-      "type": "notice",
+      "type": "deadline",
       "title": "Check she has the right math notebook",
       "detail": "Mrs. Reel asked families to verify it. The class uses it daily for notes, examples and practice.",
       "source": "Alexandra Reel, Math 7",
@@ -55,6 +55,10 @@
     }
   ],
   "scans": [
+    {
+      "at": "2026-09-07T19:22:00-04:00",
+      "summary": "Added a What to do strip at the top of the Today card: overdue, due today, due tomorrow flagged the evening before, violin, RSM class and standing open jobs. Cut sixteen passages of explanatory wording across the page."
+    },
     {
       "at": "2026-09-07T19:04:00-04:00",
       "summary": "Added a Grades tab to the Coursework card. Six scores had been collected in updates.json since 2 Sep but were never rendered, so they were invisible until now. Anything below 70 is flagged with the retake rule for that class."
@@ -90,10 +94,6 @@
     {
       "at": "2026-09-03T18:05:00-04:00",
       "summary": "Vocab Unit 1 test moved from 9 Sep to 10 Sep. New Science OIP Study Guide homework due 8 Sep. US History U1 Geography major came back 100/100, both Spectrum items graded. Club registration opening, Video Game Music Club needs a year of playing so she is not eligible. Long weekend, back Tuesday."
-    },
-    {
-      "at": "2026-09-02T20:40:00-04:00",
-      "summary": "Overdue list clear. Three new grades, Science OIP Knowledge Check 5/5, PE Procedures Major Summative 100/100, Math Data Cycle Study Guide 100/100. New Science OIP quiz added for 10 Sep. Art 6 teacher confirmed as Ms. Thiele. Fall intramurals announced."
     }
   ],
   "closures": [],
