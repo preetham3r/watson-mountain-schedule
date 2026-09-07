@@ -312,6 +312,31 @@
   .td.prep .tdk{background:#E4EDF3;color:var(--eng)}
   .td.rsm .tdk{background:#E7E9F6;color:var(--rsm)}
   .td.bag .tdk{background:#EFE7F4;color:var(--strings)}
+  .td.study .tdk{background:#F6E6E8;color:var(--spectrum)}
+
+  /* ---- study plan ---- */
+  .plan{margin:9px 0 0;padding:10px 12px;background:var(--card);
+    border:1px solid var(--line);border-radius:10px}
+  .planh{display:flex;align-items:baseline;justify-content:space-between;gap:8px;flex-wrap:wrap}
+  .plann{font-size:13.5px;font-weight:700;letter-spacing:-.01em;margin:0}
+  .planw{font-family:var(--mono);font-size:10px;color:var(--spectrum);white-space:nowrap}
+  .planbar{height:4px;border-radius:3px;background:var(--ice);margin:7px 0 3px;overflow:hidden}
+  .planbar i{display:block;height:100%;background:var(--sci);border-radius:3px;transition:width .2s}
+  .planbar.done i{background:var(--sci)}
+  .plancount{font-family:var(--mono);font-size:9.5px;color:var(--open)}
+  .pstep{display:flex;align-items:flex-start;gap:9px;width:100%;text-align:left;
+    appearance:none;border:0;background:transparent;cursor:pointer;
+    padding:7px 2px;font:inherit;font-size:13px;color:var(--ink);border-top:1px solid var(--line2)}
+  .pstep:first-of-type{border-top:0}
+  .pstep:focus-visible{outline:2px solid var(--eng);outline-offset:2px;border-radius:6px}
+  .pbox{flex:none;width:18px;height:18px;border:1.5px solid var(--line);border-radius:5px;
+    margin-top:1px;display:flex;align-items:center;justify-content:center;
+    font-size:12px;line-height:1;color:#fff}
+  .pstep.on .pbox{background:var(--sci);border-color:var(--sci)}
+  .pstep.on span{color:var(--open);text-decoration:line-through}
+  .pstep.miss .pbox{border-color:var(--spectrum)}
+  .pwhen{font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--spectrum);margin-left:6px}
 
   /* ---------- today banner ---------- */
   .today{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:0 0 14px;background:var(--card)}
@@ -1412,6 +1437,9 @@ document.querySelectorAll("[data-cw]").forEach(function(b){
     + "coursework array, each entry with type (test or assignment), cls (exact course name: Math 7, English 6H, "
     + "Science 6H, US History, Spectrum 6, Strings 6, Art 6, Health & PE 6, or Computer Applications), "
     + "date (YYYY-MM-DD), title, optional detail, source and url. Do not duplicate entries already present. "
+    + "For a test, also write a plan array: one step per line as {on: YYYY-MM-DD, do: what she should do}, "
+    + "spread across the school days between now and the test, drawn from what the teacher actually told "
+    + "families to do. Invent nothing. If the teacher gave no study guidance, leave plan off entirely. "
     + "RSM is the exception: its homework belongs in the top level rsm.homework array (title, assigned, due, "
     + "detail, source, url) and its competitions in rsm.competitions, never in coursework. "
     + "Also add a scans entry at the TOP of the scans array, with at set to a full local timestamp including the "
@@ -1946,6 +1974,60 @@ renderClosures();
 
 
 /* ---- what is due today and tomorrow ---- */
+/* ---- study plans, ticked off on this device ---- */
+var SKEY = "wmm-study";
+function getDone(){
+  try { return JSON.parse(localStorage.getItem(SKEY) || "[]"); } catch(e){ return []; }
+}
+function setDone(a){
+  try { localStorage.setItem(SKEY, JSON.stringify(a)); } catch(e){}
+}
+function stepId(test, i){
+  return ((test.date || "") + "|" + (test.title || "") + "|" + i).replace(/\s+/g, " ").slice(0, 160);
+}
+function toggleStep(id){
+  var a = getDone(), i = a.indexOf(id);
+  if(i >= 0) a.splice(i, 1); else a.push(id);
+  setDone(a);
+  renderTodo();
+}
+
+/* Only tests that carry an authored plan get a checklist. A generic auto plan
+   would be filler, and filler is what makes a block like this get ignored. */
+function planBlock(test){
+  var steps = test.plan || [];
+  if(!steps.length) return "";
+  var done = getDone(), todayKey = iso(new Date());
+  var n = daysAway(test.date);
+  var ndone = 0;
+  for(var i = 0; i < steps.length; i++){ if(done.indexOf(stepId(test, i)) >= 0) ndone++; }
+  var pct = Math.round((ndone / steps.length) * 100);
+
+  /* show what is due today, plus anything from an earlier day still unticked */
+  var rows = "";
+  for(var j = 0; j < steps.length; j++){
+    var s = steps[j], id = stepId(test, j), on = done.indexOf(id) >= 0;
+    var when = s.on || "";
+    var show = on || !when || when <= todayKey;
+    if(!show) continue;
+    var missed = (!on && when && when < todayKey);
+    rows += '<button class="pstep' + (on ? " on" : "") + (missed ? " miss" : "")
+      + '" data-step="' + encodeURIComponent(id) + '" aria-pressed="' + on + '">'
+      + '<span class="pbox">' + (on ? "&#10003;" : "") + '</span>'
+      + '<span>' + esc(s["do"] || "")
+      + (missed ? ' <span class="pwhen">from ' + fromIso(when).toLocaleDateString(undefined,{weekday:"short"}) + '</span>' : "")
+      + '</span></button>';
+  }
+
+  return '<div class="plan">'
+    + '<div class="planh"><p class="plann">' + esc(test.title || "") + '</p>'
+    + '<span class="planw">' + (n === 0 ? "today" : n === 1 ? "tomorrow" : "in " + n + " days") + '</span></div>'
+    + '<div class="planbar"><i style="width:' + pct + '%"></i></div>'
+    + '<span class="plancount">' + ndone + ' of ' + steps.length + ' done</span>'
+    + rows
+    + '</div>';
+}
+
 /* One place that answers: what needs doing before bed tonight. Everything here
    already exists further down the page. The point is not to add facts but to
    stop the parent assembling them from four cards each morning. */
@@ -1992,9 +2074,29 @@ function renderTodo(){
     .map(function(i){ return esc(i.title); });
   if(open.length) row("", "open", open.join(" &middot; "));
 
-  el.innerHTML = rows.length
-    ? '<p class="todolab">What to do</p>' + rows.join("")
+  /* upcoming tests that have a plan get a checklist under the rows */
+  var plans = "";
+  ((CWDATA && CWDATA.coursework) ? CWDATA.coursework : [])
+    .filter(function(x){
+      if(x.type !== "test" || !x.date || !x.plan || !x.plan.length) return false;
+      var n = daysAway(x.date);
+      return n >= 0 && n <= 14;
+    })
+    .sort(function(a, b){ return a.date < b.date ? -1 : 1; })
+    .forEach(function(t){ plans += planBlock(t); });
+
+  el.innerHTML = (rows.length || plans)
+    ? '<p class="todolab">What to do</p>' + rows.join("") + plans
     : "";
+
+  var sb = el.querySelectorAll("[data-step]");
+  for(var si = 0; si < sb.length; si++){
+    (function(btn){
+      btn.addEventListener("click", function(){
+        toggleStep(decodeURIComponent(btn.getAttribute("data-step")));
+      });
+    })(sb[si]);
+  }
 }
 
 function renderDue(){
