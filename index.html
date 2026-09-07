@@ -293,6 +293,11 @@
     font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;color:var(--spectrum)}
   .cwcount{font-family:var(--mono);font-size:9.5px;opacity:.65;margin-left:5px;font-weight:500}
 
+  /* ---- grades ---- */
+  .gsc{font-family:var(--mono);font-size:16px;font-weight:600;color:var(--sci);letter-spacing:-.02em}
+  .gsc.low{color:var(--spectrum)}
+  .gpct{font-family:var(--mono);font-size:10.5px;color:var(--open);margin-left:8px;vertical-align:1px}
+
   /* ---------- today banner ---------- */
   .today{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:0 0 14px;background:var(--card)}
   .tgrid{display:grid;grid-template-columns:1fr}
@@ -472,6 +477,7 @@
         <span class="seg segsm" role="group" aria-label="Coursework view">
           <button data-cw="test" aria-pressed="true">Tests</button>
           <button data-cw="assignment" aria-pressed="false">Assignments</button>
+          <button data-cw="grade" aria-pressed="false">Grades</button>
         </span>
         <button class="ib" id="cwrefresh" title="Reload coursework" aria-label="Reload coursework">
           <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M20 11a8 8 0 1 0-2.3 5.7M20 5v6h-6"/></svg>
@@ -1257,7 +1263,22 @@ function daysAway(key){
 function renderCW(){
   var body = document.getElementById("cwbody");
   var all = (CWDATA && CWDATA.coursework) ? CWDATA.coursework.slice() : [];
+  var grades = (CWDATA && CWDATA.recentGrades) ? CWDATA.recentGrades.slice() : [];
   var todayKey = iso(new Date());
+
+  /* tab labels carry their own counts so nothing hides behind an inactive tab */
+  var btns = document.querySelectorAll("[data-cw]");
+  for(var bi = 0; bi < btns.length; bi++){
+    var bt = btns[bi].getAttribute("data-cw");
+    btns[bi].setAttribute("aria-pressed", bt === cwTab);
+    var bn = (bt === "grade") ? grades.length
+      : all.filter(function(x){ return (x.type || "assignment") === bt && withinGrace(x.date); }).length;
+    btns[bi].textContent = (bt === "test" ? "Tests" : bt === "grade" ? "Grades" : "Assignments")
+      + (bn ? " " + bn : "");
+  }
+
+  if(cwTab === "grade"){ renderGrades(body, grades); return; }
+
   var items = all.filter(function(x){
     return (x.type || "assignment") === cwTab && withinGrace(x.date);
   });
@@ -1265,16 +1286,6 @@ function renderCW(){
     if(a.date && b.date) return a.date < b.date ? -1 : 1;
     return a.date ? -1 : 1;
   });
-
-  var btns = document.querySelectorAll("[data-cw]");
-  for(var i = 0; i < btns.length; i++){
-    var t = btns[i].getAttribute("data-cw");
-    btns[i].setAttribute("aria-pressed", t === cwTab);
-    var n = all.filter(function(x){
-      return (x.type || "assignment") === t && withinGrace(x.date);
-    }).length;
-    btns[i].textContent = (t === "test" ? "Tests" : "Assignments") + (n ? " " + n : "");
-  }
 
   if(!items.length){
     body.innerHTML = '<div class="annempty">No '
@@ -1320,6 +1331,47 @@ function renderCW(){
       + (it.url ? '<p class="as"><a href="' + it.url + '" target="_blank" rel="noopener">'
                 + (it.source || "source") + '</a></p>'
                 : (it.source ? '<p class="as">' + it.source + '</p>' : ''))
+      + '</div></div>';
+  }).join("");
+}
+
+/* Scores as reported by the teacher. No running average is shown on purpose:
+   the digest gives raw points with no category weight, so any average computed
+   here would disagree with ParentVUE, which is the record that counts. */
+function gradePct(score){
+  var m = String(score || "").match(/^\s*(\d+(?:\.\d+)?)\s*\/\s*(\d+(?:\.\d+)?)\s*$/);
+  if(!m) return null;
+  var out = parseFloat(m[2]);
+  if(!out) return null;
+  return Math.round((parseFloat(m[1]) / out) * 100);
+}
+
+function renderGrades(body, grades){
+  if(!grades.length){
+    body.innerHTML = '<div class="annempty">No scores yet. These arrive in the daily Schoology digest '
+      + 'and appear here after a scan. ParentVUE stays the official record.</div>';
+    return;
+  }
+  grades.sort(function(a, b){ return (a.date || "") < (b.date || "") ? 1 : -1; });
+
+  body.innerHTML = grades.map(function(g){
+    var k = CLASSKEY[g.cls] || "notice";
+    var pct = gradePct(g.score);
+    var low = (pct !== null && pct < 70);
+    var when = g.date
+      ? fromIso(g.date).toLocaleDateString(undefined, {month:"short", day:"numeric"})
+      : "&mdash;";
+    return '<div class="ai">'
+      + '<span class="ad">' + when + '</span>'
+      + '<div><p class="at">'
+      + '<span class="gsc' + (low ? " low" : "") + '">' + esc(g.score || "") + '</span>'
+      + (pct !== null ? '<span class="gpct">' + pct + '%</span>' : "")
+      + '</p>'
+      + '<p class="at" style="margin-top:2px">'
+      + (g.cls ? '<span class="cwcls ' + k + '" style="color:var(--' + k + ')">' + esc(g.cls) + '</span> &middot; ' : "")
+      + esc(g.title || "") + '</p>'
+      + (low ? '<p class="cwmeta"><b>Below 70. Science and English offer a retake on major '
+             + 'summatives at this level, Math does not.</b></p>' : "")
       + '</div></div>';
   }).join("");
 }
@@ -1618,7 +1670,10 @@ function renderAnn(data){
     var tk = iso(new Date());
     var cw = (data && data.coursework) ? data.coursework : [];
     var nt = cw.filter(function(x){ return x.type === "test" && (!x.date || x.date >= tk); }).length;
-    if(!nt) cwTab = "assignment";
+    var na = cw.filter(function(x){ return (x.type || "assignment") === "assignment" && (!x.date || x.date >= tk); }).length;
+    var ng = (data && data.recentGrades) ? data.recentGrades.length : 0;
+    /* open on whichever tab has something in it */
+    if(!nt) cwTab = na ? "assignment" : (ng ? "grade" : "assignment");
   }
   renderCW();
 
