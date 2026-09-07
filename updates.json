@@ -1,15 +1,7 @@
 {
-  "updated": "2026-09-06",
+  "updated": "2026-09-07",
   "note": "Rewritten by the 5pm and 7pm email scans.",
   "items": [
-    {
-      "type": "deadline",
-      "date": "2026-09-07",
-      "title": "Fall club registration CLOSES Monday 7 Sep",
-      "detail": "Open to all families since 10am Sunday. Space is limited and some clubs have already sold out. Read the details before registering: several clubs run an AM session, a PM session, or both, so pick the right one. Bus transportation is only offered for PM clubs. Questions go to clubs@watsonmountainpto.org or clubs2@watsonmountainpto.org, but only after registration closes.",
-      "source": "Watson Mountain PTO, 5 Sep",
-      "url": "https://mail.google.com/mail/u/0/#inbox/1a0735ca17a49c86"
-    },
     {
       "type": "deadline",
       "date": "2026-09-10",
@@ -30,14 +22,6 @@
       "type": "notice",
       "title": "New teacher messaging app, Rooms by Apptegy",
       "detail": "LCPS launched a two way messaging tool this year. It becomes the only channel for quick notes from teachers, coaches and activity leaders. Invitations went out 2 Sep by text or email and will be resent next week, but you can join without one. Download the LCPS app, allow notifications, pick Watson Mountain in the Feed tab, then use the Rooms or Messaging tab at the bottom. Schoology still holds assignments and ParentVUE still holds grades.",
-      "source": "LCPS Letter, 3 Sep",
-      "url": "https://mail.google.com/mail/u/0/#inbox/1a068ff1b8bf7c96"
-    },
-    {
-      "type": "event",
-      "date": "2026-09-07",
-      "title": "Kids Fest, Segra Field, Monday 11am to 3pm",
-      "detail": "Loudoun County Parks and Rec, at the Segra Field parking lots, 42095 Loudoun United Dr, Leesburg. Touch a Truck, bounce houses, petting zoo, inflatable obstacle course, face painting, a magician, food trucks. Free family option for the Labor Day holiday.",
       "source": "LCPS Letter, 3 Sep",
       "url": "https://mail.google.com/mail/u/0/#inbox/1a068ff1b8bf7c96"
     },
@@ -99,13 +83,24 @@
     },
     {
       "type": "notice",
-      "title": "Fall intramurals are open",
-      "detail": "Cross country running and 5v5 flag football, plus general intramural sports. Sign up details are in the Mountain Messenger flyer.",
-      "source": "Mountain Messenger, Vol 3 Issue 3",
-      "url": "https://mail.google.com/mail/u/0/#inbox/1a053b8d353181f7"
+      "title": "Mountain Messenger is image only, open the accessible version",
+      "detail": "Vol 3 Issue 4 landed 7 Sep. The newsletter is built entirely from graphics, so nothing is readable as text and the scan cannot pull items out of it. Use the View Accessible Mountain Messenger Document link at the top of the email. Fall intramurals, cross country running and 5v5 flag football, were announced in the previous issue.",
+      "source": "Mountain Messenger, Vol 3 Issue 4",
+      "url": "https://mail.google.com/mail/u/0/#inbox/1a07cb93d4fe936e"
+    },
+    {
+      "type": "notice",
+      "title": "Fall club registration closed 7 Sep",
+      "detail": "The window shut today. Questions are now welcome at clubs@watsonmountainpto.org or clubs2@watsonmountainpto.org. Remember bus transport only runs for PM clubs, so an AM club means a morning drop off.",
+      "source": "Watson Mountain PTO",
+      "url": "https://mail.google.com/mail/u/0/#inbox/1a0735ca17a49c86"
     }
   ],
   "scans": [
+    {
+      "at": "2026-09-07T17:40:00-04:00",
+      "summary": "Holiday Monday, nothing moved. No new grades, no new assignments, no overdue. Science OIP study guide still due Tuesday 8 Sep and both Thursday items stand. Club registration closed today. New Mountain Messenger is image only, so open the accessible document link inside it."
+    },
     {
       "at": "2026-09-06T17:35:00-04:00",
       "summary": "No coursework change over the weekend, nothing new graded, no overdue. One urgent item: fall club registration opened to all families at 10am today and closes Monday 7 Sep, with some clubs already sold out."
@@ -141,10 +136,6 @@
     {
       "at": "2026-08-17T21:30:00-04:00",
       "summary": "Read the Spectrum syllabus linked from Ms. Cumberledge's email. Added a folder to supplies, the two week late window, and the fact that Spectrum posts no grades to ParentVUE."
-    },
-    {
-      "at": "2026-08-17T19:00:00-04:00",
-      "summary": "No new school email since the 5pm scan."
     }
   ],
   "closures": [],
