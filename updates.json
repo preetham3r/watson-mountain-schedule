@@ -56,6 +56,10 @@
   ],
   "scans": [
     {
+      "at": "2026-09-07T19:04:00-04:00",
+      "summary": "Added a Grades tab to the Coursework card. Six scores had been collected in updates.json since 2 Sep but were never rendered, so they were invisible until now. Anything below 70 is flagged with the retake rule for that class."
+    },
+    {
       "at": "2026-09-07T18:52:00-04:00",
       "summary": "Decluttered. Removed seven announcements that were already stated in a permanent panel, spent, or not about Adi, and cut three duplicated bullets from Worth knowing."
     },
@@ -90,10 +94,6 @@
     {
       "at": "2026-09-02T20:40:00-04:00",
       "summary": "Overdue list clear. Three new grades, Science OIP Knowledge Check 5/5, PE Procedures Major Summative 100/100, Math Data Cycle Study Guide 100/100. New Science OIP quiz added for 10 Sep. Art 6 teacher confirmed as Ms. Thiele. Fall intramurals announced."
-    },
-    {
-      "at": "2026-09-01T07:40:00-04:00",
-      "summary": "Overdue list is clear. PE 20/20 and 10/10, English formative 5/5. Two English summatives now dated, 3 and 9 Sep. Math homework moves to Mathspace. First Art assignment appears, Q1 portfolio due 23 Oct."
     }
   ],
   "closures": [],
