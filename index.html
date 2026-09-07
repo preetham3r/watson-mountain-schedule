@@ -303,9 +303,25 @@
   .todo:empty{display:none}
   .todolab{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
     color:var(--open);margin:0 0 7px}
-  .td{display:grid;grid-template-columns:62px 1fr;gap:10px;font-size:13.5px;padding:3px 0;align-items:baseline}
+  .td{display:grid;grid-template-columns:62px 1fr;gap:10px;font-size:13.5px;
+    align-items:baseline;width:100%;text-align:left;appearance:none;border:0;
+    background:transparent;cursor:pointer;font-family:inherit;color:var(--ink);
+    min-height:40px;padding:8px 4px;border-radius:8px}
+  .td:hover{background:rgba(255,255,255,.6)}
+  .td:active{background:var(--ice)}
+  .td:focus-visible{outline:2px solid var(--eng);outline-offset:1px}
   .td .tdk{font-family:var(--mono);font-size:9px;letter-spacing:.09em;text-transform:uppercase;
-    padding:2px 0;border-radius:5px;text-align:center;color:var(--ink2);background:var(--ice)}
+    padding:3px 0;border-radius:5px;text-align:center;color:var(--ink2);background:var(--ice)}
+  .td .tdt{position:relative}
+  /* struck off: the line stays visible so she can see what she has cleared */
+  .td.on .tdt{color:var(--open);text-decoration:line-through;text-decoration-thickness:1.5px}
+  .td.on .tdt b{color:var(--open);font-weight:600}
+  .td.on .tdk{background:#E4F0EA;color:var(--sci)}
+  .td.on.late .tdk,.td.on.now .tdk,.td.on.prep .tdk,.td.on.rsm .tdk,.td.on.bag .tdk{
+    background:#E4F0EA;color:var(--sci)}
+  .todon{float:right;font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;
+    text-transform:none;color:var(--open)}
+  .todon.all{color:var(--sci);font-weight:600}
   .td.now .tdk{background:#FBEDE4;color:var(--math)}
   .td.late .tdk{background:#F6E6E8;color:var(--spectrum)}
   .td.late b{color:var(--spectrum)}
@@ -2096,43 +2112,58 @@ function renderTodo(){
   if(!el) return;
   var rows = [], todayKey = iso(new Date());
   var nk = nextSchoolDay(todayKey);
-  var due = allDueItems();
 
-  function row(cls, key, text){
-    rows.push('<div class="td ' + cls + '"><span class="tdk">' + key + '</span><span>' + text + '</span></div>');
+  var ndone = 0, ntotal = 0;
+
+  /* Ids share the shape the sync worker validates: date|label|index.
+     Day bound jobs carry today's date so they reset each morning. Standing jobs
+     use the 0000-00-00 sentinel so a tick sticks until the data changes. */
+  function row(cls, key, html, label, idDate, i){
+    var id = (idDate || todayKey) + "|" + String(label).replace(/\|/g, " ").slice(0, 110) + "|" + (i || 0);
+    var on = isDone(id);
+    ntotal++; if(on) ndone++;
+    rows.push('<button class="td ' + cls + (on ? " on" : "") + '" data-todo="'
+      + encodeURIComponent(id) + '" aria-pressed="' + on + '">'
+      + '<span class="tdk">' + key + '</span>'
+      + '<span class="tdt">' + html + '</span></button>');
   }
   function name(x){ return "<b>" + esc(x.title) + "</b>" + (x.cls ? " &middot; " + esc(x.cls) : ""); }
+  function plain(x){ return (x.title || "") + (x.cls ? " " + x.cls : ""); }
 
+  var due = allDueItems();
   var late = due.filter(function(x){ return x.date && daysAway(x.date) < 0 && withinGrace(x.date); });
-  late.forEach(function(x){ row("late", "late", name(x) + ", due " + fromIso(x.date).toLocaleDateString(undefined,{month:"short",day:"numeric"})); });
+  late.forEach(function(x, i){
+    row("late", "late", name(x) + ", due " + fromIso(x.date).toLocaleDateString(undefined,{month:"short",day:"numeric"}),
+        plain(x), x.date, i);
+  });
 
   due.filter(function(x){ return x.date === todayKey; })
-     .forEach(function(x){ row("now", "today", name(x)); });
+     .forEach(function(x, i){ row("now", "today", name(x), plain(x), x.date, i); });
 
   /* the reason this strip exists: flag it while there is still an evening to act */
   var tm = iso(new Date(Date.now() + 864e5));
   due.filter(function(x){ return x.date === tm; })
-     .forEach(function(x){ row("prep", "tonight", name(x) + ", due tomorrow"); });
+     .forEach(function(x, i){ row("prep", "tonight", name(x) + ", due tomorrow", plain(x), x.date, i); });
 
   var L = letterFor(todayKey), nL = nk ? letterFor(nk) : null;
   if(L && (L === "B" || L === "D") && todayKey >= INSTRUMENT_START){
-    row("bag", "bag", "Violin goes in <b>today</b>");
+    row("bag", "bag", "Violin goes in <b>today</b>", "Violin in the bag", todayKey, 0);
   } else if(nL && (nL === "B" || nL === "D") && nk >= INSTRUMENT_START){
-    row("bag", "bag", "Violin goes in <b>" + (nk === tm ? "tomorrow" : fromIso(nk).toLocaleDateString(undefined,{weekday:"long"})) + "</b>");
+    row("bag", "bag", "Violin goes in <b>" + (nk === tm ? "tomorrow" : fromIso(nk).toLocaleDateString(undefined,{weekday:"long"})) + "</b>",
+        "Violin in the bag", todayKey, 0);
   }
 
   var r = CWDATA && CWDATA.rsm;
   if(r){
     var nx = nextRSMClass(r.day);
-    if(nx && nx.away === 0) row("rsm", "rsm", "Class <b>tonight</b> " + esc(r.time || ""));
-    else if(nx && nx.away === 1) row("rsm", "rsm", "Class <b>tomorrow</b> " + esc(r.time || ""));
+    if(nx && nx.away === 0) row("rsm", "rsm", "Class <b>tonight</b> " + esc(r.time || ""), "RSM class", todayKey, 0);
+    else if(nx && nx.away === 1) row("rsm", "rsm", "Class <b>tomorrow</b> " + esc(r.time || ""), "RSM class", tm, 0);
   }
 
-  /* standing jobs that never got a date */
-  var open = ((CWDATA && CWDATA.items) ? CWDATA.items : [])
+  /* standing jobs, one row each so they can be struck off separately */
+  ((CWDATA && CWDATA.items) ? CWDATA.items : [])
     .filter(function(i){ return i.type === "deadline" && !i.date; })
-    .map(function(i){ return esc(i.title); });
-  if(open.length) row("", "open", open.join(" &middot; "));
+    .forEach(function(it, i){ row("", "open", esc(it.title), it.title, "0000-00-00", i); });
 
   /* upcoming tests that have a plan get a checklist under the rows */
   var plans = "";
@@ -2146,8 +2177,20 @@ function renderTodo(){
     .forEach(function(t){ plans += planBlock(t); });
 
   el.innerHTML = (rows.length || plans)
-    ? '<p class="todolab">What to do</p>' + rows.join("") + plans
+    ? '<p class="todolab">What to do'
+      + (ntotal ? '<span class="todon' + (ndone === ntotal ? " all" : "") + '">'
+                  + ndone + ' of ' + ntotal + ' done' + (ndone === ntotal ? ' &#10003;' : '') + '</span>' : "")
+      + '</p>' + rows.join("") + plans
     : "";
+
+  var tb = el.querySelectorAll("[data-todo]");
+  for(var ti = 0; ti < tb.length; ti++){
+    (function(btn){
+      btn.addEventListener("click", function(){
+        toggleStep(decodeURIComponent(btn.getAttribute("data-todo")));
+      });
+    })(tb[ti]);
+  }
 
   var sb = el.querySelectorAll("[data-step]");
   for(var si = 0; si < sb.length; si++){
