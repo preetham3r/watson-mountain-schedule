@@ -105,6 +105,10 @@
   ],
   "scans": [
     {
+      "at": "2026-09-07T18:26:00-04:00",
+      "summary": "UX pass on the page. Fixed a regression that had dropped RSM homework from the Today and Next day cards. Missed deadlines now stay visible for five days flagged as overdue instead of silently disappearing. Today card moved above the settings pills, and the small icon buttons enlarged for thumbs."
+    },
+    {
       "at": "2026-09-07T18:07:00-04:00",
       "summary": "Built a dedicated RSM Ashburn panel on the page. RSM homework and competitions now live in their own rsm block rather than mixed into school coursework, with a next class countdown, the weekly kit list, portal links and the full competition calendar."
     },
@@ -139,10 +143,6 @@
     {
       "at": "2026-08-30T11:40:00-04:00",
       "summary": "Safety Poster came back 100/100. New overdue: English Summary Formative from Friday. Math Histograms cleared. Mr. Dickerson's weekly US History PDF has started arriving."
-    },
-    {
-      "at": "2026-08-28T07:38:00-04:00",
-      "summary": "Math 7 Histograms formative flagged OVERDUE. Second shoulder rest reminder from Ms. Holowecki, mandatory and graded. MAP testing ran this week."
     }
   ],
   "closures": [],
