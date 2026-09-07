@@ -56,6 +56,10 @@
   ],
   "scans": [
     {
+      "at": "2026-09-07T19:38:00-04:00",
+      "summary": "Tests can now carry a day by day study plan that shows in the Today block as a checklist with a progress bar. Ticks are stored on the device. Authored plans for both 10 Sep tests from what Miss Peyton and the science study guide actually specify."
+    },
+    {
       "at": "2026-09-07T19:22:00-04:00",
       "summary": "Added a What to do strip at the top of the Today card: overdue, due today, due tomorrow flagged the evening before, violin, RSM class and standing open jobs. Cut sixteen passages of explanatory wording across the page."
     },
@@ -90,10 +94,6 @@
     {
       "at": "2026-09-04T18:10:00-04:00",
       "summary": "Quiet day. No new grades, no new assignments, no overdue. Coursework unchanged: Science homework 8 Sep, vocab test and Science quiz both 10 Sep. From the LCPS Letter, teachers move to a new messaging app called Rooms inside the LCPS app, so download it. Kids Fest Monday and a budget survey closing 15 Sep."
-    },
-    {
-      "at": "2026-09-03T18:05:00-04:00",
-      "summary": "Vocab Unit 1 test moved from 9 Sep to 10 Sep. New Science OIP Study Guide homework due 8 Sep. US History U1 Geography major came back 100/100, both Spectrum items graded. Club registration opening, Video Game Music Club needs a year of playing so she is not eligible. Long weekend, back Tuesday."
     }
   ],
   "closures": [],
@@ -115,7 +115,29 @@
       "title": "Vocab Unit 1 Test",
       "detail": "100 points, minor summative, no retake. Moved from 9 Sep. Study from the graded sketch notes packet and the word list in the Schoology Q1 Vocab folder.",
       "source": "Madison Peyton, Schoology",
-      "url": "https://app.schoology.com/course/8479114936/preview/94759433/parent"
+      "url": "https://app.schoology.com/course/8479114936/preview/94759433/parent",
+      "plan": [
+        {
+          "on": "2026-09-08",
+          "do": "Read the graded sketch notes packet through once"
+        },
+        {
+          "on": "2026-09-08",
+          "do": "Open the Q1 Vocab folder in Schoology and check the word list is complete"
+        },
+        {
+          "on": "2026-09-09",
+          "do": "Make flashcards for the words she could not define from memory"
+        },
+        {
+          "on": "2026-09-09",
+          "do": "Family quiz from the shared word list, mark the ones she misses"
+        },
+        {
+          "on": "2026-09-10",
+          "do": "Final run through the missed words only"
+        }
+      ]
     },
     {
       "type": "test",
@@ -124,7 +146,25 @@
       "title": "OIP Quiz, Minor Summative",
       "detail": "Due 11:59 pm. Covers observation, inference and prediction. She scored 5/5 on the matching knowledge check.",
       "source": "Schoology",
-      "url": "https://app.schoology.com/course/8479119391/preview/94759433/parent"
+      "url": "https://app.schoology.com/course/8479119391/preview/94759433/parent",
+      "plan": [
+        {
+          "on": "2026-09-08",
+          "do": "Finish the OIP Study Guide homework, due 11:59 pm"
+        },
+        {
+          "on": "2026-09-09",
+          "do": "Say the difference between observation, inference and prediction out loud"
+        },
+        {
+          "on": "2026-09-09",
+          "do": "Redo the knowledge check questions she already scored 5/5 on"
+        },
+        {
+          "on": "2026-09-10",
+          "do": "Skim the study guide once before the quiz"
+        }
+      ]
     },
     {
       "type": "assignment",
