@@ -1984,8 +1984,14 @@ renderClosures();
 
 
 /* ---- what is due today and tomorrow ---- */
-/* ---- study plans, ticked off on this device ---- */
+/* ---- study plans ---- */
 var SKEY = "wmm-study";
+
+/* Paste the Cloudflare Worker URL here to turn on cross device sync.
+   Leave blank and the page falls back to a copyable sync code.
+   No GitHub token goes here, ever. See SYNC-SETUP.md. */
+var SYNC_URL = "";
+var SYNC_KEY = "";
 /* Progress has two layers. studyProgress in updates.json is the shared record
    any device can read. Local ticks sit on top and win, so a tap works instantly
    and offline instead of waiting for a round trip. */
@@ -2021,6 +2027,26 @@ function pendingMarks(){
   }
   return out;
 }
+function clearedMarks(){
+  var loc = localMarks(), shared = sharedMarks(), out = [];
+  for(var k in loc){
+    if(!Object.prototype.hasOwnProperty.call(loc, k)) continue;
+    if(!loc[k] && shared.indexOf(k) >= 0) out.push(k);
+  }
+  return out;
+}
+
+/* once the shared record agrees, drop the local override so the two stop diverging */
+function pruneLocal(){
+  var loc = localMarks(), shared = sharedMarks(), changed = false;
+  for(var k in loc){
+    if(!Object.prototype.hasOwnProperty.call(loc, k)) continue;
+    var inShared = shared.indexOf(k) >= 0;
+    if((loc[k] && inShared) || (!loc[k] && !inShared)){ delete loc[k]; changed = true; }
+  }
+  if(changed) setLocalMarks(loc);
+}
+
 function stepId(test, i){
   return ((test.date || "") + "|" + (test.title || "") + "|" + i).replace(/\s+/g, " ").slice(0, 160);
 }
@@ -2133,24 +2159,47 @@ function renderTodo(){
   }
 
   /* ticks this device has made that the shared record has not caught up with */
-  var pend = pendingMarks();
+  var pend = pendingMarks(), cleared = clearedMarks();
   var pel = document.getElementById("sync");
   if(pel){
-    if(pend.length && plans){
+    var n = pend.length + cleared.length;
+    if(n && plans){
       pel.style.display = "";
-      pel.innerHTML = '<span class="synct">' + pend.length + ' step'
-        + (pend.length === 1 ? "" : "s") + ' ticked on this device only</span>'
-        + '<button class="ib" id="syncbtn">Copy sync code</button>';
+      pel.innerHTML = '<span class="synct">' + n + ' change'
+        + (n === 1 ? "" : "s") + ' on this device only</span>'
+        + '<button class="ib" id="syncbtn">' + (SYNC_URL ? "Sync now" : "Copy sync code") + '</button>';
       var bt = document.getElementById("syncbtn");
-      if(bt) bt.addEventListener("click", function(){
-        var code = "SYNC " + JSON.stringify(pend);
-        var ok = function(){ bt.textContent = "Copied"; setTimeout(function(){ bt.textContent = "Copy sync code"; }, 1600); };
-        if(navigator.clipboard && navigator.clipboard.writeText){
-          navigator.clipboard.writeText(code).then(ok, function(){ window.prompt("Copy this:", code); });
-        } else { window.prompt("Copy this:", code); }
-      });
+      if(bt) bt.addEventListener("click", function(){ doSync(bt, pend, cleared); });
     } else { pel.style.display = "none"; }
   }
+}
+
+function doSync(bt, pend, cleared){
+  /* no worker configured: hand over a code to paste into chat instead */
+  if(!SYNC_URL){
+    var code = "SYNC " + JSON.stringify({done:pend, undone:cleared});
+    var ok = function(){ bt.textContent = "Copied"; setTimeout(function(){ bt.textContent = "Copy sync code"; }, 1600); };
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(code).then(ok, function(){ window.prompt("Copy this:", code); });
+    } else { window.prompt("Copy this:", code); }
+    return;
+  }
+  bt.disabled = true; bt.textContent = "Syncing";
+  var headers = {"Content-Type":"application/json"};
+  if(SYNC_KEY) headers["X-Sync-Key"] = SYNC_KEY;
+  fetch(SYNC_URL, {method:"POST", headers:headers, body:JSON.stringify({done:pend, undone:cleared})})
+    .then(function(r){ return r.json().then(function(j){ return {ok:r.ok, j:j}; }); })
+    .then(function(res){
+      if(!res.ok) throw new Error(res.j && res.j.error ? res.j.error : "failed");
+      bt.textContent = "Synced";
+      /* pull the file back so the shared list and the local overrides reconcile */
+      return loadAnn().then(function(){ pruneLocal(); renderTodo(); });
+    })
+    .catch(function(e){
+      bt.disabled = false;
+      bt.textContent = "Retry";
+      bt.title = String(e && e.message ? e.message : e);
+    });
 }
 
 function renderDue(){
