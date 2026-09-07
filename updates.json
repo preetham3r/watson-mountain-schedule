@@ -56,6 +56,10 @@
   ],
   "scans": [
     {
+      "at": "2026-09-07T20:04:00-04:00",
+      "summary": "Study progress is now two layers: a shared studyProgress list in updates.json that every device reads, with local ticks layered on top so a tap is instant. A sync code button appears when this device is ahead of the shared record. No credential goes near the page."
+    },
+    {
       "at": "2026-09-07T19:38:00-04:00",
       "summary": "Tests can now carry a day by day study plan that shows in the Today block as a checklist with a progress bar. Ticks are stored on the device. Authored plans for both 10 Sep tests from what Miss Peyton and the science study guide actually specify."
     },
@@ -90,10 +94,6 @@
     {
       "at": "2026-09-06T17:35:00-04:00",
       "summary": "No coursework change over the weekend, nothing new graded, no overdue. One urgent item: fall club registration opened to all families at 10am today and closes Monday 7 Sep, with some clubs already sold out."
-    },
-    {
-      "at": "2026-09-04T18:10:00-04:00",
-      "summary": "Quiet day. No new grades, no new assignments, no overdue. Coursework unchanged: Science homework 8 Sep, vocab test and Science quiz both 10 Sep. From the LCPS Letter, teachers move to a new messaging app called Rooms inside the LCPS app, so download it. Kids Fest Monday and a budget survey closing 15 Sep."
     }
   ],
   "closures": [],
@@ -283,5 +283,6 @@
         "detail": "Registration details to follow"
       }
     ]
-  }
+  },
+  "studyProgress": []
 }
