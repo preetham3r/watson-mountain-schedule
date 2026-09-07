@@ -353,6 +353,12 @@
   .sync{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;
     padding:9px 18px;border-bottom:1px solid var(--line2);background:#F5F9FB}
   .synct{font-family:var(--mono);font-size:10px;letter-spacing:.04em;color:var(--ink2)}
+  .pdays{display:flex;flex-wrap:wrap;gap:5px;margin:8px 0 2px}
+  .pday{font-family:var(--mono);font-size:9.5px;letter-spacing:.04em;padding:3px 7px;
+    border-radius:6px;background:var(--ice);color:var(--ink2);white-space:nowrap}
+  .pday.done{background:#E4F0EA;color:var(--sci)}
+  .pday.miss{background:#F6E6E8;color:var(--spectrum)}
+  .pday.now{background:#FBEDE4;color:var(--math);font-weight:600}
   .planhint{font-family:var(--mono);font-size:9.5px;letter-spacing:.04em;color:var(--open);
     margin:6px 0 0;display:block}
   .plandone{font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;
@@ -2068,6 +2074,32 @@ function stepId(test, i){
 }
 /* Only tests that carry an authored plan get a checklist. A generic auto plan
    would be filler, and filler is what makes a block like this get ignored. */
+/* Each step carries the day it was meant for, so the run up to a test can be
+   read back day by day: what was set, what got done, what slipped. */
+function planDays(test, steps){
+  var todayKey = iso(new Date()), order = [], byDay = {};
+  for(var i = 0; i < steps.length; i++){
+    var k = steps[i].on || test.date;
+    if(!byDay[k]){ byDay[k] = {set:0, done:0}; order.push(k); }
+    byDay[k].set++;
+    if(isDone(stepId(test, i))) byDay[k].done++;
+  }
+  order.sort();
+  if(order.length < 2) return "";
+
+  var out = "";
+  for(var d = 0; d < order.length; d++){
+    var key = order[d], c = byDay[key];
+    var full = (c.done === c.set);
+    var cls = full ? "done" : (key < todayKey ? "miss" : (key === todayKey ? "now" : ""));
+    var lab = key === todayKey ? "Today"
+            : fromIso(key).toLocaleDateString(undefined, {weekday:"short"});
+    out += '<span class="pday ' + cls + '">' + lab + ' '
+      + c.done + '/' + c.set + (full ? ' &#10003;' : '') + '</span>';
+  }
+  return '<div class="pdays">' + out + '</div>';
+}
+
 function planBlock(test){
   var steps = test.plan || [];
   if(!steps.length) return "";
@@ -2098,10 +2130,41 @@ function planBlock(test){
     + '<span class="planw">' + (n === 0 ? "today" : n === 1 ? "tomorrow" : "in " + n + " days") + '</span></div>'
     + '<div class="planbar"><i style="width:' + pct + '%"></i></div>'
     + '<span class="plancount">' + ndone + ' of ' + steps.length + ' done</span>'
+    + planDays(test, steps)
     + (ndone === 0 && rows ? '<span class="planhint">Tap a step when she has finished it</span>' : "")
     + rows
     + (ndone === steps.length ? '<span class="plandone">&#10003; All prep done</span>' : "")
     + '</div>';
+}
+
+/* Day bound rows reset each morning, so without a log yesterday leaves no trace.
+   This records one line per day: how many jobs were showing and how many got
+   struck off. Local to the device, capped at a fortnight. */
+var LOGKEY = "wmm-daylog";
+function dayLog(){
+  try { return JSON.parse(localStorage.getItem(LOGKEY) || "{}"); } catch(e){ return {}; }
+}
+function noteDay(key, done, total){
+  var log = dayLog();
+  if(!total){ if(log[key]) { delete log[key]; } }
+  else { log[key] = done + "/" + total; }
+  var keys = Object.keys(log).sort();
+  while(keys.length > 14){ delete log[keys.shift()]; }
+  try { localStorage.setItem(LOGKEY, JSON.stringify(log)); } catch(e){}
+}
+function dayStrip(todayKey){
+  var log = dayLog(), out = "", any = false;
+  for(var i = 6; i >= 0; i--){
+    var d = new Date(); d.setHours(0,0,0,0); d.setDate(d.getDate() - i);
+    var key = iso(d), v = log[key];
+    var lab = (i === 0) ? "Today" : d.toLocaleDateString(undefined, {weekday:"short"});
+    if(!v){ out += '<span class="pday">' + lab + ' &middot;</span>'; continue; }
+    any = true;
+    var parts = v.split("/"), full = (parts[0] === parts[1]);
+    var cls = full ? "done" : (i === 0 ? "now" : "miss");
+    out += '<span class="pday ' + cls + '">' + lab + ' ' + v + (full ? ' &#10003;' : '') + '</span>';
+  }
+  return any ? '<div class="pdays">' + out + '</div>' : "";
 }
 
 /* One place that answers: what needs doing before bed tonight. Everything here
@@ -2176,11 +2239,13 @@ function renderTodo(){
     .sort(function(a, b){ return a.date < b.date ? -1 : 1; })
     .forEach(function(t){ plans += planBlock(t); });
 
+  noteDay(todayKey, ndone, ntotal);
+
   el.innerHTML = (rows.length || plans)
     ? '<p class="todolab">What to do'
       + (ntotal ? '<span class="todon' + (ndone === ntotal ? " all" : "") + '">'
                   + ndone + ' of ' + ntotal + ' done' + (ndone === ntotal ? ' &#10003;' : '') + '</span>' : "")
-      + '</p>' + rows.join("") + plans
+      + '</p>' + rows.join("") + dayStrip(todayKey) + plans
     : "";
 
   var tb = el.querySelectorAll("[data-todo]");
