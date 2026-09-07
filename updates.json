@@ -56,6 +56,10 @@
   ],
   "scans": [
     {
+      "at": "2026-09-07T20:58:00-04:00",
+      "summary": "Every What to do row is now tappable. Striking one through updates a done count in the header and syncs like the study steps. Day bound jobs such as the violin reset each morning, standing jobs stay struck until the data changes."
+    },
+    {
       "at": "2026-09-07T20:31:00-04:00",
       "summary": "Built the sync worker. sync-worker.js and SYNC-SETUP.md added to the repo. The page gained SYNC_URL and SYNC_KEY placeholders and a Sync now button; until the worker URL is filled in it falls back to a copyable code. No token is in the page."
     },
@@ -90,10 +94,6 @@
     {
       "at": "2026-09-07T17:58:00-04:00",
       "summary": "Widened the scan to cover RSM Ashburn, mathschool.com and russianschool.com, now running daily alongside the school scan. Backfilled three weeks of missed RSM mail: Pre Algebra_2 Thursdays with Mrs. Lynch, Lesson 1 homework on the portal, and the full competition calendar with AMC 8 open to her for the first time."
-    },
-    {
-      "at": "2026-09-07T17:40:00-04:00",
-      "summary": "Holiday Monday, nothing moved. No new grades, no new assignments, no overdue. Science OIP study guide still due Tuesday 8 Sep and both Thursday items stand. Club registration closed today. New Mountain Messenger is image only, so open the accessible document link inside it."
     }
   ],
   "closures": [],
