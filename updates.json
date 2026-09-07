@@ -12,21 +12,6 @@
     },
     {
       "type": "notice",
-      "title": "Optional: RSM Herndon middle school physics",
-      "detail": "Mondays 4:20 to 5:50 pm with Dr. Iraida, at the Herndon branch rather than Ashburn. Launched 31 Aug and they said there was still room. Nothing has been committed.",
-      "source": "RSM Herndon, 31 Aug",
-      "url": "https://mail.google.com/mail/u/0/#inbox/1a05854124b5d550"
-    },
-    {
-      "type": "notice",
-      "date": "2026-09-07",
-      "title": "Long weekend, no school Friday or Monday",
-      "detail": "4 Sep is a student holiday and 7 Sep is Labor Day. Next school day is Tuesday 8 Sep. Both are already in the calendar, so the letters below are correct.",
-      "source": "Jeb Dickerson, US History",
-      "url": "https://mail.google.com/mail/u/0/#inbox/1a067eaef90e932e"
-    },
-    {
-      "type": "notice",
       "title": "New teacher messaging app, Rooms by Apptegy",
       "detail": "LCPS launched a two way messaging tool this year. It becomes the only channel for quick notes from teachers, coaches and activity leaders. Invitations went out 2 Sep by text or email and will be resent next week, but you can join without one. Download the LCPS app, allow notifications, pick Watson Mountain in the Feed tab, then use the Rooms or Messaging tab at the bottom. Schoology still holds assignments and ParentVUE still holds grades.",
       "source": "LCPS Letter, 3 Sep",
@@ -67,43 +52,13 @@
       "detail": "Mrs. Reel expects homework after most classes, due the following class period, mostly on Mathspace. Every unit also has a Schoology folder with an agenda listing each day, assignments, completed notes and upcoming test dates. That agenda is the first place to look after an absence.",
       "source": "Alexandra Reel, Math 7",
       "url": "https://mail.google.com/mail/u/0/#inbox/1a058c13dbe48317"
-    },
-    {
-      "type": "notice",
-      "title": "Mr. Dickerson's weekly US History update arrives Thursdays",
-      "detail": "A PDF is attached covering the week and the email body says nothing, so open the attachment. Latest is 8-31-26.pdf.",
-      "source": "Jeb Dickerson, US History",
-      "url": "https://mail.google.com/mail/u/0/#inbox/1a067eaef90e932e"
-    },
-    {
-      "type": "notice",
-      "title": "Art 6 teacher is Ms. B. Thiele",
-      "detail": "Art 6 Sem: Intro to Art, semester 1, blocks 1 and 2 on B days. Supply list still has not arrived.",
-      "source": "Schoology course roster",
-      "url": "https://app.schoology.com/course/8479116294/preview/94759433/parent"
-    },
-    {
-      "type": "notice",
-      "title": "Spectrum grades will never show in ParentVUE",
-      "detail": "That class gives no traditional grades and uses the Schoology gradebook only.",
-      "source": "Erin Cumberledge, Spectrum syllabus"
-    },
-    {
-      "type": "notice",
-      "title": "Mountain Messenger is image only, open the accessible version",
-      "detail": "Vol 3 Issue 4 landed 7 Sep. The newsletter is built entirely from graphics, so nothing is readable as text and the scan cannot pull items out of it. Use the View Accessible Mountain Messenger Document link at the top of the email. Fall intramurals, cross country running and 5v5 flag football, were announced in the previous issue.",
-      "source": "Mountain Messenger, Vol 3 Issue 4",
-      "url": "https://mail.google.com/mail/u/0/#inbox/1a07cb93d4fe936e"
-    },
-    {
-      "type": "notice",
-      "title": "Fall club registration closed 7 Sep",
-      "detail": "The window shut today. Questions are now welcome at clubs@watsonmountainpto.org or clubs2@watsonmountainpto.org. Remember bus transport only runs for PM clubs, so an AM club means a morning drop off.",
-      "source": "Watson Mountain PTO",
-      "url": "https://mail.google.com/mail/u/0/#inbox/1a0735ca17a49c86"
     }
   ],
   "scans": [
+    {
+      "at": "2026-09-07T18:52:00-04:00",
+      "summary": "Decluttered. Removed seven announcements that were already stated in a permanent panel, spent, or not about Adi, and cut three duplicated bullets from Worth knowing."
+    },
     {
       "at": "2026-09-07T18:26:00-04:00",
       "summary": "UX pass on the page. Fixed a regression that had dropped RSM homework from the Today and Next day cards. Missed deadlines now stay visible for five days flagged as overdue instead of silently disappearing. Today card moved above the settings pills, and the small icon buttons enlarged for thumbs."
@@ -139,10 +94,6 @@
     {
       "at": "2026-09-01T07:40:00-04:00",
       "summary": "Overdue list is clear. PE 20/20 and 10/10, English formative 5/5. Two English summatives now dated, 3 and 9 Sep. Math homework moves to Mathspace. First Art assignment appears, Q1 portfolio due 23 Oct."
-    },
-    {
-      "at": "2026-08-30T11:40:00-04:00",
-      "summary": "Safety Poster came back 100/100. New overdue: English Summary Formative from Friday. Math Histograms cleared. Mr. Dickerson's weekly US History PDF has started arriving."
     }
   ],
   "closures": [],
