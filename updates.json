@@ -56,6 +56,10 @@
   ],
   "scans": [
     {
+      "at": "2026-09-07T21:26:00-04:00",
+      "summary": "Added day by day progress. Each study plan now shows a chip per day with steps set against steps done, and the What to do block keeps a rolling seven day log so a finished or missed day leaves a trace after the rows reset."
+    },
+    {
       "at": "2026-09-07T20:58:00-04:00",
       "summary": "Every What to do row is now tappable. Striking one through updates a done count in the header and syncs like the study steps. Day bound jobs such as the violin reset each morning, standing jobs stay struck until the data changes."
     },
@@ -90,10 +94,6 @@
     {
       "at": "2026-09-07T18:07:00-04:00",
       "summary": "Built a dedicated RSM Ashburn panel on the page. RSM homework and competitions now live in their own rsm block rather than mixed into school coursework, with a next class countdown, the weekly kit list, portal links and the full competition calendar."
-    },
-    {
-      "at": "2026-09-07T17:58:00-04:00",
-      "summary": "Widened the scan to cover RSM Ashburn, mathschool.com and russianschool.com, now running daily alongside the school scan. Backfilled three weeks of missed RSM mail: Pre Algebra_2 Thursdays with Mrs. Lynch, Lesson 1 homework on the portal, and the full competition calendar with AMC 8 open to her for the first time."
     }
   ],
   "closures": [],
