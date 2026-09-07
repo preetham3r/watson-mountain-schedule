@@ -56,6 +56,10 @@
   ],
   "scans": [
     {
+      "at": "2026-09-07T20:31:00-04:00",
+      "summary": "Built the sync worker. sync-worker.js and SYNC-SETUP.md added to the repo. The page gained SYNC_URL and SYNC_KEY placeholders and a Sync now button; until the worker URL is filled in it falls back to a copyable code. No token is in the page."
+    },
+    {
       "at": "2026-09-07T20:04:00-04:00",
       "summary": "Study progress is now two layers: a shared studyProgress list in updates.json that every device reads, with local ticks layered on top so a tap is instant. A sync code button appears when this device is ahead of the shared record. No credential goes near the page."
     },
@@ -90,10 +94,6 @@
     {
       "at": "2026-09-07T17:40:00-04:00",
       "summary": "Holiday Monday, nothing moved. No new grades, no new assignments, no overdue. Science OIP study guide still due Tuesday 8 Sep and both Thursday items stand. Club registration closed today. New Mountain Messenger is image only, so open the accessible document link inside it."
-    },
-    {
-      "at": "2026-09-06T17:35:00-04:00",
-      "summary": "No coursework change over the weekend, nothing new graded, no overdue. One urgent item: fall club registration opened to all families at 10am today and closes Monday 7 Sep, with some clubs already sold out."
     }
   ],
   "closures": [],
