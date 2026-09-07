@@ -100,7 +100,7 @@
   .nd.today .ndd{color:var(--math);font-weight:600}
   .showpast{appearance:none;border:1px solid var(--line);background:var(--card);cursor:pointer;
     font-family:var(--mono);font-size:9.5px;letter-spacing:.07em;color:var(--ink2);
-    padding:5px 10px;border-radius:7px;margin-top:11px}
+    padding:9px 13px;min-height:34px;border-radius:7px;margin-top:11px}
   .showpast:hover{border-color:var(--eng);color:var(--eng)}
   .showpast:focus-visible{outline:2px solid var(--eng);outline-offset:2px}
   .date.gone .d,.date.gone .e{color:var(--open)}
@@ -201,12 +201,13 @@
   .annact{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}
   .annh{flex-wrap:wrap}
   .ib{appearance:none;border:1px solid var(--line);background:var(--card);cursor:pointer;
-    color:var(--ink2);border-radius:7px;padding:4px 7px;display:inline-flex;align-items:center;
+    color:var(--ink2);border-radius:7px;padding:8px 11px;min-height:34px;min-width:34px;
+    display:inline-flex;align-items:center;
     justify-content:center;font-family:var(--mono);font-size:10px;letter-spacing:.05em;
     text-decoration:none;line-height:1}
   .ib:hover{border-color:var(--eng);color:var(--eng)}
   .ib:focus-visible{outline:2px solid var(--eng);outline-offset:2px}
-  .ib.scan{padding:5px 9px}
+  .ib.scan{padding:8px 13px}
   .ib.spin svg{animation:sp .7s linear infinite}
   @keyframes sp{to{transform:rotate(360deg)}}
   .ai{display:grid;grid-template-columns:64px 1fr;gap:12px;padding:11px 18px;border-bottom:1px solid var(--line2)}
@@ -226,11 +227,12 @@
   .tag.notice{background:var(--ice);color:var(--ink2)}
 
   .ai{position:relative}
-  .ai .x{position:absolute;top:9px;right:12px;appearance:none;border:0;background:transparent;
-    cursor:pointer;color:var(--line);font-size:17px;line-height:1;padding:3px 5px;border-radius:5px}
+  .ai .x{position:absolute;top:4px;right:6px;appearance:none;border:0;background:transparent;
+    cursor:pointer;color:var(--line);font-size:17px;line-height:1;border-radius:5px;
+    width:36px;height:36px;display:flex;align-items:center;justify-content:center}
   .ai .x:hover{color:var(--spectrum);background:var(--ice)}
   .ai .x:focus-visible{outline:2px solid var(--eng);outline-offset:1px}
-  .ai .at{padding-right:26px}
+  .ai .at{padding-right:34px}
   .dismissed{padding:9px 18px 12px;font-family:var(--mono);font-size:10px;color:var(--open)}
   .dismissed button{appearance:none;border:0;background:transparent;cursor:pointer;
     font-family:var(--mono);font-size:10px;color:var(--eng);text-decoration:underline;padding:0 2px}
@@ -283,7 +285,13 @@
     text-transform:uppercase;padding:2px 6px;border-radius:5px;margin-left:7px;vertical-align:1px;
     background:#E7E9F6;color:var(--rsm)}
   .compflag.no{background:var(--ice);color:var(--open)}
-  .ai .ad.past{color:var(--open)}
+
+  /* ---- overdue ---- */
+  .ai .ad.late{color:var(--spectrum);font-weight:700}
+  .tag.late{background:#F6E6E8;color:var(--spectrum)}
+  .lateban{margin:0;padding:9px 18px;background:#FCF1F2;border-bottom:1px solid var(--line2);
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;color:var(--spectrum)}
+  .cwcount{font-family:var(--mono);font-size:9.5px;opacity:.65;margin-left:5px;font-weight:500}
 
   /* ---------- today banner ---------- */
   .today{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:0 0 14px;background:var(--card)}
@@ -390,6 +398,35 @@
     </a>
   </header>
 
+  <div class="today" id="today">
+    <div class="tgrid">
+      <div class="tnow">
+        <p class="tlab">Today</p>
+        <p class="tdate" id="tdate">—</p>
+        <p class="tletter" id="tletter">—</p>
+        <span class="tinst no" id="tinst"></span>
+        <div class="tsch" id="tsch"></div>
+        <p class="tdue" id="tdue" style="display:none"></p>
+        <p class="tcarry" id="tcarry" style="margin-top:9px"></p>
+      </div>
+      <div class="tnext">
+        <p class="tlab" id="tnextlab">Next school day</p>
+        <p class="tdate" id="ndate">—</p>
+        <p class="tletter" id="nletter">—</p>
+        <span class="tinst no" id="ninst"></span>
+        <div class="tsch" id="nsch"></div>
+        <p class="tdue" id="ndue" style="display:none"></p>
+        <p class="tcarry" id="ncarry" style="margin-top:9px"></p>
+      </div>
+    </div>
+    <div class="tfix">
+      <span>Anchored to Aug 17 as an A day. Override only if school shifts the rotation:</span>
+      <button data-fix="A">A</button><button data-fix="B">B</button>
+      <button data-fix="C">C</button><button data-fix="D">D</button>
+      <button data-fix="reset">Reset</button>
+    </div>
+  </div>
+
   <div class="bar">
     <span class="bg">
       <b>Bells</b>
@@ -426,35 +463,6 @@
       <span class="qn">Watson Mountain</span><span class="qd">School site and calendar</span></a>
     <a class="ql" href="tel:5713674250">
       <span class="qn">Call the office</span><span class="qd">571-367-4250</span></a>
-  </div>
-
-  <div class="today" id="today">
-    <div class="tgrid">
-      <div class="tnow">
-        <p class="tlab">Today</p>
-        <p class="tdate" id="tdate">—</p>
-        <p class="tletter" id="tletter">—</p>
-        <span class="tinst no" id="tinst"></span>
-        <div class="tsch" id="tsch"></div>
-        <p class="tdue" id="tdue" style="display:none"></p>
-        <p class="tcarry" id="tcarry" style="margin-top:9px"></p>
-      </div>
-      <div class="tnext">
-        <p class="tlab" id="tnextlab">Next school day</p>
-        <p class="tdate" id="ndate">—</p>
-        <p class="tletter" id="nletter">—</p>
-        <span class="tinst no" id="ninst"></span>
-        <div class="tsch" id="nsch"></div>
-        <p class="tdue" id="ndue" style="display:none"></p>
-        <p class="tcarry" id="ncarry" style="margin-top:9px"></p>
-      </div>
-    </div>
-    <div class="tfix">
-      <span>Anchored to Aug 17 as an A day. Override only if school shifts the rotation:</span>
-      <button data-fix="A">A</button><button data-fix="B">B</button>
-      <button data-fix="C">C</button><button data-fix="D">D</button>
-      <button data-fix="reset">Reset</button>
-    </div>
   </div>
 
   <div class="ann" id="cw">
@@ -1188,6 +1196,27 @@ var cwTab = "test";
 var cwTouched = false;
 var CWDATA = null;
 
+/* A missed deadline used to vanish the moment the date passed, which is exactly
+   when a parent most needs to see it. Anything due in the last few days stays on
+   the page, flagged, then drops off. */
+var GRACE_DAYS = 5;
+function withinGrace(dateKey){
+  if(!dateKey) return true;
+  return daysAway(dateKey) >= -GRACE_DAYS;
+}
+
+/* RSM homework lives outside coursework, so pull it in wherever due dates matter */
+function allDueItems(){
+  var out = (CWDATA && CWDATA.coursework) ? CWDATA.coursework.slice() : [];
+  var hw = (CWDATA && CWDATA.rsm && CWDATA.rsm.homework) ? CWDATA.rsm.homework : [];
+  for(var i = 0; i < hw.length; i++){
+    if(hw[i] && hw[i].due){
+      out.push({date:hw[i].due, title:hw[i].title || "Homework", cls:"RSM", type:"assignment"});
+    }
+  }
+  return out;
+}
+
 var CLASSKEY = {
   "Math 7":"math", "English 6H":"eng", "Science 6H":"sci", "US History":"hist",
   "US History to 1865":"hist", "Spectrum 6":"spectrum", "Strings 6":"strings",
@@ -1234,7 +1263,7 @@ function renderCW(){
   var all = (CWDATA && CWDATA.coursework) ? CWDATA.coursework.slice() : [];
   var todayKey = iso(new Date());
   var items = all.filter(function(x){
-    return (x.type || "assignment") === cwTab && (!x.date || x.date >= todayKey);
+    return (x.type || "assignment") === cwTab && withinGrace(x.date);
   });
   items.sort(function(a, b){
     if(a.date && b.date) return a.date < b.date ? -1 : 1;
@@ -1246,7 +1275,7 @@ function renderCW(){
     var t = btns[i].getAttribute("data-cw");
     btns[i].setAttribute("aria-pressed", t === cwTab);
     var n = all.filter(function(x){
-      return (x.type || "assignment") === t && (!x.date || x.date >= todayKey);
+      return (x.type || "assignment") === t && withinGrace(x.date);
     }).length;
     btns[i].textContent = (t === "test" ? "Tests" : "Assignments") + (n ? " " + n : "");
   }
@@ -1261,11 +1290,13 @@ function renderCW(){
 
   body.innerHTML = items.map(function(it){
     var k = CLASSKEY[it.cls] || "notice";
-    var dtxt = "", soon = false, meta = "";
+    var dtxt = "", soon = false, late = false, meta = "";
     if(it.date){
       var n = daysAway(it.date);
       var L = letterFor(it.date);
-      dtxt = (n === 0) ? "Today" : (n === 1) ? "Tomorrow"
+      late = (n < 0);
+      dtxt = late ? (n === -1 ? "Yesterday" : Math.abs(n) + "d ago")
+           : (n === 0) ? "Today" : (n === 1) ? "Tomorrow"
            : fromIso(it.date).toLocaleDateString(undefined, {month:"short", day:"numeric"});
       soon = (n >= 0 && n <= 7);
       var bits = [];
@@ -1283,9 +1314,9 @@ function renderCW(){
       meta = bits.join(" &middot; ");
     }
     return '<div class="ai">'
-      + '<span class="ad' + (soon ? " soon" : "") + '">' + (dtxt || "&mdash;") + '</span>'
-      + '<div><p class="at"><span class="tag ' + (it.type === "test" ? "test" : "deadline") + '">'
-      + (it.type === "test" ? "test" : "due") + '</span>'
+      + '<span class="ad' + (late ? " late" : soon ? " soon" : "") + '">' + (dtxt || "&mdash;") + '</span>'
+      + '<div><p class="at"><span class="tag ' + (late ? "late" : it.type === "test" ? "test" : "deadline") + '">'
+      + (late ? "overdue" : it.type === "test" ? "test" : "due") + '</span>'
       + (it.cls ? '<span class="cwcls ' + k + '" style="color:var(--' + k + ')">' + it.cls + '</span> &middot; ' : '')
       + it.title + '</p>'
       + (it.detail ? '<p class="ax">' + it.detail + '</p>' : '')
@@ -1393,7 +1424,7 @@ function renderRSM(data){
 
   /* --- homework --- */
   var todayKey = iso(new Date());
-  var hw = (r.homework || []).slice().filter(function(h){ return !h.due || h.due >= todayKey; });
+  var hw = (r.homework || []).slice().filter(function(h){ return withinGrace(h.due); });
   hw.sort(function(a,b){ return (a.due || "9999") < (b.due || "9999") ? -1 : 1; });
 
   html += '<div class="rsmsub">Homework</div>';
@@ -1401,16 +1432,19 @@ function renderRSM(data){
     html += '<div class="annempty">Nothing outstanding. A new assignment lands on the portal after each class.</div>';
   } else {
     html += hw.map(function(h){
-      var dtxt = "&mdash;", soon = false;
+      var dtxt = "&mdash;", soon = false, late = false;
       if(h.due){
         var n = daysAway(h.due);
-        dtxt = n === 0 ? "Today" : n === 1 ? "Tomorrow"
+        late = (n < 0);
+        dtxt = late ? (n === -1 ? "Yesterday" : Math.abs(n) + "d ago")
+             : n === 0 ? "Today" : n === 1 ? "Tomorrow"
              : fromIso(h.due).toLocaleDateString(undefined,{month:"short", day:"numeric"});
         soon = (n >= 0 && n <= 7);
       }
       return '<div class="ai">'
-        + '<span class="ad' + (soon ? " soon" : "") + '">' + dtxt + '</span>'
-        + '<div><p class="at"><span class="tag rsmhw">homework</span>' + esc(h.title || "Homework") + '</p>'
+        + '<span class="ad' + (late ? " late" : soon ? " soon" : "") + '">' + dtxt + '</span>'
+        + '<div><p class="at"><span class="tag ' + (late ? "late" : "rsmhw") + '">'
+        + (late ? "overdue" : "homework") + '</span>' + esc(h.title || "Homework") + '</p>'
         + (h.detail ? '<p class="ax">' + esc(h.detail) + '</p>' : "")
         + (h.assigned ? '<p class="cwmeta">assigned '
             + fromIso(h.assigned).toLocaleDateString(undefined,{month:"short", day:"numeric"}) + '</p>' : "")
@@ -1487,13 +1521,15 @@ var showDismissed = false;
 var FALLBACK = {updated:null, items:[]};
 
 function annDate(it){
-  if(!it.date) return {txt:"", soon:false};
+  if(!it.date) return {txt:"", soon:false, late:false};
   var d = fromIso(it.date), today = new Date(); today.setHours(0,0,0,0);
   var diff = Math.round((d - today) / 86400000);
   var txt = d.toLocaleDateString(undefined, {month:"short", day:"numeric"});
   if(diff === 0) txt = "Today";
   else if(diff === 1) txt = "Tomorrow";
-  return {txt:txt, soon:(diff >= 0 && diff <= 7)};
+  else if(diff === -1) txt = "Yesterday";
+  else if(diff < 0) txt = Math.abs(diff) + "d ago";
+  return {txt:txt, soon:(diff >= 0 && diff <= 7), late:(diff < 0)};
 }
 
 /* tolerant timestamp parser: full ISO with offset, ISO without offset, or a bare date */
@@ -1603,7 +1639,7 @@ function renderAnn(data){
     return 0;
   });
   var todayKey = iso(new Date());
-  items = items.filter(function(it){ return !it.date || it.date >= todayKey; });
+  items = items.filter(function(it){ return withinGrace(it.date); });
 
   var dis = getDismissed();
   var hidden = items.filter(function(it){ return dis.indexOf(annId(it)) >= 0; });
@@ -1653,8 +1689,9 @@ function renderAnn(data){
     }
     var id = annId(it), isHidden = dis.indexOf(id) >= 0;
     return '<div class="ai"' + (isHidden ? ' style="opacity:.5"' : '') + '>'
-      + '<span class="ad' + (d.soon ? ' soon' : '') + '">' + (d.txt || "&mdash;") + '</span>'
-      + '<div><p class="at"><span class="tag ' + (it.type || "notice") + '">' + (it.type || "notice") + '</span>'
+      + '<span class="ad' + (d.late ? ' late' : d.soon ? ' soon' : '') + '">' + (d.txt || "&mdash;") + '</span>'
+      + '<div><p class="at"><span class="tag ' + (d.late ? "late" : (it.type || "notice")) + '">'
+      + (d.late ? "passed" : (it.type || "notice")) + '</span>'
       + it.title + '</p>'
       + (it.detail ? '<p class="ax">' + it.detail + '</p>' : '')
       + src + '</div>'
@@ -1846,7 +1883,7 @@ renderClosures();
 
 /* ---- what is due today and tomorrow ---- */
 function renderDue(){
-  var cw = (CWDATA && CWDATA.coursework) ? CWDATA.coursework : [];
+  var cw = allDueItems();
   var todayKey = iso(new Date());
   var nk = nextSchoolDay(todayKey);
   [["tdue", todayKey, "today"], ["ndue", nk, "that day"]].forEach(function(pair){
