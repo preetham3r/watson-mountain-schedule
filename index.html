@@ -324,14 +324,20 @@
   .planbar i{display:block;height:100%;background:var(--sci);border-radius:3px;transition:width .2s}
   .planbar.done i{background:var(--sci)}
   .plancount{font-family:var(--mono);font-size:9.5px;color:var(--open)}
-  .pstep{display:flex;align-items:flex-start;gap:9px;width:100%;text-align:left;
-    appearance:none;border:0;background:transparent;cursor:pointer;
-    padding:7px 2px;font:inherit;font-size:13px;color:var(--ink);border-top:1px solid var(--line2)}
+  .pstep{display:flex;align-items:flex-start;gap:10px;width:100%;text-align:left;
+    appearance:none;border:0;background:transparent;cursor:pointer;min-height:44px;
+    padding:9px 4px;font:inherit;font-size:13px;color:var(--ink);border-top:1px solid var(--line2)}
   .pstep:first-of-type{border-top:0}
-  .pstep:focus-visible{outline:2px solid var(--eng);outline-offset:2px;border-radius:6px}
-  .pbox{flex:none;width:18px;height:18px;border:1.5px solid var(--line);border-radius:5px;
-    margin-top:1px;display:flex;align-items:center;justify-content:center;
-    font-size:12px;line-height:1;color:#fff}
+  .pstep:hover .pbox{border-color:var(--sci)}
+  .pstep:active{background:var(--ice);border-radius:8px}
+  .pstep:focus-visible{outline:2px solid var(--eng);outline-offset:2px;border-radius:8px}
+  .pbox{flex:none;width:22px;height:22px;border:2px solid var(--open);border-radius:6px;
+    margin-top:0;display:flex;align-items:center;justify-content:center;
+    font-size:13px;line-height:1;color:#fff;background:var(--card);transition:background .12s,border-color .12s}
+  .planhint{font-family:var(--mono);font-size:9.5px;letter-spacing:.04em;color:var(--open);
+    margin:6px 0 0;display:block}
+  .plandone{font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;
+    color:var(--sci);margin:7px 0 0;display:block;font-weight:600}
   .pstep.on .pbox{background:var(--sci);border-color:var(--sci)}
   .pstep.on span{color:var(--open);text-decoration:line-through}
   .pstep.miss .pbox{border-color:var(--spectrum)}
@@ -2024,7 +2030,9 @@ function planBlock(test){
     + '<span class="planw">' + (n === 0 ? "today" : n === 1 ? "tomorrow" : "in " + n + " days") + '</span></div>'
     + '<div class="planbar"><i style="width:' + pct + '%"></i></div>'
     + '<span class="plancount">' + ndone + ' of ' + steps.length + ' done</span>'
+    + (ndone === 0 && rows ? '<span class="planhint">Tap a step when she has finished it</span>' : "")
     + rows
+    + (ndone === steps.length ? '<span class="plandone">&#10003; All prep done</span>' : "")
     + '</div>';
 }
 
