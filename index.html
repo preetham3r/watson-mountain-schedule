@@ -298,6 +298,21 @@
   .gsc.low{color:var(--spectrum)}
   .gpct{font-family:var(--mono);font-size:10.5px;color:var(--open);margin-left:8px;vertical-align:1px}
 
+  /* ---- today action strip ---- */
+  .todo{padding:12px 18px;border-bottom:1px solid var(--line2);background:#FFFDF6}
+  .todo:empty{display:none}
+  .todolab{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--open);margin:0 0 7px}
+  .td{display:grid;grid-template-columns:62px 1fr;gap:10px;font-size:13.5px;padding:3px 0;align-items:baseline}
+  .td .tdk{font-family:var(--mono);font-size:9px;letter-spacing:.09em;text-transform:uppercase;
+    padding:2px 0;border-radius:5px;text-align:center;color:var(--ink2);background:var(--ice)}
+  .td.now .tdk{background:#FBEDE4;color:var(--math)}
+  .td.late .tdk{background:#F6E6E8;color:var(--spectrum)}
+  .td.late b{color:var(--spectrum)}
+  .td.prep .tdk{background:#E4EDF3;color:var(--eng)}
+  .td.rsm .tdk{background:#E7E9F6;color:var(--rsm)}
+  .td.bag .tdk{background:#EFE7F4;color:var(--strings)}
+
   /* ---------- today banner ---------- */
   .today{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:0 0 14px;background:var(--card)}
   .tgrid{display:grid;grid-template-columns:1fr}
@@ -404,6 +419,7 @@
   </header>
 
   <div class="today" id="today">
+    <div class="todo" id="todo"></div>
     <div class="tgrid">
       <div class="tnow">
         <p class="tlab">Today</p>
@@ -425,7 +441,7 @@
       </div>
     </div>
     <div class="tfix">
-      <span>Anchored to Aug 17 as an A day. Override only if school shifts the rotation:</span>
+      <span>Anchored to Aug 17 as an A day. Override only if school shifts it:</span>
       <button data-fix="A">A</button><button data-fix="B">B</button>
       <button data-fix="C">C</button><button data-fix="D">D</button>
       <button data-fix="reset">Reset</button>
@@ -513,7 +529,7 @@
         <a class="ib scan" id="annscan" target="_blank" rel="noopener" title="Ask Claude to scan school email now">Scan now</a>
       </span>
     </div>
-    <div id="annbody"><div class="annempty">Loading the latest from school email.</div></div>
+    <div id="annbody"><div class="annempty">Loading.</div></div>
     <div class="dismissed" id="dismissed" style="display:none"></div>
     <div class="slog" id="slog" style="display:none">
       <h3>Inbox scans</h3>
@@ -522,7 +538,6 @@
   </div>
 
   <div class="control">
-    <p>A and C run the same set of classes in opposite order, B and D run the other set. English and Advisory are in both, so they meet daily.</p>
     <div class="seg" role="group" aria-label="Rotation day">
       <button data-day="A" aria-pressed="true">A day</button>
       <button data-day="B" aria-pressed="false">B day</button>
@@ -554,7 +569,7 @@
     <div class="panel">
       <h2>The next ten school days</h2>
       <div id="nextdays"></div>
-      <p class="caveat" style="margin-top:11px">The letter is not tied to a weekday. It advances one step each school day and skips closures, so Monday is A one week and B the next. Purple means a B set day, so the violin goes in.</p>
+      <p class="caveat" style="margin-top:11px">Purple is a B set day, so the violin goes in.</p>
     </div>
 
     <div class="panel">
@@ -568,8 +583,8 @@
       <div class="sup"><h3>Buy once, used everywhere</h3><p>Headphones. Pencils. Highlighters. Glue sticks. Dry erase markers. Chromebook is school issued.</p></div>
       <div class="sup"><h3>Class specific</h3><p>Spiral notebook ×2, one for Math and one for English. One inch binder for Science. Folder with inside pockets for English. Unlined sketchbook for US History, and it has to match the exact type Mr. Dickerson linked, same size and unlined.</p></div>
       <div class="sup"><h3>Violin</h3><p>Rosin. Binder. <b>Shoulder rest</b>. Tuner. Cleaning cloth. Tag for the case. Music stand for home practice. Rock stops and bass stools are cello and bass only, skip those.</p>
-      <p style="margin-top:5px">Rent from a shop and get her <b>sized in person</b>. The directors name Day Violins and say plainly not to buy online. A full size is not a given at eleven.</p></div>
-      <div class="sup"><h3>Not yet known</h3><p>No syllabus has come through for Art 6 with Ms. Thiele. Expect a supply ask in the first week.</p></div>
+      <p style="margin-top:5px">Rent and get her <b>sized in person</b>. The directors name Day Violins and say not to buy online.</p></div>
+      <div class="sup"><h3>Not yet known</h3><p>No Art 6 supply list from Ms. Thiele yet.</p></div>
     </div>
 
     <div class="panel">
@@ -600,12 +615,11 @@
         <small>amy.wilfong@lcps.org</small></span><span class="r">Spectrum 7</span></div>
       <div class="ct"><span class="cl"><a href="mailto:Meghan.Ngo@lcps.org">Meghan Ngo</a>
         <small>Meghan.Ngo@lcps.org</small></span><span class="r">School nurse</span></div>
-      <p style="margin:12px 0 0;font-size:12.5px">Tap a name to email, or the office to dial. 41480 Steeplechase Loop Dr, Leesburg VA 20175.</p>
+      <p style="margin:12px 0 0;font-size:12.5px">41480 Steeplechase Loop Dr, Leesburg VA 20175.</p>
     </div>
 
     <div class="panel">
       <h2>Late work and retakes, by class</h2>
-      <p style="margin:0 0 11px">The rules are not the same in every class. This is the part that costs marks.</p>
       <div class="rule"><span class="rn" style="color:var(--math)">Math 7</span><span>Strictest. No extra credit at all. Late work is <b>not accepted once the related summative has been taken</b>. No retake policy stated.</span></div>
       <div class="rule"><span class="rn" style="color:var(--sci)">Science 6H</span><span>Retake offered on any major summative scored <b>below 70</b>. Mrs. DiPietro emails you and Adi when one is available.</span></div>
       <div class="rule"><span class="rn" style="color:var(--eng)">English 6H</span><span>Retakes on <b>major summatives only</b>, at 70 or below. Minors have no retake. Formatives cannot be handed in after the summative is taken.</span></div>
@@ -622,22 +636,22 @@
       <div class="step"><span class="sn">3</span><span>Open Schoology the same evening. Every teacher posts what was covered, and Mr. Dickerson files a Missed Learning Resource weekly.</span></div>
       <div class="step"><span class="sn">4</span><span>She gets <b>the equivalent of one block period per absent day</b> to hand work in. Because blocks meet every other day, one missed day can mean four days of catch up.</span></div>
       <div class="step"><span class="sn">5</span><span>Tell Mrs. Holowecki separately if a rehearsal or concert is affected. Two weeks notice for anything planned.</span></div>
-      <p style="margin:11px 0 0;font-size:12.5px;color:var(--ink2)">Thresholds worth knowing: five unexcused absences triggers intervention, so does eighteen total whether excused or not, and missing more than ten percent of the year counts as chronic absence.</p>
+      <p style="margin:11px 0 0;font-size:12.5px;color:var(--ink2)">Intervention triggers at five unexcused, eighteen total, or ten percent of the year.</p>
     </div>
 
     <div class="panel">
       <h2>No school ahead</h2>
       <div id="hollist"></div>
-      <p style="margin:11px 0 0;font-size:12.5px">LCPS 2026-2027 student calendar, adopted 25 Feb 2025. 180 school days, first day Aug 17, last day Jun 11.</p>
+      <p style="margin:11px 0 0;font-size:12.5px">180 school days. First day Aug 17, last Jun 11.</p>
     </div>
 
     <div class="panel">
       <h2>Worth knowing</h2>
       <ul>
-        <li><b>The instrument travels on B and D days only.</b> Violin students share lockers, so the violin comes home the same day it goes in. Every B and D day, both directions.</li>
+        <li><b>The violin travels on B and D days only</b>, both directions. Students share lockers, so it comes home the same day.</li>
         <li><b>English 6H and Advisory are the only two she has daily.</b> Everything else is every other day.</li>
-        <li><b>Grade 6 lockers are on floors 2 and 3.</b> Chromebook exchange is in the auditorium on floor 3, supply pickup in the library on floor 2.</li>
-        <li><b>Spectrum has no homework by design.</b> If she is working on it at home, she either chose a harder project or used class time poorly.</li>
+        <li><b>Grade 6 lockers are on floors 2 and 3.</b> Chromebook exchange in the floor 3 auditorium, supplies in the floor 2 library.</li>
+        <li><b>Spectrum has no homework by design.</b> Work at home means she chose a harder project or lost class time.</li>
       </ul>
     </div>
 
@@ -1290,8 +1304,7 @@ function renderCW(){
   if(!items.length){
     body.innerHTML = '<div class="annempty">No '
       + (cwTab === "test" ? "tests or quizzes" : "assignments")
-      + ' on the board. These come from school email, so they appear once a teacher announces them. '
-      + 'Use Scan now to check the inbox right away.</div>';
+      + ' on the board.</div>';
     return;
   }
 
@@ -1348,8 +1361,7 @@ function gradePct(score){
 
 function renderGrades(body, grades){
   if(!grades.length){
-    body.innerHTML = '<div class="annempty">No scores yet. These arrive in the daily Schoology digest '
-      + 'and appear here after a scan. ParentVUE stays the official record.</div>';
+    body.innerHTML = '<div class="annempty">No scores yet. ParentVUE is the official record.</div>';
     return;
   }
   grades.sort(function(a, b){ return (a.date || "") < (b.date || "") ? 1 : -1; });
@@ -1477,7 +1489,7 @@ function renderRSM(data){
 
   html += '<div class="rsmsub">Homework</div>';
   if(!hw.length){
-    html += '<div class="annempty">Nothing outstanding. A new assignment lands on the portal after each class.</div>';
+    html += '<div class="annempty">Nothing outstanding.</div>';
   } else {
     html += hw.map(function(h){
       var dtxt = "&mdash;", soon = false, late = false;
@@ -1665,6 +1677,7 @@ function renderAnn(data){
   }
   CWDATA = data;
   renderDue();
+  renderTodo();
   renderRSM(data);
   if(!cwTouched){
     var tk = iso(new Date());
@@ -1933,6 +1946,57 @@ renderClosures();
 
 
 /* ---- what is due today and tomorrow ---- */
+/* One place that answers: what needs doing before bed tonight. Everything here
+   already exists further down the page. The point is not to add facts but to
+   stop the parent assembling them from four cards each morning. */
+function renderTodo(){
+  var el = document.getElementById("todo");
+  if(!el) return;
+  var rows = [], todayKey = iso(new Date());
+  var nk = nextSchoolDay(todayKey);
+  var due = allDueItems();
+
+  function row(cls, key, text){
+    rows.push('<div class="td ' + cls + '"><span class="tdk">' + key + '</span><span>' + text + '</span></div>');
+  }
+  function name(x){ return "<b>" + esc(x.title) + "</b>" + (x.cls ? " &middot; " + esc(x.cls) : ""); }
+
+  var late = due.filter(function(x){ return x.date && daysAway(x.date) < 0 && withinGrace(x.date); });
+  late.forEach(function(x){ row("late", "late", name(x) + ", due " + fromIso(x.date).toLocaleDateString(undefined,{month:"short",day:"numeric"})); });
+
+  due.filter(function(x){ return x.date === todayKey; })
+     .forEach(function(x){ row("now", "today", name(x)); });
+
+  /* the reason this strip exists: flag it while there is still an evening to act */
+  var tm = iso(new Date(Date.now() + 864e5));
+  due.filter(function(x){ return x.date === tm; })
+     .forEach(function(x){ row("prep", "tonight", name(x) + ", due tomorrow"); });
+
+  var L = letterFor(todayKey), nL = nk ? letterFor(nk) : null;
+  if(L && (L === "B" || L === "D") && todayKey >= INSTRUMENT_START){
+    row("bag", "bag", "Violin goes in <b>today</b>");
+  } else if(nL && (nL === "B" || nL === "D") && nk >= INSTRUMENT_START){
+    row("bag", "bag", "Violin goes in <b>" + (nk === tm ? "tomorrow" : fromIso(nk).toLocaleDateString(undefined,{weekday:"long"})) + "</b>");
+  }
+
+  var r = CWDATA && CWDATA.rsm;
+  if(r){
+    var nx = nextRSMClass(r.day);
+    if(nx && nx.away === 0) row("rsm", "rsm", "Class <b>tonight</b> " + esc(r.time || ""));
+    else if(nx && nx.away === 1) row("rsm", "rsm", "Class <b>tomorrow</b> " + esc(r.time || ""));
+  }
+
+  /* standing jobs that never got a date */
+  var open = ((CWDATA && CWDATA.items) ? CWDATA.items : [])
+    .filter(function(i){ return i.type === "deadline" && !i.date; })
+    .map(function(i){ return esc(i.title); });
+  if(open.length) row("", "open", open.join(" &middot; "));
+
+  el.innerHTML = rows.length
+    ? '<p class="todolab">What to do</p>' + rows.join("")
+    : "";
+}
+
 function renderDue(){
   var cw = allDueItems();
   var todayKey = iso(new Date());
