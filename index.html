@@ -334,6 +334,9 @@
   .pbox{flex:none;width:22px;height:22px;border:2px solid var(--open);border-radius:6px;
     margin-top:0;display:flex;align-items:center;justify-content:center;
     font-size:13px;line-height:1;color:#fff;background:var(--card);transition:background .12s,border-color .12s}
+  .sync{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;
+    padding:9px 18px;border-bottom:1px solid var(--line2);background:#F5F9FB}
+  .synct{font-family:var(--mono);font-size:10px;letter-spacing:.04em;color:var(--ink2)}
   .planhint{font-family:var(--mono);font-size:9.5px;letter-spacing:.04em;color:var(--open);
     margin:6px 0 0;display:block}
   .plandone{font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;
@@ -451,6 +454,7 @@
 
   <div class="today" id="today">
     <div class="todo" id="todo"></div>
+    <div class="sync" id="sync" style="display:none"></div>
     <div class="tgrid">
       <div class="tnow">
         <p class="tlab">Today</p>
@@ -1982,37 +1986,59 @@ renderClosures();
 /* ---- what is due today and tomorrow ---- */
 /* ---- study plans, ticked off on this device ---- */
 var SKEY = "wmm-study";
-function getDone(){
-  try { return JSON.parse(localStorage.getItem(SKEY) || "[]"); } catch(e){ return []; }
+/* Progress has two layers. studyProgress in updates.json is the shared record
+   any device can read. Local ticks sit on top and win, so a tap works instantly
+   and offline instead of waiting for a round trip. */
+function localMarks(){
+  try { var v = JSON.parse(localStorage.getItem(SKEY) || "{}");
+        return Array.isArray(v) ? v.reduce(function(o, k){ o[k] = true; return o; }, {}) : v; }
+  catch(e){ return {}; }
 }
-function setDone(a){
-  try { localStorage.setItem(SKEY, JSON.stringify(a)); } catch(e){}
+function setLocalMarks(o){
+  try { localStorage.setItem(SKEY, JSON.stringify(o)); } catch(e){}
+}
+function sharedMarks(){
+  var s = (CWDATA && CWDATA.studyProgress) ? CWDATA.studyProgress : [];
+  return Array.isArray(s) ? s : Object.keys(s);
+}
+function isDone(id){
+  var loc = localMarks();
+  if(Object.prototype.hasOwnProperty.call(loc, id)) return !!loc[id];
+  return sharedMarks().indexOf(id) >= 0;
+}
+function toggleStep(id){
+  var loc = localMarks();
+  loc[id] = !isDone(id);
+  setLocalMarks(loc);
+  renderTodo();
+}
+/* everything ticked here that the shared record does not yet know about */
+function pendingMarks(){
+  var loc = localMarks(), shared = sharedMarks(), out = [];
+  for(var k in loc){
+    if(!Object.prototype.hasOwnProperty.call(loc, k)) continue;
+    if(loc[k] && shared.indexOf(k) < 0) out.push(k);
+  }
+  return out;
 }
 function stepId(test, i){
   return ((test.date || "") + "|" + (test.title || "") + "|" + i).replace(/\s+/g, " ").slice(0, 160);
 }
-function toggleStep(id){
-  var a = getDone(), i = a.indexOf(id);
-  if(i >= 0) a.splice(i, 1); else a.push(id);
-  setDone(a);
-  renderTodo();
-}
-
 /* Only tests that carry an authored plan get a checklist. A generic auto plan
    would be filler, and filler is what makes a block like this get ignored. */
 function planBlock(test){
   var steps = test.plan || [];
   if(!steps.length) return "";
-  var done = getDone(), todayKey = iso(new Date());
+  var todayKey = iso(new Date());
   var n = daysAway(test.date);
   var ndone = 0;
-  for(var i = 0; i < steps.length; i++){ if(done.indexOf(stepId(test, i)) >= 0) ndone++; }
+  for(var i = 0; i < steps.length; i++){ if(isDone(stepId(test, i))) ndone++; }
   var pct = Math.round((ndone / steps.length) * 100);
 
   /* show what is due today, plus anything from an earlier day still unticked */
   var rows = "";
   for(var j = 0; j < steps.length; j++){
-    var s = steps[j], id = stepId(test, j), on = done.indexOf(id) >= 0;
+    var s = steps[j], id = stepId(test, j), on = isDone(id);
     var when = s.on || "";
     var show = on || !when || when <= todayKey;
     if(!show) continue;
@@ -2104,6 +2130,26 @@ function renderTodo(){
         toggleStep(decodeURIComponent(btn.getAttribute("data-step")));
       });
     })(sb[si]);
+  }
+
+  /* ticks this device has made that the shared record has not caught up with */
+  var pend = pendingMarks();
+  var pel = document.getElementById("sync");
+  if(pel){
+    if(pend.length && plans){
+      pel.style.display = "";
+      pel.innerHTML = '<span class="synct">' + pend.length + ' step'
+        + (pend.length === 1 ? "" : "s") + ' ticked on this device only</span>'
+        + '<button class="ib" id="syncbtn">Copy sync code</button>';
+      var bt = document.getElementById("syncbtn");
+      if(bt) bt.addEventListener("click", function(){
+        var code = "SYNC " + JSON.stringify(pend);
+        var ok = function(){ bt.textContent = "Copied"; setTimeout(function(){ bt.textContent = "Copy sync code"; }, 1600); };
+        if(navigator.clipboard && navigator.clipboard.writeText){
+          navigator.clipboard.writeText(code).then(ok, function(){ window.prompt("Copy this:", code); });
+        } else { window.prompt("Copy this:", code); }
+      });
+    } else { pel.style.display = "none"; }
   }
 }
 
