@@ -1,7 +1,15 @@
 {
   "updated": "2026-09-08",
-  "note": "Rewritten by the 8 Sep morning scan.",
+  "note": "Rewritten by the 8 Sep evening scan.",
   "items": [
+    {
+      "type": "deadline",
+      "date": "2026-09-25",
+      "title": "Gifted evaluation window, probably not needed for her",
+      "detail": "LCPS opened the fall evaluation cycle for grades 6 to 8. The Permission to Evaluate form is due Friday 25 Sep and late forms are refused, though sixth and seventh graders get another cycle in January 2027. She is already scheduled in Spectrum 6 with Mrs. Cumberledge, which is the identified gifted programme, so this almost certainly does not apply to her. One question to the school gifted resource teacher settles it. Form link sits on the LCPS Gifted and Talented page.",
+      "source": "LCPS Gifted Education Office, 8 Sep",
+      "url": "https://mail.google.com/mail/u/0/#inbox/1a0829f8dbce79dd"
+    },
     {
       "type": "deadline",
       "date": "2026-09-10",
@@ -63,6 +71,10 @@
   ],
   "scans": [
     {
+      "at": "2026-09-08T17:40:00-04:00",
+      "summary": "Caught a deployment fault first: this morning's push built cleanly but the Pages deploy step failed, so the site had been serving 7 Sep data all day. This push retriggers it. Three new assignments landed today, one of them Histograms due tonight. Three grades posted, all full marks. Added the gifted evaluation window with the caveat that Spectrum 6 likely already covers her."
+    },
+    {
       "at": "2026-09-08T08:56:00-04:00",
       "summary": "Scanned five days of school mail. Nothing new has arrived since last night: the latest Schoology digest and the 7 Sep Mountain Messenger were both already captured. One real gap closed, fall club registration shut on 7 Sep, so there is no link still pending. Year long clubs from the PTO are the next window. Coursework is unchanged and correct: OIP study guide due tonight, two minor summatives Thursday, art portfolio 23 Oct."
     },
@@ -97,24 +109,11 @@
     {
       "at": "2026-09-07T19:04:00-04:00",
       "summary": "Added a Grades tab to the Coursework card. Six scores had been collected in updates.json since 2 Sep but were never rendered, so they were invisible until now. Anything below 70 is flagged with the retake rule for that class."
-    },
-    {
-      "at": "2026-09-07T18:52:00-04:00",
-      "summary": "Decluttered. Removed seven announcements that were already stated in a permanent panel, spent, or not about Adi, and cut three duplicated bullets from Worth knowing."
     }
   ],
   "closures": [],
   "bellOverride": null,
   "coursework": [
-    {
-      "type": "assignment",
-      "cls": "Science 6H",
-      "date": "2026-09-08",
-      "title": "OIP Study Guide Homework",
-      "detail": "Due 11:59 pm on the first day back. Feeds the OIP quiz two days later, so it is worth doing over the long weekend.",
-      "source": "Schoology",
-      "url": "https://app.schoology.com/course/8479119391/preview/94759433/parent"
-    },
     {
       "type": "test",
       "cls": "English 6H",
@@ -157,7 +156,7 @@
       "plan": [
         {
           "on": "2026-09-08",
-          "do": "Finish the OIP Study Guide homework, due 11:59 pm"
+          "do": "Reread the OIP study guide she scored 100 on, focus on the wording of the questions"
         },
         {
           "on": "2026-09-09",
@@ -181,9 +180,54 @@
       "detail": "Due 11:59 pm. Ms. Thiele, semester 1.",
       "source": "Schoology",
       "url": "https://app.schoology.com/course/8479116294/preview/94759433/parent"
+    },
+    {
+      "type": "assignment",
+      "cls": "Math 7",
+      "date": "2026-09-08",
+      "title": "Histograms Performance Task",
+      "detail": "Due 11:59 pm tonight. Appeared in Schoology today and was not on the board this morning. Mrs. Reel runs homework through Mathspace, and the unit folder in Schoology carries the agenda if the task is not obvious.",
+      "source": "Alexandra Reel, Schoology",
+      "url": "https://app.schoology.com/course/8479113491/preview/94759433/parent"
+    },
+    {
+      "type": "assignment",
+      "cls": "Health & PE 6",
+      "date": "2026-09-11",
+      "title": "Week 3 Fitness Testing",
+      "detail": "Covers 8 to 11 Sep, due 11:59 pm Friday. Completed in class during PE, so nothing to prepare at home beyond having the right shoes and kit each PE day.",
+      "source": "Christina Allen, Schoology",
+      "url": "https://app.schoology.com/course/8479117649/preview/94759433/parent"
+    },
+    {
+      "type": "assignment",
+      "cls": "English 6H",
+      "date": "2026-10-23",
+      "title": "Q1 Evidence Log, CER Practice",
+      "detail": "Due 11:59 pm. A quarter long log of claim, evidence and reasoning practice, so it builds week by week rather than being done in one sitting. Worth a check every couple of weeks.",
+      "source": "Madison Peyton, Schoology",
+      "url": "https://app.schoology.com/course/8479114936/preview/94759433/parent"
     }
   ],
   "recentGrades": [
+    {
+      "cls": "Health & PE 6",
+      "title": "PE Procedures and Rules Formative",
+      "score": "5/5",
+      "date": "2026-09-08"
+    },
+    {
+      "cls": "Science 6H",
+      "title": "OIP Graded Formative 2026",
+      "score": "100/100",
+      "date": "2026-09-08"
+    },
+    {
+      "cls": "Science 6H",
+      "title": "OIP Study Guide Homework",
+      "score": "100/100",
+      "date": "2026-09-08"
+    },
     {
       "cls": "US History",
       "title": "MAJ: U1 Geography, major summative",
