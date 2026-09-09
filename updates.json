@@ -1,336 +1,295 @@
 {
- "updated": "2026-09-09",
- "note": "Rewritten by the 9 Sep evening scan.",
- "items": [
-  {
-   "type": "deadline",
-   "date": "2026-09-25",
-   "title": "Gifted evaluation window, probably not needed for her",
-   "detail": "LCPS opened the fall evaluation cycle for grades 6 to 8. The Permission to Evaluate form is due Friday 25 Sep and late forms are refused, though sixth and seventh graders get another cycle in January 2027. She is already scheduled in Spectrum 6 with Mrs. Cumberledge, which is the identified gifted programme, so this almost certainly does not apply to her. One question to the school gifted resource teacher settles it. Form link sits on the LCPS Gifted and Talented page.",
-   "source": "LCPS Gifted Education Office, 8 Sep",
-   "url": "https://mail.google.com/mail/u/0/#inbox/1a0829f8dbce79dd"
-  },
-  {
-   "type": "deadline",
-   "date": "2026-09-10",
-   "title": "Vocab Unit 1 test moved to Thursday 10 Sep",
-   "detail": "Miss Peyton pushed it back from 9 Sep to give two full school days after the long weekend. She expects reviewing at home from now until the test. Four ways to study: the graded sketch notes packet, the word list in the Schoology Q1 Vocab folder, homemade flashcards, or a family member quizzing her from the shared list.",
-   "source": "Madison Peyton, English 6H",
-   "url": "https://mail.google.com/mail/u/0/#inbox/1a067ce727998706"
-  },
-  {
-   "type": "notice",
-   "title": "New teacher messaging app, Rooms by Apptegy",
-   "detail": "LCPS launched a two way messaging tool this year. It becomes the only channel for quick notes from teachers, coaches and activity leaders. Invitations went out 2 Sep by text or email and will be resent next week, but you can join without one. Download the LCPS app, allow notifications, pick Watson Mountain in the Feed tab, then use the Rooms or Messaging tab at the bottom. Schoology still holds assignments and ParentVUE still holds grades.",
-   "source": "LCPS Letter, 3 Sep",
-   "url": "https://mail.google.com/mail/u/0/#inbox/1a068ff1b8bf7c96"
-  },
-  {
-   "type": "deadline",
-   "date": "2026-09-15",
-   "title": "FY28 budget ThoughtExchange closes 15 Sep",
-   "detail": "Optional. The School Board is collecting parent input on programs and investments for the 2027 to 2028 year, with slower revenue growth expected. Open at lcps.org/thoughtexchange.",
-   "source": "LCPS Letter, 3 Sep",
-   "url": "https://mail.google.com/mail/u/0/#inbox/1a068ff1b8bf7c96"
-  },
-  {
-   "type": "notice",
-   "title": "Video Game Music Club, she is not eligible yet",
-   "detail": "Runs Wednesdays after school, led by Mr. Klinberg. Sixth graders need at least one full year of playing plus permission from Ms. Holowecki, so this is a no for now. Ms. Holowecki is starting a Beginning Strings Club for beginners in the second club season and will send details as the first season closes. Fee carries an extra $15 that pays the professional guest musicians.",
-   "source": "Kelly Holowecki, Strings 6",
-   "url": "https://mail.google.com/mail/u/0/#inbox/1a06907e7c9ec78d"
-  },
-  {
-   "type": "notice",
-   "title": "Fall club registration has already closed",
-   "detail": "Registration opened to all families Sunday 6 Sep at 10:00 am and closed Monday 7 Sep. Several clubs sold out during PTO priority access before that. Bus transport was offered for PM sessions only. Year long clubs are separate and the PTO says details are still coming, so that is the next window to watch. Club questions go to clubs@watsonmountainpto.org.",
-   "source": "Watson Mountain PTO, 3 and 5 Sep",
-   "url": "https://mail.google.com/mail/u/0/#inbox/1a0735ca17a49c86"
-  },
-  {
-   "type": "deadline",
-   "title": "Shoulder rest still needed",
-   "detail": "Mandatory and graded, since instrument posture is assessed. Buy by size, printed inside the f-hole and on the instrument contract. Everest EZ2A for half size, EZ4A for three quarter or full, or a foam sponge for any size.",
-   "source": "Kelly Holowecki, Strings 6",
-   "url": "https://mail.google.com/mail/u/0/#inbox/1a044991cba2c50c"
-  },
-  {
-   "type": "deadline",
-   "title": "Check she has the right math notebook",
-   "detail": "Mrs. Reel asked families to verify it. The class uses it daily for notes, examples and practice.",
-   "source": "Alexandra Reel, Math 7",
-   "url": "https://mail.google.com/mail/u/0/#inbox/1a058c13dbe48317"
-  },
-  {
-   "type": "notice",
-   "title": "Math homework runs on Mathspace, most nights",
-   "detail": "Mrs. Reel expects homework after most classes, due the following class period, mostly on Mathspace. Every unit also has a Schoology folder with an agenda listing each day, assignments, completed notes and upcoming test dates. That agenda is the first place to look after an absence.",
-   "source": "Alexandra Reel, Math 7",
-   "url": "https://mail.google.com/mail/u/0/#inbox/1a058c13dbe48317"
-  }
- ],
- "scans": [
-  {
-   "at": "2026-09-09T18:15:00-04:00",
-   "summary": "Histograms is now a day overdue and it is the only thing on the list that costs marks. Schoology flagged it this evening as an overdue Math 7 submission, so it was not turned in Tuesday night. Two grades posted since last night, both full marks, and Week 3 Fitness Testing came back at 20/20 even though the window runs to Friday, so that one is finished and off the list. Tomorrow is the heavy day: Vocab Unit 1 test, OIP quiz by 11:59 pm, and RSM at 6:20 pm. Nothing new arrived from teachers or the PTO. Pages deploy is healthy again after the 8 Sep failure."
-  },
-  {
-   "at": "2026-09-08T17:40:00-04:00",
-   "summary": "Caught a deployment fault first: this morning's push built cleanly but the Pages deploy step failed, so the site had been serving 7 Sep data all day. This push retriggers it. Three new assignments landed today, one of them Histograms due tonight. Three grades posted, all full marks. Added the gifted evaluation window with the caveat that Spectrum 6 likely already covers her."
-  },
-  {
-   "at": "2026-09-08T08:56:00-04:00",
-   "summary": "Scanned five days of school mail. Nothing new has arrived since last night: the latest Schoology digest and the 7 Sep Mountain Messenger were both already captured. One real gap closed, fall club registration shut on 7 Sep, so there is no link still pending. Year long clubs from the PTO are the next window. Coursework is unchanged and correct: OIP study guide due tonight, two minor summatives Thursday, art portfolio 23 Oct."
-  },
-  {
-   "at": "2026-09-07T21:44:00-04:00",
-   "summary": "Fixed a real fault: study steps dated ahead of today were hidden, so both test cards showed an empty progress bar with nothing to tap. Steps are now grouped under day headings and always tappable, so ticking one moves the bar and the per day chips straight away."
-  },
-  {
-   "at": "2026-09-07T21:26:00-04:00",
-   "summary": "Added day by day progress. Each study plan now shows a chip per day with steps set against steps done, and the What to do block keeps a rolling seven day log so a finished or missed day leaves a trace after the rows reset."
-  },
-  {
-   "at": "2026-09-07T20:58:00-04:00",
-   "summary": "Every What to do row is now tappable. Striking one through updates a done count in the header and syncs like the study steps. Day bound jobs such as the violin reset each morning, standing jobs stay struck until the data changes."
-  },
-  {
-   "at": "2026-09-07T20:31:00-04:00",
-   "summary": "Built the sync worker. sync-worker.js and SYNC-SETUP.md added to the repo. The page gained SYNC_URL and SYNC_KEY placeholders and a Sync now button; until the worker URL is filled in it falls back to a copyable code. No token is in the page."
-  },
-  {
-   "at": "2026-09-07T20:04:00-04:00",
-   "summary": "Study progress is now two layers: a shared studyProgress list in updates.json that every device reads, with local ticks layered on top so a tap is instant. A sync code button appears when this device is ahead of the shared record. No credential goes near the page."
-  },
-  {
-   "at": "2026-09-07T19:38:00-04:00",
-   "summary": "Tests can now carry a day by day study plan that shows in the Today block as a checklist with a progress bar. Ticks are stored on the device. Authored plans for both 10 Sep tests from what Miss Peyton and the science study guide actually specify."
-  },
-  {
-   "at": "2026-09-07T19:22:00-04:00",
-   "summary": "Added a What to do strip at the top of the Today card: overdue, due today, due tomorrow flagged the evening before, violin, RSM class and standing open jobs. Cut sixteen passages of explanatory wording across the page."
-  }
- ],
- "closures": [],
- "bellOverride": null,
- "coursework": [
-  {
-   "type": "test",
-   "cls": "English 6H",
-   "date": "2026-09-10",
-   "title": "Vocab Unit 1 Test",
-   "detail": "100 points, minor summative, no retake. Moved from 9 Sep. Study from the graded sketch notes packet and the word list in the Schoology Q1 Vocab folder.",
-   "source": "Madison Peyton, Schoology",
-   "url": "https://app.schoology.com/course/8479114936/preview/94759433/parent",
-   "plan": [
+  "updated": "2026-09-09",
+  "note": "Study checklists removed at your request.",
+  "items": [
     {
-     "on": "2026-09-08",
-     "do": "Read the graded sketch notes packet through once"
+      "type": "deadline",
+      "date": "2026-09-25",
+      "title": "Gifted evaluation window, probably not needed for her",
+      "detail": "LCPS opened the fall evaluation cycle for grades 6 to 8. The Permission to Evaluate form is due Friday 25 Sep and late forms are refused, though sixth and seventh graders get another cycle in January 2027. She is already scheduled in Spectrum 6 with Mrs. Cumberledge, which is the identified gifted programme, so this almost certainly does not apply to her. One question to the school gifted resource teacher settles it. Form link sits on the LCPS Gifted and Talented page.",
+      "source": "LCPS Gifted Education Office, 8 Sep",
+      "url": "https://mail.google.com/mail/u/0/#inbox/1a0829f8dbce79dd"
     },
     {
-     "on": "2026-09-08",
-     "do": "Open the Q1 Vocab folder in Schoology and check the word list is complete"
+      "type": "deadline",
+      "date": "2026-09-10",
+      "title": "Vocab Unit 1 test moved to Thursday 10 Sep",
+      "detail": "Miss Peyton pushed it back from 9 Sep to give two full school days after the long weekend. She expects reviewing at home from now until the test. Four ways to study: the graded sketch notes packet, the word list in the Schoology Q1 Vocab folder, homemade flashcards, or a family member quizzing her from the shared list.",
+      "source": "Madison Peyton, English 6H",
+      "url": "https://mail.google.com/mail/u/0/#inbox/1a067ce727998706"
     },
     {
-     "on": "2026-09-09",
-     "do": "Make flashcards for the words she could not define from memory"
+      "type": "notice",
+      "title": "New teacher messaging app, Rooms by Apptegy",
+      "detail": "LCPS launched a two way messaging tool this year. It becomes the only channel for quick notes from teachers, coaches and activity leaders. Invitations went out 2 Sep by text or email and will be resent next week, but you can join without one. Download the LCPS app, allow notifications, pick Watson Mountain in the Feed tab, then use the Rooms or Messaging tab at the bottom. Schoology still holds assignments and ParentVUE still holds grades.",
+      "source": "LCPS Letter, 3 Sep",
+      "url": "https://mail.google.com/mail/u/0/#inbox/1a068ff1b8bf7c96"
     },
     {
-     "on": "2026-09-09",
-     "do": "Family quiz from the shared word list, mark the ones she misses"
+      "type": "deadline",
+      "date": "2026-09-15",
+      "title": "FY28 budget ThoughtExchange closes 15 Sep",
+      "detail": "Optional. The School Board is collecting parent input on programs and investments for the 2027 to 2028 year, with slower revenue growth expected. Open at lcps.org/thoughtexchange.",
+      "source": "LCPS Letter, 3 Sep",
+      "url": "https://mail.google.com/mail/u/0/#inbox/1a068ff1b8bf7c96"
     },
     {
-     "on": "2026-09-10",
-     "do": "Final run through the missed words only"
+      "type": "notice",
+      "title": "Video Game Music Club, she is not eligible yet",
+      "detail": "Runs Wednesdays after school, led by Mr. Klinberg. Sixth graders need at least one full year of playing plus permission from Ms. Holowecki, so this is a no for now. Ms. Holowecki is starting a Beginning Strings Club for beginners in the second club season and will send details as the first season closes. Fee carries an extra $15 that pays the professional guest musicians.",
+      "source": "Kelly Holowecki, Strings 6",
+      "url": "https://mail.google.com/mail/u/0/#inbox/1a06907e7c9ec78d"
+    },
+    {
+      "type": "notice",
+      "title": "Fall club registration has already closed",
+      "detail": "Registration opened to all families Sunday 6 Sep at 10:00 am and closed Monday 7 Sep. Several clubs sold out during PTO priority access before that. Bus transport was offered for PM sessions only. Year long clubs are separate and the PTO says details are still coming, so that is the next window to watch. Club questions go to clubs@watsonmountainpto.org.",
+      "source": "Watson Mountain PTO, 3 and 5 Sep",
+      "url": "https://mail.google.com/mail/u/0/#inbox/1a0735ca17a49c86"
+    },
+    {
+      "type": "deadline",
+      "title": "Shoulder rest still needed",
+      "detail": "Mandatory and graded, since instrument posture is assessed. Buy by size, printed inside the f-hole and on the instrument contract. Everest EZ2A for half size, EZ4A for three quarter or full, or a foam sponge for any size.",
+      "source": "Kelly Holowecki, Strings 6",
+      "url": "https://mail.google.com/mail/u/0/#inbox/1a044991cba2c50c"
+    },
+    {
+      "type": "deadline",
+      "title": "Check she has the right math notebook",
+      "detail": "Mrs. Reel asked families to verify it. The class uses it daily for notes, examples and practice.",
+      "source": "Alexandra Reel, Math 7",
+      "url": "https://mail.google.com/mail/u/0/#inbox/1a058c13dbe48317"
+    },
+    {
+      "type": "notice",
+      "title": "Math homework runs on Mathspace, most nights",
+      "detail": "Mrs. Reel expects homework after most classes, due the following class period, mostly on Mathspace. Every unit also has a Schoology folder with an agenda listing each day, assignments, completed notes and upcoming test dates. That agenda is the first place to look after an absence.",
+      "source": "Alexandra Reel, Math 7",
+      "url": "https://mail.google.com/mail/u/0/#inbox/1a058c13dbe48317"
     }
-   ]
-  },
-  {
-   "type": "test",
-   "cls": "Science 6H",
-   "date": "2026-09-10",
-   "title": "OIP Quiz, Minor Summative",
-   "detail": "Due 11:59 pm. Covers observation, inference and prediction. She scored 5/5 on the matching knowledge check.",
-   "source": "Schoology",
-   "url": "https://app.schoology.com/course/8479119391/preview/94759433/parent",
-   "plan": [
+  ],
+  "scans": [
     {
-     "on": "2026-09-08",
-     "do": "Reread the OIP study guide she scored 100 on, focus on the wording of the questions"
+      "at": "2026-09-09T19:12:00-04:00",
+      "summary": "No mail scan. Removed the two study checklists from What to do and switched the feature off in the page so future tests do not generate them. The tests themselves still show as dated rows."
     },
     {
-     "on": "2026-09-09",
-     "do": "Say the difference between observation, inference and prediction out loud"
+      "at": "2026-09-09T18:15:00-04:00",
+      "summary": "Histograms is now a day overdue and it is the only thing on the list that costs marks. Schoology flagged it this evening as an overdue Math 7 submission, so it was not turned in Tuesday night. Two grades posted since last night, both full marks, and Week 3 Fitness Testing came back at 20/20 even though the window runs to Friday, so that one is finished and off the list. Tomorrow is the heavy day: Vocab Unit 1 test, OIP quiz by 11:59 pm, and RSM at 6:20 pm. Nothing new arrived from teachers or the PTO. Pages deploy is healthy again after the 8 Sep failure."
     },
     {
-     "on": "2026-09-09",
-     "do": "Redo the knowledge check questions she already scored 5/5 on"
+      "at": "2026-09-08T17:40:00-04:00",
+      "summary": "Caught a deployment fault first: this morning's push built cleanly but the Pages deploy step failed, so the site had been serving 7 Sep data all day. This push retriggers it. Three new assignments landed today, one of them Histograms due tonight. Three grades posted, all full marks. Added the gifted evaluation window with the caveat that Spectrum 6 likely already covers her."
     },
     {
-     "on": "2026-09-10",
-     "do": "Skim the study guide once before the quiz"
+      "at": "2026-09-08T08:56:00-04:00",
+      "summary": "Scanned five days of school mail. Nothing new has arrived since last night: the latest Schoology digest and the 7 Sep Mountain Messenger were both already captured. One real gap closed, fall club registration shut on 7 Sep, so there is no link still pending. Year long clubs from the PTO are the next window. Coursework is unchanged and correct: OIP study guide due tonight, two minor summatives Thursday, art portfolio 23 Oct."
+    },
+    {
+      "at": "2026-09-07T21:44:00-04:00",
+      "summary": "Fixed a real fault: study steps dated ahead of today were hidden, so both test cards showed an empty progress bar with nothing to tap. Steps are now grouped under day headings and always tappable, so ticking one moves the bar and the per day chips straight away."
+    },
+    {
+      "at": "2026-09-07T21:26:00-04:00",
+      "summary": "Added day by day progress. Each study plan now shows a chip per day with steps set against steps done, and the What to do block keeps a rolling seven day log so a finished or missed day leaves a trace after the rows reset."
+    },
+    {
+      "at": "2026-09-07T20:58:00-04:00",
+      "summary": "Every What to do row is now tappable. Striking one through updates a done count in the header and syncs like the study steps. Day bound jobs such as the violin reset each morning, standing jobs stay struck until the data changes."
+    },
+    {
+      "at": "2026-09-07T20:31:00-04:00",
+      "summary": "Built the sync worker. sync-worker.js and SYNC-SETUP.md added to the repo. The page gained SYNC_URL and SYNC_KEY placeholders and a Sync now button; until the worker URL is filled in it falls back to a copyable code. No token is in the page."
+    },
+    {
+      "at": "2026-09-07T20:04:00-04:00",
+      "summary": "Study progress is now two layers: a shared studyProgress list in updates.json that every device reads, with local ticks layered on top so a tap is instant. A sync code button appears when this device is ahead of the shared record. No credential goes near the page."
+    },
+    {
+      "at": "2026-09-07T19:38:00-04:00",
+      "summary": "Tests can now carry a day by day study plan that shows in the Today block as a checklist with a progress bar. Ticks are stored on the device. Authored plans for both 10 Sep tests from what Miss Peyton and the science study guide actually specify."
     }
-   ]
-  },
-  {
-   "type": "assignment",
-   "cls": "Art 6",
-   "date": "2026-10-23",
-   "title": "Q1 Digital Portfolio",
-   "detail": "Due 11:59 pm. Ms. Thiele, semester 1.",
-   "source": "Schoology",
-   "url": "https://app.schoology.com/course/8479116294/preview/94759433/parent"
-  },
-  {
-   "type": "assignment",
-   "cls": "Math 7",
-   "date": "2026-09-08",
-   "title": "Histograms Performance Task",
-   "detail": "Overdue by one day. Schoology flagged it this evening as an overdue submission. It was due 11:59 pm Tuesday 8 Sep. Mrs. Reel runs homework through Mathspace, and the unit folder in Schoology carries the agenda if the task itself is not obvious. Ask her tonight whether it is submitted, and if it is not, whether late work is still taken.",
-   "source": "Alexandra Reel, Schoology",
-   "url": "https://app.schoology.com/course/8479113491/preview/94759433/parent"
-  },
-  {
-   "type": "assignment",
-   "cls": "English 6H",
-   "date": "2026-10-23",
-   "title": "Q1 Evidence Log, CER Practice",
-   "detail": "Due 11:59 pm. A quarter long log of claim, evidence and reasoning practice, so it builds week by week rather than being done in one sitting. Worth a check every couple of weeks.",
-   "source": "Madison Peyton, Schoology",
-   "url": "https://app.schoology.com/course/8479114936/preview/94759433/parent"
-  }
- ],
- "recentGrades": [
-  {
-   "cls": "Health & PE 6",
-   "title": "Week 3 Fitness Testing, 8 to 11 Sep",
-   "score": "20/20",
-   "date": "2026-09-09"
-  },
-  {
-   "cls": "English 6H",
-   "title": "Summary Minor Summative",
-   "score": "100/100",
-   "date": "2026-09-08"
-  },
-  {
-   "cls": "Health & PE 6",
-   "title": "PE Procedures and Rules Formative",
-   "score": "5/5",
-   "date": "2026-09-08"
-  },
-  {
-   "cls": "Science 6H",
-   "title": "OIP Graded Formative 2026",
-   "score": "100/100",
-   "date": "2026-09-08"
-  },
-  {
-   "cls": "Science 6H",
-   "title": "OIP Study Guide Homework",
-   "score": "100/100",
-   "date": "2026-09-08"
-  },
-  {
-   "cls": "US History",
-   "title": "MAJ: U1 Geography, major summative",
-   "score": "100/100",
-   "date": "2026-09-03"
-  },
-  {
-   "cls": "Spectrum 6",
-   "title": "Skill Choice Frame",
-   "score": "6/8",
-   "date": "2026-09-03"
-  },
-  {
-   "cls": "Spectrum 6",
-   "title": "Academic Responsibility and Integrity Agreement",
-   "score": "2/2",
-   "date": "2026-09-03"
-  },
-  {
-   "cls": "Science 6H",
-   "title": "Observation, Inference and Prediction Knowledge Check",
-   "score": "5/5",
-   "date": "2026-09-02"
-  },
-  {
-   "cls": "Health & PE 6",
-   "title": "PE Procedures Major Summative",
-   "score": "100/100",
-   "date": "2026-09-02"
-  }
- ],
- "rsm": {
-  "class": "Pre Algebra_2",
-  "teacher": "Svetlana Lynch",
-  "branch": "Ashburn",
-  "day": "Thursday",
-  "time": "6:20 to 8:20 pm",
-  "note": "Arrive no more than 5 minutes early and the office walks her in. RSM is nut free. Holiday schedule is on the parent portal.",
-  "bring": [
-   "notebook for class notes",
-   "pencil with eraser",
-   "folder or binder",
-   "snack and water (optional)"
   ],
-  "portal": "https://student.russianschool.com",
-  "parentPortal": "https://parents.russianschool.com",
-  "homework": [
-   {
-    "title": "Lesson 1 Homework",
-    "assigned": "2026-09-04",
-    "due": "2026-09-10",
-    "detail": "She answers on the portal for instant feedback AND brings the written work to class for Mrs. Lynch to check. The email gave no explicit deadline, so this is set to the next class.",
-    "source": "RSM online homework",
-    "url": "https://mail.google.com/mail/u/0/#inbox/1a06c684594630b2"
-   }
+  "closures": [],
+  "bellOverride": null,
+  "coursework": [
+    {
+      "type": "test",
+      "cls": "English 6H",
+      "date": "2026-09-10",
+      "title": "Vocab Unit 1 Test",
+      "detail": "100 points, minor summative, no retake. Moved from 9 Sep. Study from the graded sketch notes packet and the word list in the Schoology Q1 Vocab folder.",
+      "source": "Madison Peyton, Schoology",
+      "url": "https://app.schoology.com/course/8479114936/preview/94759433/parent"
+    },
+    {
+      "type": "test",
+      "cls": "Science 6H",
+      "date": "2026-09-10",
+      "title": "OIP Quiz, Minor Summative",
+      "detail": "Due 11:59 pm. Covers observation, inference and prediction. She scored 5/5 on the matching knowledge check.",
+      "source": "Schoology",
+      "url": "https://app.schoology.com/course/8479119391/preview/94759433/parent"
+    },
+    {
+      "type": "assignment",
+      "cls": "Art 6",
+      "date": "2026-10-23",
+      "title": "Q1 Digital Portfolio",
+      "detail": "Due 11:59 pm. Ms. Thiele, semester 1.",
+      "source": "Schoology",
+      "url": "https://app.schoology.com/course/8479116294/preview/94759433/parent"
+    },
+    {
+      "type": "assignment",
+      "cls": "Math 7",
+      "date": "2026-09-08",
+      "title": "Histograms Performance Task",
+      "detail": "Overdue by one day. Schoology flagged it this evening as an overdue submission. It was due 11:59 pm Tuesday 8 Sep. Mrs. Reel runs homework through Mathspace, and the unit folder in Schoology carries the agenda if the task itself is not obvious. Ask her tonight whether it is submitted, and if it is not, whether late work is still taken.",
+      "source": "Alexandra Reel, Schoology",
+      "url": "https://app.schoology.com/course/8479113491/preview/94759433/parent"
+    },
+    {
+      "type": "assignment",
+      "cls": "English 6H",
+      "date": "2026-10-23",
+      "title": "Q1 Evidence Log, CER Practice",
+      "detail": "Due 11:59 pm. A quarter long log of claim, evidence and reasoning practice, so it builds week by week rather than being done in one sitting. Worth a check every couple of weeks.",
+      "source": "Madison Peyton, Schoology",
+      "url": "https://app.schoology.com/course/8479114936/preview/94759433/parent"
+    }
   ],
-  "competitions": [
-   {
-    "name": "NOETIC Fall",
-    "window": "November",
-    "grades": "Grades 2 to 8",
-    "eligible": true,
-    "detail": "Registration details to follow"
-   },
-   {
-    "name": "MOEMS",
-    "window": "Nov to Mar",
-    "grades": "Grades 4 to 8",
-    "eligible": true,
-    "detail": "Runs across five monthly contests"
-   },
-   {
-    "name": "AMC 8",
-    "window": "January",
-    "grades": "Grades 6 to 8",
-    "eligible": true,
-    "detail": "Her first eligible year"
-   },
-   {
-    "name": "IMC",
-    "window": "February",
-    "grades": "Grades 1 to 8",
-    "eligible": true,
-    "detail": "Registration details to follow"
-   },
-   {
-    "name": "Math Kangaroo",
-    "window": "March",
-    "grades": "Grades 1 to 12",
-    "eligible": true,
-    "detail": "Registration details to follow"
-   },
-   {
-    "name": "NOETIC Spring",
-    "window": "April",
-    "grades": "Grades 2 to 8",
-    "eligible": true,
-    "detail": "Registration details to follow"
-   }
-  ]
- },
- "studyProgress": []
+  "recentGrades": [
+    {
+      "cls": "Health & PE 6",
+      "title": "Week 3 Fitness Testing, 8 to 11 Sep",
+      "score": "20/20",
+      "date": "2026-09-09"
+    },
+    {
+      "cls": "English 6H",
+      "title": "Summary Minor Summative",
+      "score": "100/100",
+      "date": "2026-09-08"
+    },
+    {
+      "cls": "Health & PE 6",
+      "title": "PE Procedures and Rules Formative",
+      "score": "5/5",
+      "date": "2026-09-08"
+    },
+    {
+      "cls": "Science 6H",
+      "title": "OIP Graded Formative 2026",
+      "score": "100/100",
+      "date": "2026-09-08"
+    },
+    {
+      "cls": "Science 6H",
+      "title": "OIP Study Guide Homework",
+      "score": "100/100",
+      "date": "2026-09-08"
+    },
+    {
+      "cls": "US History",
+      "title": "MAJ: U1 Geography, major summative",
+      "score": "100/100",
+      "date": "2026-09-03"
+    },
+    {
+      "cls": "Spectrum 6",
+      "title": "Skill Choice Frame",
+      "score": "6/8",
+      "date": "2026-09-03"
+    },
+    {
+      "cls": "Spectrum 6",
+      "title": "Academic Responsibility and Integrity Agreement",
+      "score": "2/2",
+      "date": "2026-09-03"
+    },
+    {
+      "cls": "Science 6H",
+      "title": "Observation, Inference and Prediction Knowledge Check",
+      "score": "5/5",
+      "date": "2026-09-02"
+    },
+    {
+      "cls": "Health & PE 6",
+      "title": "PE Procedures Major Summative",
+      "score": "100/100",
+      "date": "2026-09-02"
+    }
+  ],
+  "rsm": {
+    "class": "Pre Algebra_2",
+    "teacher": "Svetlana Lynch",
+    "branch": "Ashburn",
+    "day": "Thursday",
+    "time": "6:20 to 8:20 pm",
+    "note": "Arrive no more than 5 minutes early and the office walks her in. RSM is nut free. Holiday schedule is on the parent portal.",
+    "bring": [
+      "notebook for class notes",
+      "pencil with eraser",
+      "folder or binder",
+      "snack and water (optional)"
+    ],
+    "portal": "https://student.russianschool.com",
+    "parentPortal": "https://parents.russianschool.com",
+    "homework": [
+      {
+        "title": "Lesson 1 Homework",
+        "assigned": "2026-09-04",
+        "due": "2026-09-10",
+        "detail": "She answers on the portal for instant feedback AND brings the written work to class for Mrs. Lynch to check. The email gave no explicit deadline, so this is set to the next class.",
+        "source": "RSM online homework",
+        "url": "https://mail.google.com/mail/u/0/#inbox/1a06c684594630b2"
+      }
+    ],
+    "competitions": [
+      {
+        "name": "NOETIC Fall",
+        "window": "November",
+        "grades": "Grades 2 to 8",
+        "eligible": true,
+        "detail": "Registration details to follow"
+      },
+      {
+        "name": "MOEMS",
+        "window": "Nov to Mar",
+        "grades": "Grades 4 to 8",
+        "eligible": true,
+        "detail": "Runs across five monthly contests"
+      },
+      {
+        "name": "AMC 8",
+        "window": "January",
+        "grades": "Grades 6 to 8",
+        "eligible": true,
+        "detail": "Her first eligible year"
+      },
+      {
+        "name": "IMC",
+        "window": "February",
+        "grades": "Grades 1 to 8",
+        "eligible": true,
+        "detail": "Registration details to follow"
+      },
+      {
+        "name": "Math Kangaroo",
+        "window": "March",
+        "grades": "Grades 1 to 12",
+        "eligible": true,
+        "detail": "Registration details to follow"
+      },
+      {
+        "name": "NOETIC Spring",
+        "window": "April",
+        "grades": "Grades 2 to 8",
+        "eligible": true,
+        "detail": "Registration details to follow"
+      }
+    ]
+  }
 }
