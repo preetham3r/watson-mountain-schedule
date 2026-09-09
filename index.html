@@ -410,8 +410,21 @@
   .planlater{font-family:var(--mono);font-size:9.5px;color:var(--open);margin:8px 0 0;
     padding-top:7px;border-top:1px solid var(--line2)}
   .pdays{display:flex;flex-wrap:wrap;gap:5px;margin:8px 0 2px}
-  .pday{font-family:var(--mono);font-size:9.5px;letter-spacing:.04em;padding:3px 7px;
-    border-radius:6px;background:var(--ice);color:var(--ink2);white-space:nowrap}
+  .pday{font-family:var(--mono);font-size:9.5px;letter-spacing:.04em;padding:6px 8px;
+    border-radius:6px;background:var(--ice);color:var(--ink2);white-space:nowrap;
+    appearance:none;border:1px solid transparent;cursor:pointer;min-height:30px}
+  .pday:hover{border-color:var(--line)}
+  .pday.sel{border-color:var(--ink);color:var(--ink);font-weight:600}
+  .pdaydet{margin:8px 0 2px;padding:11px 12px;background:var(--card);
+    border:1px solid var(--line);border-radius:10px}
+  .pdaydet .ddh{font-family:var(--mono);font-size:9.5px;letter-spacing:.09em;
+    text-transform:uppercase;color:var(--open);margin:0 0 8px}
+  .pdaydet ul{margin:0;padding:0 0 0 15px}
+  .pdaydet li{font-size:13.5px;color:var(--ink);margin:0 0 5px;line-height:1.45}
+  .pdaydet li:last-child{margin-bottom:0}
+  .pdaydet .dnone{font-size:13px;color:var(--open);margin:0}
+  .pdaydet .dtag{font-family:var(--mono);font-size:9px;letter-spacing:.06em;
+    text-transform:uppercase;color:var(--open);margin-left:5px}
   .pday.done{background:#E4F0EA;color:var(--sci)}
   .pday.miss{background:#F6E6E8;color:var(--spectrum)}
   .pday.now{background:#FBEDE4;color:var(--math);font-weight:600}
@@ -2260,19 +2273,67 @@ function noteDay(key, done, total){
   while(keys.length > 14){ delete log[keys.shift()]; }
   try { localStorage.setItem(LOGKEY, JSON.stringify(log)); } catch(e){}
 }
+/* Which day of the strip is open. Kept outside renderTodo so a data refresh
+   does not close the panel under the parent's thumb. */
+var SELDAY = null;
+
+/* What was on for one particular day. The log only ever stored a tally, so the
+   items are rebuilt from the coursework dates rather than recalled. */
+function dayDetail(key){
+  var d = fromIso(key), L = letterFor(key);
+  var head = d.toLocaleDateString(undefined, {weekday:"long", month:"short", day:"numeric"})
+           + (L ? ' &middot; ' + L + ' day' : '');
+  var tally = dayLog()[key];
+  if(tally) head += ' &middot; ' + tally + ' done';
+
+  var li = [];
+  allDueItems()
+    .filter(function(x){ return x.date === key; })
+    .forEach(function(x){
+      li.push('<li>' + esc(x.title || "")
+        + (x.cls ? '<span class="dtag">' + esc(x.cls) + '</span>' : '')
+        + (x.type === "test" ? '<span class="dtag">test</span>' : '') + '</li>');
+    });
+
+  if(L && (L === "B" || L === "D") && key >= INSTRUMENT_START){
+    li.push('<li>Violin goes in</li>');
+  }
+
+  var r = CWDATA && CWDATA.rsm;
+  if(r && RSMDAY[String(r.day || "thursday").toLowerCase()] === d.getDay()){
+    li.push('<li>RSM class' + (r.time ? ' ' + esc(r.time) : '') + '</li>');
+  }
+
+  return '<div class="pdaydet"><p class="ddh">' + head + '</p>'
+    + (li.length ? '<ul>' + li.join("") + '</ul>'
+                 : '<p class="dnone">Nothing due, and no school reminders.</p>')
+    + '</div>';
+}
+
 function dayStrip(todayKey){
   var log = dayLog(), out = "", any = false;
   for(var i = 6; i >= 0; i--){
     var d = new Date(); d.setHours(0,0,0,0); d.setDate(d.getDate() - i);
     var key = iso(d), v = log[key];
     var lab = (i === 0) ? "Today" : d.toLocaleDateString(undefined, {weekday:"short"});
-    if(!v){ out += '<span class="pday">' + lab + ' &middot;</span>'; continue; }
+    var sel = (SELDAY === key) ? " sel" : "";
+    if(!v){
+      out += '<button class="pday' + sel + '" data-day="' + key + '" aria-pressed="'
+           + (SELDAY === key) + '">' + lab + ' &middot;</button>';
+      continue;
+    }
     any = true;
     var parts = v.split("/"), full = (parts[0] === parts[1]);
     var cls = full ? "done" : (i === 0 ? "now" : "miss");
-    out += '<span class="pday ' + cls + '">' + lab + ' ' + v + (full ? ' &#10003;' : '') + '</span>';
+    out += '<button class="pday ' + cls + sel + '" data-day="' + key + '" aria-pressed="'
+         + (SELDAY === key) + '">' + lab + ' ' + v + (full ? ' &#10003;' : '') + '</button>';
   }
-  return any ? '<div class="pdays">' + out + '</div>' : "";
+  /* the strip used to hide itself until something had been logged; now that it
+     is the way into each day it earns its place from the first visit */
+  var haveWork = allDueItems().length > 0;
+  if(!any && !haveWork) return "";
+  return '<div class="pdays">' + out + '</div>'
+       + (SELDAY ? dayDetail(SELDAY) : "");
 }
 
 /* One place that answers: what needs doing before bed tonight. Everything here
@@ -2366,6 +2427,17 @@ function renderTodo(){
         toggleStep(decodeURIComponent(btn.getAttribute("data-todo")));
       });
     })(tb[ti]);
+  }
+
+  var db = el.querySelectorAll("[data-day]");
+  for(var di = 0; di < db.length; di++){
+    (function(btn){
+      btn.addEventListener("click", function(){
+        var k = btn.getAttribute("data-day");
+        SELDAY = (SELDAY === k) ? null : k;   /* tap again to close */
+        renderTodo();
+      });
+    })(db[di]);
   }
 
   var sb = el.querySelectorAll("[data-step]");
