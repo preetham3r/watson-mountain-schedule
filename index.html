@@ -289,9 +289,17 @@
   .annempty{padding:16px 18px;font-size:13.5px;color:var(--ink2)}
 
 
-  .slog{border-top:1px solid var(--line2);padding:11px 18px 13px;background:#FAFCFD}
-  .slog h3{margin:0 0 7px;font-family:var(--mono);font-size:9.5px;letter-spacing:.13em;
-    text-transform:uppercase;color:var(--open);font-weight:600}
+  .slog{border-top:1px solid var(--line2);padding:0;background:#FAFCFD}
+  .slogtog{appearance:none;border:0;background:transparent;cursor:pointer;width:100%;
+    display:flex;align-items:center;gap:8px;padding:12px 18px;text-align:left;
+    font-family:var(--mono);font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;
+    color:var(--open);font-weight:600;min-height:44px}
+  .slogtog:hover{color:var(--ink2)}
+  .slogtog .slogwhen{margin-left:auto;letter-spacing:.04em;text-transform:none;
+    font-weight:400;color:var(--open);white-space:nowrap}
+  .slogtog .slogcar{transition:transform .15s;display:inline-block;font-size:11px}
+  .slogtog[aria-expanded="true"] .slogcar{transform:rotate(90deg)}
+  .slogwrap{padding:0 18px 13px}
   .sl{display:grid;grid-template-columns:112px minmax(0,1fr);gap:12px;font-size:12.5px;
     color:var(--ink2);padding:4px 0;align-items:baseline}
   .sl .st2{font-family:var(--mono);font-size:10px;color:var(--open);line-height:1.35}
@@ -658,8 +666,11 @@
     <div id="annbody"><div class="annempty">Loading.</div></div>
     <div class="dismissed" id="dismissed" style="display:none"></div>
     <div class="slog" id="slog" style="display:none">
-      <h3>Inbox scans</h3>
-      <div id="slogbody"></div>
+      <button class="slogtog" id="slogtog" type="button" aria-expanded="false" aria-controls="slogwrap">
+        <span class="slogcar">&#9656;</span><span>Inbox scans</span>
+        <span class="slogwhen" id="slogwhen"></span>
+      </button>
+      <div class="slogwrap" id="slogwrap" style="display:none"><div id="slogbody"></div></div>
     </div>
   </div>
 
@@ -1788,6 +1799,27 @@ function stampBadge(data){
   el.title = "Last inbox scan " + latest.toLocaleString() + ". Opens the repo.";
 }
 
+/* Folded away by default. It is a diagnostic, not something to read daily,
+   but the choice sticks so opening it once does not mean opening it every time. */
+var SLOGKEY = "wmm-slogopen";
+function slogOpen(){
+  try { return localStorage.getItem(SLOGKEY) === "1"; } catch(e){ return false; }
+}
+function applySlog(){
+  var tog = document.getElementById("slogtog"), wrap = document.getElementById("slogwrap");
+  if(!tog || !wrap) return;
+  var on = slogOpen();
+  tog.setAttribute("aria-expanded", on ? "true" : "false");
+  wrap.style.display = on ? "" : "none";
+  if(!tog.dataset.wired){
+    tog.dataset.wired = "1";
+    tog.addEventListener("click", function(){
+      try { localStorage.setItem(SLOGKEY, slogOpen() ? "0" : "1"); } catch(e){}
+      applySlog();
+    });
+  }
+}
+
 function renderAnn(data){
   var body = document.getElementById("annbody"), st = document.getElementById("annst");
   stampBadge(data);
@@ -1890,6 +1922,17 @@ function renderAnn(data){
       }
       return '<div class="sl"><span class="st2">' + when + '</span><span>' + (x.summary || "No new school email.") + '</span></div>';
     }).join("");
+
+    /* the one thing worth seeing without opening it: did the scan actually run */
+    var w = document.getElementById("slogwhen");
+    if(w){
+      var t0 = scans[0] && scans[0].at ? new Date(scans[0].at) : null;
+      w.textContent = t0 && !isNaN(t0)
+        ? "last " + t0.toLocaleDateString(undefined, {month:"short", day:"numeric"})
+          + ", " + t0.toLocaleTimeString(undefined, {hour:"numeric", minute:"2-digit"})
+        : "";
+    }
+    applySlog();
   } else { slog.style.display = "none"; }
 
   if(!items.length){
