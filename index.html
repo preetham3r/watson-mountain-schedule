@@ -2278,6 +2278,13 @@ function dayStrip(todayKey){
 /* One place that answers: what needs doing before bed tonight. Everything here
    already exists further down the page. The point is not to add facts but to
    stop the parent assembling them from four cards each morning. */
+/* After the 5pm scan the school day is over, so day bound rows that are already
+   struck off stop earning their place and drop out of the list. Anything still
+   outstanding stays put, because online work is usually due 11:59pm and the
+   evening is exactly when it needs to be visible. */
+var CLEAR_AFTER_HOUR = 17;
+function afterSchoolHours(){ return new Date().getHours() >= CLEAR_AFTER_HOUR; }
+
 function renderTodo(){
   var el = document.getElementById("todo");
   if(!el) return;
@@ -2289,9 +2296,12 @@ function renderTodo(){
   /* Ids share the shape the sync worker validates: date|label|index.
      Day bound jobs carry today's date so they reset each morning. Standing jobs
      use the 0000-00-00 sentinel so a tick sticks until the data changes. */
-  function row(cls, key, html, label, idDate, i){
+  function row(cls, key, html, label, idDate, i, clearsAtFive){
     var id = (idDate || todayKey) + "|" + String(label).replace(/\|/g, " ").slice(0, 110) + "|" + (i || 0);
     var on = isDone(id);
+    /* struck off and the school day is done: drop it, and drop it from the
+       count too, so the tally never reads "0 of 1 done" against a hidden row */
+    if(clearsAtFive && on && afterSchoolHours()) return;
     ntotal++; if(on) ndone++;
     rows.push('<button class="td ' + cls + (on ? " on" : "") + '" data-todo="'
       + encodeURIComponent(id) + '" aria-pressed="' + on + '">'
@@ -2309,7 +2319,7 @@ function renderTodo(){
   });
 
   due.filter(function(x){ return x.date === todayKey; })
-     .forEach(function(x, i){ row("now", "today", name(x), plain(x), x.date, i); });
+     .forEach(function(x, i){ row("now", "today", name(x), plain(x), x.date, i, true); });
 
   /* the reason this strip exists: flag it while there is still an evening to act */
   var tm = iso(new Date(Date.now() + 864e5));
@@ -2317,7 +2327,7 @@ function renderTodo(){
      .forEach(function(x, i){ row("prep", "tonight", name(x) + ", due tomorrow", plain(x), x.date, i); });
 
   var L = letterFor(todayKey), nL = nk ? letterFor(nk) : null;
-  if(L && (L === "B" || L === "D") && todayKey >= INSTRUMENT_START){
+  if(L && (L === "B" || L === "D") && todayKey >= INSTRUMENT_START && !afterSchoolHours()){
     row("bag", "bag", "Violin goes in <b>today</b>", "Violin in the bag", todayKey, 0);
   } else if(nL && (nL === "B" || nL === "D") && nk >= INSTRUMENT_START){
     row("bag", "bag", "Violin goes in <b>" + (nk === tm ? "tomorrow" : fromIso(nk).toLocaleDateString(undefined,{weekday:"long"})) + "</b>",
