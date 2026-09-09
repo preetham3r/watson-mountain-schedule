@@ -436,6 +436,8 @@
   .pday.done{background:#E4F0EA;color:var(--sci)}
   .pday.miss{background:#F6E6E8;color:var(--spectrum)}
   .pday.now{background:#FBEDE4;color:var(--math);font-weight:600}
+  .pday.soon{color:var(--ink);font-weight:600;border-color:var(--line)}
+  .pday.quiet{color:var(--open)}
   .planhint{font-family:var(--mono);font-size:9.5px;letter-spacing:.04em;color:var(--open);
     margin:6px 0 0;display:block}
   .plandone{font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;
@@ -2353,28 +2355,49 @@ function dayDetail(key){
     + '</div>';
 }
 
+/* Two days back, today, four forward. The backward half reports what actually
+   got struck off, which is the only thing a log can honestly say. The forward
+   half cannot have a tally yet, so it reports load instead: how many things
+   land that day. Same chip, two different meanings, which is the price of
+   putting both directions in one strip. */
+var STRIP_BACK = 2, STRIP_FWD = 4;
+
 function dayStrip(todayKey){
   var log = dayLog(), out = "", any = false;
-  for(var i = 6; i >= 0; i--){
-    var d = new Date(); d.setHours(0,0,0,0); d.setDate(d.getDate() - i);
-    var key = iso(d), v = log[key];
-    var lab = (i === 0) ? "Today" : d.toLocaleDateString(undefined, {weekday:"short"});
+  var due = allDueItems();
+
+  for(var off = -STRIP_BACK; off <= STRIP_FWD; off++){
+    var d = new Date(); d.setHours(0,0,0,0); d.setDate(d.getDate() + off);
+    var key = iso(d);
+    var lab = (off === 0) ? "Today" : d.toLocaleDateString(undefined, {weekday:"short"});
     var sel = (SELDAY === key) ? " sel" : "";
-    if(!v){
-      out += '<button class="pday' + sel + '" data-day="' + key + '" aria-pressed="'
-           + (SELDAY === key) + '">' + lab + ' &middot;</button>';
-      continue;
+    var cls, face;
+
+    if(off > 0){
+      var n = 0;
+      for(var k = 0; k < due.length; k++){ if(due[k].date === key) n++; }
+      if(n){ any = true; cls = "soon"; face = lab + " " + n; }
+      else  { cls = "quiet"; face = lab + " &middot;"; }
+    } else {
+      var v = log[key];
+      if(v){
+        any = true;
+        var parts = v.split("/"), full = (parts[0] === parts[1]);
+        cls = full ? "done" : (off === 0 ? "now" : "miss");
+        face = lab + " " + v + (full ? " &#10003;" : "");
+      } else {
+        cls = (off === 0) ? "now" : "quiet";
+        face = lab + " &middot;";
+      }
     }
-    any = true;
-    var parts = v.split("/"), full = (parts[0] === parts[1]);
-    var cls = full ? "done" : (i === 0 ? "now" : "miss");
+
     out += '<button class="pday ' + cls + sel + '" data-day="' + key + '" aria-pressed="'
-         + (SELDAY === key) + '">' + lab + ' ' + v + (full ? ' &#10003;' : '') + '</button>';
+         + (SELDAY === key) + '">' + face + '</button>';
   }
+
   /* the strip used to hide itself until something had been logged; now that it
      is the way into each day it earns its place from the first visit */
-  var haveWork = allDueItems().length > 0;
-  if(!any && !haveWork) return "";
+  if(!any && !due.length) return "";
   return '<div class="pdays">' + out + '</div>'
        + (SELDAY ? dayDetail(SELDAY) : "");
 }
