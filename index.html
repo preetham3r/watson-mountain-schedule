@@ -2336,16 +2336,9 @@ function renderTodo(){
     .filter(function(i){ return i.type === "deadline" && !i.date; })
     .forEach(function(it, i){ row("", "open", esc(it.title), it.title, "0000-00-00", i); });
 
-  /* upcoming tests that have a plan get a checklist under the rows */
+  /* Study checklists are switched off. planBlock() below is left intact, so
+     restoring them is a matter of putting the collection loop back here. */
   var plans = "";
-  ((CWDATA && CWDATA.coursework) ? CWDATA.coursework : [])
-    .filter(function(x){
-      if(x.type !== "test" || !x.date || !x.plan || !x.plan.length) return false;
-      var n = daysAway(x.date);
-      return n >= 0 && n <= 14;
-    })
-    .sort(function(a, b){ return a.date < b.date ? -1 : 1; })
-    .forEach(function(t){ plans += planBlock(t); });
 
   noteDay(todayKey, ndone, ntotal);
 
