@@ -41,13 +41,6 @@
     },
     {
       "type": "deadline",
-      "title": "Shoulder rest still needed",
-      "detail": "Mandatory and graded, since instrument posture is assessed. Buy by size, printed inside the f-hole and on the instrument contract. Everest EZ2A for half size, EZ4A for three quarter or full, or a foam sponge for any size.",
-      "source": "Kelly Holowecki, Strings 6",
-      "url": "https://mail.google.com/mail/u/0/#inbox/1a044991cba2c50c"
-    },
-    {
-      "type": "deadline",
       "title": "Check she has the right math notebook",
       "detail": "Mrs. Reel asked families to verify it. The class uses it daily for notes, examples and practice.",
       "source": "Alexandra Reel, Math 7",
@@ -62,6 +55,10 @@
     }
   ],
   "scans": [
+    {
+      "at": "2026-09-10T19:05:00-04:00",
+      "summary": "Page changes, no new mail. Due times now show on the card, so the Spectrum task reads 4:00 pm rather than just Tuesday. Work she has handed in but that is not graded stays on the board for three days marked submitted, instead of vanishing. Task rows carry a link straight to Schoology. Mathspace and Rooms added to the quick links, a bus line added under the header, and a quarter end countdown appears inside 30 days. Coursework text is now escaped like everywhere else, the holiday calendar is written once instead of three times, and the script moved out to app.js so the file can be pushed normally again."
+    },
     {
       "at": "2026-09-10T17:50:00-04:00",
       "summary": "Good day. The overdue Histograms task came back 100/100, so it was submitted and it cost nothing. PE Procedures and Rules major summative also posted 100/100. Both of yesterday's deadlines are closed: Vocab Unit 1 test submitted at 12:02 pm and the Science OIP quiz at 2:56 pm, neither graded yet. One new item, a Spectrum 6 Field Methods task due Tuesday 15 Sep at 4:00 pm, which is an afternoon deadline rather than the usual midnight. Nothing left on the list until then. RSM is tonight at 6:20 with Lesson 1 homework due. Yom Kippur on Monday 21 Sep is a student holiday and was already on the calendar. Still open: math notebook check, shoulder rest, and the Art 6 supply list from Ms. Thiele."
@@ -97,23 +94,40 @@
     {
       "at": "2026-09-07T20:31:00-04:00",
       "summary": "Built the sync worker. sync-worker.js and SYNC-SETUP.md added to the repo. The page gained SYNC_URL and SYNC_KEY placeholders and a Sync now button; until the worker URL is filled in it falls back to a copyable code. No token is in the page."
-    },
-    {
-      "at": "2026-09-07T20:04:00-04:00",
-      "summary": "Study progress is now two layers: a shared studyProgress list in updates.json that every device reads, with local ticks layered on top so a tap is instant. A sync code button appears when this device is ahead of the shared record. No credential goes near the page."
     }
   ],
   "closures": [],
   "bellOverride": null,
   "coursework": [
     {
+      "type": "test",
+      "cls": "Science 6H",
+      "date": "2026-09-10",
+      "title": "OIP Quiz, Minor Summative",
+      "status": "submitted",
+      "detail": "Submitted 2:56 pm on 10 Sep. Observation, inference and prediction. Waiting on the score.",
+      "source": "Schoology",
+      "url": "https://app.schoology.com/course/8479119391/preview/94759433/parent"
+    },
+    {
+      "type": "test",
+      "cls": "English 6H",
+      "date": "2026-09-10",
+      "title": "Vocab Unit 1 Test",
+      "status": "submitted",
+      "detail": "Submitted 12:02 pm on 10 Sep. 100 points, minor summative, no retake. Waiting on the score.",
+      "source": "Madison Peyton, Schoology",
+      "url": "https://app.schoology.com/course/8479114936/preview/94759433/parent"
+    },
+    {
       "type": "assignment",
       "cls": "Spectrum 6",
       "date": "2026-09-15",
       "title": "Field Methods, Observations vs. Inference",
-      "detail": "Due 4:00 pm Tuesday, not the usual 11:59 pm, so it has to be finished before the school day ends. Mrs. Cumberledge. Same observation and inference ground she has just covered in Science 6H, so the content is familiar.",
+      "detail": "Due 4:00 pm Tuesday, not the usual 11:59 pm, so it has to be finished before the school day ends. Mrs. Cumberledge. Same observation and inference ground she has just covered in Science 6H.",
       "source": "Erin Cumberledge, Schoology",
-      "url": "https://app.schoology.com/course/8479116341/preview/94759433/parent"
+      "url": "https://app.schoology.com/course/8479116341/preview/94759433/parent",
+      "time": "16:00"
     },
     {
       "type": "assignment",
@@ -265,5 +279,10 @@
         "detail": "Registration details to follow"
       }
     ]
+  },
+  "bus": {
+    "route": "B2038",
+    "note": "AM route. LCPS sends late bus alerts from trans.noreply@lcps.org.",
+    "alert": null
   }
 }
