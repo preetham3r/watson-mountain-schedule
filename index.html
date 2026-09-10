@@ -408,9 +408,6 @@
   .pbox{flex:none;width:22px;height:22px;border:2px solid var(--open);border-radius:6px;
     margin-top:0;display:flex;align-items:center;justify-content:center;
     font-size:13px;line-height:1;color:#fff;background:var(--card);transition:background .12s,border-color .12s}
-  .sync{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;
-    padding:9px 18px;border-bottom:1px solid var(--line2);background:#F5F9FB}
-  .synct{font-family:var(--mono);font-size:10px;letter-spacing:.04em;color:var(--ink2)}
   .pdayh{font-family:var(--mono);font-size:9px;letter-spacing:.13em;text-transform:uppercase;
     color:var(--open);margin:9px 0 1px;padding-top:7px;border-top:1px solid var(--line2)}
   .pdayh.now{color:var(--math)}
@@ -556,7 +553,6 @@
 
   <div class="today" id="today">
     <div class="todo" id="todo"></div>
-    <div class="sync" id="sync" style="display:none"></div>
     <div class="tgrid">
       <div class="tnow">
         <p class="tlab">Today</p>
@@ -2516,23 +2512,10 @@ function renderTodo(){
     })(sb[si]);
   }
 
-  /* ticks this device has made that the shared record has not caught up with.
-     The row stays put whether or not there is anything pending: it used to
-     appear only when it had work to do, which made it impossible to find on
-     purpose. */
-  var pend = pendingMarks(), cleared = clearedMarks();
-  var pel = document.getElementById("sync");
-  if(pel){
-    var n = pend.length + cleared.length;
-    pel.style.display = "";
-    pel.innerHTML = '<span class="synct">'
-      + (n ? n + ' change' + (n === 1 ? "" : "s") + ' on this device only'
-           : 'Nothing waiting to sync') + '</span>'
-      + '<button class="ib" id="syncbtn"' + (n ? "" : " disabled") + '>'
-      + (SYNC_URL ? "Sync now" : "Send to Claude") + '</button>';
-    var bt = document.getElementById("syncbtn");
-    if(bt && n) bt.addEventListener("click", function(){ doSync(bt, pend, cleared); });
-  }
+  /* The sync row was removed: with one device there is nothing to reconcile,
+     and without a deployed worker the button could not finish the job it
+     offered. doSync() and the mark helpers are left below, dormant, so this is
+     a small edit to put back if a second device ever needs it. */
 }
 
 function doSync(bt, pend, cleared){
