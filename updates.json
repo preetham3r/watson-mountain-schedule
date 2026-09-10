@@ -40,13 +40,6 @@
       "url": "https://mail.google.com/mail/u/0/#inbox/1a0735ca17a49c86"
     },
     {
-      "type": "deadline",
-      "title": "Check she has the right math notebook",
-      "detail": "Mrs. Reel asked families to verify it. The class uses it daily for notes, examples and practice.",
-      "source": "Alexandra Reel, Math 7",
-      "url": "https://mail.google.com/mail/u/0/#inbox/1a058c13dbe48317"
-    },
-    {
       "type": "notice",
       "title": "Math homework runs on Mathspace, most nights",
       "detail": "Mrs. Reel expects homework after most classes, due the following class period, mostly on Mathspace. Every unit also has a Schoology folder with an agenda listing each day, assignments, completed notes and upcoming test dates. That agenda is the first place to look after an absence.",
@@ -55,6 +48,10 @@
     }
   ],
   "scans": [
+    {
+      "at": "2026-09-10T20:15:00-04:00",
+      "summary": "Removed the math notebook check from the standing jobs at your request. The Art 6 supply list from Ms. Thiele is now the only open item in What to do."
+    },
     {
       "at": "2026-09-10T19:05:00-04:00",
       "summary": "Page changes, no new mail. Due times now show on the card, so the Spectrum task reads 4:00 pm rather than just Tuesday. Work she has handed in but that is not graded stays on the board for three days marked submitted, instead of vanishing. Task rows carry a link straight to Schoology. Mathspace and Rooms added to the quick links, a bus line added under the header, and a quarter end countdown appears inside 30 days. Coursework text is now escaped like everywhere else, the holiday calendar is written once instead of three times, and the script moved out to app.js so the file can be pushed normally again."
@@ -90,10 +87,6 @@
     {
       "at": "2026-09-07T20:58:00-04:00",
       "summary": "Every What to do row is now tappable. Striking one through updates a done count in the header and syncs like the study steps. Day bound jobs such as the violin reset each morning, standing jobs stay struck until the data changes."
-    },
-    {
-      "at": "2026-09-07T20:31:00-04:00",
-      "summary": "Built the sync worker. sync-worker.js and SYNC-SETUP.md added to the repo. The page gained SYNC_URL and SYNC_KEY placeholders and a Sync now button; until the worker URL is filled in it falls back to a copyable code. No token is in the page."
     }
   ],
   "closures": [],
