@@ -249,6 +249,7 @@
   .annh .st{font-family:var(--mono);font-size:10px;color:var(--open);white-space:nowrap}
   .annact{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}
   .annh{flex-wrap:wrap}
+  .ib[disabled]{opacity:.45;cursor:default}
   .ib{appearance:none;border:1px solid var(--line);background:var(--card);cursor:pointer;
     color:var(--ink2);border-radius:7px;padding:8px 11px;min-height:34px;min-width:34px;
     display:inline-flex;align-items:center;
@@ -2515,19 +2516,22 @@ function renderTodo(){
     })(sb[si]);
   }
 
-  /* ticks this device has made that the shared record has not caught up with */
+  /* ticks this device has made that the shared record has not caught up with.
+     The row stays put whether or not there is anything pending: it used to
+     appear only when it had work to do, which made it impossible to find on
+     purpose. */
   var pend = pendingMarks(), cleared = clearedMarks();
   var pel = document.getElementById("sync");
   if(pel){
     var n = pend.length + cleared.length;
-    if(n && plans){
-      pel.style.display = "";
-      pel.innerHTML = '<span class="synct">' + n + ' change'
-        + (n === 1 ? "" : "s") + ' on this device only</span>'
-        + '<button class="ib" id="syncbtn">' + (SYNC_URL ? "Sync now" : "Copy sync code") + '</button>';
-      var bt = document.getElementById("syncbtn");
-      if(bt) bt.addEventListener("click", function(){ doSync(bt, pend, cleared); });
-    } else { pel.style.display = "none"; }
+    pel.style.display = "";
+    pel.innerHTML = '<span class="synct">'
+      + (n ? n + ' change' + (n === 1 ? "" : "s") + ' on this device only'
+           : 'Nothing waiting to sync') + '</span>'
+      + '<button class="ib" id="syncbtn"' + (n ? "" : " disabled") + '>'
+      + (SYNC_URL ? "Sync now" : "Copy sync code") + '</button>';
+    var bt = document.getElementById("syncbtn");
+    if(bt && n) bt.addEventListener("click", function(){ doSync(bt, pend, cleared); });
   }
 }
 
