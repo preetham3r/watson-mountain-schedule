@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-09",
+  "updated": "2026-09-10",
   "note": "Study checklists removed at your request.",
   "items": [
     {
@@ -9,14 +9,6 @@
       "detail": "LCPS opened the fall evaluation cycle for grades 6 to 8. The Permission to Evaluate form is due Friday 25 Sep and late forms are refused, though sixth and seventh graders get another cycle in January 2027. She is already scheduled in Spectrum 6 with Mrs. Cumberledge, which is the identified gifted programme, so this almost certainly does not apply to her. One question to the school gifted resource teacher settles it. Form link sits on the LCPS Gifted and Talented page.",
       "source": "LCPS Gifted Education Office, 8 Sep",
       "url": "https://mail.google.com/mail/u/0/#inbox/1a0829f8dbce79dd"
-    },
-    {
-      "type": "deadline",
-      "date": "2026-09-10",
-      "title": "Vocab Unit 1 test moved to Thursday 10 Sep",
-      "detail": "Miss Peyton pushed it back from 9 Sep to give two full school days after the long weekend. She expects reviewing at home from now until the test. Four ways to study: the graded sketch notes packet, the word list in the Schoology Q1 Vocab folder, homemade flashcards, or a family member quizzing her from the shared list.",
-      "source": "Madison Peyton, English 6H",
-      "url": "https://mail.google.com/mail/u/0/#inbox/1a067ce727998706"
     },
     {
       "type": "notice",
@@ -71,6 +63,10 @@
   ],
   "scans": [
     {
+      "at": "2026-09-10T17:50:00-04:00",
+      "summary": "Good day. The overdue Histograms task came back 100/100, so it was submitted and it cost nothing. PE Procedures and Rules major summative also posted 100/100. Both of yesterday's deadlines are closed: Vocab Unit 1 test submitted at 12:02 pm and the Science OIP quiz at 2:56 pm, neither graded yet. One new item, a Spectrum 6 Field Methods task due Tuesday 15 Sep at 4:00 pm, which is an afternoon deadline rather than the usual midnight. Nothing left on the list until then. RSM is tonight at 6:20 with Lesson 1 homework due. Yom Kippur on Monday 21 Sep is a student holiday and was already on the calendar. Still open: math notebook check, shoulder rest, and the Art 6 supply list from Ms. Thiele."
+    },
+    {
       "at": "2026-09-09T19:12:00-04:00",
       "summary": "No mail scan. Removed the two study checklists from What to do and switched the feature off in the page so future tests do not generate them. The tests themselves still show as dated rows."
     },
@@ -105,32 +101,19 @@
     {
       "at": "2026-09-07T20:04:00-04:00",
       "summary": "Study progress is now two layers: a shared studyProgress list in updates.json that every device reads, with local ticks layered on top so a tap is instant. A sync code button appears when this device is ahead of the shared record. No credential goes near the page."
-    },
-    {
-      "at": "2026-09-07T19:38:00-04:00",
-      "summary": "Tests can now carry a day by day study plan that shows in the Today block as a checklist with a progress bar. Ticks are stored on the device. Authored plans for both 10 Sep tests from what Miss Peyton and the science study guide actually specify."
     }
   ],
   "closures": [],
   "bellOverride": null,
   "coursework": [
     {
-      "type": "test",
-      "cls": "English 6H",
-      "date": "2026-09-10",
-      "title": "Vocab Unit 1 Test",
-      "detail": "100 points, minor summative, no retake. Moved from 9 Sep. Study from the graded sketch notes packet and the word list in the Schoology Q1 Vocab folder.",
-      "source": "Madison Peyton, Schoology",
-      "url": "https://app.schoology.com/course/8479114936/preview/94759433/parent"
-    },
-    {
-      "type": "test",
-      "cls": "Science 6H",
-      "date": "2026-09-10",
-      "title": "OIP Quiz, Minor Summative",
-      "detail": "Due 11:59 pm. Covers observation, inference and prediction. She scored 5/5 on the matching knowledge check.",
-      "source": "Schoology",
-      "url": "https://app.schoology.com/course/8479119391/preview/94759433/parent"
+      "type": "assignment",
+      "cls": "Spectrum 6",
+      "date": "2026-09-15",
+      "title": "Field Methods, Observations vs. Inference",
+      "detail": "Due 4:00 pm Tuesday, not the usual 11:59 pm, so it has to be finished before the school day ends. Mrs. Cumberledge. Same observation and inference ground she has just covered in Science 6H, so the content is familiar.",
+      "source": "Erin Cumberledge, Schoology",
+      "url": "https://app.schoology.com/course/8479116341/preview/94759433/parent"
     },
     {
       "type": "assignment",
@@ -143,15 +126,6 @@
     },
     {
       "type": "assignment",
-      "cls": "Math 7",
-      "date": "2026-09-08",
-      "title": "Histograms Performance Task",
-      "detail": "Overdue by one day. Schoology flagged it this evening as an overdue submission. It was due 11:59 pm Tuesday 8 Sep. Mrs. Reel runs homework through Mathspace, and the unit folder in Schoology carries the agenda if the task itself is not obvious. Ask her tonight whether it is submitted, and if it is not, whether late work is still taken.",
-      "source": "Alexandra Reel, Schoology",
-      "url": "https://app.schoology.com/course/8479113491/preview/94759433/parent"
-    },
-    {
-      "type": "assignment",
       "cls": "English 6H",
       "date": "2026-10-23",
       "title": "Q1 Evidence Log, CER Practice",
@@ -161,6 +135,18 @@
     }
   ],
   "recentGrades": [
+    {
+      "cls": "Math 7",
+      "title": "Histograms Performance Task",
+      "score": "100/100",
+      "date": "2026-09-10"
+    },
+    {
+      "cls": "Health & PE 6",
+      "title": "PE Procedures and Rules Major Summative",
+      "score": "100/100",
+      "date": "2026-09-10"
+    },
     {
       "cls": "Health & PE 6",
       "title": "Week 3 Fitness Testing, 8 to 11 Sep",
@@ -208,18 +194,6 @@
       "title": "Academic Responsibility and Integrity Agreement",
       "score": "2/2",
       "date": "2026-09-03"
-    },
-    {
-      "cls": "Science 6H",
-      "title": "Observation, Inference and Prediction Knowledge Check",
-      "score": "5/5",
-      "date": "2026-09-02"
-    },
-    {
-      "cls": "Health & PE 6",
-      "title": "PE Procedures Major Summative",
-      "score": "100/100",
-      "date": "2026-09-02"
     }
   ],
   "rsm": {
