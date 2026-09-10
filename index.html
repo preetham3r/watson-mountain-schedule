@@ -2529,20 +2529,40 @@ function renderTodo(){
       + (n ? n + ' change' + (n === 1 ? "" : "s") + ' on this device only'
            : 'Nothing waiting to sync') + '</span>'
       + '<button class="ib" id="syncbtn"' + (n ? "" : " disabled") + '>'
-      + (SYNC_URL ? "Sync now" : "Copy sync code") + '</button>';
+      + (SYNC_URL ? "Sync now" : "Send to Claude") + '</button>';
     var bt = document.getElementById("syncbtn");
     if(bt && n) bt.addEventListener("click", function(){ doSync(bt, pend, cleared); });
   }
 }
 
 function doSync(bt, pend, cleared){
-  /* no worker configured: hand over a code to paste into chat instead */
+  /* No worker configured, so the round trip goes through chat: copy the payload
+     to the clipboard as a fallback, then open Claude with it already written
+     out. Which Claude account answers is decided by the browser session, not by
+     anything this link can set. */
   if(!SYNC_URL){
     var code = "SYNC " + JSON.stringify({done:pend, undone:cleared});
-    var ok = function(){ bt.textContent = "Copied"; setTimeout(function(){ bt.textContent = "Copy sync code"; }, 1600); };
+    var msg = "Apply this sync payload to updates.json for the school dashboard, "
+            + "then push it. done means tick these off, undone means clear them. "
+            + "Repo preetham3r/watson-mountain-schedule on main.\n\n" + code;
+
     if(navigator.clipboard && navigator.clipboard.writeText){
-      navigator.clipboard.writeText(code).then(ok, function(){ window.prompt("Copy this:", code); });
-    } else { window.prompt("Copy this:", code); }
+      navigator.clipboard.writeText(code).then(function(){}, function(){});
+    }
+
+    var url = "https://claude.ai/new?q=" + encodeURIComponent(msg);
+    /* a very long payload can exceed what a browser will carry in a URL; fall
+       back to the clipboard rather than opening a truncated, wrong instruction */
+    if(url.length > 7000){
+      bt.textContent = "Copied, too long to open";
+      window.prompt("Too long to open directly. Copy this and paste it into Claude:", code);
+      setTimeout(function(){ bt.textContent = "Copy sync code"; }, 2600);
+      return;
+    }
+
+    var w = window.open(url, "_blank", "noopener");
+    bt.textContent = w ? "Opened in Claude" : "Copied, popup blocked";
+    setTimeout(function(){ bt.textContent = "Copy sync code"; }, 2200);
     return;
   }
   bt.disabled = true; bt.textContent = "Syncing";
