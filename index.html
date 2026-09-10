@@ -20,9 +20,9 @@
     /* pastel wash for each subject. Light enough that the dark accent text on
        top still clears contrast, strong enough to tell two blocks apart at a
        glance on a phone. */
-    --pe-t:#EDF1F5; --eng-t:#E6F0F9; --math-t:#FCF0E5; --sci-t:#E6F3EE;
-    --spectrum-t:#F9ECEE; --strings-t:#F1EBF8; --hist-t:#F8F1E1; --art-t:#E4F2F7;
-    --util-t:#E9F5F2; --rsm-t:#EAECF8;
+    --pe-t:#DCE6EF; --eng-t:#D3E6F7; --math-t:#FDEBDB; --sci-t:#D3EDE1;
+    --spectrum-t:#F8DCE0; --strings-t:#E7DBF6; --hist-t:#F6E9C6; --art-t:#D0EAF4;
+    --util-t:#D8EFE8; --rsm-t:#DCE0F7;
     --display:'Archivo','Helvetica Neue',Arial,sans-serif;
     --mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
   }
@@ -79,14 +79,14 @@
   /* Every block carries its subject colour twice: a pastel wash behind the row
      and a spine down the left edge. The spine is what survives when the wash is
      washed out by sunlight on a phone screen. */
-  .row.pe{background:var(--pe-t);box-shadow:inset 4px 0 0 var(--pe)}
-  .row.eng{background:var(--eng-t);box-shadow:inset 4px 0 0 var(--eng)}
-  .row.math{background:var(--math-t);box-shadow:inset 4px 0 0 var(--math)}
-  .row.sci{background:var(--sci-t);box-shadow:inset 4px 0 0 var(--sci)}
-  .row.spectrum{background:var(--spectrum-t);box-shadow:inset 4px 0 0 var(--spectrum)}
-  .row.strings{background:var(--strings-t);box-shadow:inset 4px 0 0 var(--strings)}
-  .row.hist{background:var(--hist-t);box-shadow:inset 4px 0 0 var(--hist)}
-  .row.art{background:var(--art-t);box-shadow:inset 4px 0 0 var(--art)}
+  .row.pe{background:var(--pe-t);box-shadow:inset 5px 0 0 var(--pe)}
+  .row.eng{background:var(--eng-t);box-shadow:inset 5px 0 0 var(--eng)}
+  .row.math{background:var(--math-t);box-shadow:inset 5px 0 0 var(--math)}
+  .row.sci{background:var(--sci-t);box-shadow:inset 5px 0 0 var(--sci)}
+  .row.spectrum{background:var(--spectrum-t);box-shadow:inset 5px 0 0 var(--spectrum)}
+  .row.strings{background:var(--strings-t);box-shadow:inset 5px 0 0 var(--strings)}
+  .row.hist{background:var(--hist-t);box-shadow:inset 5px 0 0 var(--hist)}
+  .row.art{background:var(--art-t);box-shadow:inset 5px 0 0 var(--art)}
   .row.pe .blk,.row.pe .t{color:var(--pe)}
   .row.eng .blk,.row.eng .t{color:var(--eng)}
   .row.math .blk,.row.math .t{color:var(--math)}
@@ -96,7 +96,7 @@
   .row.hist .blk,.row.hist .t{color:var(--hist)}
   .row.art .blk,.row.art .t{color:var(--art)}
 
-  .row.util{background:var(--util-t);box-shadow:inset 4px 0 0 var(--util)}
+  .row.util{background:var(--util-t);box-shadow:inset 5px 0 0 var(--util)}
   .row.util .name{font-size:13px;font-weight:600;color:var(--util);letter-spacing:.02em}
   .row.util .t{color:var(--util)}
   .row.edge{background:#FBFDFE}
