@@ -17,6 +17,12 @@
     --pe:#4E6274; --eng:#14507D; --math:#B24A0C; --sci:#1C6E56;
     --spectrum:#8C2F39; --strings:#5E3A7E; --hist:#7A5A16; --art:#0B6B8A;
     --util:#0F6E63; --open:#93A9B7; --rsm:#3D4EA3;
+    /* pastel wash for each subject. Light enough that the dark accent text on
+       top still clears contrast, strong enough to tell two blocks apart at a
+       glance on a phone. */
+    --pe-t:#EDF1F5; --eng-t:#E6F0F9; --math-t:#FCF0E5; --sci-t:#E6F3EE;
+    --spectrum-t:#F9ECEE; --strings-t:#F1EBF8; --hist-t:#F8F1E1; --art-t:#E4F2F7;
+    --util-t:#E9F5F2; --rsm-t:#EAECF8;
     --display:'Archivo','Helvetica Neue',Arial,sans-serif;
     --mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
   }
@@ -70,7 +76,27 @@
   .sci .name{color:var(--sci)} .spectrum .name{color:var(--spectrum)} .strings .name{color:var(--strings)}
   .hist .name{color:var(--hist)} .art .name{color:var(--art)}
 
-  .row.util{background:#F6FAFC}
+  /* Every block carries its subject colour twice: a pastel wash behind the row
+     and a spine down the left edge. The spine is what survives when the wash is
+     washed out by sunlight on a phone screen. */
+  .row.pe{background:var(--pe-t);box-shadow:inset 4px 0 0 var(--pe)}
+  .row.eng{background:var(--eng-t);box-shadow:inset 4px 0 0 var(--eng)}
+  .row.math{background:var(--math-t);box-shadow:inset 4px 0 0 var(--math)}
+  .row.sci{background:var(--sci-t);box-shadow:inset 4px 0 0 var(--sci)}
+  .row.spectrum{background:var(--spectrum-t);box-shadow:inset 4px 0 0 var(--spectrum)}
+  .row.strings{background:var(--strings-t);box-shadow:inset 4px 0 0 var(--strings)}
+  .row.hist{background:var(--hist-t);box-shadow:inset 4px 0 0 var(--hist)}
+  .row.art{background:var(--art-t);box-shadow:inset 4px 0 0 var(--art)}
+  .row.pe .blk,.row.pe .t{color:var(--pe)}
+  .row.eng .blk,.row.eng .t{color:var(--eng)}
+  .row.math .blk,.row.math .t{color:var(--math)}
+  .row.sci .blk,.row.sci .t{color:var(--sci)}
+  .row.spectrum .blk,.row.spectrum .t{color:var(--spectrum)}
+  .row.strings .blk,.row.strings .t{color:var(--strings)}
+  .row.hist .blk,.row.hist .t{color:var(--hist)}
+  .row.art .blk,.row.art .t{color:var(--art)}
+
+  .row.util{background:var(--util-t);box-shadow:inset 4px 0 0 var(--util)}
   .row.util .name{font-size:13px;font-weight:600;color:var(--util);letter-spacing:.02em}
   .row.util .t{color:var(--util)}
   .row.edge{background:#FBFDFE}
@@ -81,7 +107,13 @@
   @media(min-width:760px){.foot{grid-template-columns:1fr 1fr;gap:22px}}
   .panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
   .panel h2{font-size:12px;font-family:var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink2);margin:0 0 12px;font-weight:600}
-  .key{display:flex;align-items:baseline;gap:9px;margin-bottom:9px;font-size:14px}
+  .key{display:flex;align-items:baseline;gap:9px;margin-bottom:7px;font-size:14px;
+    padding:6px 9px;border-radius:9px;background:var(--ice)}
+  .key.pe{background:var(--pe-t)} .key.eng{background:var(--eng-t)}
+  .key.math{background:var(--math-t)} .key.sci{background:var(--sci-t)}
+  .key.spectrum{background:var(--spectrum-t)} .key.strings{background:var(--strings-t)}
+  .key.hist{background:var(--hist-t)} .key.art{background:var(--art-t)}
+  .key.util{background:var(--util-t)}
   .dot{width:9px;height:9px;border-radius:50%;flex:none;position:relative;top:1px}
   .key code{font-family:var(--mono);font-size:11px;color:var(--open);margin-left:auto;padding-left:8px;white-space:nowrap}
   .panel ul{margin:0;padding-left:17px;font-size:13.5px;color:var(--ink2)}
@@ -315,7 +347,12 @@
   .segsm button{flex:none;font-size:10.5px;padding:6px 11px}
   .cwmeta{font-family:var(--mono);font-size:10.5px;color:var(--open);margin:5px 0 0;line-height:1.5}
   .cwmeta b{color:var(--math);font-weight:600}
-  .cwcls{font-weight:700;font-size:12px;letter-spacing:-.01em}
+  .cwcls{font-weight:700;font-size:12px;letter-spacing:-.01em;
+    padding:2px 7px;border-radius:999px;background:var(--ice)}
+  .cwcls.pe{background:var(--pe-t)} .cwcls.eng{background:var(--eng-t)}
+  .cwcls.math{background:var(--math-t)} .cwcls.sci{background:var(--sci-t)}
+  .cwcls.spectrum{background:var(--spectrum-t)} .cwcls.strings{background:var(--strings-t)}
+  .cwcls.hist{background:var(--hist-t)} .cwcls.art{background:var(--art-t)}
 
   /* ---- RSM panel ---- */
   #rsm .annh h2{color:var(--rsm)}
@@ -714,16 +751,16 @@
 
     <div class="panel">
       <h2>The full block map</h2>
-      <div class="key"><span class="dot" style="background:var(--pe)"></span> Health &amp; PE 6 · Allen · Gym 1 <code>1/2 A</code></div>
-      <div class="key"><span class="dot" style="background:var(--art)"></span> Art 6 · Thiele · 102 <code>1/2 B, sem 1</code></div>
-      <div class="key"><span class="dot" style="background:var(--art)"></span> Computer Apps · Zerega · 342 <code>1/2 B, sem 2</code></div>
-      <div class="key"><span class="dot" style="background:var(--eng)"></span> English 6H · Peyton · 369 <code>3/4 A, 5/6 B</code></div>
-      <div class="key"><span class="dot" style="background:var(--spectrum)"></span> Spectrum 6 · Cumberledge · 271 <code>3 B</code></div>
-      <div class="key"><span class="dot" style="background:var(--strings)"></span> Strings 6, violin · Holowecki · 330 <code>4 B</code></div>
-      <div class="key"><span class="dot" style="background:var(--math)"></span> Math 7 · Reel · 259 <code>5/6 A</code></div>
-      <div class="key"><span class="dot" style="background:var(--sci)"></span> Science 6H · DiPietro · 382 <code>7/8 A</code></div>
-      <div class="key"><span class="dot" style="background:var(--hist)"></span> US History to 1865 · Dickerson · 367 <code>7/8 B</code></div>
-      <div class="key"><span class="dot" style="background:var(--util)"></span> Advisory · DiPietro · 382 <code>Period 9, PEAK</code></div>
+      <div class="key pe"><span class="dot" style="background:var(--pe)"></span> Health &amp; PE 6 · Allen · Gym 1 <code>1/2 A</code></div>
+      <div class="key art"><span class="dot" style="background:var(--art)"></span> Art 6 · Thiele · 102 <code>1/2 B, sem 1</code></div>
+      <div class="key art"><span class="dot" style="background:var(--art)"></span> Computer Apps · Zerega · 342 <code>1/2 B, sem 2</code></div>
+      <div class="key eng"><span class="dot" style="background:var(--eng)"></span> English 6H · Peyton · 369 <code>3/4 A, 5/6 B</code></div>
+      <div class="key spectrum"><span class="dot" style="background:var(--spectrum)"></span> Spectrum 6 · Cumberledge · 271 <code>3 B</code></div>
+      <div class="key strings"><span class="dot" style="background:var(--strings)"></span> Strings 6, violin · Holowecki · 330 <code>4 B</code></div>
+      <div class="key math"><span class="dot" style="background:var(--math)"></span> Math 7 · Reel · 259 <code>5/6 A</code></div>
+      <div class="key sci"><span class="dot" style="background:var(--sci)"></span> Science 6H · DiPietro · 382 <code>7/8 A</code></div>
+      <div class="key hist"><span class="dot" style="background:var(--hist)"></span> US History to 1865 · Dickerson · 367 <code>7/8 B</code></div>
+      <div class="key util"><span class="dot" style="background:var(--util)"></span> Advisory · DiPietro · 382 <code>Period 9, PEAK</code></div>
     </div>
 
     <div class="panel">

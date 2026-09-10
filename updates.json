@@ -49,6 +49,10 @@
   ],
   "scans": [
     {
+      "at": "2026-09-10T20:55:00-04:00",
+      "summary": "Colour pass, no mail scan. Every block in the day schedule now carries a pastel wash in its subject colour with a solid spine on the left edge, the block number and time take the subject colour, class names on Coursework and Grades became pastel pills, and the block map legend matches. Contrast checked on all nine subjects, weakest is Math at 4.83 against its wash. Print sheet untouched."
+    },
+    {
       "at": "2026-09-10T20:15:00-04:00",
       "summary": "Removed the math notebook check from the standing jobs at your request. The Art 6 supply list from Ms. Thiele is now the only open item in What to do."
     },
@@ -83,10 +87,6 @@
     {
       "at": "2026-09-07T21:26:00-04:00",
       "summary": "Added day by day progress. Each study plan now shows a chip per day with steps set against steps done, and the What to do block keeps a rolling seven day log so a finished or missed day leaves a trace after the rows reset."
-    },
-    {
-      "at": "2026-09-07T20:58:00-04:00",
-      "summary": "Every What to do row is now tappable. Striking one through updates a done count in the header and syncs like the study steps. Day bound jobs such as the violin reset each morning, standing jobs stay struck until the data changes."
     }
   ],
   "closures": [],
