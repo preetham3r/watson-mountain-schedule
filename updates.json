@@ -1,7 +1,23 @@
 {
-  "updated": "2026-09-10",
+  "updated": "2026-09-11",
   "note": "Study checklists removed at your request.",
   "items": [
+    {
+      "type": "deadline",
+      "date": "2026-10-27",
+      "title": "Substance abuse presentation in PE, opt out form attached",
+      "detail": "Mrs. Allen wrote on 11 Sep that all sixth graders sit a Substance Abuse Presentation on 27 or 28 October during their normal PE period. An opt out document is attached to her email, so the decision is yours and the form goes back to her. No deadline was given, which usually means before the week of the presentation. Worth opening the attachment now rather than in late October.",
+      "source": "Courtney Allen, Health & PE 6, 11 Sep",
+      "url": "https://mail.google.com/mail/u/0/#inbox/1a0909d4a9720440"
+    },
+    {
+      "type": "notice",
+      "date": "2026-09-24",
+      "title": "Our Turn to Talk, parent and teen film night, 24 Sep",
+      "detail": "Optional. A film following five teenagers on mental health and growing up, then a facilitated discussion. Thursday 24 Sep, 6 to 8 pm at the LCPS Administration Building in Ashburn. Food at 6, film at 6:30. Recommended for ages 12 and up, so she is on the edge of it. Registration required.",
+      "source": "LCPS Letter, 10 Sep",
+      "url": "https://mail.google.com/mail/u/0/#inbox/1a08d43ccb53cbec"
+    },
     {
       "type": "deadline",
       "date": "2026-09-25",
@@ -49,6 +65,10 @@
   ],
   "scans": [
     {
+      "at": "2026-09-11T18:30:00-04:00",
+      "summary": "Five day scan. One genuinely new action: Mrs. Allen sent the sixth grade substance abuse presentation notice on 11 Sep with an opt out document attached, presentation on 27 or 28 October in PE. Added the 24 Sep Our Turn to Talk film night as optional. Yom Kippur on 21 Sep is already on the calendar so nothing changed there. No new grades and no new assignments beyond what was already listed; the OIP quiz and the Vocab Unit 1 test are both still submitted and unscored. A late bus alert went out for B2038 on the morning of 9 Sep and has since cleared."
+    },
+    {
       "at": "2026-09-10T21:20:00-04:00",
       "summary": "Brightened the subject washes to roughly twice the saturation and widened the left spine to 5px so it still reads against the stronger colour. Math sits a shade lighter than the rest because full brightness dropped it to 4.43 contrast against the orange, below the floor."
     },
@@ -83,10 +103,6 @@
     {
       "at": "2026-09-08T08:56:00-04:00",
       "summary": "Scanned five days of school mail. Nothing new has arrived since last night: the latest Schoology digest and the 7 Sep Mountain Messenger were both already captured. One real gap closed, fall club registration shut on 7 Sep, so there is no link still pending. Year long clubs from the PTO are the next window. Coursework is unchanged and correct: OIP study guide due tonight, two minor summatives Thursday, art portfolio 23 Oct."
-    },
-    {
-      "at": "2026-09-07T21:44:00-04:00",
-      "summary": "Fixed a real fault: study steps dated ahead of today were hidden, so both test cards showed an empty progress bar with nothing to tap. Steps are now grouped under day headings and always tappable, so ticking one moves the bar and the per day chips straight away."
     }
   ],
   "closures": [],
