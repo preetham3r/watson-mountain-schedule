@@ -65,6 +65,10 @@
   ],
   "scans": [
     {
+      "at": "2026-09-11T18:55:00-04:00",
+      "summary": "RSM pass. Lesson 1 homework is done and scored 100 out of 100, confirmed by the Ashburn office on 9 Sep and repeated on the 11 Sep weekly update, so it is marked complete and the score is on the grades list. Lesson 2 homework was assigned this morning for the current week and is now on the board against next Thursday, 17 Sep, since RSM gave no explicit deadline. Written solutions still go to class either way."
+    },
+    {
       "at": "2026-09-11T18:30:00-04:00",
       "summary": "Five day scan. One genuinely new action: Mrs. Allen sent the sixth grade substance abuse presentation notice on 11 Sep with an opt out document attached, presentation on 27 or 28 October in PE. Added the 24 Sep Our Turn to Talk film night as optional. Yom Kippur on 21 Sep is already on the calendar so nothing changed there. No new grades and no new assignments beyond what was already listed; the OIP quiz and the Vocab Unit 1 test are both still submitted and unscored. A late bus alert went out for B2038 on the morning of 9 Sep and has since cleared."
     },
@@ -99,10 +103,6 @@
     {
       "at": "2026-09-08T17:40:00-04:00",
       "summary": "Caught a deployment fault first: this morning's push built cleanly but the Pages deploy step failed, so the site had been serving 7 Sep data all day. This push retriggers it. Three new assignments landed today, one of them Histograms due tonight. Three grades posted, all full marks. Added the gifted evaluation window with the caveat that Spectrum 6 likely already covers her."
-    },
-    {
-      "at": "2026-09-08T08:56:00-04:00",
-      "summary": "Scanned five days of school mail. Nothing new has arrived since last night: the latest Schoology digest and the 7 Sep Mountain Messenger were both already captured. One real gap closed, fall club registration shut on 7 Sep, so there is no link still pending. Year long clubs from the PTO are the next window. Coursework is unchanged and correct: OIP study guide due tonight, two minor summatives Thursday, art portfolio 23 Oct."
     }
   ],
   "closures": [],
@@ -158,6 +158,12 @@
     }
   ],
   "recentGrades": [
+    {
+      "cls": "RSM",
+      "title": "Lesson 1 Homework, online",
+      "score": "100/100",
+      "date": "2026-09-11"
+    },
     {
       "cls": "Math 7",
       "title": "Histograms Performance Task",
@@ -239,9 +245,19 @@
         "title": "Lesson 1 Homework",
         "assigned": "2026-09-04",
         "due": "2026-09-10",
-        "detail": "She answers on the portal for instant feedback AND brings the written work to class for Mrs. Lynch to check. The email gave no explicit deadline, so this is set to the next class.",
-        "source": "RSM online homework",
-        "url": "https://mail.google.com/mail/u/0/#inbox/1a06c684594630b2"
+        "detail": "Completed and scored 100 out of 100. RSM confirmed the online submission on the evening of 9 Sep and the score carried through on the 11 Sep weekly update. The written solutions still go to class for Mrs. Lynch to check.",
+        "source": "RSM Ashburn, 10 Sep",
+        "url": "https://mail.google.com/mail/u/0/#inbox/1a088b8db046ac0e",
+        "status": "submitted",
+        "score": "100/100"
+      },
+      {
+        "title": "Lesson 2 Homework",
+        "assigned": "2026-09-11",
+        "due": "2026-09-17",
+        "detail": "Assigned on the 11 Sep weekly update for the current week. Answer online for instant feedback and bring the written solutions to class. No explicit deadline was given, so this is set to the next Thursday class.",
+        "source": "RSM online homework, 11 Sep",
+        "url": "https://mail.google.com/mail/u/0/#inbox/1a090818d5f9dc01"
       }
     ],
     "competitions": [
