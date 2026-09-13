@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-11",
+  "updated": "2026-09-12",
   "note": "Study checklists removed at your request.",
   "items": [
     {
@@ -65,6 +65,10 @@
   ],
   "scans": [
     {
+      "at": "2026-09-12T21:10:00-04:00",
+      "summary": "Two day scan. Both outstanding scores landed: the Science 6H OIP quiz came back 100 out of 100 on 11 Sep and the English 6H Vocab Unit 1 test came back 100 out of 100 on the evening of 10 Sep. Both moved off the coursework board and onto the grades list. Nothing else changed. No overdue submissions, no new assignments, and the only thing ahead in the next week is the Spectrum 6 Field Methods task at 4:00 pm on Tuesday 15 Sep. The 12 Sep Mountain Messenger was image only with no extractable text, so nothing came out of it."
+    },
+    {
       "at": "2026-09-11T18:55:00-04:00",
       "summary": "RSM pass. Lesson 1 homework is done and scored 100 out of 100, confirmed by the Ashburn office on 9 Sep and repeated on the 11 Sep weekly update, so it is marked complete and the score is on the grades list. Lesson 2 homework was assigned this morning for the current week and is now on the board against next Thursday, 17 Sep, since RSM gave no explicit deadline. Written solutions still go to class either way."
     },
@@ -99,35 +103,11 @@
     {
       "at": "2026-09-09T18:15:00-04:00",
       "summary": "Histograms is now a day overdue and it is the only thing on the list that costs marks. Schoology flagged it this evening as an overdue Math 7 submission, so it was not turned in Tuesday night. Two grades posted since last night, both full marks, and Week 3 Fitness Testing came back at 20/20 even though the window runs to Friday, so that one is finished and off the list. Tomorrow is the heavy day: Vocab Unit 1 test, OIP quiz by 11:59 pm, and RSM at 6:20 pm. Nothing new arrived from teachers or the PTO. Pages deploy is healthy again after the 8 Sep failure."
-    },
-    {
-      "at": "2026-09-08T17:40:00-04:00",
-      "summary": "Caught a deployment fault first: this morning's push built cleanly but the Pages deploy step failed, so the site had been serving 7 Sep data all day. This push retriggers it. Three new assignments landed today, one of them Histograms due tonight. Three grades posted, all full marks. Added the gifted evaluation window with the caveat that Spectrum 6 likely already covers her."
     }
   ],
   "closures": [],
   "bellOverride": null,
   "coursework": [
-    {
-      "type": "test",
-      "cls": "Science 6H",
-      "date": "2026-09-10",
-      "title": "OIP Quiz, Minor Summative",
-      "status": "submitted",
-      "detail": "Submitted 2:56 pm on 10 Sep. Observation, inference and prediction. Waiting on the score.",
-      "source": "Schoology",
-      "url": "https://app.schoology.com/course/8479119391/preview/94759433/parent"
-    },
-    {
-      "type": "test",
-      "cls": "English 6H",
-      "date": "2026-09-10",
-      "title": "Vocab Unit 1 Test",
-      "status": "submitted",
-      "detail": "Submitted 12:02 pm on 10 Sep. 100 points, minor summative, no retake. Waiting on the score.",
-      "source": "Madison Peyton, Schoology",
-      "url": "https://app.schoology.com/course/8479114936/preview/94759433/parent"
-    },
     {
       "type": "assignment",
       "cls": "Spectrum 6",
@@ -158,6 +138,18 @@
     }
   ],
   "recentGrades": [
+    {
+      "cls": "Science 6H",
+      "title": "OIP Quiz, Minor Summative",
+      "score": "100/100",
+      "date": "2026-09-11"
+    },
+    {
+      "cls": "English 6H",
+      "title": "Vocab Unit 1 Test, Minor Summative",
+      "score": "100/100",
+      "date": "2026-09-10"
+    },
     {
       "cls": "RSM",
       "title": "Lesson 1 Homework, online",
