@@ -1,7 +1,23 @@
 {
-  "updated": "2026-09-12",
+  "updated": "2026-09-14",
   "note": "Study checklists removed at your request.",
   "items": [
+    {
+      "type": "notice",
+      "date": "2026-09-14",
+      "title": "Intramurals and after school clubs start this week",
+      "detail": "Posted to the Grade 6 course on Monday morning by Kjersti Oliver. Any day she stays after school she has to fill in the After School Attendance Form herself, once per day. Pickup is either a parent run or one of the two 5:00 pm activity buses, and the bus number and stop are on the 2026-2027 activity bus route sheet. Worth settling which bus she is on before the first day she stays.",
+      "source": "Schoology, Grade 6 course, 14 Sep",
+      "url": "https://app.schoology.com/course/8534128733"
+    },
+    {
+      "type": "notice",
+      "date": "2026-09-13",
+      "title": "Mr. Dickerson weekly update, content is in the attached PDF",
+      "detail": "US History weekly note sent Sunday, running a week behind by his own admission. The email body is empty and everything sits in an attached PDF named 9-7-26.pdf, so it covers the week of 7 Sep rather than the current one. Open it from the email if you want the detail.",
+      "source": "Jeb Dickerson, US History to 1865 6H, 13 Sep",
+      "url": "https://mail.google.com/mail/u/0/#inbox/1a09c01bd86e3c69"
+    },
     {
       "type": "deadline",
       "date": "2026-10-27",
@@ -65,6 +81,10 @@
   ],
   "scans": [
     {
+      "at": "2026-09-14T17:40:00-04:00",
+      "summary": "Two day scan. Two new scores: Math 7 integer operations review from 10 Sep came back 98 out of 100, her first mark under full credit this year, and the PE Week 4 Ultimate Football participation credit posted 20 out of 20 this morning. Added the notice that intramurals and after school clubs start this week, which carries a daily attendance form she fills in herself and a choice between a parent pickup and the two 5:00 pm activity buses. Mr. Dickerson sent his weekly US History update on Sunday with an empty body and everything inside a PDF dated 7 Sep, so it is logged as a pointer rather than pulled apart. No overdue submissions. Spectrum 6 Field Methods is still the only thing due this week, tomorrow at 4:00 pm."
+    },
+    {
       "at": "2026-09-12T21:10:00-04:00",
       "summary": "Two day scan. Both outstanding scores landed: the Science 6H OIP quiz came back 100 out of 100 on 11 Sep and the English 6H Vocab Unit 1 test came back 100 out of 100 on the evening of 10 Sep. Both moved off the coursework board and onto the grades list. Nothing else changed. No overdue submissions, no new assignments, and the only thing ahead in the next week is the Spectrum 6 Field Methods task at 4:00 pm on Tuesday 15 Sep. The 12 Sep Mountain Messenger was image only with no extractable text, so nothing came out of it."
     },
@@ -99,10 +119,6 @@
     {
       "at": "2026-09-09T19:12:00-04:00",
       "summary": "No mail scan. Removed the two study checklists from What to do and switched the feature off in the page so future tests do not generate them. The tests themselves still show as dated rows."
-    },
-    {
-      "at": "2026-09-09T18:15:00-04:00",
-      "summary": "Histograms is now a day overdue and it is the only thing on the list that costs marks. Schoology flagged it this evening as an overdue Math 7 submission, so it was not turned in Tuesday night. Two grades posted since last night, both full marks, and Week 3 Fitness Testing came back at 20/20 even though the window runs to Friday, so that one is finished and off the list. Tomorrow is the heavy day: Vocab Unit 1 test, OIP quiz by 11:59 pm, and RSM at 6:20 pm. Nothing new arrived from teachers or the PTO. Pages deploy is healthy again after the 8 Sep failure."
     }
   ],
   "closures": [],
@@ -138,6 +154,18 @@
     }
   ],
   "recentGrades": [
+    {
+      "cls": "Health & PE 6",
+      "title": "Week 4 Ultimate Football, participation",
+      "score": "20/20",
+      "date": "2026-09-14"
+    },
+    {
+      "cls": "Math 7",
+      "title": "9/10 HW, Integer Operations Review",
+      "score": "98/100",
+      "date": "2026-09-13"
+    },
     {
       "cls": "Science 6H",
       "title": "OIP Quiz, Minor Summative",
