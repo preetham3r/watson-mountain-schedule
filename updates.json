@@ -1,7 +1,15 @@
 {
-  "updated": "2026-09-14",
+  "updated": "2026-09-15",
   "note": "Study checklists removed at your request.",
   "items": [
+    {
+      "type": "deadline",
+      "date": "2026-09-22",
+      "title": "2028-29 school calendar, comment before the 22 Sep board vote",
+      "detail": "Optional. LCPS reopened comment because board members proposed revisions and new options since the last round. The School Board votes Tuesday 22 Sep. There is a Let's Talk form that sends comments straight to the members. Adi would be in 8th grade that year.",
+      "source": "LCPS, 15 Sep",
+      "url": "https://mail.google.com/mail/u/0/#inbox/1a0a6e8df251ffe1"
+    },
     {
       "type": "notice",
       "date": "2026-09-14",
@@ -81,6 +89,10 @@
   ],
   "scans": [
     {
+      "at": "2026-09-15T17:55:00-04:00",
+      "summary": "Two day scan, pushed late because the previous token stopped authenticating. English 6H loaded a full unit in one go: an in class formative on point of view, conflict and theme today, a compare and contrast tracker due Friday 18 Sep, and the first major summative of the quarter, a one pager poster, due Wednesday 30 Sep. The poster is the thing to plan around. Spectrum 6 Field Methods is marked submitted on the basis that it left the upcoming list after the 4:00 pm cutoff without appearing as overdue, and no score has posted. Added the 2028-29 calendar comment window, which closes with the board vote on 22 Sep. No new grades. Eight Peachjar flyers, all eighth grade or Academies events, nothing that applies."
+    },
+    {
       "at": "2026-09-14T17:40:00-04:00",
       "summary": "Two day scan. Two new scores: Math 7 integer operations review from 10 Sep came back 98 out of 100, her first mark under full credit this year, and the PE Week 4 Ultimate Football participation credit posted 20 out of 20 this morning. Added the notice that intramurals and after school clubs start this week, which carries a daily attendance form she fills in herself and a choice between a parent pickup and the two 5:00 pm activity buses. Mr. Dickerson sent his weekly US History update on Sunday with an empty body and everything inside a PDF dated 7 Sep, so it is logged as a pointer rather than pulled apart. No overdue submissions. Spectrum 6 Field Methods is still the only thing due this week, tomorrow at 4:00 pm."
     },
@@ -115,10 +127,6 @@
     {
       "at": "2026-09-10T17:50:00-04:00",
       "summary": "Good day. The overdue Histograms task came back 100/100, so it was submitted and it cost nothing. PE Procedures and Rules major summative also posted 100/100. Both of yesterday's deadlines are closed: Vocab Unit 1 test submitted at 12:02 pm and the Science OIP quiz at 2:56 pm, neither graded yet. One new item, a Spectrum 6 Field Methods task due Tuesday 15 Sep at 4:00 pm, which is an afternoon deadline rather than the usual midnight. Nothing left on the list until then. RSM is tonight at 6:20 with Lesson 1 homework due. Yom Kippur on Monday 21 Sep is a student holiday and was already on the calendar. Still open: math notebook check, shoulder rest, and the Art 6 supply list from Ms. Thiele."
-    },
-    {
-      "at": "2026-09-09T19:12:00-04:00",
-      "summary": "No mail scan. Removed the two study checklists from What to do and switched the feature off in the page so future tests do not generate them. The tests themselves still show as dated rows."
     }
   ],
   "closures": [],
@@ -129,10 +137,29 @@
       "cls": "Spectrum 6",
       "date": "2026-09-15",
       "title": "Field Methods, Observations vs. Inference",
-      "detail": "Due 4:00 pm Tuesday, not the usual 11:59 pm, so it has to be finished before the school day ends. Mrs. Cumberledge. Same observation and inference ground she has just covered in Science 6H.",
+      "detail": "Due 4:00 pm Tuesday, not the usual 11:59 pm. Mrs. Cumberledge. Marked submitted because it dropped off the Schoology upcoming list after the cutoff and nothing appeared under overdue, which is inference from the absence rather than a confirmation. No score posted yet.",
       "source": "Erin Cumberledge, Schoology",
       "url": "https://app.schoology.com/course/8479116341/preview/94759433/parent",
-      "time": "16:00"
+      "time": "16:00",
+      "status": "submitted"
+    },
+    {
+      "type": "assignment",
+      "cls": "English 6H",
+      "date": "2026-09-18",
+      "title": "Formative due, Bad Boy and Skinny Tomboy Kid compare and contrast tracker",
+      "detail": "Ms. Peyton. Listed as a calendar event rather than a submitted assignment, so it may be collected in class. This is almost certainly the raw material for the 30 Sep poster, so the work she puts in here saves her later.",
+      "source": "Madison Peyton, Schoology",
+      "url": "https://app.schoology.com/course/8479114936/preview/94759433/parent"
+    },
+    {
+      "type": "assignment",
+      "cls": "English 6H",
+      "date": "2026-09-30",
+      "title": "Major summative due, Bad Boy and Skinny Tomboy Kid one pager poster",
+      "detail": "Ms. Peyton. First major summative of the quarter and the heaviest thing on the board. A poster, so it needs materials and build time, not just a night of writing. Two weeks out as of 15 Sep. Worth starting the week of 21 Sep rather than the weekend before.",
+      "source": "Madison Peyton, Schoology",
+      "url": "https://app.schoology.com/course/8479114936/preview/94759433/parent"
     },
     {
       "type": "assignment",
