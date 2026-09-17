@@ -1,12 +1,27 @@
 {
-  "updated": "2026-09-16",
+  "updated": "2026-09-17",
   "note": "Study checklists removed at your request.",
   "items": [
     {
       "type": "deadline",
       "date": "2026-09-22",
+      "title": "Instrumental posture graded in Strings next week, shoulder rest needed",
+      "detail": "Ms. Holowecki wrote on 17 Sep that every sixth grader gets an Instrumental Posture grade in class next week, and that violins and violas need their own shoulder rest for the posture to be right. She asked families to buy one as soon as possible. Suggestions are on page 3 of the Strings Handbook. Her class is on B days, so the first chance is Tuesday 22 Sep.",
+      "source": "Kelly Holowecki, Strings 6, 17 Sep",
+      "url": "https://mail.google.com/mail/u/0/#inbox/1a0afa9280b86dc3"
+    },
+    {
+      "type": "notice",
+      "title": "She is in Teal 6 Strings, four concert dates for the family calendar",
+      "detail": "Strings 6 splits into two ensembles so the auditorium fits everyone. Her block, 4B, is Teal. Rehearsal Thursday 21 Jan 2027, 3:50 to 4:50 pm at school. Winter concert Thursday 28 Jan 2027, report 6:30 pm and perform 7:00 pm, later than the Red group the same night. Rehearsal Tuesday 18 May 2027, 3:50 to 4:50 pm. Spring concert Thursday 20 May 2027, report 6:30 pm and perform 7:00 pm. Both rehearsals end after the normal day, so they need a pickup plan. The same email lists private lesson instructors on the last page of the Strings Handbook if that is ever of interest.",
+      "source": "Kelly Holowecki, Strings 6, 17 Sep",
+      "url": "https://mail.google.com/mail/u/0/#inbox/1a0afa9280b86dc3"
+    },
+    {
+      "type": "deadline",
+      "date": "2026-09-22",
       "title": "2028-29 school calendar, comment before the 22 Sep board vote",
-      "detail": "Optional. LCPS reopened comment because board members proposed revisions and new options since the last round. The School Board votes Tuesday 22 Sep. There is a Let's Talk form that sends comments straight to the members. Adi would be in 8th grade that year.",
+      "detail": "Optional. LCPS reopened comment because board members proposed revisions and new options since the last round. The School Board votes Tuesday 22 Sep. LCPS has since put up a page with the options actually on the table plus an Onflo form that sends comments straight to the members. Adi would be in 8th grade that year.",
       "source": "LCPS, 15 Sep",
       "url": "https://mail.google.com/mail/u/0/#inbox/1a0a6e8df251ffe1"
     },
@@ -89,6 +104,10 @@
   ],
   "scans": [
     {
+      "at": "2026-09-17T17:30:00-04:00",
+      "summary": "Two day scan, and Strings carried the day. Ms. Holowecki sent ensemble placements: block 4B puts her in Teal 6 Strings, which means rehearsal 21 Jan and the winter concert 28 Jan with a 6:30 report and 7:00 performance, then rehearsal 18 May and the spring concert 20 May on the same pattern. Those four are now on the board. The same email says every sixth grader gets an instrumental posture grade in class next week and that violins need their own shoulder rest for it, so that is a dated item rather than a standing one. Her Strings block is B day, so Tuesday 22 Sep is the first time it could land. No new grades and nothing overdue. The LCPS Letter was all high school material, PSAT and Credit Through Testing, except that Watson Mountain was named an AMLE School of Distinction."
+    },
+    {
       "at": "2026-09-16T17:35:00-04:00",
       "summary": "Two day scan. One new score and it is the one to look at: Math 7 homework on properties of quadrilaterals from 14 Sep came back 71 out of 100, well below everything else this year, which has sat at 98 to 100. It is homework on Mathspace rather than a test, so the useful move is finding which property questions she missed before the unit test lands. Spectrum 6 Field Methods still has no score but has not gone overdue. Removed the FY28 budget ThoughtExchange, which closed yesterday, and added the new strategic plan ThoughtExchange, open to 1 Oct. The Little River board member newsletter had nothing that needs action. No overdue submissions and no new assignments. Next up is the English compare and contrast tracker on Friday and RSM Lesson 2 tomorrow."
     },
@@ -123,10 +142,6 @@
     {
       "at": "2026-09-10T20:15:00-04:00",
       "summary": "Removed the math notebook check from the standing jobs at your request. The Art 6 supply list from Ms. Thiele is now the only open item in What to do."
-    },
-    {
-      "at": "2026-09-10T19:05:00-04:00",
-      "summary": "Page changes, no new mail. Due times now show on the card, so the Spectrum task reads 4:00 pm rather than just Tuesday. Work she has handed in but that is not graded stays on the board for three days marked submitted, instead of vanishing. Task rows carry a link straight to Schoology. Mathspace and Rooms added to the quick links, a bus line added under the header, and a quarter end countdown appears inside 30 days. Coursework text is now escaped like everywhere else, the holiday calendar is written once instead of three times, and the script moved out to app.js so the file can be pushed normally again."
     }
   ],
   "closures": [],
