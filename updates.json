@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-17",
+  "updated": "2026-09-18",
   "note": "Study checklists removed at your request.",
   "items": [
     {
@@ -104,6 +104,10 @@
   ],
   "scans": [
     {
+      "at": "2026-09-18T19:15:00-04:00",
+      "summary": "Two new scores. Science 6H scientific method knowledge check came back 4.14 out of 5, submitted and graded this morning. Math 7 homework on missing sides and angles from 16 Sep came back 90 out of 100. Put that next to the 71 on quadrilaterals and the 98 on integer operations and a pattern shows: the arithmetic work is clean, the geometry unit is where she drops points. Two homeworks is thin evidence, but it is the same unit twice, so it is worth ten minutes on angle and quadrilateral rules over the long weekend rather than waiting for the unit test. The English compare and contrast tracker was due today and nothing is showing overdue. No new mail from teachers or the district since yesterday."
+    },
+    {
       "at": "2026-09-17T17:30:00-04:00",
       "summary": "Two day scan, and Strings carried the day. Ms. Holowecki sent ensemble placements: block 4B puts her in Teal 6 Strings, which means rehearsal 21 Jan and the winter concert 28 Jan with a 6:30 report and 7:00 performance, then rehearsal 18 May and the spring concert 20 May on the same pattern. Those four are now on the board. The same email says every sixth grader gets an instrumental posture grade in class next week and that violins need their own shoulder rest for it, so that is a dated item rather than a standing one. Her Strings block is B day, so Tuesday 22 Sep is the first time it could land. No new grades and nothing overdue. The LCPS Letter was all high school material, PSAT and Credit Through Testing, except that Watson Mountain was named an AMLE School of Distinction."
     },
@@ -138,10 +142,6 @@
     {
       "at": "2026-09-10T20:55:00-04:00",
       "summary": "Colour pass, no mail scan. Every block in the day schedule now carries a pastel wash in its subject colour with a solid spine on the left edge, the block number and time take the subject colour, class names on Coursework and Grades became pastel pills, and the block map legend matches. Contrast checked on all nine subjects, weakest is Math at 4.83 against its wash. Print sheet untouched."
-    },
-    {
-      "at": "2026-09-10T20:15:00-04:00",
-      "summary": "Removed the math notebook check from the standing jobs at your request. The Art 6 supply list from Ms. Thiele is now the only open item in What to do."
     }
   ],
   "closures": [],
@@ -196,6 +196,18 @@
     }
   ],
   "recentGrades": [
+    {
+      "cls": "Science 6H",
+      "title": "Scientific Method Knowledge Check",
+      "score": "4.14/5",
+      "date": "2026-09-18"
+    },
+    {
+      "cls": "Math 7",
+      "title": "9/16 HW, Missing sides and angles",
+      "score": "90/100",
+      "date": "2026-09-18"
+    },
     {
       "cls": "Math 7",
       "title": "9/14 HW, Properties of Quadrilaterals",
