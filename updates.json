@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-18",
+  "updated": "2026-09-19",
   "note": "Study checklists removed at your request.",
   "items": [
     {
@@ -43,11 +43,11 @@
     },
     {
       "type": "notice",
-      "date": "2026-09-13",
+      "date": "2026-09-19",
       "title": "Mr. Dickerson weekly update, content is in the attached PDF",
-      "detail": "US History weekly note sent Sunday, running a week behind by his own admission. The email body is empty and everything sits in an attached PDF named 9-7-26.pdf, so it covers the week of 7 Sep rather than the current one. Open it from the email if you want the detail.",
-      "source": "Jeb Dickerson, US History to 1865 6H, 13 Sep",
-      "url": "https://mail.google.com/mail/u/0/#inbox/1a09c01bd86e3c69"
+      "detail": "US History weekly note, sent late Friday night. The email body is empty and everything sits in an attached PDF, this one named 9-14-26.pdf, so it covers the week of 14 Sep. Same pattern every week, and the attachment cannot be read from here, so open it from the email if you want the detail.",
+      "source": "Jeb Dickerson, US History to 1865 6H, 19 Sep",
+      "url": "https://mail.google.com/mail/u/0/#inbox/1a0b78ca8003ee50"
     },
     {
       "type": "deadline",
@@ -104,6 +104,10 @@
   ],
   "scans": [
     {
+      "at": "2026-09-19T17:50:00-04:00",
+      "summary": "Quiet Saturday. One new score, Science 6H Bubble Lab on the scientific method, 5 out of 5, posted this afternoon. That is two clean science grades in two days. The English compare and contrast tracker has dropped off the upcoming list with nothing overdue, so Friday's formative is done. Mr. Dickerson sent his weekly US History newsletter late Friday night, again as a PDF attachment with an empty email body, this one covering the week of 14 Sep; it cannot be read from here so the pointer is on the board. Nothing else came in. The board now runs to the English poster on 30 Sep, with the Strings posture grade and the calendar vote both landing Tuesday."
+    },
+    {
       "at": "2026-09-18T19:15:00-04:00",
       "summary": "Two new scores. Science 6H scientific method knowledge check came back 4.14 out of 5, submitted and graded this morning. Math 7 homework on missing sides and angles from 16 Sep came back 90 out of 100. Put that next to the 71 on quadrilaterals and the 98 on integer operations and a pattern shows: the arithmetic work is clean, the geometry unit is where she drops points. Two homeworks is thin evidence, but it is the same unit twice, so it is worth ten minutes on angle and quadrilateral rules over the long weekend rather than waiting for the unit test. The English compare and contrast tracker was due today and nothing is showing overdue. No new mail from teachers or the district since yesterday."
     },
@@ -138,10 +142,6 @@
     {
       "at": "2026-09-10T21:20:00-04:00",
       "summary": "Brightened the subject washes to roughly twice the saturation and widened the left spine to 5px so it still reads against the stronger colour. Math sits a shade lighter than the rest because full brightness dropped it to 4.43 contrast against the orange, below the floor."
-    },
-    {
-      "at": "2026-09-10T20:55:00-04:00",
-      "summary": "Colour pass, no mail scan. Every block in the day schedule now carries a pastel wash in its subject colour with a solid spine on the left edge, the block number and time take the subject colour, class names on Coursework and Grades became pastel pills, and the block map legend matches. Contrast checked on all nine subjects, weakest is Math at 4.83 against its wash. Print sheet untouched."
     }
   ],
   "closures": [],
@@ -196,6 +196,12 @@
     }
   ],
   "recentGrades": [
+    {
+      "cls": "Science 6H",
+      "title": "Bubble Lab, The Scientific Method",
+      "score": "5/5",
+      "date": "2026-09-19"
+    },
     {
       "cls": "Science 6H",
       "title": "Scientific Method Knowledge Check",
