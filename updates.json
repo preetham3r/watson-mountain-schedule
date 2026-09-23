@@ -1,7 +1,15 @@
 {
-  "updated": "2026-09-19",
+  "updated": "2026-09-23",
   "note": "Study checklists removed at your request.",
   "items": [
+    {
+      "type": "notice",
+      "date": "2026-10-13",
+      "title": "Fall chocolate fundraiser, 22 Sep to 13 Oct, fully optional",
+      "detail": "World's Finest Chocolate, 40 bars at 2 dollars each, 80 dollars a box prepaid, plus a 3.30 fee if paid online. Once a box is checked out it cannot be returned, so the 80 dollars is at risk if it does not sell. Boxes are handed out from the auditorium at 8:30 am and are supposed to live in her locker until dismissal, which matters on B days when the violin is already in there. Selling one box gets her into a magic show. No signature needed, an online purchase is the permission.",
+      "source": "Watson Mountain, 22 Sep",
+      "url": "https://mail.google.com/mail/u/0/#inbox/1a0cb173d2be1979"
+    },
     {
       "type": "deadline",
       "date": "2026-09-22",
@@ -104,6 +112,10 @@
   ],
   "scans": [
     {
+      "at": "2026-09-23T17:35:00-04:00",
+      "summary": "Four day catch up scan, and next week is the busiest stretch of the year so far. Four new pieces of work landed: Science scientific method study guide due Friday at 3:30 pm, Math quadrilaterals study guide due Friday at 11:59 pm, Spectrum Field Methods site survey and stratigraphy due Monday at 4:00 pm, and the Science scientific method major summative on Tuesday 29 Sep, with the English poster the day after that. The math one is the one to watch. It is the same quadrilaterals topic as the 71 out of 100 from 14 Sep, and a study guide usually means a unit test behind it. One new score, PE week 5 participation 20 out of 20. The first Field Methods assignment has now vanished from Schoology without a score ever posting, so I have taken it off the board; the new one has the same early 4:00 pm cutoff. Nothing is overdue. The school launched a chocolate fundraiser running to 13 Oct, 80 dollars a box prepaid and non returnable, entirely optional. No posture grade from Strings has appeared yet."
+    },
+    {
       "at": "2026-09-19T17:50:00-04:00",
       "summary": "Quiet Saturday. One new score, Science 6H Bubble Lab on the scientific method, 5 out of 5, posted this afternoon. That is two clean science grades in two days. The English compare and contrast tracker has dropped off the upcoming list with nothing overdue, so Friday's formative is done. Mr. Dickerson sent his weekly US History newsletter late Friday night, again as a PDF attachment with an empty email body, this one covering the week of 14 Sep; it cannot be read from here so the pointer is on the board. Nothing else came in. The board now runs to the English poster on 30 Sep, with the Strings posture grade and the calendar vote both landing Tuesday."
     },
@@ -138,10 +150,6 @@
     {
       "at": "2026-09-11T18:30:00-04:00",
       "summary": "Five day scan. One genuinely new action: Mrs. Allen sent the sixth grade substance abuse presentation notice on 11 Sep with an opt out document attached, presentation on 27 or 28 October in PE. Added the 24 Sep Our Turn to Talk film night as optional. Yom Kippur on 21 Sep is already on the calendar so nothing changed there. No new grades and no new assignments beyond what was already listed; the OIP quiz and the Vocab Unit 1 test are both still submitted and unscored. A late bus alert went out for B2038 on the morning of 9 Sep and has since cleared."
-    },
-    {
-      "at": "2026-09-10T21:20:00-04:00",
-      "summary": "Brightened the subject washes to roughly twice the saturation and widened the left spine to 5px so it still reads against the stronger colour. Math sits a shade lighter than the rest because full brightness dropped it to 4.43 contrast against the orange, below the floor."
     }
   ],
   "closures": [],
@@ -149,23 +157,42 @@
   "coursework": [
     {
       "type": "assignment",
-      "cls": "Spectrum 6",
-      "date": "2026-09-15",
-      "title": "Field Methods, Observations vs. Inference",
-      "detail": "Due 4:00 pm Tuesday, not the usual 11:59 pm. Mrs. Cumberledge. Marked submitted because it dropped off the Schoology upcoming list after the cutoff and nothing appeared under overdue, which is inference from the absence rather than a confirmation. Still no score as of 16 Sep and still not overdue.",
-      "source": "Erin Cumberledge, Schoology",
-      "url": "https://app.schoology.com/course/8479116341/preview/94759433/parent",
-      "time": "16:00",
-      "status": "submitted"
+      "cls": "Science 6H",
+      "date": "2026-09-25",
+      "time": "15:30",
+      "title": "Scientific Method Study Guide",
+      "detail": "Due 3:30 pm Friday, so it has to be done before the school day ends, not that night. Mr. DiPietro. This is the study guide for the major summative on 29 Sep, so treat the two as one piece of work rather than two.",
+      "source": "Schoology",
+      "url": "https://app.schoology.com/course/8479119391/preview/94759433/parent"
     },
     {
       "type": "assignment",
-      "cls": "English 6H",
-      "date": "2026-09-18",
-      "title": "Formative due, Bad Boy and Skinny Tomboy Kid compare and contrast tracker",
-      "detail": "Ms. Peyton. Listed as a calendar event rather than a submitted assignment, so it may be collected in class. This is almost certainly the raw material for the 30 Sep poster, so the work she puts in here saves her later.",
-      "source": "Madison Peyton, Schoology",
-      "url": "https://app.schoology.com/course/8479114936/preview/94759433/parent"
+      "cls": "Math 7",
+      "date": "2026-09-25",
+      "time": "23:59",
+      "title": "Quadrilaterals Study Guide, 9/23 homework",
+      "detail": "Due 11:59 pm Friday. Mrs. Reel. Same topic as the 71 out of 100 homework from 14 Sep, which is the lowest score of the year, so this one is worth sitting with her on rather than leaving to Mathspace alone. A study guide usually means a unit test follows.",
+      "source": "Schoology",
+      "url": "https://app.schoology.com/course/8479113491/preview/94759433/parent"
+    },
+    {
+      "type": "assignment",
+      "cls": "Spectrum 6",
+      "date": "2026-09-28",
+      "time": "16:00",
+      "title": "Field Methods, Site Survey and Stratigraphy",
+      "detail": "Due 4:00 pm Monday, the same early cutoff Mrs. Cumberledge used last time, not 11:59 pm. The first Field Methods assignment came and went without a score ever posting, so do not expect Schoology to confirm this one either.",
+      "source": "Erin Cumberledge, Schoology",
+      "url": "https://app.schoology.com/course/8479116341/preview/94759433/parent"
+    },
+    {
+      "type": "assignment",
+      "cls": "Science 6H",
+      "date": "2026-09-29",
+      "title": "Scientific Method Major Summative",
+      "detail": "Mr. DiPietro. Major summative, no time listed, so it is in class. Her scientific method work so far is 4.14 out of 5 on the knowledge check and 5 out of 5 on the Bubble Lab, and the study guide due Friday covers it.",
+      "source": "Schoology",
+      "url": "https://app.schoology.com/course/8479119391/preview/94759433/parent"
     },
     {
       "type": "assignment",
@@ -196,6 +223,12 @@
     }
   ],
   "recentGrades": [
+    {
+      "cls": "Health & PE 6",
+      "title": "Week 5 Ultimate Football, participation",
+      "score": "20/20",
+      "date": "2026-09-23"
+    },
     {
       "cls": "Science 6H",
       "title": "Bubble Lab, The Scientific Method",
