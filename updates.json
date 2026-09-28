@@ -1,7 +1,15 @@
 {
-  "updated": "2026-09-23",
+  "updated": "2026-09-27",
   "note": "Study checklists removed at your request.",
   "items": [
+    {
+      "type": "notice",
+      "date": "2026-09-28",
+      "title": "Monday: headphones for US History, and no violin",
+      "detail": "Two things for the bag tomorrow morning. Mr. Dickerson is at the district office and the class works independently, so he asked students to bring their own headphones; he has a class set but says personal ones work better. Separately, Ms. Holowecki says Strings is doing a written music assignment tomorrow and instruments stay home. The violin goes back in on Wednesday.",
+      "source": "Jeb Dickerson and Kelly Holowecki, 27 Sep",
+      "url": "https://mail.google.com/mail/u/0/#inbox/1a0e496c3e3ff3b1"
+    },
     {
       "type": "notice",
       "date": "2026-10-13",
@@ -112,6 +120,10 @@
   ],
   "scans": [
     {
+      "at": "2026-09-27T21:55:00-04:00",
+      "summary": "Sunday night scan ahead of a heavy week. Two things for tomorrow morning: headphones for US History, because Mr. Dickerson is at the district office and the class works independently, and no violin, because Strings is doing a written assignment; it goes back in Wednesday. Three new pieces of work landed. Strings Sing Me a Story is due Monday at 3:38 pm, which is dismissal, so it is classwork. The Strongest Structure Lab write-up is due Tuesday at 11:59 pm if she did not finish it in class. And Mrs. DiPietro's Friday email flagged a practice test in Schoology that counts as a graded formative, open for 15 attempts with the highest score counting, to be done by Tuesday. That last one is the easiest grade available this week and worth more than one pass. The scientific method major summative is Tuesday in class, with the answer key and a Blooket review both posted. The English poster is Wednesday. Both Friday study guides came and went with no score posted, which is normal for study guides. Monday's Field Methods assignment dropped off Schoology on 26 Sep, two days before it is due, same as the last one; worth asking her rather than trusting the portal. Nothing overdue."
+    },
+    {
       "at": "2026-09-23T17:35:00-04:00",
       "summary": "Four day catch up scan, and next week is the busiest stretch of the year so far. Four new pieces of work landed: Science scientific method study guide due Friday at 3:30 pm, Math quadrilaterals study guide due Friday at 11:59 pm, Spectrum Field Methods site survey and stratigraphy due Monday at 4:00 pm, and the Science scientific method major summative on Tuesday 29 Sep, with the English poster the day after that. The math one is the one to watch. It is the same quadrilaterals topic as the 71 out of 100 from 14 Sep, and a study guide usually means a unit test behind it. One new score, PE week 5 participation 20 out of 20. The first Field Methods assignment has now vanished from Schoology without a score ever posting, so I have taken it off the board; the new one has the same early 4:00 pm cutoff. Nothing is overdue. The school launched a chocolate fundraiser running to 13 Oct, 80 dollars a box prepaid and non returnable, entirely optional. No posture grade from Strings has appeared yet."
     },
@@ -146,10 +158,6 @@
     {
       "at": "2026-09-11T18:55:00-04:00",
       "summary": "RSM pass. Lesson 1 homework is done and scored 100 out of 100, confirmed by the Ashburn office on 9 Sep and repeated on the 11 Sep weekly update, so it is marked complete and the score is on the grades list. Lesson 2 homework was assigned this morning for the current week and is now on the board against next Thursday, 17 Sep, since RSM gave no explicit deadline. Written solutions still go to class either way."
-    },
-    {
-      "at": "2026-09-11T18:30:00-04:00",
-      "summary": "Five day scan. One genuinely new action: Mrs. Allen sent the sixth grade substance abuse presentation notice on 11 Sep with an opt out document attached, presentation on 27 or 28 October in PE. Added the 24 Sep Our Turn to Talk film night as optional. Yom Kippur on 21 Sep is already on the calendar so nothing changed there. No new grades and no new assignments beyond what was already listed; the OIP quiz and the Vocab Unit 1 test are both still submitted and unscored. A late bus alert went out for B2038 on the morning of 9 Sep and has since cleared."
     }
   ],
   "closures": [],
@@ -157,23 +165,13 @@
   "coursework": [
     {
       "type": "assignment",
-      "cls": "Science 6H",
-      "date": "2026-09-25",
-      "time": "15:30",
-      "title": "Scientific Method Study Guide",
-      "detail": "Due 3:30 pm Friday, so it has to be done before the school day ends, not that night. Mr. DiPietro. This is the study guide for the major summative on 29 Sep, so treat the two as one piece of work rather than two.",
+      "cls": "Strings 6",
+      "date": "2026-09-28",
+      "time": "15:38",
+      "title": "Sing Me a Story assignment",
+      "detail": "Due 3:38 pm Monday, which is dismissal time, so it is classwork finished in the period rather than homework. Ms. Holowecki. Listed with a 30 Sep label in the title but a 28 Sep due date.",
       "source": "Schoology",
-      "url": "https://app.schoology.com/course/8479119391/preview/94759433/parent"
-    },
-    {
-      "type": "assignment",
-      "cls": "Math 7",
-      "date": "2026-09-25",
-      "time": "23:59",
-      "title": "Quadrilaterals Study Guide, 9/23 homework",
-      "detail": "Due 11:59 pm Friday. Mrs. Reel. Same topic as the 71 out of 100 homework from 14 Sep, which is the lowest score of the year, so this one is worth sitting with her on rather than leaving to Mathspace alone. A study guide usually means a unit test follows.",
-      "source": "Schoology",
-      "url": "https://app.schoology.com/course/8479113491/preview/94759433/parent"
+      "url": "https://app.schoology.com/course/8479112024/preview/94759433/parent"
     },
     {
       "type": "assignment",
@@ -181,7 +179,7 @@
       "date": "2026-09-28",
       "time": "16:00",
       "title": "Field Methods, Site Survey and Stratigraphy",
-      "detail": "Due 4:00 pm Monday, the same early cutoff Mrs. Cumberledge used last time, not 11:59 pm. The first Field Methods assignment came and went without a score ever posting, so do not expect Schoology to confirm this one either.",
+      "detail": "Due 4:00 pm Monday, the early cutoff Mrs. Cumberledge uses. It dropped off the Schoology upcoming list on 26 Sep, two days before the due date, which is the same disappearing act the first Field Methods assignment did. Either she has turned it in early or the teacher pulled it. Worth one question to Adi rather than trusting the portal.",
       "source": "Erin Cumberledge, Schoology",
       "url": "https://app.schoology.com/course/8479116341/preview/94759433/parent"
     },
@@ -190,8 +188,27 @@
       "cls": "Science 6H",
       "date": "2026-09-29",
       "title": "Scientific Method Major Summative",
-      "detail": "Mr. DiPietro. Major summative, no time listed, so it is in class. Her scientific method work so far is 4.14 out of 5 on the knowledge check and 5 out of 5 on the Bubble Lab, and the study guide due Friday covers it.",
+      "detail": "Mr. DiPietro, in class Tuesday. First major summative in science. Mrs. DiPietro sent the prep list on Friday: a practice test in Schoology that is itself a graded formative, open for 15 attempts with the highest score counting, a Blooket review, and the study guide answer key. The 15 attempt practice test is free marks if she works through it more than once.",
       "source": "Schoology",
+      "url": "https://app.schoology.com/course/8479119391/preview/94759433/parent"
+    },
+    {
+      "type": "assignment",
+      "cls": "Science 6H",
+      "date": "2026-09-29",
+      "title": "Scientific Method practice test, graded formative",
+      "detail": "To be completed by Tuesday if she did not finish it in class. It counts as a graded formative, not just practice, and it is open for 15 attempts with the highest score counting. Repeating it is the cheapest grade on the board this week.",
+      "source": "Tracy DiPietro, Schoology",
+      "url": "https://app.schoology.com/course/8479119391/preview/94759433/parent"
+    },
+    {
+      "type": "assignment",
+      "cls": "Science 6H",
+      "date": "2026-09-29",
+      "time": "23:59",
+      "title": "Strongest Structure Lab write-up",
+      "detail": "Due 11:59 pm Tuesday. Mrs. DiPietro said in her Friday email that anyone who did not finish the write-up in class needs to complete it on their own.",
+      "source": "Tracy DiPietro, Schoology",
       "url": "https://app.schoology.com/course/8479119391/preview/94759433/parent"
     },
     {
