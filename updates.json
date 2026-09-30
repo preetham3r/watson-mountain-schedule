@@ -1,7 +1,15 @@
 {
-  "updated": "2026-09-27",
+  "updated": "2026-09-30",
   "note": "Study checklists removed at your request.",
   "items": [
+    {
+      "type": "notice",
+      "date": "2026-10-09",
+      "title": "Scholastic Book Fair, 5 to 9 Oct, English class visits Monday",
+      "detail": "Her English class goes to the fair together on Monday 5 Oct during the regular period, so if she is buying anything she needs money or a set up eWallet that morning, not later in the week. Cash, card, Apple Pay, checks to Watson Mountain Middle School, or a Scholastic eWallet all work. Parents can shop any time during school hours that week, and Friday 9 Oct is Bring Your Parent to School Day.",
+      "source": "Madison Peyton, 29 Sep",
+      "url": "https://mail.google.com/mail/u/0/#inbox/1a0ed9a7397c9f74"
+    },
     {
       "type": "notice",
       "date": "2026-09-28",
@@ -120,6 +128,10 @@
   ],
   "scans": [
     {
+      "at": "2026-09-30T17:20:00-04:00",
+      "summary": "The heavy week landed well, with one loose end. Scientific Method major summative came back 100 out of 100, graded within ten minutes of her submitting it, and the Strongest Structure Lab also 100 out of 100. Math 9/18 homework 100 out of 100 and PE week 6 participation 20 out of 20. The loose end is the first overdue of the year: the Strings Sing Me a Story assignment was due Monday at 3:38 pm and is showing two days overdue. That is the one she did in class on Monday without her instrument, so it is probably done and not submitted rather than not done at all. Worth asking her tonight. Field Methods came and went again with no score, third time now for Mrs. Cumberledge. The English poster is due today. Ms. Peyton also announced the Scholastic Book Fair, 5 to 9 Oct, with her English class visiting Monday 5 Oct, so money or an eWallet needs to be sorted that morning."
+    },
+    {
       "at": "2026-09-27T21:55:00-04:00",
       "summary": "Sunday night scan ahead of a heavy week. Two things for tomorrow morning: headphones for US History, because Mr. Dickerson is at the district office and the class works independently, and no violin, because Strings is doing a written assignment; it goes back in Wednesday. Three new pieces of work landed. Strings Sing Me a Story is due Monday at 3:38 pm, which is dismissal, so it is classwork. The Strongest Structure Lab write-up is due Tuesday at 11:59 pm if she did not finish it in class. And Mrs. DiPietro's Friday email flagged a practice test in Schoology that counts as a graded formative, open for 15 attempts with the highest score counting, to be done by Tuesday. That last one is the easiest grade available this week and worth more than one pass. The scientific method major summative is Tuesday in class, with the answer key and a Blooket review both posted. The English poster is Wednesday. Both Friday study guides came and went with no score posted, which is normal for study guides. Monday's Field Methods assignment dropped off Schoology on 26 Sep, two days before it is due, same as the last one; worth asking her rather than trusting the portal. Nothing overdue."
     },
@@ -154,10 +166,6 @@
     {
       "at": "2026-09-12T21:10:00-04:00",
       "summary": "Two day scan. Both outstanding scores landed: the Science 6H OIP quiz came back 100 out of 100 on 11 Sep and the English 6H Vocab Unit 1 test came back 100 out of 100 on the evening of 10 Sep. Both moved off the coursework board and onto the grades list. Nothing else changed. No overdue submissions, no new assignments, and the only thing ahead in the next week is the Spectrum 6 Field Methods task at 4:00 pm on Tuesday 15 Sep. The 12 Sep Mountain Messenger was image only with no extractable text, so nothing came out of it."
-    },
-    {
-      "at": "2026-09-11T18:55:00-04:00",
-      "summary": "RSM pass. Lesson 1 homework is done and scored 100 out of 100, confirmed by the Ashburn office on 9 Sep and repeated on the 11 Sep weekly update, so it is marked complete and the score is on the grades list. Lesson 2 homework was assigned this morning for the current week and is now on the board against next Thursday, 17 Sep, since RSM gave no explicit deadline. Written solutions still go to class either way."
     }
   ],
   "closures": [],
@@ -169,54 +177,17 @@
       "date": "2026-09-28",
       "time": "15:38",
       "title": "Sing Me a Story assignment",
-      "detail": "Due 3:38 pm Monday, which is dismissal time, so it is classwork finished in the period rather than homework. Ms. Holowecki. Listed with a 30 Sep label in the title but a 28 Sep due date.",
+      "detail": "Due Monday 28 Sep at 3:38 pm and showing 2 days overdue in Schoology as of tonight. First overdue of the year. This is the assignment she did in class on Monday without her instrument, so it is likely finished and not submitted rather than not done. Worth asking her tonight and getting it in before it starts costing anything.",
       "source": "Schoology",
-      "url": "https://app.schoology.com/course/8479112024/preview/94759433/parent"
-    },
-    {
-      "type": "assignment",
-      "cls": "Spectrum 6",
-      "date": "2026-09-28",
-      "time": "16:00",
-      "title": "Field Methods, Site Survey and Stratigraphy",
-      "detail": "Due 4:00 pm Monday, the early cutoff Mrs. Cumberledge uses. It dropped off the Schoology upcoming list on 26 Sep, two days before the due date, which is the same disappearing act the first Field Methods assignment did. Either she has turned it in early or the teacher pulled it. Worth one question to Adi rather than trusting the portal.",
-      "source": "Erin Cumberledge, Schoology",
-      "url": "https://app.schoology.com/course/8479116341/preview/94759433/parent"
-    },
-    {
-      "type": "assignment",
-      "cls": "Science 6H",
-      "date": "2026-09-29",
-      "title": "Scientific Method Major Summative",
-      "detail": "Mr. DiPietro, in class Tuesday. First major summative in science. Mrs. DiPietro sent the prep list on Friday: a practice test in Schoology that is itself a graded formative, open for 15 attempts with the highest score counting, a Blooket review, and the study guide answer key. The 15 attempt practice test is free marks if she works through it more than once.",
-      "source": "Schoology",
-      "url": "https://app.schoology.com/course/8479119391/preview/94759433/parent"
-    },
-    {
-      "type": "assignment",
-      "cls": "Science 6H",
-      "date": "2026-09-29",
-      "title": "Scientific Method practice test, graded formative",
-      "detail": "To be completed by Tuesday if she did not finish it in class. It counts as a graded formative, not just practice, and it is open for 15 attempts with the highest score counting. Repeating it is the cheapest grade on the board this week.",
-      "source": "Tracy DiPietro, Schoology",
-      "url": "https://app.schoology.com/course/8479119391/preview/94759433/parent"
-    },
-    {
-      "type": "assignment",
-      "cls": "Science 6H",
-      "date": "2026-09-29",
-      "time": "23:59",
-      "title": "Strongest Structure Lab write-up",
-      "detail": "Due 11:59 pm Tuesday. Mrs. DiPietro said in her Friday email that anyone who did not finish the write-up in class needs to complete it on their own.",
-      "source": "Tracy DiPietro, Schoology",
-      "url": "https://app.schoology.com/course/8479119391/preview/94759433/parent"
+      "url": "https://app.schoology.com/course/8479112024/preview/94759433/parent",
+      "status": "overdue"
     },
     {
       "type": "assignment",
       "cls": "English 6H",
       "date": "2026-09-30",
       "title": "Major summative due, Bad Boy and Skinny Tomboy Kid one pager poster",
-      "detail": "Ms. Peyton. First major summative of the quarter and the heaviest thing on the board. A poster, so it needs materials and build time, not just a night of writing. Two weeks out as of 15 Sep. Worth starting the week of 21 Sep rather than the weekend before.",
+      "detail": "Ms. Peyton. Due today, 30 Sep. First major summative of the quarter in English.",
       "source": "Madison Peyton, Schoology",
       "url": "https://app.schoology.com/course/8479114936/preview/94759433/parent"
     },
@@ -240,6 +211,30 @@
     }
   ],
   "recentGrades": [
+    {
+      "cls": "Science 6H",
+      "title": "Scientific Method Major Summative",
+      "score": "100/100",
+      "date": "2026-09-29"
+    },
+    {
+      "cls": "Science 6H",
+      "title": "Strongest Structure Lab",
+      "score": "100/100",
+      "date": "2026-09-29"
+    },
+    {
+      "cls": "Math 7",
+      "title": "9/18 HW",
+      "score": "100/100",
+      "date": "2026-09-30"
+    },
+    {
+      "cls": "Health & PE 6",
+      "title": "Week 6 Ultimate Football, participation",
+      "score": "20/20",
+      "date": "2026-09-30"
+    },
     {
       "cls": "Health & PE 6",
       "title": "Week 5 Ultimate Football, participation",
