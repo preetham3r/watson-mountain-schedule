@@ -1,7 +1,15 @@
 {
-  "updated": "2026-09-30",
+  "updated": "2026-10-02",
   "note": "Study checklists removed at your request.",
   "items": [
+    {
+      "type": "notice",
+      "date": "2026-10-05",
+      "title": "Science asks for leftover craft supplies at the start of next week",
+      "detail": "Optional. The space unit has started and students build a scaled model of the solar system in class from 6 Oct. Mrs. DiPietro wants pom poms, pipe cleaners, glue gun sticks, Elmer's glue, sticky dots, beads, wooden beads, styrofoam balls, whatever is already in the house. Part bags are fine. Sending it Monday matters because they plan their projects Tuesday and Wednesday around what has come in. Monday is already the book fair class visit, so both go in the bag together.",
+      "source": "Tracy DiPietro, 1 Oct",
+      "url": "https://mail.google.com/mail/u/0/#inbox/1a0f861515b4521e"
+    },
     {
       "type": "notice",
       "date": "2026-10-09",
@@ -128,6 +136,10 @@
   ],
   "scans": [
     {
+      "at": "2026-10-02T18:05:00-04:00",
+      "summary": "The overdue cleared. The Strings Sing Me a Story assignment came off the overdue list between Thursday and Friday, so whatever was holding it up is sorted; no score posted with it, which is normal for Ms. Holowecki's in class work. Three new scores, all clean: US History archaeology and sources formative 5 out of 5, Math 9/29 homework 100 out of 100, Math 10/1 homework 100 out of 100. That is five straight hundreds in math since the 71 on quadrilaterals, so the geometry wobble looks like it was the unit, not a habit. The English poster has dropped off the board with no grade yet; Ms. Peyton takes a while on major summatives. One new ask for next week: Mrs. DiPietro wants leftover craft supplies sent in Monday for the solar system models, which start in class on 6 Oct. Monday is already the book fair visit day, so it all goes in the bag together. Nothing overdue and nothing due until the Q1 work on 23 Oct."
+    },
+    {
       "at": "2026-09-30T17:20:00-04:00",
       "summary": "The heavy week landed well, with one loose end. Scientific Method major summative came back 100 out of 100, graded within ten minutes of her submitting it, and the Strongest Structure Lab also 100 out of 100. Math 9/18 homework 100 out of 100 and PE week 6 participation 20 out of 20. The loose end is the first overdue of the year: the Strings Sing Me a Story assignment was due Monday at 3:38 pm and is showing two days overdue. That is the one she did in class on Monday without her instrument, so it is probably done and not submitted rather than not done at all. Worth asking her tonight. Field Methods came and went again with no score, third time now for Mrs. Cumberledge. The English poster is due today. Ms. Peyton also announced the Scholastic Book Fair, 5 to 9 Oct, with her English class visiting Monday 5 Oct, so money or an eWallet needs to be sorted that morning."
     },
@@ -162,35 +174,11 @@
     {
       "at": "2026-09-14T17:40:00-04:00",
       "summary": "Two day scan. Two new scores: Math 7 integer operations review from 10 Sep came back 98 out of 100, her first mark under full credit this year, and the PE Week 4 Ultimate Football participation credit posted 20 out of 20 this morning. Added the notice that intramurals and after school clubs start this week, which carries a daily attendance form she fills in herself and a choice between a parent pickup and the two 5:00 pm activity buses. Mr. Dickerson sent his weekly US History update on Sunday with an empty body and everything inside a PDF dated 7 Sep, so it is logged as a pointer rather than pulled apart. No overdue submissions. Spectrum 6 Field Methods is still the only thing due this week, tomorrow at 4:00 pm."
-    },
-    {
-      "at": "2026-09-12T21:10:00-04:00",
-      "summary": "Two day scan. Both outstanding scores landed: the Science 6H OIP quiz came back 100 out of 100 on 11 Sep and the English 6H Vocab Unit 1 test came back 100 out of 100 on the evening of 10 Sep. Both moved off the coursework board and onto the grades list. Nothing else changed. No overdue submissions, no new assignments, and the only thing ahead in the next week is the Spectrum 6 Field Methods task at 4:00 pm on Tuesday 15 Sep. The 12 Sep Mountain Messenger was image only with no extractable text, so nothing came out of it."
     }
   ],
   "closures": [],
   "bellOverride": null,
   "coursework": [
-    {
-      "type": "assignment",
-      "cls": "Strings 6",
-      "date": "2026-09-28",
-      "time": "15:38",
-      "title": "Sing Me a Story assignment",
-      "detail": "Due Monday 28 Sep at 3:38 pm and showing 2 days overdue in Schoology as of tonight. First overdue of the year. This is the assignment she did in class on Monday without her instrument, so it is likely finished and not submitted rather than not done. Worth asking her tonight and getting it in before it starts costing anything.",
-      "source": "Schoology",
-      "url": "https://app.schoology.com/course/8479112024/preview/94759433/parent",
-      "status": "overdue"
-    },
-    {
-      "type": "assignment",
-      "cls": "English 6H",
-      "date": "2026-09-30",
-      "title": "Major summative due, Bad Boy and Skinny Tomboy Kid one pager poster",
-      "detail": "Ms. Peyton. Due today, 30 Sep. First major summative of the quarter in English.",
-      "source": "Madison Peyton, Schoology",
-      "url": "https://app.schoology.com/course/8479114936/preview/94759433/parent"
-    },
     {
       "type": "assignment",
       "cls": "Art 6",
@@ -211,6 +199,24 @@
     }
   ],
   "recentGrades": [
+    {
+      "cls": "Math 7",
+      "title": "9/29 HW",
+      "score": "100/100",
+      "date": "2026-10-01"
+    },
+    {
+      "cls": "Math 7",
+      "title": "10/1 HW",
+      "score": "100/100",
+      "date": "2026-10-02"
+    },
+    {
+      "cls": "US History 6H",
+      "title": "Archaeology, Sources of Information, Resources formative",
+      "score": "5/5",
+      "date": "2026-10-02"
+    },
     {
       "cls": "Science 6H",
       "title": "Scientific Method Major Summative",
